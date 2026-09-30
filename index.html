@@ -482,7 +482,7 @@ function bloqueReflexion(s) {
   return `<section class="refl" id="reflexion">
     <div class="eyebrow">Al cerrar la sesión</div>
     <h2 class="sec-t">Comparte tu reflexión</h2>
-    <p>Una o dos frases con lo que te llevas de hoy. Se publica cuando la revisa el coordinador.</p>
+    <p>Una o dos frases con lo que te llevas de hoy. Aparece de inmediato para el grupo.</p>
     <form class="card" data-form="reflexion" data-sid="${esc(s.id)}" novalidate>
       <label class="fld">Tu nombre<input type="text" name="nombre" maxlength="60" autocomplete="given-name" value="${esc(nombre)}"></label>
       <label class="chk"><input type="checkbox" name="anon"> Prefiero compartir sin nombre</label>
@@ -703,6 +703,7 @@ document.addEventListener("submit", async e => {
       if (!anon) store.set("nombre", nombre);
       f.elements.reflexion.value = ""; f.querySelector(".count").textContent = "0 / 1200";
       mensaje(f, d.message || "Gracias por compartir.");
+      cargarReflexiones(f.dataset.sid, true);
     } catch (err) { mensaje(f, err.status === 400 ? err.message : "No pudimos enviarla. Revisa tu conexión e inténtalo de nuevo.", true); }
     btn.disabled = false;
   } else if (f.dataset.form === "tema") {
