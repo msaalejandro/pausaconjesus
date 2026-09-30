@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Guía para Sesiones Grupales · Pausa con Jesús</title>
+<meta name="description" content="Material, guía de lectura y preguntas para cada sesión del grupo de oración.">
+<meta property="og:title" content="Pausa con Jesús">
+<meta property="og:description" content="Material, guía de lectura y preguntas para cada sesión del grupo de oración.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pausaconjesus.com/">
+<meta name="theme-color" content="#ECEDEF">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap">
+<style>
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+<style>
+/* Layout: una columna de lectura (máx. 680px), barra de pestañas fija abajo, sesiones como fichas por fecha */
+:root{
+  --bg:#ECEDEF; --surface:#F8F8F9; --line:#D3D7DE; --fg:#1C2130; --muted:#586074;
+  --accent:#2E4A7D; --accent-soft:#DDE4F1; --gold:#80601C; --gold-soft:#F0E8D5;
+  --paper:#F8F8F9; --ink:#1C2130; --ink-muted:#586074;
+  --f-display:"Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  --f-ui:"Atkinson Hyperlegible", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-read:"Literata", Georgia, "Times New Roman", serif;
+  --read-size:18px; --read-lh:1.7;
+  --nav-h:64px; --r:14px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#10131A; --surface:#181C25; --line:#2A303E; --fg:#E7E4DC; --muted:#9AA1B0;
+    --accent:#A3B8E4; --accent-soft:#222E47; --gold:#D9B96E; --gold-soft:#2B2517;
+    --paper:#181C25; --ink:#E7E4DC; --ink-muted:#9AA1B0; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10131A; --surface:#181C25; --line:#2A303E; --fg:#E7E4DC; --muted:#9AA1B0;
+  --accent:#A3B8E4; --accent-soft:#222E47; --gold:#D9B96E; --gold-soft:#2B2517;
+  --paper:#181C25; --ink:#E7E4DC; --ink-muted:#9AA1B0; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-ui);font-size:16px;line-height:1.5;-webkit-text-size-adjust:100%}
+a{color:var(--accent)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
+.wrap{max-width:680px;margin:0 auto;padding-inline:16px;padding-block:0 calc(var(--nav-h) + 28px)}
+
+/* Encabezado */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.top-in{max-width:680px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;gap:12px}
+.brand{font-family:var(--f-display);font-weight:600;font-size:21px;line-height:1.1;letter-spacing:.01em}
+.brand small{display:block;font-family:var(--f-ui);font-weight:400;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.back{border:0;background:none;padding:6px 8px 6px 0;color:var(--accent);font-weight:700;cursor:pointer;display:flex;align-items:center;gap:4px}
+
+/* Barra inferior */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+.nav-in{max-width:680px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);height:var(--nav-h)}
+.nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;text-decoration:none;color:var(--muted);font-size:12px}
+.nav a svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.nav a[aria-current="page"]{color:var(--accent);font-weight:700}
+
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700}
+h1,h2,h3{text-wrap:balance;margin:0}
+.h-view{font-family:var(--f-display);font-weight:600;font-size:34px;line-height:1.05;margin:22px 0 4px}
+.lede{color:var(--muted);margin:0 0 18px}
+.stack{display:flex;flex-direction:column;gap:14px}
+
+/* Ficha de próxima sesión */
+.next{margin-top:20px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.next-head{display:grid;grid-template-columns:auto 1fr;gap:16px;padding:18px 18px 14px;align-items:start}
+.cal{min-width:64px;text-align:center;border:1px solid var(--line);border-radius:10px;padding:6px 8px 8px;background:var(--bg)}
+.cal b{display:block;font-family:var(--f-display);font-size:38px;line-height:1;font-weight:600}
+.cal span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.next h2{font-family:var(--f-display);font-weight:600;font-size:32px;line-height:1.05;margin-top:4px}
+.src{color:var(--muted);font-size:14px;margin-top:4px}
+.feast{font-size:13px;color:var(--gold);margin-top:6px;font-style:italic}
+.idea{margin:0;padding:14px 18px;border-top:1px solid var(--line);font-family:var(--f-read);font-size:17px;line-height:1.6}
+.actions{display:flex;flex-wrap:wrap;gap:8px;padding:14px 18px 18px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);text-decoration:none;color:var(--fg);font-weight:700;font-size:15px;cursor:pointer}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--surface)}
+.btn.gold{background:var(--gold-soft);border-color:transparent;color:var(--gold)}
+
+/* Pregunta de la semana */
+.week{background:var(--gold-soft);border-radius:var(--r);padding:20px 18px}
+.week .eyebrow{color:var(--gold)}
+.week q{display:block;quotes:none;font-family:var(--f-display);font-style:italic;font-weight:500;font-size:27px;line-height:1.2;margin:10px 0 12px;color:var(--fg)}
+.week p{margin:0 0 10px;font-size:15px}
+.week .row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+
+/* Lista de sesiones */
+.sess{display:grid;grid-template-columns:64px 1fr auto;gap:14px;align-items:center;padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);text-decoration:none;color:var(--fg)}
+.sess .cal{min-width:0;padding:4px 4px 6px}
+.sess .cal b{font-size:28px}
+.sess h3{font-family:var(--f-display);font-size:23px;font-weight:600;line-height:1.1}
+.sess .meta{font-size:13px;color:var(--muted);margin-top:2px}
+.pill{font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;white-space:nowrap}
+.pill.proxima{background:var(--accent-soft);color:var(--accent)}
+.pill.realizada{background:var(--bg);color:var(--muted);border:1px solid var(--line)}
+.pill.planeada{background:transparent;color:var(--muted);border:1px dashed var(--line)}
+.sess.tbd h3{color:var(--muted);font-style:italic;font-weight:500}
+.month{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:10px 0 -4px}
+
+/* Detalle de sesión */
+.s-head{margin-top:18px}
+.s-head h1{font-family:var(--f-display);font-weight:600;font-size:40px;line-height:1.02;margin:6px 0 4px}
+.tabs{position:sticky;top:calc(env(safe-area-inset-top,0px) + 57px);z-index:15;background:var(--bg);display:flex;gap:4px;margin:16px -16px 0;padding:8px 16px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--line)}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:0 0 auto;border:0;background:none;padding:8px 14px;border-radius:999px;font-weight:700;font-size:15px;color:var(--muted);cursor:pointer;min-height:40px}
+.tab[aria-selected="true"]{background:var(--accent-soft);color:var(--accent)}
+.progress{position:fixed;left:0;top:0;height:3px;background:var(--gold);width:0;z-index:40;transition:width .1s linear}
+
+/* Lector */
+.reader{margin-top:16px;background:var(--paper);color:var(--ink);border-radius:var(--r);border:1px solid var(--line);padding:22px 20px 28px;font-family:var(--f-read);font-size:var(--read-size);line-height:var(--read-lh)}
+.reader[data-paper="sepia"]{--paper:#F3EAD8;--ink:#3B2F1E;--ink-muted:#6E5D44;border-color:#E1D3B6}
+.reader[data-paper="noche"]{--paper:#0D0F14;--ink:#CFCAC0;--ink-muted:#8C8A84;border-color:#23262E}
+.reader[data-font="sans"]{font-family:var(--f-ui)}
+.reader .r-meta{font-family:var(--f-ui);font-size:13px;color:var(--ink-muted);display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.reader .central{font-style:italic;font-size:1.08em;border-left:2px solid var(--gold);padding-left:14px;margin:14px 0 26px}
+.punto{padding:18px 0;border-top:1px solid color-mix(in srgb, var(--ink) 14%, transparent)}
+.punto h2{font-family:var(--f-display);font-weight:600;font-size:1.45em;line-height:1.1;display:flex;gap:10px;align-items:baseline}
+.punto h2 span{font-family:var(--f-ui);font-size:.5em;font-weight:700;color:var(--ink-muted);letter-spacing:.06em;min-width:1.6em}
+.punto p{margin:.7em 0 0;max-width:62ch}
+.ref{font-family:var(--f-ui);font-size:.78em;font-weight:700;color:var(--ink-muted);white-space:nowrap}
+.aterriza{margin-top:.9em;font-size:.92em;padding:10px 14px;border-radius:10px;background:color-mix(in srgb, var(--ink) 6%, transparent)}
+.aterriza b{font-family:var(--f-ui);font-size:.78em;letter-spacing:.1em;text-transform:uppercase;display:block;color:var(--ink-muted);margin-bottom:2px}
+
+/* Controles de lectura */
+.rbar{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:16px}
+.rbar .hint{font-size:13px;color:var(--muted)}
+.rpanel{margin-top:10px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;display:grid;gap:12px}
+.rrow{display:grid;grid-template-columns:96px 1fr;align-items:center;gap:10px}
+.rrow>span{font-size:13px;color:var(--muted);font-weight:700}
+.seg{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;min-width:0}
+.seg button{flex:1;border:0;background:none;min-height:40px;padding:0 6px;cursor:pointer;font-size:14px;color:var(--fg)}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed="true"]{background:var(--accent-soft);color:var(--accent);font-weight:700}
+.focus-exit{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:50}
+body.focus .top, body.focus .nav, body.focus .tabs, body.focus .s-head, body.focus .rbar, body.focus .rpanel{display:none}
+body.focus .reader{border:0;margin-top:0}
+
+/* Dinámica */
+.agenda{display:grid;gap:0;margin-top:16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.step{display:grid;grid-template-columns:58px 1fr;gap:12px;padding:14px 16px}
+.step+.step{border-top:1px solid var(--line)}
+.step .min{font-variant-numeric:tabular-nums;font-weight:700;color:var(--accent);font-size:15px}
+.step .min small{display:block;font-weight:400;color:var(--muted);font-size:12px}
+.step h3{font-size:16px}
+.step p{margin:4px 0 0;font-size:15px;color:var(--muted)}
+.ronda{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.ronda-h{display:flex;justify-content:space-between;align-items:start;gap:10px}
+.ronda h3{font-family:var(--f-display);font-size:25px;font-weight:600;line-height:1.1}
+.ronda .sub{font-size:13px;color:var(--muted);margin-top:2px}
+.ronda ol{margin:12px 0 0;padding-left:1.3em;display:grid;gap:10px;font-family:var(--f-read);font-size:17px;line-height:1.5}
+.reglas{font-size:15px;padding:14px 16px;border-radius:var(--r);border:1px dashed var(--line)}
+.reglas ul{margin:6px 0 0;padding-left:1.2em;display:grid;gap:4px}
+.timer{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--nav-h) + 12px + env(safe-area-inset-bottom,0px));z-index:35;display:flex;align-items:center;gap:10px;background:var(--fg);color:var(--bg);border-radius:999px;padding:8px 8px 8px 18px;box-shadow:0 6px 24px rgba(0,0,0,.25)}
+.timer b{font-variant-numeric:tabular-nums;font-size:22px;min-width:3.2ch}
+.timer small{font-size:12px;opacity:.75;max-width:120px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.timer button{border:0;border-radius:999px;min-height:36px;padding:0 12px;background:var(--bg);color:var(--fg);font-weight:700;cursor:pointer}
+.timer.done{background:var(--gold);color:var(--surface)}
+.coord-link{display:grid;gap:2px;margin-top:28px;padding:16px 18px;border:1px dashed var(--line);border-radius:var(--r);text-decoration:none;color:var(--fg)}
+.coord-link b{font-size:16px;color:var(--accent)}
+.coord-link span:last-child{font-size:14px;color:var(--muted)}
+.coord-head .eyebrow{color:var(--gold)}
+.central-c{margin:0 0 14px;font-family:var(--f-read);font-style:italic;font-size:17px;line-height:1.6;border-left:2px solid var(--gold);padding-left:14px}
+.step .min small{overflow-wrap:anywhere}
+
+/* Material y biblioteca */
+.mat{display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start;padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);text-decoration:none;color:var(--fg)}
+.mat .ic{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:700;letter-spacing:.06em}
+.mat.pending{border-style:dashed;background:transparent}
+.mat.pending .ic{background:var(--bg);color:var(--muted)}
+.mat h3{font-size:16px}
+.mat p{margin:2px 0 0;font-size:14px;color:var(--muted)}
+.refs{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.refs div{padding:10px 12px;background:var(--surface);border:1px solid var(--line);border-radius:10px;font-size:14px}
+.refs b{display:block;font-size:15px}
+.refs span{color:var(--muted);font-size:13px}
+.chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.chip{flex:0 0 auto;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:0 14px;min-height:38px;font-size:14px;cursor:pointer;color:var(--fg)}
+.chip[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.chip .n{opacity:.6;margin-left:4px;font-variant-numeric:tabular-nums}
+.empty{padding:18px;border:1px dashed var(--line);border-radius:var(--r);color:var(--muted);font-size:15px}
+.sec-t{font-family:var(--f-display);font-weight:600;font-size:26px;margin:26px 0 10px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);top:calc(env(safe-area-inset-top,0px) + 70px);background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:14px;z-index:60}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+textarea.copyfb{width:100%;min-height:90px;margin-top:10px;font:inherit;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--fg)}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header class="top"><div class="top-in" id="top"></div></header>
+<div class="progress" id="progress" hidden></div>
+<main class="wrap" id="app"></main>
+<nav class="nav" aria-label="Secciones"><div class="nav-in">
+  <a href="#inicio" data-nav="inicio"><svg viewBox="0 0 24 24"><path d="M12 3v4M10 5h4"/><path d="M5 21V11l7-4 7 4v10"/><path d="M10 21v-5h4v5"/></svg>Inicio</a>
+  <a href="#sesiones" data-nav="sesiones"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Sesiones</a>
+  <a href="#biblioteca" data-nav="biblioteca"><svg viewBox="0 0 24 24"><path d="M4 5.5C6.5 4.5 9.5 4.5 12 6c2.5-1.5 5.5-1.5 8-.5V19c-2.5-1-5.5-1-8 .5-2.5-1.5-5.5-1.5-8-.5z"/><path d="M12 6v13.5"/></svg>Biblioteca</a>
+  <a href="#semana" data-nav="semana"><svg viewBox="0 0 24 24"><path d="M12 21c4-3 7-6.5 7-10.5A7 7 0 0 0 5 10.5C5 14.5 8 18 12 21z"/><path d="M12 8v4"/><circle cx="12" cy="15" r=".6"/></svg>Semana</a>
+</div></nav>
+<div id="timer-slot"></div>
+
+<script>
+/* ===== Contenido del grupo. Cada quincena se agrega una sesión aquí. ===== */
+const SESIONES = [
+  {
+    id: "s-2026-10-02",
+    fecha: "2026-10-02",
+    tema: "El desierto",
+    fuente: "Apuntes sobre la oración · Capítulo VI",
+    categoria: "Oración",
+    lectura: "12 min de lectura",
+    idea: "El desierto es el lugar donde Dios, quitándonos los apoyos de siempre, nos habla al corazón y nos muestra su verdadero rostro: no el de un amo, sino el de un esposo que tiene sed de nosotros.",
+    puntos: [
+      { t: "Donde se caen los apoyos",
+        p: ["La palabra misma lo dice: el desierto es un lugar abandonado, donde falta el pan, el agua y la compañía que normalmente nos sostienen. Ahí nadie sobrevive por sí mismo.",
+            "Por eso el desierto revela nuestra verdad: somos frágiles, dependientes y mortales. El Apocalipsis describe al que se creía rico y en realidad estaba pobre, ciego y desnudo."],
+        refs: "Ap 3,17",
+        a: "Un desierto puede ser una enfermedad, una pérdida, una soledad que no elegimos o una etapa de sequedad en la oración." },
+      { t: "No se va por cuenta propia",
+        p: ["Nadie busca el desierto por gusto. Es el Espíritu quien lleva, como llevó a Jesús; san Marcos llega a decir que lo empujó.",
+            "El profeta Oseas lo presenta como iniciativa de un Dios enamorado: Él conduce a su esposa al desierto para hablarle al corazón, y ahí la alimenta con su Palabra."],
+        refs: "Mt 4,1 · Lc 4,1 · Mc 1,12 · Os 2,16 · Ap 12,6",
+        a: "El desierto no es castigo ni señal de que Dios se fue. Puede ser su manera de llevarnos aparte." },
+      { t: "Del amo al esposo",
+        p: ["Arrastramos, desde Adán, una imagen deformada de Dios: un señor que vigila, exige y castiga. En el desierto esa imagen se rompe.",
+            "Oseas lo dice con una imagen fuerte: Dios quiere que dejemos de llamarlo «mi amo» y lo llamemos «esposo mío». Su rostro verdadero es el de alguien enamorado, no el de un déspota."],
+        refs: "Os 2,18",
+        a: "Cuando fallo, ¿me acerco a Dios con miedo a su reacción o con la confianza de quien se sabe amado?" },
+      { t: "El pozo escondido",
+        p: ["El autor recuerda a El Principito: lo bello del desierto es que esconde un pozo. Junto a ese pozo está Jesús, sentado y esperando, y es Él quien pide: «Dame de beber». San Agustín ve en la samaritana una figura de toda la Iglesia.",
+            "La sorpresa es que Dios también tiene sed: sed de nosotros, una sed que lo lleva hasta la cruz. También Dios tiene su desierto, y es la ausencia del hombre que no responde a su amor."],
+        refs: "Jn 4,5-26 · Jn 4,23 · Jn 19,28",
+        a: "La oración no empieza por lo que yo le pido, sino por la sed que Él tiene de mí." },
+      { t: "Frente a nuestras fieras",
+        p: ["Sin los apoyos de siempre salen a la luz lo que escondíamos: vicios, heridas, inclinaciones torcidas. Y sobre todo el orgullo espiritual, ese esfuerzo constante por salvarnos con nuestras propias fuerzas.",
+            "Solo cuando ese ruido se apaga podemos oír a Dios como lo oyó Elías: no en el viento ni en el fuego, sino en una brisa suave, una voz hecha de silencio."],
+        refs: "1 Re 19,9-13",
+        a: "El silencio incomoda porque nos muestra lo que evitamos ver. Ahí mismo es donde Dios habla." },
+      { t: "Todo es misericordia",
+        p: ["Reconocer nuestra miseria no es para hundirnos. La única razón por la que Dios nos lleva al desierto es que su misericordia es eterna, como repite el salmo. Ahí aprendemos a esperarlo todo de ella y nada de nuestros méritos.",
+            "Como Moisés en el Horeb, descalzos y con el rostro cubierto ante la zarza ardiente, recibimos la revelación de su Nombre."],
+        refs: "Sal 136 · Ex 3,1-6",
+        a: "La humildad no es despreciarse: es aceptar la verdad sobre uno mismo y dejar que Dios la abrace." },
+      { t: "La Pascua sucede en silencio",
+        p: ["La zarza que arde sin consumirse apunta a la cruz y a la resurrección: Cristo arde en el fuego del Espíritu, en el amor al Padre y a nosotros. Y nadie vio el instante en que resucitó; el pregón pascual dice que solo aquella noche lo supo.",
+            "La Iglesia entrará en la gloria siguiendo a su Señor en una última Pascua. El capítulo concluye que toda la vida de oración se resume en dejar que Cristo viva en nosotros su alabanza y su ofrenda al Padre."],
+        refs: "Ex 3,2 · CCE 677 · Pregón pascual (Exsultet)",
+        a: "Orar es menos hacer cosas para Dios y más dejar que Él haga en mí." }
+    ],
+    dinamica: {
+      duracion: 70,
+      agenda: [
+        { min: 5,  t: "Apertura en silencio", d: "Dos minutos de silencio total. Luego se lee en voz alta Oseas 2,16-18 (en algunas Biblias es 2,14-16)." },
+        { min: 20, t: "Exposición por puntos", d: "Recorrer los 7 puntos de la guía. Idea central primero; un ejemplo concreto por punto." },
+        { min: 30, t: "Grupos pequeños", d: "Grupos de 3 o 4 personas. Tres rondas de 10 minutos, una pregunta a la vez." },
+        { min: 10, t: "Puesta en común", d: "Cada grupo comparte una sola frase o descubrimiento. Nada de lo personal sale del grupo sin permiso." },
+        { min: 5,  t: "Cierre con oración", d: "Leer juntos el Salmo 63 (62), «mi alma tiene sed de ti», y terminar con un Padre Nuestro." }
+      ],
+      rondas: [
+        { t: "Mi desierto", sub: "Puntos 1 y 2", min: 10, q: [
+          "¿Qué desierto estoy viviendo, o he vivido? ¿Qué apoyo se me cayó?",
+          "¿Lo viví como castigo, como abandono, o como un lugar donde Dios me llevó aparte?" ] },
+        { t: "El rostro de Dios", sub: "Puntos 3 y 4", min: 10, q: [
+          "Cuando fallo, ¿a qué Dios me dirijo: al amo o al esposo? ¿De dónde me viene esa imagen?",
+          "Jesús me dice «dame de beber». ¿Qué creo que me está pidiendo hoy?" ] },
+        { t: "El silencio", sub: "Puntos 5 a 7", min: 10, q: [
+          "¿Qué ruidos uso para no quedarme en silencio?",
+          "¿En qué parte de mi vida sigo intentando salvarme con mis propias fuerzas?" ] }
+      ],
+      reglas: ["Cada quien habla sin ser interrumpido.", "Se vale decir «paso».", "Escuchar sin aconsejar ni corregir.", "Lo que se comparte en el grupo se queda en el grupo."]
+    },
+    semana: {
+      pregunta: "¿Qué me está diciendo Dios al corazón en el desierto que hoy estoy viviendo?",
+      practica: "Cada día, diez minutos de silencio sin teléfono. Sin pedir nada: solo quedarte con Él, como junto al pozo.",
+      cierre: "Al final de la semana, escribe una frase con lo que descubriste. La compartimos en la próxima sesión."
+    },
+    materiales: [
+      { tipo: "PDF", t: "Apuntes sobre la oración", d: "Libro completo en Google Drive. Lee el Capítulo VI, «El desierto».", url: "https://drive.google.com/file/d/1NQtbZ2IEXHPJmRNAeYyOb8HkknZFlrjJ/view?usp=drivesdk" }
+    ],
+    biblia: [
+      ["Os 2,16-18", "Te llevaré al desierto"], ["Mc 1,12-13", "Jesús en el desierto"],
+      ["Jn 4,5-26", "La samaritana en el pozo"], ["Jn 19,28", "«Tengo sed»"],
+      ["1 Re 19,9-13", "Elías y la brisa suave"], ["Ex 3,1-6", "La zarza ardiente"],
+      ["Sal 136", "Eterna es su misericordia"], ["Sal 63", "Mi alma tiene sed de ti"],
+      ["CCE 677", "La última Pascua de la Iglesia"]
+    ]
+  },
+  { id: "s-2026-10-16", fecha: "2026-10-16", tema: null, categoria: null }
+];
+
+const CATEGORIAS = ["Oración", "Evangelios", "Vida de Jesús", "Antiguo Testamento", "Enseñanza de la Iglesia"];
+
+/* ===== Utilidades ===== */
+const $ = (s, r = document) => r.querySelector(s);
+const store = {
+  get(k, d) { try { const v = localStorage.getItem("ve:" + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
+  set(k, v) { try { localStorage.setItem("ve:" + k, JSON.stringify(v)); } catch (e) {} }
+};
+const parseDate = s => { const [y, m, d] = s.split("-").map(Number); return new Date(y, m - 1, d); };
+const today = (() => { const n = new Date(); return new Date(n.getFullYear(), n.getMonth(), n.getDate()); })();
+const MES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+const fechaLarga = s => { const t = parseDate(s).toLocaleDateString("es-MX", { weekday: "long", day: "numeric", month: "long", year: "numeric" }); return t.charAt(0).toUpperCase() + t.slice(1); };
+const mesAnio = s => { const t = parseDate(s).toLocaleDateString("es-MX", { month: "long", year: "numeric" }); return t.charAt(0).toUpperCase() + t.slice(1); };
+const cal = s => { const d = parseDate(s); return `<div class="cal" aria-hidden="true"><b>${d.getDate()}</b><span>${MES[d.getMonth()]}</span></div>`; };
+
+function estado(s) {
+  if (!s.tema) return "planeada";
+  if (parseDate(s.fecha) < today) return "realizada";
+  return "proxima";
+}
+const ETIQ = { proxima: "Próxima", realizada: "Realizada", planeada: "Por definir" };
+function proxima() {
+  const futuras = SESIONES.filter(s => s.tema && parseDate(s.fecha) >= today).sort((a, b) => a.fecha.localeCompare(b.fecha));
+  if (futuras.length) return futuras[0];
+  return SESIONES.filter(s => s.tema).sort((a, b) => b.fecha.localeCompare(a.fecha))[0];
+}
+function toast(msg) {
+  const t = document.createElement("div"); t.className = "toast"; t.role = "status"; t.textContent = msg;
+  document.body.appendChild(t); setTimeout(() => t.remove(), 2000);
+}
+function textoSemana(s) {
+  return `Para vivir esta semana (${s.tema}):\n\n${s.semana.pregunta}\n\n${s.semana.practica}\n${s.semana.cierre}`;
+}
+function copiar(texto, holder) {
+  const fallback = () => {
+    let ta = holder.querySelector("textarea.copyfb");
+    if (!ta) { ta = document.createElement("textarea"); ta.className = "copyfb"; ta.readOnly = true; holder.appendChild(ta); }
+    ta.value = texto; ta.focus(); ta.select(); toast("Selecciona el texto y cópialo");
+  };
+  try { navigator.clipboard.writeText(texto).then(() => toast("Copiado"), fallback); } catch (e) { fallback(); }
+}
+const waLink = t => "https://wa.me/?text=" + encodeURIComponent(t);
+
+/* ===== Estado de lectura (se guarda solo en este teléfono) ===== */
+const lectura = Object.assign({ size: 18, font: "serif", lh: "normal", paper: "auto" }, store.get("lectura", {}));
+const LH = { compacto: 1.5, normal: 1.7, amplio: 1.95 };
+let tabSesion = store.get("tab2", "material");
+let filtroCat = "Todo";
+
+/* ===== Vistas ===== */
+function header(back) {
+  $("#top").innerHTML = back
+    ? `<button class="back" data-go="${back}" aria-label="Volver"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 5l-7 7 7 7"/></svg>Volver</button><div class="brand" style="font-size:18px">Guía para Sesiones Grupales</div>`
+    : `<div class="brand">Guía para Sesiones Grupales<small>Pausa con Jesús</small></div>`;
+}
+
+function vInicio() {
+  const s = proxima(); const e = estado(s);
+  const despues = SESIONES.filter(x => x.fecha > s.fecha).sort((a, b) => a.fecha.localeCompare(b.fecha))[0];
+  return `
+  <section class="next" aria-labelledby="n-t">
+    <div class="next-head">${cal(s.fecha)}
+      <div style="min-width:0">
+        <div class="eyebrow">${e === "proxima" ? "Próxima sesión" : "Última sesión"} · ${fechaLarga(s.fecha).split(",")[0]}</div>
+        <h2 id="n-t">${s.tema}</h2>
+        <div class="src">${s.fuente}</div>
+        ${s.celebracion ? `<div class="feast">${s.celebracion}</div>` : ""}
+      </div>
+    </div>
+    <p class="idea">${s.idea}</p>
+    <div class="actions">
+      <a class="btn primary" href="#${s.id}" data-tab="material">Material</a>
+      <a class="btn" href="#${s.id}" data-tab="guia">Guía de lectura</a>
+      <a class="btn" href="#${s.id}" data-tab="preguntas">Preguntas</a>
+    </div>
+  </section>
+  <h2 class="sec-t">Para vivir la semana</h2>
+  ${bloqueSemana(s)}
+  ${despues ? `<h2 class="sec-t">Después</h2>${filaSesion(despues)}` : ""}`;
+}
+
+function bloqueSemana(s) {
+  return `<div class="week" id="wk-${s.id}">
+    <div class="eyebrow">Vive esta pregunta durante la semana</div>
+    <q>${s.semana.pregunta}</q>
+    <p><b>Práctica:</b> ${s.semana.practica}</p>
+    <p>${s.semana.cierre}</p>
+    <div class="row">
+      <a class="btn gold" href="${waLink(textoSemana(s))}" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+      <button class="btn" data-copy="${s.id}">Copiar texto</button>
+    </div>
+  </div>`;
+}
+
+function filaSesion(s) {
+  const e = estado(s);
+  if (!s.tema) return `<div class="sess tbd">${cal(s.fecha)}<div style="min-width:0"><h3>Tema por definir</h3><div class="meta">${fechaLarga(s.fecha)}</div></div><span class="pill planeada">${ETIQ[e]}</span></div>`;
+  return `<a class="sess" href="#${s.id}">${cal(s.fecha)}<div style="min-width:0"><h3>${s.tema}</h3><div class="meta">${s.fuente}</div></div><span class="pill ${e}">${ETIQ[e]}</span></a>`;
+}
+
+function vSesiones() {
+  const orden = [...SESIONES].sort((a, b) => a.fecha.localeCompare(b.fecha));
+  let html = `<h1 class="h-view">Sesiones</h1><p class="lede">Un viernes sí y uno no. Las que vienen y las que ya pasaron, para quien no pudo ir.</p><div class="stack">`;
+  let mes = "";
+  orden.forEach(s => { const m = mesAnio(s.fecha); if (m !== mes) { html += `<div class="month">${m}</div>`; mes = m; } html += filaSesion(s); });
+  return html + `</div>`;
+}
+
+function vBiblioteca() {
+  const items = [];
+  SESIONES.filter(s => s.tema).forEach(s => {
+    items.push({ cat: s.categoria, tipo: "GUÍA", t: `${s.tema}: guía de lectura`, d: `${s.fuente} · ${fechaLarga(s.fecha)}`, href: "#" + s.id });
+    (s.materiales || []).forEach(m => items.push({ cat: s.categoria, tipo: m.tipo, t: m.t, d: m.d, href: m.url, pending: !m.url }));
+  });
+  const cuenta = c => items.filter(i => i.cat === c).length;
+  const vis = filtroCat === "Todo" ? items : items.filter(i => i.cat === filtroCat);
+  const chips = ["Todo", ...CATEGORIAS].map(c => `<button class="chip" data-cat="${c}" aria-pressed="${c === filtroCat}">${c}<span class="n">${c === "Todo" ? items.length : cuenta(c)}</span></button>`).join("");
+  return `<h1 class="h-view">Biblioteca</h1><p class="lede">Todo el material del grupo, ordenado por tema.</p>
+    <div class="chips" role="group" aria-label="Filtrar por tema">${chips}</div>
+    <div class="stack" style="margin-top:14px">${vis.length ? vis.map(tarjetaMat).join("") : `<div class="empty">Todavía no hay material de ${filtroCat}. Se irá sumando con cada sesión.</div>`}</div>`;
+}
+
+function tarjetaMat(m) {
+  const inner = `<div class="ic">${m.tipo}</div><div style="min-width:0"><h3>${m.t}</h3><p>${m.pending ? "Pendiente · " : ""}${m.d}</p></div>`;
+  if (m.pending || !m.href) return `<div class="mat pending">${inner}</div>`;
+  const ext = m.href.startsWith("http");
+  return `<a class="mat" href="${m.href}"${ext ? ' target="_blank" rel="noopener"' : ""}>${inner}</a>`;
+}
+
+function vSemana() {
+  const lista = SESIONES.filter(s => s.semana).sort((a, b) => b.fecha.localeCompare(a.fecha));
+  return `<h1 class="h-view">Para vivir la semana</h1><p class="lede">Cada sesión deja una pregunta para llevar a la oración. Aquí quedan todas.</p>
+  <div class="stack">${lista.map(s => `<div class="eyebrow" style="margin-top:6px">${fechaLarga(s.fecha)} · ${s.tema}</div>${bloqueSemana(s)}`).join("")}</div>`;
+}
+
+function vDetalle(s) {
+  const tabs = [["material", "Material"], ["guia", "Guía"], ["preguntas", "Preguntas"], ["semana", "Semana"]];
+  if (!tabs.some(([k]) => k === tabSesion)) tabSesion = "material";
+  let body = "";
+  if (tabSesion === "guia") body = guia(s);
+  else if (tabSesion === "preguntas") body = preguntas(s);
+  else if (tabSesion === "semana") body = `<div style="margin-top:16px">${bloqueSemana(s)}</div>`;
+  else body = material(s);
+  return `<div class="s-head">
+      <div class="eyebrow">${fechaLarga(s.fecha)}</div>
+      <h1>${s.tema}</h1>
+      <div class="src">${s.fuente}${s.celebracion ? ` · <span style="color:var(--gold);font-style:italic">${s.celebracion}</span>` : ""}</div>
+    </div>
+    <div class="tabs" role="tablist">${tabs.map(([k, l]) => `<button class="tab" role="tab" data-stab="${k}" aria-selected="${k === tabSesion}">${l}</button>`).join("")}</div>
+    ${body}
+    ${s.dinamica ? `<a class="coord-link" href="#coord-${s.id}"><span class="eyebrow">¿Vas a presentar?</span><b>Abrir la guía del coordinador</b><span>Tiempos, guion de exposición y temporizador para las rondas.</span></a>` : ""}`;
+}
+
+function preguntas(s) {
+  const d = s.dinamica;
+  return `<p class="lede" style="margin-top:16px">Para conversar en grupos pequeños durante la sesión, o para reflexionar por tu cuenta si no pudiste ir.</p>
+    <div class="stack">
+      <div class="reglas"><b>Acuerdos del grupo</b><ul>${d.reglas.map(r => `<li>${r}</li>`).join("")}</ul></div>
+      ${d.rondas.map(r => `<div class="ronda">
+        <div class="eyebrow">${r.sub}</div><h3>${r.t}</h3>
+        <ol>${r.q.map(q => `<li>${q}</li>`).join("")}</ol>
+      </div>`).join("")}
+    </div>`;
+}
+
+function vCoordinador(s) {
+  const d = s.dinamica;
+  const porPunto = Math.round(d.agenda.find(a => /Exposición/.test(a.t)).min / s.puntos.length);
+  return `<div class="s-head coord-head">
+      <div class="eyebrow">Solo para quien coordina · ${fechaLarga(s.fecha)}</div>
+      <h1>Guía del coordinador</h1>
+      <div class="src">${s.tema} · ${s.fuente}</div>
+    </div>
+    <p class="lede" style="margin-top:14px">Esta parte no la necesitan los participantes: ellos usan la guía de lectura y las preguntas. Duración total: ${d.duracion} minutos.</p>
+    <h2 class="sec-t">Orden de la sesión</h2>
+    <div class="agenda" style="margin-top:0">${d.agenda.map(a => `<div class="step"><div class="min">${a.min}<small>min</small></div><div style="min-width:0"><h3>${a.t}</h3><p>${a.d}</p></div></div>`).join("")}</div>
+    <h2 class="sec-t">Guion de exposición</h2>
+    <p class="lede" style="margin-top:-4px">Unos ${porPunto} minutos por punto. Primero la idea central:</p>
+    <p class="central-c">${s.idea}</p>
+    <div class="agenda">${s.puntos.map((p, i) => `<div class="step"><div class="min">${i + 1}<small>${p.refs.split(" · ")[0]}</small></div><div style="min-width:0"><h3>${p.t}</h3><p>${p.a}</p></div></div>`).join("")}</div>
+    <h2 class="sec-t">Rondas en grupos pequeños</h2>
+    <p class="lede" style="margin-top:-4px">Forma grupos de 3 o 4 y lee los acuerdos antes de empezar. Usa el temporizador de cada ronda.</p>
+    <div class="stack">
+      ${d.rondas.map((r, i) => `<div class="ronda">
+        <div class="ronda-h"><div style="min-width:0"><div class="eyebrow">Ronda ${i + 1} · ${r.sub}</div><h3>${r.t}</h3></div>
+        <button class="btn" data-timer="${r.min}" data-label="Ronda ${i + 1}: ${r.t}" style="min-height:40px;padding:0 12px">▶ ${r.min} min</button></div>
+        <ol>${r.q.map(q => `<li>${q}</li>`).join("")}</ol>
+      </div>`).join("")}
+    </div>`;
+}
+
+function seg(nombre, opciones, actual) {
+  return `<div class="seg" role="group">${opciones.map(([v, l, aria]) => `<button data-set="${nombre}" data-val="${v}" aria-pressed="${String(v) === String(actual)}"${aria ? ` aria-label="${aria}"` : ""}>${l}</button>`).join("")}</div>`;
+}
+
+function guia(s) {
+  const abierto = store.get("panel", false);
+  return `<div class="rbar">
+      <span class="hint">${s.lectura} · 7 puntos</span>
+      <div style="display:flex;gap:6px">
+        <button class="btn" data-act="panel" aria-expanded="${abierto}" style="min-height:40px;padding:0 14px"><span style="font-family:var(--f-read);font-size:17px">Aa</span> Lectura</button>
+        <button class="btn" data-act="focus" style="min-height:40px;padding:0 14px">Enfoque</button>
+      </div>
+    </div>
+    <div class="rpanel" id="rpanel" ${abierto ? "" : "hidden"}>
+      <div class="rrow"><span>Tamaño</span>${seg("size", [["-", "A−", "Letra más chica"], ["r", `${lectura.size}px`, "Tamaño normal"], ["+", "A+", "Letra más grande"]], "")}</div>
+      <div class="rrow"><span>Letra</span>${seg("font", [["serif", "Con serifa"], ["sans", "Sin serifa"]], lectura.font)}</div>
+      <div class="rrow"><span>Interlineado</span>${seg("lh", [["compacto", "Compacto"], ["normal", "Normal"], ["amplio", "Amplio"]], lectura.lh)}</div>
+      <div class="rrow"><span>Fondo</span>${seg("paper", [["auto", "Página"], ["sepia", "Sepia"], ["noche", "Noche"]], lectura.paper)}</div>
+    </div>
+    <article class="reader" id="reader" data-font="${lectura.font}" data-paper="${lectura.paper}">
+      <div class="r-meta"><span>Idea central</span><span>${s.fuente}</span></div>
+      <p class="central">${s.idea}</p>
+      ${s.puntos.map((p, i) => `<section class="punto">
+        <h2><span>${i + 1}</span>${p.t}</h2>
+        ${p.p.map(x => `<p>${x}</p>`).join("")}
+        <p class="ref">${p.refs}</p>
+        <div class="aterriza"><b>Para aterrizar</b>${p.a}</div>
+      </section>`).join("")}
+    </article>`;
+}
+
+function material(s) {
+  return `<h2 class="sec-t" style="margin-top:18px">Para leer antes</h2>
+    <p class="lede" style="margin-top:-4px">Empieza por aquí. Después, la pestaña Guía te ayuda a repasar el capítulo por puntos.</p>
+    <div class="stack">${s.materiales.map(m => tarjetaMat({ ...m, href: m.url, pending: !m.url })).join("")}</div>
+    <h2 class="sec-t">Textos bíblicos</h2>
+    <p class="lede" style="margin-top:-4px">Búscalos en tu Biblia. La numeración de Oseas cambia según la edición.</p>
+    <div class="refs">${s.biblia.map(([r, d]) => `<div><b>${r}</b><span>${d}</span></div>`).join("")}</div>`;
+}
+
+/* ===== Enrutado ===== */
+function render() {
+  const h = (location.hash || "#inicio").slice(1);
+  const ses = SESIONES.find(s => s.id === h && s.tema);
+  const coord = h.startsWith("coord-") ? SESIONES.find(s => "coord-" + s.id === h && s.dinamica) : null;
+  document.querySelectorAll("[data-nav]").forEach(a => a.removeAttribute("aria-current"));
+  document.body.classList.remove("focus");
+  $("#progress").hidden = true;
+  let html;
+  if (coord) { header(coord.id); html = vCoordinador(coord); }
+  else if (ses) { header("sesiones"); html = vDetalle(ses); $("#progress").hidden = tabSesion !== "guia"; }
+  else {
+    const v = ["inicio", "sesiones", "biblioteca", "semana"].includes(h) ? h : "inicio";
+    header(null);
+    const a = document.querySelector(`[data-nav="${v}"]`); if (a) a.setAttribute("aria-current", "page");
+    html = { inicio: vInicio, sesiones: vSesiones, biblioteca: vBiblioteca, semana: vSemana }[v]();
+  }
+  $("#app").innerHTML = html;
+  aplicarLectura();
+  const fx = $(".focus-exit"); if (fx) fx.remove();
+}
+function aplicarLectura() {
+  document.documentElement.style.setProperty("--read-size", lectura.size + "px");
+  document.documentElement.style.setProperty("--read-lh", LH[lectura.lh]);
+  const r = $("#reader"); if (r) { r.dataset.font = lectura.font; r.dataset.paper = lectura.paper; }
+}
+
+/* ===== Eventos ===== */
+document.addEventListener("click", e => {
+  const t = e.target.closest("button, a"); if (!t) return;
+  if (t.dataset.tab) { tabSesion = t.dataset.tab; store.set("tab2", tabSesion); if (location.hash === t.getAttribute("href")) { e.preventDefault(); render(); } return; }
+  if (t.dataset.go) { location.hash = t.dataset.go; return; }
+  if (t.dataset.stab) { tabSesion = t.dataset.stab; store.set("tab2", tabSesion); const y = window.scrollY; render(); window.scrollTo(0, Math.min(y, $(".tabs").offsetTop - 60)); return; }
+  if (t.dataset.cat) { filtroCat = t.dataset.cat; render(); return; }
+  if (t.dataset.copy) { const s = SESIONES.find(x => x.id === t.dataset.copy); copiar(textoSemana(s), t.closest(".week")); return; }
+  if (t.dataset.timer) { iniciarTimer(+t.dataset.timer * 60, t.dataset.label); return; }
+  if (t.dataset.act === "panel") { const p = $("#rpanel"); p.hidden = !p.hidden; t.setAttribute("aria-expanded", String(!p.hidden)); store.set("panel", !p.hidden); return; }
+  if (t.dataset.act === "focus") { document.body.classList.add("focus"); const b = document.createElement("button"); b.className = "btn primary focus-exit"; b.textContent = "Salir del enfoque"; b.dataset.act = "unfocus"; document.body.appendChild(b); window.scrollTo(0, 0); return; }
+  if (t.dataset.act === "unfocus") { document.body.classList.remove("focus"); t.remove(); return; }
+  if (t.dataset.set) {
+    const k = t.dataset.set, v = t.dataset.val;
+    if (k === "size") { lectura.size = v === "+" ? Math.min(28, lectura.size + 2) : v === "-" ? Math.max(14, lectura.size - 2) : 18; }
+    else lectura[k] = v;
+    store.set("lectura", lectura);
+    const grupo = t.parentElement;
+    if (k === "size") grupo.querySelector('[data-val="r"]').textContent = lectura.size + "px";
+    else grupo.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.val === v)));
+    aplicarLectura();
+  }
+});
+window.addEventListener("hashchange", () => { render(); window.scrollTo(0, 0); });
+window.addEventListener("scroll", () => {
+  const r = $("#reader"), p = $("#progress"); if (!r || p.hidden) return;
+  const top = r.getBoundingClientRect().top + window.scrollY, h = r.offsetHeight - window.innerHeight;
+  const pct = Math.max(0, Math.min(1, (window.scrollY - top + 80) / Math.max(1, h)));
+  p.style.width = (pct * 100) + "%";
+}, { passive: true });
+
+/* ===== Temporizador para las rondas ===== */
+let tm = null, restante = 0, pausado = false, lock = null;
+function iniciarTimer(seg, label) {
+  clearInterval(tm); restante = seg; pausado = false;
+  try { navigator.wakeLock && navigator.wakeLock.request("screen").then(l => lock = l).catch(() => {}); } catch (e) {}
+  $("#timer-slot").innerHTML = `<div class="timer" id="timer" role="timer" aria-live="off"><div style="display:flex;flex-direction:column;min-width:0"><b id="t-v"></b><small>${label}</small></div><button id="t-p">Pausa</button><button id="t-x" aria-label="Cerrar temporizador">✕</button></div>`;
+  $("#t-p").onclick = () => { if (restante <= 0) return; pausado = !pausado; $("#t-p").textContent = pausado ? "Seguir" : "Pausa"; };
+  $("#t-x").onclick = pararTimer;
+  pintar(); tm = setInterval(() => { if (pausado) return; restante--; pintar(); if (restante <= 0) { clearInterval(tm); $("#timer").classList.add("done"); $("#t-v").textContent = "Tiempo"; $("#t-p").hidden = true; try { navigator.vibrate && navigator.vibrate([200, 100, 200]); } catch (e) {} } }, 1000);
+}
+function pintar() { const m = Math.floor(restante / 60), s = restante % 60; const v = $("#t-v"); if (v) v.textContent = `${m}:${String(s).padStart(2, "0")}`; }
+function pararTimer() { clearInterval(tm); $("#timer-slot").innerHTML = ""; try { lock && lock.release(); } catch (e) {} lock = null; }
+
+render();
+</script>
+</body>
+</html>
