@@ -105,6 +105,38 @@ h1,h2,h3{text-wrap:balance;margin:0}
 .sess.tbd h3{color:var(--muted);font-style:italic;font-weight:500}
 .month{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:10px 0 -4px}
 
+/* Reflexiones y temas (datos compartidos del grupo) */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px}
+.refl{margin-top:30px}
+.refl .sec-t{margin-top:4px}
+.refl p{margin:0 0 12px;color:var(--muted);font-size:15px}
+.fld{display:block;margin:0 0 12px;font-weight:700;font-size:14px}
+.fld input[type=text],.fld textarea,.tform input[type=text]{display:block;width:100%;margin-top:6px;padding:12px 14px;min-height:46px;font:inherit;font-size:16px;font-weight:400;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:10px}
+.fld textarea{resize:vertical;min-height:110px;line-height:1.5}
+.fld input:disabled{opacity:.5}
+.chk{display:flex;align-items:center;gap:10px;margin:0 0 12px;font-size:15px;min-height:44px;cursor:pointer}
+.chk input{width:22px;height:22px;accent-color:var(--accent)}
+.count{display:block;text-align:right;font-weight:400;color:var(--muted);font-size:12px;margin-top:4px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.fmsg{margin:12px 0 0!important;font-weight:700;color:var(--accent)!important}
+.fmsg.err{color:#B3261E!important}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .fmsg.err{color:#F2B8B5!important}}
+:root[data-theme="dark"] .fmsg.err{color:#F2B8B5!important}
+.rlist{display:flex;flex-direction:column;gap:12px}
+.rit{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}
+.rit p{margin:0 0 8px;color:var(--fg);font-size:16px;white-space:pre-wrap;overflow-wrap:anywhere}
+.rit small{color:var(--muted);font-size:13px}
+.vacio{color:var(--muted);font-style:italic;margin:0}
+.tform{display:flex;gap:8px;align-items:flex-start;flex-wrap:wrap}
+.tform input[type=text]{flex:1 1 220px;margin-top:0}
+.tit{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px 12px 12px 16px}
+.tit span{flex:1;min-width:0;overflow-wrap:anywhere}
+.like{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;min-height:44px;min-width:64px;justify-content:center;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:var(--bg);cursor:pointer;font-weight:700;font-size:15px}
+.like svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8}
+.like[aria-pressed="true"]{background:var(--accent-soft);color:var(--accent);border-color:transparent}
+.like[aria-pressed="true"] svg{fill:currentColor}
+.like:disabled{opacity:.6}
+
 /* Detalle de sesión */
 .s-head{margin-top:18px}
 .s-head h1{font-family:var(--f-display);font-weight:600;font-size:40px;line-height:1.02;margin:6px 0 4px}
@@ -201,7 +233,7 @@ textarea.copyfb{width:100%;min-height:90px;margin-top:10px;font:inherit;padding:
   <a href="#inicio" data-nav="inicio"><svg viewBox="0 0 24 24"><path d="M12 3v4M10 5h4"/><path d="M5 21V11l7-4 7 4v10"/><path d="M10 21v-5h4v5"/></svg>Inicio</a>
   <a href="#sesiones" data-nav="sesiones"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Sesiones</a>
   <a href="#biblioteca" data-nav="biblioteca"><svg viewBox="0 0 24 24"><path d="M4 5.5C6.5 4.5 9.5 4.5 12 6c2.5-1.5 5.5-1.5 8-.5V19c-2.5-1-5.5-1-8 .5-2.5-1.5-5.5-1.5-8-.5z"/><path d="M12 6v13.5"/></svg>Biblioteca</a>
-  <a href="#semana" data-nav="semana"><svg viewBox="0 0 24 24"><path d="M12 21c4-3 7-6.5 7-10.5A7 7 0 0 0 5 10.5C5 14.5 8 18 12 21z"/><path d="M12 8v4"/><circle cx="12" cy="15" r=".6"/></svg>Semana</a>
+  <a href="#temas" data-nav="temas"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V16h5v-.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/></svg>Temas</a>
 </div></nav>
 <div id="timer-slot"></div>
 
@@ -337,6 +369,25 @@ function copiar(texto, holder) {
 }
 const waLink = t => "https://wa.me/?text=" + encodeURIComponent(t);
 
+/* ===== Conexión con la hoja del grupo (reflexiones y temas) ===== */
+const API_URL = "https://restrategia-n8n.fcwppp.easypanel.host/webhook/pausa";
+const esc = t => String(t ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+async function api(body) {
+  const ctl = new AbortController(), to = setTimeout(() => ctl.abort(), 20000);
+  try {
+    const r = await fetch(API_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body), signal: ctl.signal });
+    let j = null; try { j = await r.json(); } catch (e) {}
+    if (!r.ok || !j || j.ok === false) { const err = new Error((j && j.message) || "Error de conexión"); err.status = r.status; throw err; }
+    return j;
+  } finally { clearTimeout(to); }
+}
+const cache = {};
+async function cargar(clave, body, fuerza) {
+  const c = cache[clave];
+  if (c && !fuerza && Date.now() - c.t < 60000) return c.data;
+  const data = await api(body); cache[clave] = { t: Date.now(), data }; return data;
+}
+
 /* ===== Estado de lectura (se guarda solo en este teléfono) ===== */
 const lectura = Object.assign({ size: 18, font: "serif", lh: "normal", paper: "auto" }, store.get("lectura", {}));
 const LH = { compacto: 1.5, normal: 1.7, amplio: 1.95 };
@@ -423,10 +474,64 @@ function tarjetaMat(m) {
   return `<a class="mat" href="${m.href}"${ext ? ' target="_blank" rel="noopener"' : ""}>${inner}</a>`;
 }
 
-function vSemana() {
-  const lista = SESIONES.filter(s => s.semana).sort((a, b) => b.fecha.localeCompare(a.fecha));
-  return `<h1 class="h-view">Para vivir la semana</h1><p class="lede">Cada sesión deja una pregunta para llevar a la oración. Aquí quedan todas.</p>
-  <div class="stack">${lista.map(s => `<div class="eyebrow" style="margin-top:6px">${fechaLarga(s.fecha)} · ${s.tema}</div>${bloqueSemana(s)}`).join("")}</div>`;
+/* Reflexiones: formulario al final de cada sesión y lista de las aprobadas */
+const formAbierto = s => parseDate(s.fecha) <= today || /[?&]prueba\b/.test(location.search);
+function bloqueReflexion(s) {
+  if (!formAbierto(s)) return `<section class="refl"><div class="eyebrow">Al cerrar la sesión</div><p>El espacio para compartir tu reflexión se abre el día de la sesión.</p></section>`;
+  const nombre = store.get("nombre", "");
+  return `<section class="refl" id="reflexion">
+    <div class="eyebrow">Al cerrar la sesión</div>
+    <h2 class="sec-t">Comparte tu reflexión</h2>
+    <p>Una o dos frases con lo que te llevas de hoy. Se publica cuando la revisa el coordinador.</p>
+    <form class="card" data-form="reflexion" data-sid="${esc(s.id)}" novalidate>
+      <label class="fld">Tu nombre<input type="text" name="nombre" maxlength="60" autocomplete="given-name" value="${esc(nombre)}"></label>
+      <label class="chk"><input type="checkbox" name="anon"> Prefiero compartir sin nombre</label>
+      <label class="fld">Tu reflexión<textarea name="reflexion" maxlength="1200" rows="4" placeholder="¿Qué te llevas de esta sesión?"></textarea><span class="count">0 / 1200</span></label>
+      <div class="hp" aria-hidden="true"><label>No llenar este campo<input type="text" name="web" tabindex="-1" autocomplete="off"></label></div>
+      <button class="btn primary" type="submit">Enviar reflexión</button>
+      <p class="fmsg" role="status" aria-live="polite"></p>
+    </form>
+    <h2 class="sec-t">Lo que han compartido</h2>
+    <div class="rlist" id="rlist" data-sid="${esc(s.id)}"><p class="vacio">Cargando…</p></div>
+  </section>`;
+}
+function pintarReflexiones(lista) {
+  const el = $("#rlist"); if (!el) return;
+  el.innerHTML = lista.length
+    ? lista.map(r => `<article class="rit"><p>${esc(r.reflexion)}</p><small>${esc(r.nombre)} · ${esc(r.fecha)}</small></article>`).join("")
+    : `<p class="vacio">Aún no hay reflexiones publicadas.</p>`;
+}
+async function cargarReflexiones(sid, fuerza) {
+  const el = $("#rlist"); if (!el) return;
+  try { const d = await cargar("r:" + sid, { action: "reflexiones_list", sesion_id: sid }, fuerza); if ($("#rlist") && $("#rlist").dataset.sid === sid) pintarReflexiones(d.reflexiones || []); }
+  catch (e) { const el2 = $("#rlist"); if (el2) el2.innerHTML = `<p class="vacio">No pudimos cargar las reflexiones. <button class="btn" data-act="retry-r" data-sid="${esc(sid)}">Reintentar</button></p>`; }
+}
+
+/* Temas: sugerencias del grupo con likes */
+function vTemas() {
+  return `<h1 class="h-view">Temas</h1>
+  <p class="lede">¿Qué te gustaría estudiar en las próximas sesiones? Sugiere un tema y da tu like a los que más te interesen.</p>
+  <form class="tform" data-form="tema" novalidate>
+    <input type="text" name="tema" maxlength="120" placeholder="Sugiere un tema…" aria-label="Tu sugerencia de tema">
+    <div class="hp" aria-hidden="true"><label>No llenar este campo<input type="text" name="web" tabindex="-1" autocomplete="off"></label></div>
+    <button class="btn primary" type="submit">Sugerir</button>
+    <p class="fmsg" role="status" aria-live="polite" style="flex-basis:100%"></p>
+  </form>
+  <h2 class="sec-t">Sugerencias del grupo</h2>
+  <div class="stack" id="tlist"><p class="vacio">Cargando…</p></div>`;
+}
+const heart = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>`;
+function pintarTemas(lista) {
+  const el = $("#tlist"); if (!el) return;
+  const liked = store.get("likes", []);
+  el.innerHTML = lista.length
+    ? lista.map(t => { const on = liked.includes(t.id); return `<div class="tit"><span>${esc(t.tema)}</span><button class="like" data-like="${esc(t.id)}" aria-pressed="${on}" aria-label="Me interesa: ${esc(t.tema)}">${heart}<b>${Number(t.votos) || 0}</b></button></div>`; }).join("")
+    : `<p class="vacio">Todavía no hay sugerencias. Sé el primero.</p>`;
+}
+async function cargarTemas(fuerza) {
+  if (!$("#tlist")) return;
+  try { const d = await cargar("temas", { action: "temas_list" }, fuerza); pintarTemas(d.temas || []); }
+  catch (e) { const el = $("#tlist"); if (el) el.innerHTML = `<p class="vacio">No pudimos cargar los temas. <button class="btn" data-act="retry-t">Reintentar</button></p>`; }
 }
 
 function vDetalle(s) {
@@ -444,6 +549,7 @@ function vDetalle(s) {
     </div>
     <div class="tabs" role="tablist">${tabs.map(([k, l]) => `<button class="tab" role="tab" data-stab="${k}" aria-selected="${k === tabSesion}">${l}</button>`).join("")}</div>
     ${body}
+    ${bloqueReflexion(s)}
     ${s.dinamica ? `<a class="coord-link" href="#coord-${s.id}"><span class="eyebrow">¿Vas a presentar?</span><b>Abrir la guía del coordinador</b><span>Tiempos, guion de exposición y temporizador para las rondas.</span></a>` : ""}`;
 }
 
@@ -537,13 +643,15 @@ function render() {
   if (coord) { header(coord.id); html = vCoordinador(coord); }
   else if (ses) { header("sesiones"); html = vDetalle(ses); $("#progress").hidden = tabSesion !== "guia"; }
   else {
-    const v = ["inicio", "sesiones", "biblioteca", "semana"].includes(h) ? h : "inicio";
+    const v = ["inicio", "sesiones", "biblioteca", "temas"].includes(h) ? h : "inicio";
     header(null);
     const a = document.querySelector(`[data-nav="${v}"]`); if (a) a.setAttribute("aria-current", "page");
-    html = { inicio: vInicio, sesiones: vSesiones, biblioteca: vBiblioteca, semana: vSemana }[v]();
+    html = { inicio: vInicio, sesiones: vSesiones, biblioteca: vBiblioteca, temas: vTemas }[v]();
   }
   $("#app").innerHTML = html;
   aplicarLectura();
+  if ($("#rlist")) cargarReflexiones($("#rlist").dataset.sid);
+  if ($("#tlist")) cargarTemas();
   const fx = $(".focus-exit"); if (fx) fx.remove();
 }
 function aplicarLectura() {
@@ -573,6 +681,57 @@ document.addEventListener("click", e => {
     if (k === "size") grupo.querySelector('[data-val="r"]').textContent = lectura.size + "px";
     else grupo.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.val === v)));
     aplicarLectura();
+  }
+});
+/* ===== Envío de formularios y likes ===== */
+document.addEventListener("input", e => {
+  const ta = e.target.closest("textarea[name=reflexion]"); if (ta) { const c = ta.parentElement.querySelector(".count"); if (c) c.textContent = ta.value.length + " / 1200"; }
+  const an = e.target.closest("input[name=anon]"); if (an) { const n = an.form.elements.nombre; n.disabled = an.checked; }
+});
+function mensaje(form, txt, err) { const m = form.querySelector(".fmsg"); if (m) { m.textContent = txt; m.classList.toggle("err", !!err); } }
+document.addEventListener("submit", async e => {
+  const f = e.target.closest("form[data-form]"); if (!f) return;
+  e.preventDefault();
+  const btn = f.querySelector("button[type=submit]"), web = f.elements.web.value;
+  if (f.dataset.form === "reflexion") {
+    const anon = f.elements.anon.checked, nombre = anon ? "Anónimo" : f.elements.nombre.value.trim(), texto = f.elements.reflexion.value.trim();
+    if (!nombre) return mensaje(f, "Escribe tu nombre o marca la casilla para compartir sin nombre.", true);
+    if (texto.length < 10) return mensaje(f, "Tu reflexión necesita al menos 10 caracteres.", true);
+    btn.disabled = true; mensaje(f, "Enviando…");
+    try {
+      const d = await api({ action: "reflexion_add", sesion_id: f.dataset.sid, nombre, reflexion: texto, web });
+      if (!anon) store.set("nombre", nombre);
+      f.elements.reflexion.value = ""; f.querySelector(".count").textContent = "0 / 1200";
+      mensaje(f, d.message || "Gracias por compartir.");
+    } catch (err) { mensaje(f, err.status === 400 ? err.message : "No pudimos enviarla. Revisa tu conexión e inténtalo de nuevo.", true); }
+    btn.disabled = false;
+  } else if (f.dataset.form === "tema") {
+    const tema = f.elements.tema.value.trim();
+    if (tema.length < 5) return mensaje(f, "Escribe el tema con al menos 5 caracteres.", true);
+    btn.disabled = true; mensaje(f, "Enviando…");
+    try {
+      const d = await api({ action: "tema_add", tema, web });
+      f.elements.tema.value = ""; mensaje(f, d.message || "¡Gracias!");
+      await cargarTemas(true);
+    } catch (err) { mensaje(f, err.status === 400 ? err.message : "No pudimos enviarla. Revisa tu conexión e inténtalo de nuevo.", true); }
+    btn.disabled = false;
+  }
+});
+document.addEventListener("click", async e => {
+  const t = e.target.closest("button"); if (!t) return;
+  if (t.dataset.act === "retry-r") { cargarReflexiones(t.dataset.sid, true); return; }
+  if (t.dataset.act === "retry-t") { cargarTemas(true); return; }
+  if (t.dataset.like) {
+    const id = t.dataset.like, liked = store.get("likes", []), had = liked.includes(id), delta = had ? -1 : 1, b = t.querySelector("b"), antes = Number(b.textContent) || 0;
+    t.disabled = true;
+    const aplicar = (on, n) => { t.setAttribute("aria-pressed", String(on)); b.textContent = Math.max(0, n); };
+    aplicar(!had, antes + delta);
+    try {
+      await api({ action: "tema_vote", id, delta, web: "" });
+      store.set("likes", had ? liked.filter(x => x !== id) : [...liked, id]);
+      if (cache.temas) { const x = cache.temas.data.temas.find(y => y.id === id); if (x) x.votos = Math.max(0, (Number(x.votos) || 0) + delta); }
+    } catch (err) { aplicar(had, antes); toast(err.status === 404 ? "Ese tema ya no existe" : "No se pudo registrar tu like"); }
+    t.disabled = false;
   }
 });
 window.addEventListener("hashchange", () => { render(); window.scrollTo(0, 0); });
