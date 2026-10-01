@@ -478,7 +478,7 @@ function tarjetaMat(m) {
 }
 
 /* Reflexiones: formulario al final de cada sesión y lista de las aprobadas */
-const formAbierto = s => parseDate(s.fecha) <= today || /[?&]prueba\b/.test(location.search);
+const formAbierto = () => true;
 function bloqueReflexion(s) {
   if (!formAbierto(s)) return `<section class="refl"><div class="eyebrow">Al cerrar la sesión</div><p>El espacio para compartir tu reflexión se abre el día de la sesión.</p></section>`;
   const nombre = store.get("nombre", "");
