@@ -58,6 +58,8 @@ html{-webkit-text-size-adjust:100%;height:100%;overscroll-behavior:none}
    Evita que Chrome/Safari de iPhone despeguen el menú al esconder su barra. */
 body{height:100%;height:100dvh;display:flex;flex-direction:column;overflow:hidden;overscroll-behavior:none}
 .desliza{flex:1 1 auto;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain}
+.marco{flex:1 1 auto;min-height:0;width:100%;border:0;display:block;background:var(--lino)}
+body.en-marco .top{display:none}
 body{margin:0;background:var(--lino);color:var(--tinta);font-family:var(--f-ui);font-size:17px;line-height:1.55}
 [hidden]{display:none!important}
 a{color:inherit}
@@ -80,7 +82,7 @@ h1,h2,h3{text-wrap:balance}
 
 /* Navegación inferior */
 .nav{position:relative;flex:0 0 auto;z-index:30;background:var(--papel);border-top:1px solid var(--raya);padding-bottom:env(safe-area-inset-bottom,0px)}
-.nav-in{max-width:640px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);height:var(--nav-h)}
+.nav-in{max-width:640px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);height:var(--nav-h)}
 .nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:var(--piedra);font-size:13px}
 .nav svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .nav a[aria-current="page"]{color:var(--tinta);font-weight:700}
@@ -303,9 +305,11 @@ textarea.copia{width:100%;min-height:90px;margin-top:12px;padding:10px;border-ra
 <header class="top" id="top"><div class="top-in" id="top-in"></div></header>
 <div class="progreso" id="progreso" hidden></div>
 <div class="desliza" id="desliza"><main class="wrap" id="app"></main></div>
+<iframe class="marco" id="marco-crono" title="Cronología: Plenitud de los Tiempos" allow="fullscreen" hidden></iframe>
 <nav class="nav" aria-label="Secciones"><div class="nav-in">
   <a href="#inicio" data-nav="inicio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v4M10 5h4"/><path d="M5 21V11l7-4 7 4v10"/><path d="M10 21v-5h4v5"/></svg>Inicio</a>
   <a href="#sesiones" data-nav="sesiones"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Sesiones</a>
+  <a href="#cronologia" data-nav="cronologia"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3v18"/><circle cx="6" cy="7" r="2.2"/><circle cx="6" cy="17" r="2.2"/><path d="M11 7h9M11 12h6M11 17h9"/></svg>Cronología</a>
   <a href="#temas" data-nav="temas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V16h5v-.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/></svg>Temas</a>
 </div></nav>
 <div id="timer-slot"></div>
@@ -831,6 +835,16 @@ function render() {
   document.querySelectorAll("[data-nav]").forEach(a => a.removeAttribute("aria-current"));
   document.body.classList.remove("enfoque"); const se = $(".salir-enfoque"); if (se) se.remove();
   $("#progreso").hidden = true;
+  const marco = $("#marco-crono"), enCrono = base === "cronologia";
+  document.body.classList.toggle("en-marco", enCrono);
+  SC().hidden = enCrono; marco.hidden = !enCrono;
+  if (enCrono) {
+    if (!marco.src) marco.src = "/cronologia/";
+    const a = document.querySelector('[data-nav="cronologia"]'); if (a) a.setAttribute("aria-current", "page");
+    document.title = "Cronología · Pausa con Jesús";
+    return;
+  }
+  document.title = "Pausa con Jesús · Guía para sesiones grupales";
   let html, nav = null;
   if (coord) { encabezado(`#${coord.id}/durante`, "Guion de la sesión"); html = vCoordinador(coord); }
   else if (ses) {
