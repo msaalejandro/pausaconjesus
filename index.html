@@ -59,7 +59,14 @@ html{-webkit-text-size-adjust:100%;height:100%;overscroll-behavior:none}
 body{height:100%;height:100dvh;display:flex;flex-direction:column;overflow:hidden;overscroll-behavior:none}
 .desliza{flex:1 1 auto;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain}
 .marco{flex:1 1 auto;min-height:0;width:100%;border:0;display:block;background:var(--lino)}
-body.en-marco .top{display:none}
+body.en-marco .nav{display:none}
+.espacios{margin-left:auto;display:grid;grid-template-columns:auto auto;gap:2px;background:var(--papel);border:1px solid var(--raya);border-radius:999px;padding:3px;flex:0 0 auto}
+.espacios a{min-height:38px;padding:0 13px;display:flex;align-items:center;justify-content:center;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;color:var(--piedra)}
+.espacios a[aria-current="page"]{background:var(--fuerte);color:var(--sobre-fuerte)}
+.top-in:has(.espacios) .marca small{display:none}
+.top-in:has(.espacios) .marca{white-space:nowrap;font-size:22px}
+@media (max-width:370px){.top-in:has(.espacios) .marca{font-size:19px}.espacios a{padding:0 10px;font-size:14px}}
+@media (max-width:340px){.top-in{padding:0 12px;gap:6px}.top-in:has(.espacios) .marca{font-size:17px}.espacios a{padding:0 8px;font-size:13px;min-height:36px}}
 body{margin:0;background:var(--lino);color:var(--tinta);font-family:var(--f-ui);font-size:17px;line-height:1.55}
 [hidden]{display:none!important}
 a{color:inherit}
@@ -82,7 +89,7 @@ h1,h2,h3{text-wrap:balance}
 
 /* Navegación inferior */
 .nav{position:relative;flex:0 0 auto;z-index:30;background:var(--papel);border-top:1px solid var(--raya);padding-bottom:env(safe-area-inset-bottom,0px)}
-.nav-in{max-width:640px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);height:var(--nav-h)}
+.nav-in{max-width:640px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);height:var(--nav-h)}
 .nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:var(--piedra);font-size:13px}
 .nav svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .nav a[aria-current="page"]{color:var(--tinta);font-weight:700}
@@ -309,7 +316,6 @@ textarea.copia{width:100%;min-height:90px;margin-top:12px;padding:10px;border-ra
 <nav class="nav" aria-label="Secciones"><div class="nav-in">
   <a href="#inicio" data-nav="inicio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v4M10 5h4"/><path d="M5 21V11l7-4 7 4v10"/><path d="M10 21v-5h4v5"/></svg>Inicio</a>
   <a href="#sesiones" data-nav="sesiones"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Sesiones</a>
-  <a href="#cronologia" data-nav="cronologia"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3v18"/><circle cx="6" cy="7" r="2.2"/><circle cx="6" cy="17" r="2.2"/><path d="M11 7h9M11 12h6M11 17h9"/></svg>Cronología</a>
   <a href="#temas" data-nav="temas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V16h5v-.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/></svg>Temas</a>
 </div></nav>
 <div id="timer-slot"></div>
@@ -487,10 +493,13 @@ const lectura = Object.assign({ tam: 19, letra: "serif", int: "normal", fondo: "
 const INT = { compacto: 1.55, normal: 1.75, amplio: 2 };
 
 /* ===== Encabezado ===== */
+let ultimaGuia = "#inicio";
+const enCronologia = () => (location.hash || "").slice(1).split("/")[0] === "cronologia";
 function encabezado(volver, titulo) {
   $("#top-in").innerHTML = volver
     ? `<a class="volver" href="${volver}">${ico.atras}${volver === "#inicio" ? "Inicio" : "Volver"}</a><span class="titulo-mini">${esc(titulo || "")}</span>`
-    : `<a class="marca" href="#inicio">Pausa con Jesús<small>Guía para sesiones grupales</small></a>`;
+    : `<a class="marca" href="${ultimaGuia}">Pausa con Jesús<small>Guía para sesiones grupales</small></a>
+       <nav class="espacios" aria-label="Espacios"><a href="${ultimaGuia}"${enCronologia() ? "" : ' aria-current="page"'}>Guía</a><a href="#cronologia"${enCronologia() ? ' aria-current="page"' : ""}>Cronología</a></nav>`;
 }
 
 /* ===== Inicio ===== */
@@ -840,10 +849,11 @@ function render() {
   SC().hidden = enCrono; marco.hidden = !enCrono;
   if (enCrono) {
     if (!marco.src) marco.src = "/cronologia/";
-    const a = document.querySelector('[data-nav="cronologia"]'); if (a) a.setAttribute("aria-current", "page");
+    encabezado(null);
     document.title = "Cronología · Pausa con Jesús";
     return;
   }
+  if (["inicio", "sesiones", "temas"].includes(base) || !base) ultimaGuia = "#" + (base || "inicio");
   document.title = "Pausa con Jesús · Guía para sesiones grupales";
   let html, nav = null;
   if (coord) { encabezado(`#${coord.id}/durante`, "Guion de la sesión"); html = vCoordinador(coord); }

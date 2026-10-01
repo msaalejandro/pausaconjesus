@@ -284,6 +284,37 @@ button{font:inherit; color:inherit}
 @media (prefers-reduced-motion: reduce){ .st{transition:none} .st:hover{transform:none} }
 </style>
 
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap">
+<style id="pcj-tema">
+/* Tema de Pausa con Jesús: misma letra, colores y modo oscuro que el sitio.
+   Se conservan los colores de las tres líneas (Jesús, mundo, Iglesia) porque dan significado. */
+:root{
+  --ground:#EDF0F3; --surface:#FBFCFD; --ink:#1A2233; --muted:#5B6475; --line:#D6DCE3;
+  --lapis:#1F3358; --lapis-wash:#DFE6F1; --gold:#8A6420; --gold-wash:#F2EAD9; --land:#FBFCFD;
+  --display:"Cormorant Garamond","Iowan Old Style",Georgia,serif;
+  --display-sc:"Cormorant Garamond","Iowan Old Style",Georgia,serif;
+  --body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --scripture:"Literata",Georgia,"Times New Roman",serif;
+  --label:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0F1522; --surface:#161E2E; --ink:#E9E6DF; --muted:#A0A7B5; --line:#283246;
+    --lapis:#A9BCE3; --lapis-wash:#22304D; --gold:#E0BE74; --gold-wash:#2A2416; --land:#1B2540; --on-accent:#0F1522;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0F1522; --surface:#161E2E; --ink:#E9E6DF; --muted:#A0A7B5; --line:#283246;
+  --lapis:#A9BCE3; --lapis-wash:#22304D; --gold:#E0BE74; --gold-wash:#2A2416; --land:#1B2540; --on-accent:#0F1522;
+}
+.brand h1,.chap b,.intro h2,.fhead h3,.ask .mk,.tab,.guidecard b,.chars dt,.key h4,.wcard .wn,.wquote,.gloss header h2,.gloss dt,.trad .th h5{font-weight:600;letter-spacing:0}
+.brand h1{font-size:1.9rem}
+.intro h2{font-size:2.35rem}
+.fhead h3{font-size:clamp(2.2rem,3.8vw,3.4rem)}
+.btn,.sizer,.st,.ficha,.outline,.echo,.trad,.map{border-radius:12px}
+.btn,.sizer button{min-height:44px}
+.chap{min-height:44px;border-radius:999px}
+</style>
 <div class="wrap">
   <a id="pcj-volver" href="/" hidden style="display:inline-flex;align-items:center;gap:.3rem;margin-top:1rem;min-height:44px;font-family:var(--label);font-weight:700;letter-spacing:.04em;color:var(--lapis);text-decoration:none">&larr; Pausa con Jesús</a>
   <script>try{ if (window.top === window.self) document.getElementById('pcj-volver').hidden = false; }catch(e){}</script>
