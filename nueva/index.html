@@ -1,0 +1,827 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Pausa con Jesús · Guía para sesiones grupales</title>
+<meta name="description" content="Prepárate, vive y comparte cada sesión del grupo: lectura guiada, preguntas para conversar, reflexiones y temas.">
+<meta property="og:title" content="Pausa con Jesús">
+<meta property="og:description" content="Prepárate, vive y comparte cada sesión del grupo.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pausaconjesus.com/">
+<meta name="theme-color" content="#EDF0F3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1522" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap">
+<style>
+/* Una sola idea fuerte: la sesión como un camino de tres momentos (antes, durante, después).
+   El bloque azul de inicio es lo único llamativo; todo lo demás es tranquilo, como una pausa. */
+:root{
+  --lino:#EDF0F3;      /* fondo */
+  --papel:#FBFCFD;     /* superficies */
+  --tinta:#1A2233;     /* texto */
+  --piedra:#5B6475;    /* texto secundario */
+  --raya:#D6DCE3;      /* líneas */
+  --manto:#1F3358;     /* azul de la marca */
+  --manto-suave:#DFE6F1;
+  --sobre-manto:#F3EFE6;
+  --cera:#8A6420;      /* oro para texto sobre claro */
+  --cera-viva:#E3C27A; /* oro sobre azul */
+  --cera-suave:#F2EAD9;
+  --error:#A8261B;
+  --fuerte:#1F3358; --sobre-fuerte:#F3EFE6;
+  --f-titulo:"Cormorant Garamond","Iowan Old Style",Georgia,serif;
+  --f-ui:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-lectura:"Literata",Georgia,"Times New Roman",serif;
+  --leer-tam:19px; --leer-int:1.75;
+  --nav-h:66px; --top-h:56px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --lino:#0F1522; --papel:#161E2E; --tinta:#E9E6DF; --piedra:#A0A7B5; --raya:#283246;
+    --manto:#1D2C4B; --manto-suave:#22304D; --sobre-manto:#F1ECE1;
+    --cera:#E0BE74; --cera-viva:#E9CB86; --cera-suave:#2A2416; --error:#F2B8B5; --fuerte:#E9E6DF; --sobre-fuerte:#0F1522; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --lino:#0F1522; --papel:#161E2E; --tinta:#E9E6DF; --piedra:#A0A7B5; --raya:#283246;
+  --manto:#1D2C4B; --manto-suave:#22304D; --sobre-manto:#F1ECE1;
+  --cera:#E0BE74; --cera-viva:#E9CB86; --cera-suave:#2A2416; --error:#F2B8B5; --fuerte:#E9E6DF; --sobre-fuerte:#0F1522; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--lino);color:var(--tinta);font-family:var(--f-ui);font-size:17px;line-height:1.55}
+[hidden]{display:none!important}
+a{color:inherit}
+button,input,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--cera);outline-offset:3px;border-radius:6px}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{text-wrap:balance}
+.wrap{max-width:640px;margin:0 auto;padding:0 18px calc(var(--nav-h) + env(safe-area-inset-bottom,0px) + 36px)}
+
+/* Encabezado */
+.top{position:sticky;top:0;z-index:20;background:var(--lino);padding-top:env(safe-area-inset-top,0px)}
+.top-in{max-width:640px;margin:0 auto;height:var(--top-h);padding:0 18px;display:flex;align-items:center;gap:10px}
+.marca{font-family:var(--f-titulo);font-weight:700;font-size:23px;line-height:1;text-decoration:none}
+.marca small{display:block;font-family:var(--f-ui);font-weight:400;font-size:12px;color:var(--piedra);margin-top:3px}
+.volver{display:inline-flex;align-items:center;gap:4px;min-height:44px;padding:0 10px 0 0;border:0;background:none;color:var(--tinta);font-weight:700;cursor:pointer;text-decoration:none}
+.volver svg{width:20px;height:20px}
+.top .titulo-mini{font-family:var(--f-titulo);font-weight:600;font-size:20px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:0;transition:opacity .2s}
+.top.scrolled{border-bottom:1px solid var(--raya)}
+.top.scrolled .titulo-mini{opacity:1}
+
+/* Navegación inferior */
+.nav{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--papel);border-top:1px solid var(--raya);padding-bottom:env(safe-area-inset-bottom,0px)}
+.nav-in{max-width:640px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);height:var(--nav-h)}
+.nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:var(--piedra);font-size:13px}
+.nav svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.nav a[aria-current="page"]{color:var(--tinta);font-weight:700}
+.nav a[aria-current="page"] svg{stroke:var(--cera)}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 20px;border-radius:999px;border:1px solid var(--raya);background:var(--papel);color:var(--tinta);font-weight:700;font-size:16px;text-decoration:none;cursor:pointer}
+.btn.lleno{background:var(--fuerte);border-color:var(--fuerte);color:var(--sobre-fuerte)}
+.btn:disabled{opacity:.55;cursor:default}
+.btn svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.enlace{background:none;border:0;padding:0;min-height:44px;font-weight:700;color:var(--tinta);text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--cera);cursor:pointer;display:inline-flex;align-items:center}
+
+/* Portada: la sesión que toca */
+.portada{margin-top:8px;background:var(--manto);color:var(--sobre-manto);border-radius:24px;padding:24px 22px 22px;position:relative;overflow:hidden}
+.cuando{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;font-size:15px}
+.cuando b{color:var(--cera-viva)}
+.portada h1{font-family:var(--f-titulo);font-weight:600;font-size:clamp(46px,13vw,64px);line-height:.95;letter-spacing:-.01em;margin:14px 0 8px}
+.portada .fuente{font-size:15px;opacity:.82}
+.portada .idea{font-family:var(--f-titulo);font-style:italic;font-weight:500;font-size:23px;line-height:1.3;margin:18px 0 22px;max-width:30ch}
+.portada .btn.lleno{width:100%;background:var(--sobre-manto);border-color:var(--sobre-manto);color:#1F3358;min-height:54px;font-size:17px}
+.portada .mas{display:flex;justify-content:center;margin-top:8px}
+.portada .enlace{color:var(--sobre-manto)}
+
+/* El camino: antes · durante · después */
+.camino{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);position:relative}
+.camino::before{content:"";position:absolute;left:16.66%;right:16.66%;top:9px;height:2px;background:currentColor;opacity:.25}
+.camino li{position:relative;text-align:center;font-size:14px;display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.75}
+.camino li::before{content:"";width:20px;height:20px;border-radius:50%;border:2px solid currentColor;background:var(--manto);box-sizing:border-box}
+.camino li.hecho::before{background:currentColor}
+.camino li.ahora{opacity:1;font-weight:700}
+.camino li.ahora::before{border-color:var(--cera-viva);background:var(--cera-viva);box-shadow:0 0 0 5px rgba(227,194,122,.25)}
+.portada .camino{margin:2px 0 22px}
+
+/* Secciones */
+.seccion{margin-top:40px}
+.seccion > h2,.h2{font-family:var(--f-titulo);font-weight:600;font-size:31px;line-height:1.05;margin-bottom:6px}
+.nota{color:var(--piedra);font-size:16px;margin-bottom:16px;max-width:52ch}
+.vacio{color:var(--piedra);padding:4px 0}
+.cargando{color:var(--piedra)}
+.h-vista{font-family:var(--f-titulo);font-weight:600;font-size:44px;line-height:1;margin:18px 0 8px}
+
+/* Pregunta para vivir */
+.vivir{background:var(--cera-suave);border-radius:20px;padding:22px 20px}
+.vivir .de{font-size:15px;color:var(--cera);font-weight:700}
+.vivir q{display:block;quotes:none;font-family:var(--f-titulo);font-style:italic;font-weight:500;font-size:28px;line-height:1.2;margin:10px 0 14px}
+.vivir p{font-size:16px;margin-top:8px;max-width:56ch}
+.vivir .acciones{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+
+/* Reflexiones */
+.voces{list-style:none;margin:0;padding:0}
+.voces li{padding:16px 0 16px 18px;border-left:2px solid var(--cera);margin-bottom:14px}
+.voces p{font-family:var(--f-lectura);font-size:17px;line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere}
+.voces small{display:block;margin-top:8px;color:var(--piedra);font-size:14px}
+.forma{background:var(--papel);border:1px solid var(--raya);border-radius:20px;padding:20px}
+.campo{display:block;margin-bottom:16px}
+.campo > span{display:block;font-weight:700;font-size:15px;margin-bottom:6px}
+.campo input[type=text],.campo textarea,.tema-forma input{display:block;width:100%;padding:13px 14px;min-height:50px;font-size:17px;background:var(--lino);color:var(--tinta);border:1px solid var(--raya);border-radius:12px}
+.campo textarea{min-height:130px;resize:vertical;line-height:1.5}
+.campo input:disabled{opacity:.5}
+.contador{display:block;text-align:right;color:var(--piedra);font-size:13px;margin-top:4px}
+.casilla{display:flex;align-items:center;gap:12px;min-height:44px;margin:-6px 0 14px;cursor:pointer;font-size:16px}
+.casilla input{width:22px;height:22px;accent-color:var(--manto)}
+.trampa{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.aviso{margin-top:12px;font-weight:700;color:var(--tinta)}
+.aviso:empty{display:none}
+.aviso.error{color:var(--error)}
+
+/* Temas */
+.tema-forma{display:flex;gap:10px;flex-wrap:wrap}
+.tema-forma input{flex:1 1 220px}
+.tema-forma .btn{flex:0 0 auto}
+.temas{list-style:none;margin:0;padding:0;border-top:1px solid var(--raya)}
+.temas li{display:flex;align-items:center;gap:14px;padding:12px 0;border-bottom:1px solid var(--raya)}
+.temas span{flex:1;min-width:0;overflow-wrap:anywhere;font-size:17px}
+.like{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;min-height:44px;min-width:68px;justify-content:center;padding:0 14px;border-radius:999px;border:1px solid var(--raya);background:var(--papel);cursor:pointer;font-weight:700;font-variant-numeric:tabular-nums}
+.like svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8}
+.like[aria-pressed="true"]{background:var(--manto-suave);border-color:transparent}
+.like[aria-pressed="true"] svg{fill:var(--cera);stroke:var(--cera)}
+.like:disabled{opacity:.6}
+
+/* Calendario de sesiones */
+.linea{list-style:none;margin:0;padding:0;position:relative}
+.linea::before{content:"";position:absolute;left:31px;top:8px;bottom:8px;width:2px;background:var(--raya)}
+.linea li{position:relative}
+.linea a,.linea .sin{display:grid;grid-template-columns:64px 1fr;gap:14px;align-items:start;padding:14px 0;text-decoration:none;color:inherit}
+.dia{position:relative;z-index:1;width:64px;text-align:center;background:var(--lino);padding:2px 0}
+.dia b{display:block;font-family:var(--f-titulo);font-weight:700;font-size:34px;line-height:1}
+.dia span{font-size:13px;color:var(--piedra)}
+.linea h3{font-family:var(--f-titulo);font-weight:600;font-size:26px;line-height:1.05}
+.linea .meta{color:var(--piedra);font-size:15px;margin-top:4px}
+.linea .estado{display:inline-block;margin-top:8px;font-size:14px;font-weight:700;color:var(--cera)}
+.linea .sin h3{color:var(--piedra);font-style:italic;font-weight:500}
+.mes{font-weight:700;color:var(--piedra);font-size:15px;padding:18px 0 4px 80px}
+.libro{display:grid;grid-template-columns:52px 1fr;gap:14px;align-items:center;padding:16px;background:var(--papel);border:1px solid var(--raya);border-radius:18px;text-decoration:none;color:inherit}
+.libro .tapa{width:52px;height:68px;border-radius:4px 8px 8px 4px;background:var(--manto);display:grid;place-items:center;color:var(--cera-viva);font-family:var(--f-titulo);font-weight:700;font-size:22px;box-shadow:inset 4px 0 0 rgba(0,0,0,.18)}
+.libro b{display:block;font-size:17px}
+.libro span{color:var(--piedra);font-size:15px}
+
+/* Página de sesión */
+.s-cab{margin-top:6px}
+.s-cab .cuando{color:var(--piedra)}
+.s-cab .cuando b{color:var(--cera)}
+.s-cab h1{font-family:var(--f-titulo);font-weight:600;font-size:clamp(44px,12vw,58px);line-height:.95;margin:10px 0 6px}
+.s-cab .fuente{color:var(--piedra);font-size:15px}
+.momentos{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--top-h));z-index:15;background:var(--lino);margin:22px -18px 0;padding:8px 18px 10px;border-bottom:1px solid var(--raya)}
+.momentos-in{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;background:var(--papel);border:1px solid var(--raya);border-radius:999px;padding:4px}
+.momentos button{border:0;background:none;border-radius:999px;min-height:44px;font-weight:700;font-size:16px;color:var(--piedra);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
+.momentos button[aria-selected="true"]{background:var(--fuerte);color:var(--sobre-fuerte)}
+.momentos .hoy{width:7px;height:7px;border-radius:50%;background:var(--cera)}
+.momentos button[aria-selected="true"] .hoy{background:var(--cera-viva)}
+.intro-momento{margin-top:22px;font-size:16px;color:var(--piedra);max-width:52ch}
+
+.central{font-family:var(--f-titulo);font-style:italic;font-weight:500;font-size:25px;line-height:1.3;padding-left:16px;border-left:2px solid var(--cera);margin-top:22px}
+
+/* Pasos (sí son una secuencia) */
+.pasos{list-style:none;margin:0;padding:0;counter-reset:p}
+.pasos > li{counter-increment:p;display:grid;grid-template-columns:40px 1fr;gap:12px;padding:18px 0;border-top:1px solid var(--raya)}
+.pasos > li:first-child{border-top:0}
+.pasos > li::before{content:counter(p);width:34px;height:34px;border-radius:50%;border:1.5px solid var(--cera);color:var(--cera);display:grid;place-items:center;font-weight:700;font-size:16px}
+.pasos h3{font-size:18px;line-height:1.3;margin-top:4px}
+.pasos p{color:var(--piedra);font-size:16px;margin-top:4px}
+.pasos .btn{margin-top:12px}
+.citas{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.citas span{font-size:15px;padding:6px 12px;border-radius:999px;background:var(--papel);border:1px solid var(--raya)}
+.citas span b{font-weight:700}
+
+/* Lector */
+.barra-lectura{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px;flex-wrap:wrap}
+.barra-lectura .btn{min-height:42px;padding:0 16px;font-size:15px}
+.panel{margin-top:12px;background:var(--papel);border:1px solid var(--raya);border-radius:18px;padding:16px;display:grid;gap:14px}
+.fila{display:grid;grid-template-columns:100px 1fr;align-items:center;gap:10px}
+.fila > span{font-size:14px;color:var(--piedra);font-weight:700}
+.seg{display:flex;border:1px solid var(--raya);border-radius:999px;overflow:hidden;min-width:0}
+.seg button{flex:1;border:0;background:none;min-height:42px;padding:0 6px;cursor:pointer;font-size:15px}
+.seg button+button{border-left:1px solid var(--raya)}
+.seg button[aria-pressed="true"]{background:var(--manto-suave);font-weight:700}
+.lector{margin-top:14px;background:var(--hoja,var(--papel));color:var(--letra,var(--tinta));border-radius:20px;border:1px solid var(--raya);padding:24px 20px 30px;font-family:var(--f-lectura);font-size:var(--leer-tam);line-height:var(--leer-int)}
+.lector[data-fondo="sepia"]{--hoja:#F3EAD8;--letra:#3B2F1E;border-color:#E1D3B6}
+.lector[data-fondo="noche"]{--hoja:#0B0E14;--letra:#D2CDC2;border-color:#23262E}
+.lector[data-letra="sans"]{font-family:var(--f-ui)}
+.lector .punto{padding:20px 0;border-top:1px solid color-mix(in srgb,currentColor 14%,transparent)}
+.lector .punto:first-child{border-top:0;padding-top:0}
+.lector h3{font-family:var(--f-titulo);font-weight:600;font-size:1.45em;line-height:1.1;display:flex;gap:12px;align-items:baseline}
+.lector h3 span{font-family:var(--f-ui);font-size:.55em;font-weight:700;opacity:.6;min-width:1.4em}
+.lector p{margin-top:.75em;max-width:62ch}
+.lector .ref{font-family:var(--f-ui);font-size:.78em;font-weight:700;opacity:.7}
+.lector .aterriza{margin-top:1em;font-size:.94em;padding:12px 14px;border-radius:12px;background:color-mix(in srgb,currentColor 7%,transparent)}
+.lector .aterriza b{display:block;font-family:var(--f-ui);font-size:.8em;opacity:.75;margin-bottom:2px}
+.progreso{position:fixed;left:0;top:0;height:3px;background:var(--cera);width:0;z-index:40}
+.salir-enfoque{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:50}
+body.enfoque .top,body.enfoque .nav,body.enfoque .momentos,body.enfoque .s-cab,body.enfoque .barra-lectura,body.enfoque .panel,body.enfoque .fuera-enfoque{display:none!important}
+body.enfoque .lector{border:0;margin-top:12px}
+
+/* Durante */
+.agenda{list-style:none;margin:0;padding:0}
+.agenda li{display:grid;grid-template-columns:62px 1fr;gap:12px;padding:14px 0;border-top:1px solid var(--raya)}
+.agenda li:first-child{border-top:0}
+.agenda .min{font-variant-numeric:tabular-nums;font-weight:700;font-size:20px;color:var(--cera);line-height:1.1}
+.agenda .min small{display:block;font-size:13px;font-weight:400;color:var(--piedra)}
+.agenda h3{font-size:17px}
+.agenda p{color:var(--piedra);font-size:16px;margin-top:2px}
+.acuerdos{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.acuerdos li{padding:12px 16px;background:var(--papel);border:1px solid var(--raya);border-radius:14px;font-size:16px}
+.ronda{padding:20px 0;border-top:1px solid var(--raya)}
+.ronda:first-of-type{border-top:0}
+.ronda-cab{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.ronda h3{font-family:var(--f-titulo);font-weight:600;font-size:27px;line-height:1.05}
+.ronda .sub{color:var(--piedra);font-size:15px;margin-top:4px}
+.ronda ol{margin:12px 0 0;padding-left:1.3em;display:grid;gap:12px;font-family:var(--f-lectura);font-size:18px;line-height:1.5}
+.coord{display:block;margin-top:34px;padding:18px 20px;border:1.5px dashed var(--raya);border-radius:18px;text-decoration:none}
+.coord b{display:block;font-size:17px}
+.coord span{color:var(--piedra);font-size:15px}
+
+/* Temporizador */
+.timer{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--nav-h) + 14px + env(safe-area-inset-bottom,0px));z-index:35;display:flex;align-items:center;gap:10px;background:var(--manto);color:var(--sobre-manto);border-radius:999px;padding:8px 8px 8px 20px;box-shadow:0 8px 28px rgba(15,21,34,.35);max-width:calc(100vw - 24px)}
+.timer b{font-variant-numeric:tabular-nums;font-size:24px;min-width:3.2ch}
+.timer small{font-size:13px;opacity:.8;max-width:130px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.timer button{border:0;border-radius:999px;min-height:40px;padding:0 14px;background:var(--sobre-manto);color:#1F3358;font-weight:700;cursor:pointer}
+.timer.fin{background:var(--cera);color:#1A1407}
+
+.toast{position:fixed;left:50%;transform:translateX(-50%);top:calc(env(safe-area-inset-top,0px) + 66px);background:var(--tinta);color:var(--lino);padding:10px 18px;border-radius:999px;font-size:15px;z-index:60;max-width:calc(100vw - 32px)}
+textarea.copia{width:100%;min-height:90px;margin-top:12px;padding:10px;border-radius:12px;border:1px solid var(--raya);background:var(--papel)}
+@media (min-width:760px){
+  .portada{padding:34px 36px 30px}
+  .h-vista{font-size:52px}
+}
+@media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header class="top" id="top"><div class="top-in" id="top-in"></div></header>
+<div class="progreso" id="progreso" hidden></div>
+<main class="wrap" id="app"></main>
+<nav class="nav" aria-label="Secciones"><div class="nav-in">
+  <a href="#inicio" data-nav="inicio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v4M10 5h4"/><path d="M5 21V11l7-4 7 4v10"/><path d="M10 21v-5h4v5"/></svg>Inicio</a>
+  <a href="#sesiones" data-nav="sesiones"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Sesiones</a>
+  <a href="#temas" data-nav="temas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V16h5v-.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/></svg>Temas</a>
+</div></nav>
+<div id="timer-slot"></div>
+
+<script>
+/* ===== Contenido del grupo. Cada quincena se agrega una sesión aquí. ===== */
+const SESIONES = [
+  {
+    id: "s-2026-10-02",
+    fecha: "2026-10-02",
+    tema: "El desierto",
+    fuente: "Apuntes sobre la oración · Capítulo VI",
+    categoria: "Oración",
+    lectura: "12 min de lectura",
+    idea: "El desierto es el lugar donde Dios, quitándonos los apoyos de siempre, nos habla al corazón y nos muestra su verdadero rostro: no el de un amo, sino el de un esposo que tiene sed de nosotros.",
+    puntos: [
+      { t: "Donde se caen los apoyos",
+        p: ["La palabra misma lo dice: el desierto es un lugar abandonado, donde falta el pan, el agua y la compañía que normalmente nos sostienen. Ahí nadie sobrevive por sí mismo.",
+            "Por eso el desierto revela nuestra verdad: somos frágiles, dependientes y mortales. El Apocalipsis describe al que se creía rico y en realidad estaba pobre, ciego y desnudo."],
+        refs: "Ap 3,17",
+        a: "Un desierto puede ser una enfermedad, una pérdida, una soledad que no elegimos o una etapa de sequedad en la oración." },
+      { t: "No se va por cuenta propia",
+        p: ["Nadie busca el desierto por gusto. Es el Espíritu quien lleva, como llevó a Jesús; san Marcos llega a decir que lo empujó.",
+            "El profeta Oseas lo presenta como iniciativa de un Dios enamorado: Él conduce a su esposa al desierto para hablarle al corazón, y ahí la alimenta con su Palabra."],
+        refs: "Mt 4,1 · Lc 4,1 · Mc 1,12 · Os 2,16 · Ap 12,6",
+        a: "El desierto no es castigo ni señal de que Dios se fue. Puede ser su manera de llevarnos aparte." },
+      { t: "Del amo al esposo",
+        p: ["Arrastramos, desde Adán, una imagen deformada de Dios: un señor que vigila, exige y castiga. En el desierto esa imagen se rompe.",
+            "Oseas lo dice con una imagen fuerte: Dios quiere que dejemos de llamarlo «mi amo» y lo llamemos «esposo mío». Su rostro verdadero es el de alguien enamorado, no el de un déspota."],
+        refs: "Os 2,18",
+        a: "Cuando fallo, ¿me acerco a Dios con miedo a su reacción o con la confianza de quien se sabe amado?" },
+      { t: "El pozo escondido",
+        p: ["El autor recuerda a El Principito: lo bello del desierto es que esconde un pozo. Junto a ese pozo está Jesús, sentado y esperando, y es Él quien pide: «Dame de beber». San Agustín ve en la samaritana una figura de toda la Iglesia.",
+            "La sorpresa es que Dios también tiene sed: sed de nosotros, una sed que lo lleva hasta la cruz. También Dios tiene su desierto, y es la ausencia del hombre que no responde a su amor."],
+        refs: "Jn 4,5-26 · Jn 4,23 · Jn 19,28",
+        a: "La oración no empieza por lo que yo le pido, sino por la sed que Él tiene de mí." },
+      { t: "Frente a nuestras fieras",
+        p: ["Sin los apoyos de siempre salen a la luz lo que escondíamos: vicios, heridas, inclinaciones torcidas. Y sobre todo el orgullo espiritual, ese esfuerzo constante por salvarnos con nuestras propias fuerzas.",
+            "Solo cuando ese ruido se apaga podemos oír a Dios como lo oyó Elías: no en el viento ni en el fuego, sino en una brisa suave, una voz hecha de silencio."],
+        refs: "1 Re 19,9-13",
+        a: "El silencio incomoda porque nos muestra lo que evitamos ver. Ahí mismo es donde Dios habla." },
+      { t: "Todo es misericordia",
+        p: ["Reconocer nuestra miseria no es para hundirnos. La única razón por la que Dios nos lleva al desierto es que su misericordia es eterna, como repite el salmo. Ahí aprendemos a esperarlo todo de ella y nada de nuestros méritos.",
+            "Como Moisés en el Horeb, descalzos y con el rostro cubierto ante la zarza ardiente, recibimos la revelación de su Nombre."],
+        refs: "Sal 136 · Ex 3,1-6",
+        a: "La humildad no es despreciarse: es aceptar la verdad sobre uno mismo y dejar que Dios la abrace." },
+      { t: "La Pascua sucede en silencio",
+        p: ["La zarza que arde sin consumirse apunta a la cruz y a la resurrección: Cristo arde en el fuego del Espíritu, en el amor al Padre y a nosotros. Y nadie vio el instante en que resucitó; el pregón pascual dice que solo aquella noche lo supo.",
+            "La Iglesia entrará en la gloria siguiendo a su Señor en una última Pascua. El capítulo concluye que toda la vida de oración se resume en dejar que Cristo viva en nosotros su alabanza y su ofrenda al Padre."],
+        refs: "Ex 3,2 · CCE 677 · Pregón pascual (Exsultet)",
+        a: "Orar es menos hacer cosas para Dios y más dejar que Él haga en mí." }
+    ],
+    dinamica: {
+      duracion: 70,
+      agenda: [
+        { min: 5,  t: "Apertura en silencio", d: "Dos minutos de silencio total. Luego se lee en voz alta Oseas 2,16-18 (en algunas Biblias es 2,14-16)." },
+        { min: 20, t: "Exposición por puntos", d: "Recorrer los 7 puntos de la guía. Idea central primero; un ejemplo concreto por punto." },
+        { min: 30, t: "Grupos pequeños", d: "Grupos de 3 o 4 personas. Tres rondas de 10 minutos, una pregunta a la vez." },
+        { min: 10, t: "Puesta en común", d: "Cada grupo comparte una sola frase o descubrimiento. Nada de lo personal sale del grupo sin permiso." },
+        { min: 5,  t: "Cierre con oración", d: "Leer juntos el Salmo 63 (62), «mi alma tiene sed de ti», y terminar con un Padre Nuestro." }
+      ],
+      rondas: [
+        { t: "Mi desierto", sub: "Puntos 1 y 2", min: 10, q: [
+          "¿Qué desierto estoy viviendo, o he vivido? ¿Qué apoyo se me cayó?",
+          "¿Lo viví como castigo, como abandono, o como un lugar donde Dios me llevó aparte?" ] },
+        { t: "El rostro de Dios", sub: "Puntos 3 y 4", min: 10, q: [
+          "Cuando fallo, ¿a qué Dios me dirijo: al amo o al esposo? ¿De dónde me viene esa imagen?",
+          "Jesús me dice «dame de beber». ¿Qué creo que me está pidiendo hoy?" ] },
+        { t: "El silencio", sub: "Puntos 5 a 7", min: 10, q: [
+          "¿Qué ruidos uso para no quedarme en silencio?",
+          "¿En qué parte de mi vida sigo intentando salvarme con mis propias fuerzas?" ] }
+      ],
+      reglas: ["Cada quien habla sin ser interrumpido.", "Se vale decir «paso».", "Escuchar sin aconsejar ni corregir.", "Lo que se comparte en el grupo se queda en el grupo."]
+    },
+    semana: {
+      pregunta: "¿Qué me está diciendo Dios al corazón en el desierto que hoy estoy viviendo?",
+      practica: "Cada día, diez minutos de silencio sin teléfono. Sin pedir nada: solo quedarte con Él, como junto al pozo.",
+      cierre: "Al final de la semana, escribe una frase con lo que descubriste. La compartimos en la próxima sesión."
+    },
+    materiales: [
+      { tipo: "PDF", t: "Apuntes sobre la oración", d: "Libro completo en Google Drive. Lee el Capítulo VI, «El desierto».", url: "https://drive.google.com/file/d/1NQtbZ2IEXHPJmRNAeYyOb8HkknZFlrjJ/view?usp=drivesdk" }
+    ],
+    biblia: [
+      ["Os 2,16-18", "Te llevaré al desierto"], ["Mc 1,12-13", "Jesús en el desierto"],
+      ["Jn 4,5-26", "La samaritana en el pozo"], ["Jn 19,28", "«Tengo sed»"],
+      ["1 Re 19,9-13", "Elías y la brisa suave"], ["Ex 3,1-6", "La zarza ardiente"],
+      ["Sal 136", "Eterna es su misericordia"], ["Sal 63", "Mi alma tiene sed de ti"],
+      ["CCE 677", "La última Pascua de la Iglesia"]
+    ]
+  },
+  { id: "s-2026-10-16", fecha: "2026-10-16", tema: null, categoria: null }
+];
+
+/* ===== Utilidades ===== */
+const $ = (s, r = document) => r.querySelector(s);
+const store = {
+  get(k, d) { try { const v = localStorage.getItem("ve:" + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
+  set(k, v) { try { localStorage.setItem("ve:" + k, JSON.stringify(v)); } catch (e) {} }
+};
+const esc = t => String(t ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const parseDate = s => { const [y, m, d] = s.split("-").map(Number); return new Date(y, m - 1, d); };
+const hoy = (() => { const n = new Date(); return new Date(n.getFullYear(), n.getMonth(), n.getDate()); })();
+const dias = s => Math.round((parseDate(s) - hoy) / 864e5);
+const MES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+const cap = t => t.charAt(0).toUpperCase() + t.slice(1);
+const fecha = s => cap(parseDate(s).toLocaleDateString("es-MX", { weekday: "long", day: "numeric", month: "long" }).replace(",", ""));
+const mesAnio = s => cap(parseDate(s).toLocaleDateString("es-MX", { month: "long", year: "numeric" }));
+function cuenta(s) {
+  const n = dias(s);
+  if (n === 0) return "Es hoy";
+  if (n === 1) return "Es mañana";
+  if (n > 1) return `Faltan ${n} días`;
+  if (n === -1) return "Fue ayer";
+  return `Fue hace ${-n} días`;
+}
+/* El momento de cada sesión según la fecha: antes, durante (el mismo día) o después */
+const momentoDe = s => { const n = dias(s.fecha); return n > 0 ? "antes" : n === 0 ? "durante" : "despues"; };
+const MOMENTOS = [["antes", "Antes"], ["durante", "Durante"], ["despues", "Después"]];
+const conTema = () => SESIONES.filter(s => s.tema);
+function actual() {
+  const fut = conTema().filter(s => dias(s.fecha) >= 0).sort((a, b) => a.fecha.localeCompare(b.fecha));
+  return fut[0] || conTema().sort((a, b) => b.fecha.localeCompare(a.fecha))[0];
+}
+function anteriorA(s) { return conTema().filter(x => x.fecha < s.fecha && dias(x.fecha) < 0).sort((a, b) => b.fecha.localeCompare(a.fecha))[0]; }
+function toast(msg) {
+  const t = document.createElement("div"); t.className = "toast"; t.setAttribute("role", "status"); t.textContent = msg;
+  document.body.appendChild(t); setTimeout(() => t.remove(), 2200);
+}
+function copiar(texto, holder) {
+  const plan = () => {
+    let ta = holder.querySelector("textarea.copia");
+    if (!ta) { ta = document.createElement("textarea"); ta.className = "copia"; ta.readOnly = true; holder.appendChild(ta); }
+    ta.value = texto; ta.focus(); ta.select(); toast("Selecciona el texto y cópialo");
+  };
+  try { navigator.clipboard.writeText(texto).then(() => toast("Texto copiado"), plan); } catch (e) { plan(); }
+}
+const wa = t => "https://wa.me/?text=" + encodeURIComponent(t);
+const URL_SITIO = "https://pausaconjesus.com/";
+const textoVivir = s => `Para vivir estos días (${s.tema}):\n\n${s.semana.pregunta}\n\n${s.semana.practica}\n${s.semana.cierre}`;
+const textoInvitar = s => `Pausa con Jesús · ${fecha(s.fecha)}\n«${s.tema}»\n\nPrepárate para la sesión aquí: ${URL_SITIO}#${s.id}/antes`;
+const ico = {
+  wa: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/><path d="M9 9.5c.3 2 2.2 4.2 4.5 4.8l1.2-1.1 1.8.8c-.2 1.2-1.1 1.8-2.2 1.8C11 15.8 8 12.9 8 9.6c0-1.1.7-2 1.8-2.1l.7 1.8z"/></svg>`,
+  copiar: `<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h8"/></svg>`,
+  pdf: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>`,
+  corazon: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>`,
+  atras: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>`
+};
+
+/* ===== Conexión con la hoja del grupo (reflexiones y temas) ===== */
+const API_URL = "https://restrategia-n8n.fcwppp.easypanel.host/webhook/pausa";
+async function api(body) {
+  const ctl = new AbortController(), to = setTimeout(() => ctl.abort(), 20000);
+  try {
+    const r = await fetch(API_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body), signal: ctl.signal });
+    let j = null; try { j = await r.json(); } catch (e) {}
+    if (!r.ok || !j || j.ok === false) { const err = new Error((j && j.message) || "Error de conexión"); err.status = r.status; throw err; }
+    return j;
+  } finally { clearTimeout(to); }
+}
+const cache = {};
+async function cargar(clave, body, fuerza) {
+  const c = cache[clave];
+  if (c && !fuerza && Date.now() - c.t < 60000) return c.data;
+  const data = await api(body); cache[clave] = { t: Date.now(), data }; return data;
+}
+
+/* ===== Preferencias de lectura (solo en este teléfono) ===== */
+const lectura = Object.assign({ tam: 19, letra: "serif", int: "normal", fondo: "pagina" }, store.get("lectura2", {}));
+const INT = { compacto: 1.55, normal: 1.75, amplio: 2 };
+
+/* ===== Encabezado ===== */
+function encabezado(volver, titulo) {
+  $("#top-in").innerHTML = volver
+    ? `<a class="volver" href="${volver}">${ico.atras}${volver === "#inicio" ? "Inicio" : "Volver"}</a><span class="titulo-mini">${esc(titulo || "")}</span>`
+    : `<a class="marca" href="#inicio">Pausa con Jesús<small>Guía para sesiones grupales</small></a>`;
+}
+
+/* ===== Inicio ===== */
+function camino(s, enPortada) {
+  const m = momentoDe(s), i = MOMENTOS.findIndex(([k]) => k === m);
+  return `<ol class="camino" aria-label="Momento de la sesión">${MOMENTOS.map(([k, l], j) => `<li class="${j < i ? "hecho" : j === i ? "ahora" : ""}"${j === i ? ' aria-current="step"' : ""}>${l}</li>`).join("")}</ol>`;
+}
+function vInicio() {
+  const s = actual(); const m = momentoDe(s);
+  const cta = {
+    antes: [`#${s.id}/antes`, "Prepárate para la sesión"],
+    durante: [`#${s.id}/durante`, "Abrir la sesión de hoy"],
+    despues: [`#${s.id}/despues`, "Comparte lo que te llevaste"]
+  }[m];
+  const prev = m === "despues" ? s : anteriorA(s);
+  const sig = SESIONES.filter(x => x.fecha > s.fecha).sort((a, b) => a.fecha.localeCompare(b.fecha))[0];
+  return `
+  <section class="portada" aria-labelledby="p-t">
+    <div class="cuando"><span>${m === "despues" ? "Última sesión" : "Próxima sesión"} · ${fecha(s.fecha)}</span><b>${cuenta(s.fecha)}</b></div>
+    <h1 id="p-t">${esc(s.tema)}</h1>
+    <p class="fuente">${esc(s.fuente)}</p>
+    <p class="idea">${esc(s.idea)}</p>
+    ${camino(s)}
+    <a class="btn lleno" href="${cta[0]}">${cta[1]}</a>
+    <div class="mas"><a class="enlace" href="${wa(textoInvitar(s))}" target="_blank" rel="noopener">Invitar por WhatsApp</a></div>
+  </section>
+
+  ${prev && prev.semana ? `<section class="seccion" aria-labelledby="v-t">
+    <h2 id="v-t">Para vivir estos días</h2>
+    <p class="nota">Lo que nos dejó la sesión «${esc(prev.tema)}».</p>
+    ${bloqueVivir(prev)}
+  </section>
+  <section class="seccion" aria-labelledby="g-t">
+    <h2 id="g-t">Lo que compartió el grupo</h2>
+    <div id="voces-inicio" data-sid="${esc(prev.id)}"><p class="cargando">Cargando reflexiones…</p></div>
+    <a class="enlace" href="#${prev.id}/despues">Escribir mi reflexión</a>
+  </section>` : ""}
+
+  <section class="seccion" aria-labelledby="t-t">
+    <h2 id="t-t">¿Qué estudiamos después?</h2>
+    <p class="nota">Las sugerencias del grupo con más interés.</p>
+    <div id="temas-inicio"><p class="cargando">Cargando temas…</p></div>
+    <a class="enlace" href="#temas">Sugerir un tema</a>
+  </section>
+
+  ${sig ? `<section class="seccion" aria-labelledby="s-t"><h2 id="s-t">La siguiente</h2><ul class="linea"><li>${filaSesion(sig)}</li></ul></section>` : ""}`;
+}
+
+function bloqueVivir(s) {
+  return `<div class="vivir">
+    <q>${esc(s.semana.pregunta)}</q>
+    <p><b>Práctica.</b> ${esc(s.semana.practica)}</p>
+    <p>${esc(s.semana.cierre)}</p>
+    <div class="acciones">
+      <a class="btn" href="${wa(textoVivir(s))}" target="_blank" rel="noopener">${ico.wa}Enviar por WhatsApp</a>
+      <button class="btn" data-copiar="${esc(s.id)}">${ico.copiar}Copiar</button>
+    </div>
+  </div>`;
+}
+
+/* ===== Sesiones ===== */
+function filaSesion(s) {
+  const d = parseDate(s.fecha);
+  const dia = `<div class="dia" aria-hidden="true"><b>${d.getDate()}</b><span>${MES[d.getMonth()]}</span></div>`;
+  if (!s.tema) return `<div class="sin">${dia}<div><h3>Tema por definir</h3><p class="meta">${fecha(s.fecha)}</p></div></div>`;
+  const n = dias(s.fecha);
+  const est = n > 0 ? cuenta(s.fecha) : n === 0 ? "Es hoy" : "Ya fue: puedes ponerte al día";
+  return `<a href="#${s.id}">${dia}<div><h3>${esc(s.tema)}</h3><p class="meta">${esc(s.fuente)}</p><span class="estado">${est}</span></div></a>`;
+}
+function vSesiones() {
+  const orden = [...SESIONES].sort((a, b) => a.fecha.localeCompare(b.fecha));
+  const libro = conTema().map(s => (s.materiales || [])[0]).find(m => m && m.url);
+  let mes = "", filas = "";
+  orden.forEach(s => { const mm = mesAnio(s.fecha); if (mm !== mes) { filas += `<li class="mes">${mm}</li>`; mes = mm; } filas += `<li>${filaSesion(s)}</li>`; });
+  return `<h1 class="h-vista">Sesiones</h1>
+    <p class="nota">Un viernes sí y uno no. Si faltaste a alguna, aquí está todo para ponerte al día.</p>
+    ${libro ? `<a class="libro" href="${esc(libro.url)}" target="_blank" rel="noopener"><span class="tapa" aria-hidden="true">A</span><span><b>${esc(libro.t)}</b><span>El libro que estamos leyendo. Abrir en Google Drive</span></span></a>` : ""}
+    <ul class="linea" style="margin-top:18px">${filas}</ul>`;
+}
+
+/* ===== Página de una sesión ===== */
+function vSesion(s, m) {
+  const cuerpo = { antes: momentoAntes, durante: momentoDurante, despues: momentoDespues }[m](s);
+  const deHoy = momentoDe(s);
+  return `<div class="s-cab">
+      <div class="cuando"><span>${fecha(s.fecha)}</span><b>${cuenta(s.fecha)}</b></div>
+      <h1>${esc(s.tema)}</h1>
+      <p class="fuente">${esc(s.fuente)}</p>
+    </div>
+    <div class="momentos"><div class="momentos-in" role="tablist" aria-label="Momentos de la sesión">
+      ${MOMENTOS.map(([k, l]) => `<button role="tab" data-momento="${k}" aria-selected="${k === m}">${l}${k === deHoy ? '<span class="hoy" title="Ahora" aria-label="(ahora)"></span>' : ""}</button>`).join("")}
+    </div></div>
+    <div role="tabpanel">${cuerpo}</div>`;
+}
+
+function momentoAntes(s) {
+  const libro = (s.materiales || [])[0];
+  const abierto = store.get("panel", false);
+  return `<p class="intro-momento fuera-enfoque">Para llegar con el corazón dispuesto. Tómate tu tiempo; no hace falta hacerlo todo de una vez.</p>
+    <p class="central fuera-enfoque">${esc(s.idea)}</p>
+    <ol class="pasos fuera-enfoque" style="margin-top:22px">
+      ${libro ? `<li><div><h3>Lee el capítulo</h3><p>${esc(libro.d)}</p><a class="btn lleno" href="${esc(libro.url)}" target="_blank" rel="noopener">${ico.pdf}Abrir el libro</a></div></li>` : ""}
+      <li><div><h3>Ten a la mano estos textos</h3><p>Búscalos en tu Biblia. La numeración de Oseas cambia según la edición.</p>
+        <div class="citas">${s.biblia.map(([r, d]) => `<span><b>${esc(r)}</b> ${esc(d)}</span>`).join("")}</div></div></li>
+      <li><div><h3>Repasa la guía de lectura</h3><p>El capítulo en ${s.puntos.length} puntos, con una idea para aterrizar cada uno. ${esc(s.lectura || "")}.</p></div></li>
+    </ol>
+    <div class="barra-lectura">
+      <button class="btn" data-act="panel" aria-expanded="${abierto}" aria-controls="panel"><span style="font-family:var(--f-lectura)">Aa</span> Ajustar lectura</button>
+      <button class="btn" data-act="enfoque">Leer sin distracciones</button>
+    </div>
+    <div class="panel" id="panel" ${abierto ? "" : "hidden"}>
+      <div class="fila"><span>Tamaño</span>${seg("tam", [["-", "A−", "Letra más chica"], ["r", `${lectura.tam}`, "Tamaño normal"], ["+", "A+", "Letra más grande"]], "")}</div>
+      <div class="fila"><span>Letra</span>${seg("letra", [["serif", "Clásica"], ["sans", "Simple"]], lectura.letra)}</div>
+      <div class="fila"><span>Espacio</span>${seg("int", [["compacto", "Menos"], ["normal", "Normal"], ["amplio", "Más"]], lectura.int)}</div>
+      <div class="fila"><span>Fondo</span>${seg("fondo", [["pagina", "Claro"], ["sepia", "Sepia"], ["noche", "Noche"]], lectura.fondo)}</div>
+    </div>
+    <article class="lector" id="lector" data-letra="${lectura.letra}" data-fondo="${lectura.fondo}">
+      ${s.puntos.map((p, i) => `<section class="punto">
+        <h3><span>${i + 1}</span>${esc(p.t)}</h3>
+        ${p.p.map(x => `<p>${esc(x)}</p>`).join("")}
+        <p class="ref">${esc(p.refs)}</p>
+        <div class="aterriza"><b>Para aterrizar</b>${esc(p.a)}</div>
+      </section>`).join("")}
+    </article>
+    <p class="nota fuera-enfoque" style="margin-top:20px">¿Ya lo leíste? El día de la sesión encontrarás aquí las preguntas para conversar.</p>`;
+}
+function seg(nombre, opciones, actualV) {
+  return `<div class="seg" role="group">${opciones.map(([v, l, aria]) => `<button data-ajuste="${nombre}" data-val="${v}" aria-pressed="${String(v) === String(actualV)}"${aria ? ` aria-label="${aria}"` : ""}>${l}</button>`).join("")}</div>`;
+}
+
+function momentoDurante(s) {
+  const d = s.dinamica;
+  if (!d) return `<p class="intro-momento">La dinámica de esta sesión todavía no está lista.</p>`;
+  return `<p class="intro-momento">Lo que vamos a vivir juntos. Si no pudiste ir, puedes usar las preguntas para orar por tu cuenta.</p>
+    <section class="seccion" style="margin-top:26px" aria-labelledby="d-a">
+      <h2 class="h2" id="d-a">Cómo será la sesión</h2>
+      <p class="nota">Unos ${d.duracion} minutos.</p>
+      <ol class="agenda">${d.agenda.map(a => `<li><div class="min">${a.min}<small>min</small></div><div><h3>${esc(a.t)}</h3><p>${esc(a.d)}</p></div></li>`).join("")}</ol>
+    </section>
+    <section class="seccion" aria-labelledby="d-c">
+      <h2 class="h2" id="d-c">Acuerdos para conversar</h2>
+      <ul class="acuerdos" style="margin-top:12px">${d.reglas.map(r => `<li>${esc(r)}</li>`).join("")}</ul>
+    </section>
+    <section class="seccion" aria-labelledby="d-r">
+      <h2 class="h2" id="d-r">Preguntas por ronda</h2>
+      <p class="nota">En grupos de 3 o 4 personas, una ronda a la vez.</p>
+      ${d.rondas.map((r, i) => `<div class="ronda"><div class="ronda-cab"><div><h3>${esc(r.t)}</h3><p class="sub">Ronda ${i + 1}, sobre los puntos ${esc(r.sub.replace(/^Puntos?\s*/i, ""))}</p></div></div>
+        <ol>${r.q.map(q => `<li>${esc(q)}</li>`).join("")}</ol></div>`).join("")}
+    </section>
+    <a class="coord" href="#coord-${s.id}"><b>¿Coordinas esta sesión?</b><span>Abre el guion de exposición y el temporizador de las rondas.</span></a>`;
+}
+
+function momentoDespues(s) {
+  const nombre = store.get("nombre", ""), borrador = store.get("borrador:" + s.id, "");
+  return `<p class="intro-momento">La sesión termina, pero lo que se sembró sigue. Llévalo a tu oración de estos días.</p>
+    ${s.semana ? `<section class="seccion" style="margin-top:22px" aria-labelledby="x-v"><h2 class="h2" id="x-v">Para vivir estos días</h2>${bloqueVivir(s)}</section>` : ""}
+    <section class="seccion" aria-labelledby="x-f">
+      <h2 class="h2" id="x-f">Comparte tu reflexión</h2>
+      <p class="nota">Una o dos frases con lo que te llevas. El grupo la verá en cuanto la envíes.</p>
+      <form class="forma" data-form="reflexion" data-sid="${esc(s.id)}" novalidate>
+        <label class="campo"><span>Tu nombre</span><input type="text" name="nombre" maxlength="60" autocomplete="given-name" value="${esc(nombre)}"></label>
+        <label class="casilla"><input type="checkbox" name="anon"> Compartir sin mi nombre</label>
+        <label class="campo"><span>Tu reflexión</span><textarea name="reflexion" maxlength="1200" rows="4" placeholder="¿Qué te llevas de esta sesión?">${esc(borrador)}</textarea><span class="contador">${borrador.length} / 1200</span></label>
+        <div class="trampa" aria-hidden="true"><label>No llenar<input type="text" name="web" tabindex="-1" autocomplete="off"></label></div>
+        <button class="btn lleno" type="submit" style="width:100%">Enviar reflexión</button>
+        <p class="aviso" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+    <section class="seccion" aria-labelledby="x-g">
+      <h2 class="h2" id="x-g">Lo que compartió el grupo</h2>
+      <div id="voces" data-sid="${esc(s.id)}" style="margin-top:12px"><p class="cargando">Cargando reflexiones…</p></div>
+    </section>`;
+}
+
+/* ===== Guía del coordinador ===== */
+function vCoordinador(s) {
+  const d = s.dinamica;
+  const porPunto = Math.round(d.agenda.find(a => /Exposición/.test(a.t)).min / s.puntos.length);
+  return `<div class="s-cab"><div class="cuando"><span>Para quien coordina</span><b>${fecha(s.fecha)}</b></div><h1>Guion de la sesión</h1><p class="fuente">${esc(s.tema)}</p></div>
+    <section class="seccion" style="margin-top:26px"><h2 class="h2">Orden y tiempos</h2><p class="nota">${d.duracion} minutos en total.</p>
+      <ol class="agenda">${d.agenda.map(a => `<li><div class="min">${a.min}<small>min</small></div><div><h3>${esc(a.t)}</h3><p>${esc(a.d)}</p></div></li>`).join("")}</ol></section>
+    <section class="seccion"><h2 class="h2">Exposición</h2><p class="nota">Unos ${porPunto} minutos por punto. Empieza por la idea central.</p>
+      <p class="central" style="margin-top:6px">${esc(s.idea)}</p>
+      <ol class="agenda" style="margin-top:18px">${s.puntos.map((p, i) => `<li><div class="min">${i + 1}<small>${esc(p.refs.split(" · ")[0])}</small></div><div><h3>${esc(p.t)}</h3><p>${esc(p.a)}</p></div></li>`).join("")}</ol></section>
+    <section class="seccion"><h2 class="h2">Rondas</h2><p class="nota">Lee los acuerdos antes de empezar y usa el temporizador de cada ronda.</p>
+      ${d.rondas.map((r, i) => `<div class="ronda"><div class="ronda-cab"><div><h3>${esc(r.t)}</h3><p class="sub">Ronda ${i + 1}, puntos ${esc(r.sub.replace(/^Puntos?\s*/i, ""))}</p></div>
+        <button class="btn" data-timer="${r.min}" data-label="Ronda ${i + 1}: ${esc(r.t)}" style="min-height:44px;padding:0 14px">Iniciar ${r.min} min</button></div>
+        <ol>${r.q.map(q => `<li>${esc(q)}</li>`).join("")}</ol></div>`).join("")}</section>`;
+}
+
+/* ===== Temas ===== */
+function vTemas() {
+  return `<h1 class="h-vista">Temas</h1>
+    <p class="nota">¿Qué te gustaría estudiar en las próximas sesiones? Sugiere un tema o marca los que también te interesan.</p>
+    <form class="tema-forma" data-form="tema" novalidate>
+      <input type="text" name="tema" maxlength="120" placeholder="Escribe un tema" aria-label="Tu sugerencia de tema">
+      <div class="trampa" aria-hidden="true"><label>No llenar<input type="text" name="web" tabindex="-1" autocomplete="off"></label></div>
+      <button class="btn lleno" type="submit">Sugerir</button>
+      <p class="aviso" role="status" aria-live="polite" style="flex-basis:100%;margin-top:2px"></p>
+    </form>
+    <section class="seccion" style="margin-top:30px" aria-labelledby="tt"><h2 id="tt">Sugerencias del grupo</h2>
+      <div id="temas" style="margin-top:12px"><p class="cargando">Cargando temas…</p></div></section>`;
+}
+function listaTemas(lista, max) {
+  const marcados = store.get("likes", []);
+  const vis = max ? lista.slice(0, max) : lista;
+  if (!vis.length) return `<p class="vacio">Todavía no hay sugerencias. Escribe la primera.</p>`;
+  return `<ul class="temas">${vis.map(t => { const on = marcados.includes(t.id); return `<li><span>${esc(t.tema)}</span><button class="like" data-like="${esc(t.id)}" aria-pressed="${on}" aria-label="Me interesa: ${esc(t.tema)}. ${Number(t.votos) || 0} personas">${ico.corazon}<b>${Number(t.votos) || 0}</b></button></li>`; }).join("")}</ul>`;
+}
+async function pintarTemas(fuerza) {
+  const el = $("#temas") || $("#temas-inicio"); if (!el) return;
+  const max = el.id === "temas-inicio" ? 3 : 0;
+  try { const d = await cargar("temas", { action: "temas_list" }, fuerza); const e2 = $("#" + el.id); if (e2) e2.innerHTML = listaTemas(d.temas || [], max); }
+  catch (e) { const e2 = $("#" + el.id); if (e2) e2.innerHTML = `<p class="vacio">No se pudieron cargar los temas. <button class="enlace" data-act="reintentar-temas">Reintentar</button></p>`; }
+}
+
+/* ===== Reflexiones ===== */
+function listaVoces(lista, max) {
+  const vis = max ? lista.slice(0, max) : lista;
+  if (!vis.length) return `<p class="vacio">Aún no hay reflexiones. La tuya puede ser la primera.</p>`;
+  return `<ul class="voces">${vis.map(r => `<li><p>${esc(r.reflexion)}</p><small>${esc(r.nombre)}</small></li>`).join("")}</ul>`;
+}
+async function pintarVoces(fuerza) {
+  const el = $("#voces") || $("#voces-inicio"); if (!el) return;
+  const id = el.id, sid = el.dataset.sid, max = id === "voces-inicio" ? 3 : 0;
+  try {
+    const d = await cargar("r:" + sid, { action: "reflexiones_list", sesion_id: sid }, fuerza);
+    const e2 = $("#" + id); if (e2 && e2.dataset.sid === sid) e2.innerHTML = listaVoces(d.reflexiones || [], max);
+  } catch (e) { const e2 = $("#" + id); if (e2) e2.innerHTML = `<p class="vacio">No se pudieron cargar las reflexiones. <button class="enlace" data-act="reintentar-voces">Reintentar</button></p>`; }
+}
+
+/* ===== Enrutado ===== */
+function ruta() {
+  const h = decodeURIComponent((location.hash || "#inicio").slice(1));
+  const [base, sub] = h.split("/");
+  return { base, sub };
+}
+function render() {
+  const { base, sub } = ruta();
+  const ses = SESIONES.find(s => s.id === base && s.tema);
+  const coord = base.startsWith("coord-") ? SESIONES.find(s => "coord-" + s.id === base && s.dinamica) : null;
+  document.querySelectorAll("[data-nav]").forEach(a => a.removeAttribute("aria-current"));
+  document.body.classList.remove("enfoque"); const se = $(".salir-enfoque"); if (se) se.remove();
+  $("#progreso").hidden = true;
+  let html, nav = null;
+  if (coord) { encabezado(`#${coord.id}/durante`, "Guion de la sesión"); html = vCoordinador(coord); }
+  else if (ses) {
+    const m = MOMENTOS.some(([k]) => k === sub) ? sub : momentoDe(ses);
+    encabezado("#inicio", ses.tema); html = vSesion(ses, m); nav = "sesiones";
+    $("#progreso").hidden = m !== "antes";
+  } else {
+    const v = ["inicio", "sesiones", "temas"].includes(base) ? base : "inicio";
+    encabezado(null); nav = v;
+    html = { inicio: vInicio, sesiones: vSesiones, temas: vTemas }[v]();
+  }
+  if (nav) { const a = document.querySelector(`[data-nav="${nav}"]`); if (a) a.setAttribute("aria-current", "page"); }
+  $("#app").innerHTML = html;
+  aplicarLectura();
+  pintarVoces(); pintarTemas();
+  alScroll();
+}
+function aplicarLectura() {
+  document.documentElement.style.setProperty("--leer-tam", lectura.tam + "px");
+  document.documentElement.style.setProperty("--leer-int", INT[lectura.int]);
+  const r = $("#lector"); if (r) { r.dataset.letra = lectura.letra; r.dataset.fondo = lectura.fondo; }
+}
+
+/* ===== Eventos ===== */
+document.addEventListener("click", async e => {
+  const t = e.target.closest("button, a"); if (!t) return;
+  if (t.dataset.momento) {
+    const { base } = ruta();
+    history.replaceState(null, "", `#${base}/${t.dataset.momento}`);
+    render();
+    const panel = $('[role="tabpanel"]'), tope = panel.getBoundingClientRect().top + window.scrollY - $("#top").offsetHeight - $(".momentos").offsetHeight - 6;
+    if (window.scrollY > tope) window.scrollTo(0, tope);
+    return;
+  }
+  if (t.dataset.copiar) { const s = SESIONES.find(x => x.id === t.dataset.copiar); copiar(textoVivir(s), t.closest(".vivir")); return; }
+  if (t.dataset.timer) { iniciarTimer(+t.dataset.timer * 60, t.dataset.label); return; }
+  if (t.dataset.act === "panel") { const p = $("#panel"); p.hidden = !p.hidden; t.setAttribute("aria-expanded", String(!p.hidden)); store.set("panel", !p.hidden); return; }
+  if (t.dataset.act === "enfoque") {
+    document.body.classList.add("enfoque");
+    const b = document.createElement("button"); b.className = "btn lleno salir-enfoque"; b.textContent = "Salir de la lectura"; b.dataset.act = "salir"; document.body.appendChild(b);
+    window.scrollTo(0, $("#lector").offsetTop - 12); return;
+  }
+  if (t.dataset.act === "salir") { document.body.classList.remove("enfoque"); t.remove(); return; }
+  if (t.dataset.act === "reintentar-temas") { pintarTemas(true); return; }
+  if (t.dataset.act === "reintentar-voces") { pintarVoces(true); return; }
+  if (t.dataset.ajuste) {
+    const k = t.dataset.ajuste, v = t.dataset.val;
+    if (k === "tam") lectura.tam = v === "+" ? Math.min(28, lectura.tam + 2) : v === "-" ? Math.max(15, lectura.tam - 2) : 19;
+    else lectura[k] = v;
+    store.set("lectura2", lectura);
+    const g = t.parentElement;
+    if (k === "tam") g.querySelector('[data-val="r"]').textContent = lectura.tam;
+    else g.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.val === v)));
+    aplicarLectura(); return;
+  }
+  if (t.dataset.like) {
+    const id = t.dataset.like, marcados = store.get("likes", []), tenia = marcados.includes(id), delta = tenia ? -1 : 1, b = t.querySelector("b"), antes = Number(b.textContent) || 0;
+    const poner = (on, n) => { t.setAttribute("aria-pressed", String(on)); b.textContent = Math.max(0, n); };
+    t.disabled = true; poner(!tenia, antes + delta);
+    try {
+      await api({ action: "tema_vote", id, delta, web: "" });
+      store.set("likes", tenia ? marcados.filter(x => x !== id) : [...marcados, id]);
+      if (cache.temas) { const x = cache.temas.data.temas.find(y => y.id === id); if (x) x.votos = Math.max(0, (Number(x.votos) || 0) + delta); }
+    } catch (err) { poner(tenia, antes); toast(err.status === 404 ? "Ese tema ya no existe" : "No se registró. Revisa tu conexión."); }
+    t.disabled = false;
+  }
+});
+document.addEventListener("input", e => {
+  const ta = e.target.closest("textarea[name=reflexion]");
+  if (ta) { ta.parentElement.querySelector(".contador").textContent = ta.value.length + " / 1200"; store.set("borrador:" + ta.form.dataset.sid, ta.value); }
+  const an = e.target.closest("input[name=anon]"); if (an) an.form.elements.nombre.disabled = an.checked;
+});
+function aviso(f, txt, err) { const m = f.querySelector(".aviso"); m.textContent = txt; m.classList.toggle("error", !!err); }
+document.addEventListener("submit", async e => {
+  const f = e.target.closest("form[data-form]"); if (!f) return;
+  e.preventDefault();
+  const btn = f.querySelector("button[type=submit]"), web = f.elements.web.value;
+  const fallo = err => aviso(f, err.status === 400 ? err.message : "No se pudo enviar. Revisa tu conexión y vuelve a intentarlo.", true);
+  if (f.dataset.form === "reflexion") {
+    const anon = f.elements.anon.checked, nombre = anon ? "Anónimo" : f.elements.nombre.value.trim(), texto = f.elements.reflexion.value.trim();
+    if (!nombre) return aviso(f, "Escribe tu nombre o marca «Compartir sin mi nombre».", true);
+    if (texto.length < 10) return aviso(f, "Escribe al menos 10 caracteres.", true);
+    btn.disabled = true; aviso(f, "Enviando…");
+    try {
+      await api({ action: "reflexion_add", sesion_id: f.dataset.sid, nombre, reflexion: texto, web });
+      if (!anon) store.set("nombre", nombre);
+      store.set("borrador:" + f.dataset.sid, "");
+      f.elements.reflexion.value = ""; f.querySelector(".contador").textContent = "0 / 1200";
+      aviso(f, "Reflexión enviada. Gracias por compartir.");
+      pintarVoces(true);
+    } catch (err) { fallo(err); }
+    btn.disabled = false;
+  } else if (f.dataset.form === "tema") {
+    const tema = f.elements.tema.value.trim();
+    if (tema.length < 5) return aviso(f, "Escribe el tema con al menos 5 caracteres.", true);
+    btn.disabled = true; aviso(f, "Enviando…");
+    try {
+      await api({ action: "tema_add", tema, web });
+      f.elements.tema.value = ""; aviso(f, "Tema sugerido. Ya aparece en la lista.");
+      pintarTemas(true);
+    } catch (err) { fallo(err); }
+    btn.disabled = false;
+  }
+});
+function alScroll() {
+  $("#top").classList.toggle("scrolled", window.scrollY > 40 && !!$(".s-cab"));
+  const r = $("#lector"), p = $("#progreso");
+  if (r && !p.hidden) {
+    const top = r.getBoundingClientRect().top + window.scrollY, h = r.offsetHeight - window.innerHeight;
+    p.style.width = (Math.max(0, Math.min(1, (window.scrollY - top + 100) / Math.max(1, h))) * 100) + "%";
+  }
+}
+window.addEventListener("scroll", alScroll, { passive: true });
+window.addEventListener("hashchange", () => { render(); window.scrollTo(0, 0); });
+
+/* ===== Temporizador de rondas ===== */
+let tm = null, restante = 0, pausado = false, bloqueo = null;
+function iniciarTimer(seg, label) {
+  clearInterval(tm); restante = seg; pausado = false;
+  try { navigator.wakeLock && navigator.wakeLock.request("screen").then(l => bloqueo = l).catch(() => {}); } catch (e) {}
+  $("#timer-slot").innerHTML = `<div class="timer" id="timer" role="timer"><div style="display:flex;flex-direction:column;min-width:0"><b id="t-v"></b><small>${label}</small></div><button id="t-p">Pausar</button><button id="t-x" aria-label="Cerrar temporizador">✕</button></div>`;
+  $("#t-p").onclick = () => { if (restante <= 0) return; pausado = !pausado; $("#t-p").textContent = pausado ? "Seguir" : "Pausar"; };
+  $("#t-x").onclick = pararTimer;
+  pintarT(); tm = setInterval(() => { if (pausado) return; restante--; pintarT(); if (restante <= 0) { clearInterval(tm); $("#timer").classList.add("fin"); $("#t-v").textContent = "Tiempo"; $("#t-p").hidden = true; try { navigator.vibrate && navigator.vibrate([200, 100, 200]); } catch (e) {} } }, 1000);
+}
+function pintarT() { const m = Math.floor(restante / 60), s = restante % 60; const v = $("#t-v"); if (v) v.textContent = `${m}:${String(s).padStart(2, "0")}`; }
+function pararTimer() { clearInterval(tm); $("#timer-slot").innerHTML = ""; try { bloqueo && bloqueo.release(); } catch (e) {} bloqueo = null; }
+
+render();
+</script>
+</body>
+</html>
