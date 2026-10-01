@@ -53,8 +53,11 @@
   --cera:#E0BE74; --cera-viva:#E9CB86; --cera-suave:#2A2416; --error:#F2B8B5; --fuerte:#E9E6DF; --sobre-fuerte:#0F1522; color-scheme:dark;
 }
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;overscroll-behavior-y:none}
-body{overscroll-behavior-y:none}
+html{-webkit-text-size-adjust:100%;height:100%;overscroll-behavior:none}
+/* Marco tipo app: encabezado y menú quedan fijos en el flujo y solo el centro se desplaza.
+   Evita que Chrome/Safari de iPhone despeguen el menú al esconder su barra. */
+body{height:100%;height:100dvh;display:flex;flex-direction:column;overflow:hidden;overscroll-behavior:none}
+.desliza{flex:1 1 auto;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain}
 body{margin:0;background:var(--lino);color:var(--tinta);font-family:var(--f-ui);font-size:17px;line-height:1.55}
 [hidden]{display:none!important}
 a{color:inherit}
@@ -62,10 +65,10 @@ button,input,textarea{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--cera);outline-offset:3px;border-radius:6px}
 h1,h2,h3,p{margin:0}
 h1,h2,h3{text-wrap:balance}
-.wrap{max-width:640px;margin:0 auto;padding:0 18px calc(var(--nav-h) + env(safe-area-inset-bottom,0px) + 36px)}
+.wrap{max-width:640px;margin:0 auto;padding:0 18px 40px}
 
 /* Encabezado */
-.top{position:sticky;top:0;z-index:20;background:var(--lino);padding-top:env(safe-area-inset-top,0px)}
+.top{position:relative;flex:0 0 auto;z-index:20;background:var(--lino);padding-top:env(safe-area-inset-top,0px)}
 .top-in{max-width:640px;margin:0 auto;height:var(--top-h);padding:0 18px;display:flex;align-items:center;gap:10px}
 .marca{font-family:var(--f-titulo);font-weight:700;font-size:23px;line-height:1;text-decoration:none}
 .marca small{display:block;font-family:var(--f-ui);font-weight:400;font-size:12px;color:var(--piedra);margin-top:3px}
@@ -76,7 +79,7 @@ h1,h2,h3{text-wrap:balance}
 .top.scrolled .titulo-mini{opacity:1}
 
 /* Navegación inferior */
-.nav{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--papel);border-top:1px solid var(--raya);padding-bottom:env(safe-area-inset-bottom,0px)}
+.nav{position:relative;flex:0 0 auto;z-index:30;background:var(--papel);border-top:1px solid var(--raya);padding-bottom:env(safe-area-inset-bottom,0px)}
 .nav-in{max-width:640px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);height:var(--nav-h)}
 .nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:var(--piedra);font-size:13px}
 .nav svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
@@ -205,7 +208,7 @@ h1,h2,h3{text-wrap:balance}
 .s-cab .cuando b{color:var(--cera)}
 .s-cab h1{font-family:var(--f-titulo);font-weight:600;font-size:clamp(44px,12vw,58px);line-height:.95;margin:10px 0 6px}
 .s-cab .fuente{color:var(--piedra);font-size:15px}
-.momentos{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--top-h));z-index:15;background:var(--lino);margin:22px -18px 0;padding:8px 18px 10px;border-bottom:1px solid var(--raya)}
+.momentos{position:sticky;top:0;z-index:15;background:var(--lino);margin:22px -18px 0;padding:8px 18px 10px;border-bottom:1px solid var(--raya)}
 .momentos-in{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;background:var(--papel);border:1px solid var(--raya);border-radius:999px;padding:4px}
 .momentos button{border:0;background:none;border-radius:999px;min-height:44px;font-weight:700;font-size:16px;color:var(--piedra);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
 .momentos button[aria-selected="true"]{background:var(--fuerte);color:var(--sobre-fuerte)}
@@ -299,7 +302,7 @@ textarea.copia{width:100%;min-height:90px;margin-top:12px;padding:10px;border-ra
 <body>
 <header class="top" id="top"><div class="top-in" id="top-in"></div></header>
 <div class="progreso" id="progreso" hidden></div>
-<main class="wrap" id="app"></main>
+<div class="desliza" id="desliza"><main class="wrap" id="app"></main></div>
 <nav class="nav" aria-label="Secciones"><div class="nav-in">
   <a href="#inicio" data-nav="inicio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v4M10 5h4"/><path d="M5 21V11l7-4 7 4v10"/><path d="M10 21v-5h4v5"/></svg>Inicio</a>
   <a href="#sesiones" data-nav="sesiones"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Sesiones</a>
@@ -401,6 +404,8 @@ const SESIONES = [
 
 /* ===== Utilidades ===== */
 const $ = (s, r = document) => r.querySelector(s);
+const SC = () => document.getElementById("desliza");
+const posEn = el => el.getBoundingClientRect().top - SC().getBoundingClientRect().top + SC().scrollTop;
 const store = {
   get(k, d) { try { const v = localStorage.getItem("ve:" + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
   set(k, v) { try { localStorage.setItem("ve:" + k, JSON.stringify(v)); } catch (e) {} }
@@ -856,8 +861,8 @@ document.addEventListener("click", async e => {
     const { base } = ruta();
     history.replaceState(null, "", `#${base}/${t.dataset.momento}`);
     render();
-    const panel = $('[role="tabpanel"]'), tope = panel.getBoundingClientRect().top + window.scrollY - $("#top").offsetHeight - $(".momentos").offsetHeight - 6;
-    if (window.scrollY > tope) window.scrollTo(0, tope);
+    const tope = posEn($('[role="tabpanel"]')) - $(".momentos").offsetHeight - 6;
+    if (SC().scrollTop > tope) SC().scrollTo(0, tope);
     return;
   }
   if (t.dataset.copiar) { const s = SESIONES.find(x => x.id === t.dataset.copiar); copiar(textoVivir(s), t.closest(".vivir")); return; }
@@ -866,7 +871,7 @@ document.addEventListener("click", async e => {
   if (t.dataset.act === "enfoque") {
     document.body.classList.add("enfoque");
     const b = document.createElement("button"); b.className = "btn lleno salir-enfoque"; b.textContent = "Salir de la lectura"; b.dataset.act = "salir"; document.body.appendChild(b);
-    window.scrollTo(0, $("#lector").offsetTop - 12); return;
+    SC().scrollTo(0, posEn($("#lector")) - 12); return;
   }
   if (t.dataset.act === "salir") { document.body.classList.remove("enfoque"); t.remove(); return; }
   if (t.dataset.act === "reintentar-temas") { pintarTemas(true); return; }
@@ -978,15 +983,16 @@ document.addEventListener("submit", async e => {
   }
 });
 function alScroll() {
-  $("#top").classList.toggle("scrolled", window.scrollY > 40 && !!$(".s-cab"));
+  const y = SC().scrollTop;
+  $("#top").classList.toggle("scrolled", y > 40 && !!$(".s-cab"));
   const r = $("#lector"), p = $("#progreso");
   if (r && !p.hidden) {
-    const top = r.getBoundingClientRect().top + window.scrollY, h = r.offsetHeight - window.innerHeight;
-    p.style.width = (Math.max(0, Math.min(1, (window.scrollY - top + 100) / Math.max(1, h))) * 100) + "%";
+    const top = posEn(r), h = r.offsetHeight - SC().clientHeight;
+    p.style.width = (Math.max(0, Math.min(1, (y - top + 100) / Math.max(1, h))) * 100) + "%";
   }
 }
-window.addEventListener("scroll", alScroll, { passive: true });
-window.addEventListener("hashchange", () => { render(); window.scrollTo(0, 0); });
+SC().addEventListener("scroll", alScroll, { passive: true });
+window.addEventListener("hashchange", () => { render(); SC().scrollTo(0, 0); });
 
 /* ===== Temporizador de rondas ===== */
 let tm = null, restante = 0, pausado = false, bloqueo = null;
