@@ -34,7 +34,8 @@ Cada lección tiene una clave (por ejemplo `"el-desierto"`) y estos campos:
 - `dinamica`: duración, orden de la sesión (`agenda`), `rondas` de preguntas y `reglas` (acuerdos).
 - `semana`: la pregunta, la práctica y el cierre para vivir los días siguientes.
 - `audios`: audios de la sesión (título, lema, archivo y duración). Los archivos van en `/audio/`.
-- `materiales`: el libro o documentos para leer antes (con su enlace).
+- `materiales`: el libro o documentos para leer antes (con su enlace). El campo opcional `h` cambia el título del paso «Lee el capítulo», por ejemplo «Lee los capítulos».
 - `biblia`: textos bíblicos con una frase que los resume.
+- `notaBiblia` (opcional): una aclaración junto a los textos bíblicos, por ejemplo que la numeración cambia según la edición.
 
 Una lección se prepara una vez y puede usarse en cualquier fecha, o por cualquier grupo.

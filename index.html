@@ -500,12 +500,12 @@ function filaSesion(s) {
 }
 function vSesiones() {
   const orden = [...SESIONES].sort((a, b) => a.fecha.localeCompare(b.fecha));
-  const libro = conTema().map(s => (s.materiales || [])[0]).find(m => m && m.url);
+  const libro = [actual(), ...conTema()].map(s => s && (s.materiales || [])[0]).find(m => m && m.url);
   let mes = "", filas = "";
   orden.forEach(s => { const mm = mesAnio(s.fecha); if (mm !== mes) { filas += `<li class="mes">${mm}</li>`; mes = mm; } filas += `<li>${filaSesion(s)}</li>`; });
   return `<h1 class="h-vista">Sesiones</h1>
     <p class="nota">${esc(GRUPO.ritmo)} Si faltaste a alguna, aquí está todo para ponerte al día.</p>
-    ${libro ? `<a class="libro" href="${esc(libro.url)}" target="_blank" rel="noopener"><span class="tapa" aria-hidden="true">A</span><span><b>${esc(libro.t)}</b><span>El libro que estamos leyendo. Abrir en Google Drive</span></span></a>` : ""}
+    ${libro ? `<a class="libro" href="${esc(libro.url)}" target="_blank" rel="noopener"><span class="tapa" aria-hidden="true">${esc((libro.t || "L").charAt(0))}</span><span><b>${esc(libro.t)}</b><span>El libro que estamos leyendo. ${/drive\.google\./.test(libro.url) ? "Abrir en Google Drive" : "Abrir el libro"}</span></span></a>` : ""}
     <ul class="linea" style="margin-top:18px">${filas}</ul>`;
 }
 
@@ -530,8 +530,8 @@ function momentoAntes(s) {
   return `<p class="intro-momento fuera-enfoque">Para llegar con el corazón dispuesto. Tómate tu tiempo; no hace falta hacerlo todo de una vez.</p>
     <p class="central fuera-enfoque">${esc(s.idea)}</p>
     <ol class="pasos fuera-enfoque" style="margin-top:22px">
-      ${libro ? `<li><div><h3>Lee el capítulo</h3><p>${esc(libro.d)}</p><a class="btn lleno" href="${esc(libro.url)}" target="_blank" rel="noopener">${ico.pdf}Abrir el libro</a></div></li>` : ""}
-      <li><div><h3>Ten a la mano estos textos</h3><p>Búscalos en tu Biblia. La numeración de Oseas cambia según la edición.</p>
+      ${libro ? `<li><div><h3>${esc(libro.h || "Lee el capítulo")}</h3><p>${esc(libro.d)}</p><a class="btn lleno" href="${esc(libro.url)}" target="_blank" rel="noopener">${ico.pdf}Abrir el libro</a></div></li>` : ""}
+      <li><div><h3>Ten a la mano estos textos</h3><p>Búscalos en tu Biblia.${s.notaBiblia ? " " + esc(s.notaBiblia) : ""}</p>
         <div class="citas">${s.biblia.map(([r, d]) => `<span><b>${esc(r)}</b> ${esc(d)}</span>`).join("")}</div></div></li>
       ${(s.audios || []).length ? `<li><div><h3>Escucha y reza el salmo</h3><p>Una lectura en voz alta para entrar en el tema con calma.</p>${s.audios.map(reproductor).join("")}</div></li>` : ""}
       <li><div><h3>Repasa la guía de lectura</h3><p>El capítulo en ${s.puntos.length} puntos, con una idea para aterrizar cada uno. ${esc(s.lectura || "")}.</p></div></li>

@@ -87,6 +87,89 @@ window.LECCIONES = {
       ["1 Re 19,9-13", "Elías y la brisa suave"], ["Ex 3,1-6", "La zarza ardiente"],
       ["Sal 136", "Eterna es su misericordia"], ["Sal 63", "Mi alma tiene sed de ti"],
       ["CCE 677", "La última Pascua de la Iglesia"]
+    ],
+    notaBiblia: "La numeración de Oseas cambia según la edición."
+  },
+
+  "la-amistad-con-jesus": {
+    tema: "La amistad con Jesús",
+    fuente: "Imitación de Cristo · Libro II, capítulos VII y VIII",
+    categoria: "Vida interior",
+    lectura: "10 min de lectura",
+    idea: "En el desierto descubrimos que necesitamos a Dios. Ahora descubrimos que Jesús no solo nos ayuda: nos llama amigos. Es el único amigo que no se va cuando todo lo demás pasa, y su amistad no se gana: se recibe y se cuida.",
+    puntos: [
+      { t: "El Maestro está aquí y te llama",
+        p: ["Tomás de Kempis abre el capítulo VIII con una escena del Evangelio: María llora por la muerte de su hermano Lázaro, y Marta se le acerca para decirle en voz baja que el Maestro está ahí y la llama. María se levanta de inmediato y va a su encuentro.",
+            "Kempis dice que es una hora feliz aquella en que Jesús nos llama de las lágrimas al gozo. Es el paso que da esta sesión: el desierto no termina con nuestro esfuerzo, sino con alguien que pronuncia nuestro nombre."],
+        refs: "Jn 11,28-29",
+        a: "Después del desierto, Jesús no me pide que me levante solo. Me llama, y basta con ir." },
+      { t: "Ya no siervos, sino amigos",
+        p: ["En la última cena Jesús cambia el nombre de la relación: el siervo no sabe lo que hace su señor; al amigo se le cuenta todo. Y aclara de quién fue la iniciativa: no lo elegimos nosotros a Él, Él nos eligió.",
+            "Es la continuación de lo que vimos en el desierto, cuando Dios dejaba de ser «mi amo». Ahora Jesús nos llama amigos, y la prueba que da es que entrega la vida por nosotros."],
+        refs: "Jn 15,13-16",
+        a: "No tengo que ganarme la amistad de Jesús. Ya me la ofreció; me toca recibirla y cuidarla." },
+      { t: "Lo que cambia y lo que permanece",
+        p: ["El capítulo VII empieza con una comparación sencilla: todo lo creado cambia y se nos escapa de las manos, mientras que Jesús es fiel y permanece. Quien se apoya en lo que se cae, cae con ello; quien se abraza a Jesús queda firme.",
+            "Kempis recuerda a Isaías: toda carne es hierba, y su gloria se marchita como la flor del campo. Las personas, dice, son como una caña que mueve el viento. No lo dice por desprecio, sino porque nadie puede sostenernos del todo, y tarde o temprano todo se separa de nosotros."],
+        refs: "Is 40,6-8",
+        a: "No se trata de querer menos a los demás, sino de no pedirles que sean Dios para mí." },
+      { t: "Un corazón con un solo trono",
+        p: ["Jesús, dice Kempis, no comparte el centro: quiere reinar en el corazón como en su casa. Cuando hacemos espacio, Él viene a vivir dentro.",
+            "Y lo resume en una regla: quien busca a Jesús en todas las cosas lo encuentra; quien se busca a sí mismo, solo encuentra su propio daño. Es lo que Jesús decía: donde está tu tesoro, ahí está tu corazón."],
+        refs: "Mt 6,21",
+        a: "¿Qué ocupa el centro de mi día cuando nadie me ve?" },
+      { t: "Cuando Él está y cuando parece ausente",
+        p: ["Con Jesús presente todo es bueno y nada parece difícil; cuando parece ausente, todo pesa. Pero basta una palabra suya para que el alma se consuele.",
+            "Kempis lo dice con fuerza: encontrar a Jesús es encontrar un tesoro por encima de todo bien. El más pobre del mundo es el que vive sin Él, y el más rico, el que vive en su gracia."],
+        refs: "Mt 13,44",
+        a: "Pocas veces sentimos esa riqueza. Pero el tesoro sigue ahí, aunque esté escondido en el campo." },
+      { t: "El arte de tratar con Él",
+        p: ["Para Kempis, saber conversar con Jesús es un gran arte, y saber conservarlo, una gran sabiduría. No da técnicas: da actitudes. Sé humilde y pacífico, y Jesús estará contigo; vive con devoción y en calma, y se quedará.",
+            "Como toda amistad, esta se construye con tiempo, confianza y conversación. María, sentada a los pies de Jesús, no hacía nada especial: lo escuchaba. Jesús dijo que había elegido la mejor parte."],
+        refs: "Lc 10,38-42",
+        a: "Orar puede ser tan sencillo como platicar con un amigo que ya me conoce." },
+      { t: "Amar a todos en Él",
+        p: ["Darle a Jesús el primer lugar no nos aísla. Kempis pide amar a los amigos y a los enemigos por amor a Jesús, y rezar para que todos lo conozcan. También advierte no querer ser el centro del cariño de nadie: ese lugar es de Dios.",
+            "El capítulo termina con una promesa para los días grises: la gracia viene y parece irse, pero después del invierno llega el verano, después de la noche el día y después de la tormenta la calma. Ahí empezará nuestra próxima sesión."],
+        refs: "Jn 15,12.17 · Mt 5,44",
+        a: "La amistad con Jesús no me encierra: me enseña a querer mejor a los demás." }
+    ],
+    dinamica: {
+      duracion: 70,
+      agenda: [
+        { min: 5,  t: "Apertura en silencio", d: "Dos minutos de silencio total. Luego se lee en voz alta Juan 11,28-29 y se plantea la pregunta de la sesión: ¿cómo se vive una amistad con alguien a quien no veo?" },
+        { min: 20, t: "Exposición por puntos", d: "Recorrer los 7 puntos de la guía. Idea central primero; un ejemplo concreto por punto, de preferencia de la amistad humana." },
+        { min: 30, t: "Grupos pequeños", d: "Grupos de 3 o 4 personas. Tres rondas de 10 minutos, una pregunta a la vez." },
+        { min: 10, t: "Puesta en común", d: "Cada grupo comparte una sola frase o descubrimiento. Nada de lo personal sale del grupo sin permiso." },
+        { min: 5,  t: "Cierre con oración", d: "Leer despacio Juan 15,9-17, «los llamo amigos». Un minuto de silencio para decirle a Jesús algo como se le dice a un amigo, y terminar con un Padre Nuestro." }
+      ],
+      rondas: [
+        { t: "Me llama", sub: "Puntos 1 y 2", min: 10, q: [
+          "Recuerda un momento en que sentiste a Jesús cerca. ¿Qué estaba pasando? ¿Cómo fue?",
+          "¿Me resulta natural pensar en Jesús como amigo, o lo siento más lejano: un juez, un maestro, alguien a quien acudo solo en apuros?" ] },
+        { t: "Dónde me apoyo", sub: "Puntos 3 a 5", min: 10, q: [
+          "Cuando las cosas se mueven, ¿en qué o en quién me apoyo primero?",
+          "¿Le estoy pidiendo a alguien, o a algo, lo que solo Dios me puede dar?" ] },
+        { t: "La amistad en lo cotidiano", sub: "Puntos 6 y 7", min: 10, q: [
+          "Piensa en tu mejor amistad: ¿qué la hace real? ¿Qué de eso vivo con Jesús y qué no?",
+          "Cuando Jesús ocupa el centro, ¿cómo cambia mi manera de querer a los demás?" ] }
+      ],
+      reglas: ["Cada quien habla sin ser interrumpido.", "Se vale decir «paso».", "Escuchar sin aconsejar ni corregir.", "Lo que se comparte en el grupo se queda en el grupo."]
+    },
+    semana: {
+      pregunta: "Si Jesús me llama amigo, ¿qué lugar real le estoy dando en mis días?",
+      practica: "Una vez al día, cuéntale a Jesús algo de tu día, bueno o malo, antes de contárselo a nadie más. Sin fórmulas: como se le habla a un amigo.",
+      cierre: "Cada noche pregúntate: ¿dónde estuviste hoy conmigo? Trae una frase de lo que descubriste a la próxima sesión."
+    },
+    audios: [],
+    materiales: [
+      { tipo: "Libro", h: "Lee los capítulos", t: "Imitación de Cristo", d: "Texto completo en textos.info, gratis. Lee en el Libro II los capítulos VII, «Del amor de Jesús sobre todas las cosas», y VIII, «De la familiar amistad con Jesús». Son cortos.", url: "https://www.textos.info/tomas-de-kempis/imitacion-de-cristo/ebook" }
+    ],
+    biblia: [
+      ["Jn 11,28-29", "El Maestro está aquí y te llama"], ["Jn 15,9-17", "Los llamo amigos"],
+      ["Is 40,6-8", "Toda carne es hierba"], ["Mt 6,21", "Donde está tu tesoro"],
+      ["Mt 13,44", "El tesoro escondido"], ["Lc 10,38-42", "María a los pies de Jesús"],
+      ["Mt 5,44", "Amen a sus enemigos"]
     ]
   }
 };
