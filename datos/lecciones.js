@@ -156,6 +156,11 @@ window.LECCIONES = {
       ],
       reglas: ["Cada quien habla sin ser interrumpido.", "Se vale decir «paso».", "Escuchar sin aconsejar ni corregir.", "Lo que se comparte en el grupo se queda en el grupo."]
     },
+    preparar: {
+      pregunta: "Si tuviera que describir mi relación con Jesús como una amistad, ¿cómo sería hoy?",
+      practica: "Lee el capítulo VIII y quédate con una frase que te toque.",
+      cierre: "Llévala a la sesión: puede ser tu punto de partida en la conversación."
+    },
     semana: {
       pregunta: "Si Jesús me llama amigo, ¿qué lugar real le estoy dando en mis días?",
       practica: "Una vez al día, cuéntale a Jesús algo de tu día, bueno o malo, antes de contárselo a nadie más. Sin fórmulas: como se le habla a un amigo.",

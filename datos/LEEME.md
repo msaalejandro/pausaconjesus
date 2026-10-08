@@ -32,6 +32,7 @@ Cada lección tiene una clave (por ejemplo `"el-desierto"`) y estos campos:
 - `tema`, `fuente`, `categoria`, `lectura`, `idea`: título, de dónde viene, tipo, tiempo de lectura e idea central.
 - `puntos`: la guía de lectura, punto por punto (`t` título, `p` párrafos, `refs` citas, `a` «para aterrizar»).
 - `dinamica`: duración, orden de la sesión (`agenda`), `rondas` de preguntas y `reglas` (acuerdos).
+- `preparar` (opcional): la pregunta, la práctica y el cierre para preparar el corazón antes de la sesión. Mientras la sesión no ha pasado, aparece en Inicio como «Para preparar el corazón» y como primer paso de «Antes».
 - `semana`: la pregunta, la práctica y el cierre para vivir los días siguientes.
 - `audios`: audios de la sesión (título, lema, archivo y duración). Los archivos van en `/audio/`.
 - `materiales`: el libro o documentos para leer antes (con su enlace). El campo opcional `h` cambia el título del paso «Lee el capítulo», por ejemplo «Lee los capítulos».
