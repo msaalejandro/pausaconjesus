@@ -654,7 +654,7 @@ function momentoDurante(s) {
 
 function momentoDespues(s) {
   return `<p class="intro-momento">La sesión termina, pero lo que se sembró sigue. Llévalo a tu oración de estos días.</p>
-    ${s.semana ? `<section class="seccion" style="margin-top:22px" aria-labelledby="x-v"><h2 class="h2" id="x-v">Para vivir estos días</h2>${bloqueVivir(s)}${(s.audios || []).length ? `<p class="nota" style="margin:18px 0 0">Puedes acompañar tus minutos de silencio con el salmo.</p>${s.audios.map(reproductor).join("")}` : ""}</section>` : ""}
+    ${s.semana ? `<section class="seccion" style="margin-top:22px" aria-labelledby="x-v"><h2 class="h2" id="x-v">Para vivir estos días</h2>${bloqueVivir(s)}${(s.audios || []).length ? `<p class="nota" style="margin:18px 0 0">Puedes acompañar tu oración de estos días con el salmo.</p>${s.audios.map(reproductor).join("")}` : ""}</section>` : ""}
     <section class="seccion" aria-labelledby="x-f">
       <h2 class="h2" id="x-f">Comparte con el grupo</h2>
       <p class="nota">Una reflexión sobre la sesión, o una intención para que el grupo rece contigo. Se publica en cuanto la envías.</p>

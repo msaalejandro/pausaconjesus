@@ -167,7 +167,7 @@ window.LECCIONES = {
         { min: 20, t: "Exposición por puntos", d: "Recorrer los 7 puntos de la guía. Idea central primero; por cada punto, un ejemplo de la amistad humana y uno de los textos de «Para profundizar»." },
         { min: 30, t: "Grupos pequeños", d: "Grupos de 3 o 4 personas. Tres rondas de 10 minutos, una pregunta a la vez." },
         { min: 10, t: "Puesta en común", d: "Cada grupo comparte una sola frase o descubrimiento. Nada de lo personal sale del grupo sin permiso." },
-        { min: 5,  t: "Cierre con oración", d: "Leer despacio Juan 15,9-17, «los llamo amigos». Un minuto de silencio para decirle a Jesús algo como se le dice a un amigo, y terminar con un Padre Nuestro." }
+        { min: 5,  t: "Cierre con oración", d: "Leer despacio Juan 15,9-17, «los llamo amigos». Un minuto de silencio para decirle a Jesús algo como se le dice a un amigo. Rezar juntos el Salmo 16 (15), «tú eres mi bien», y terminar con un Padre Nuestro." }
       ],
       rondas: [
         { t: "Me llama", sub: "Puntos 1 y 2", min: 10, q: [
@@ -192,14 +192,16 @@ window.LECCIONES = {
       practica: "Una vez al día, cuéntale a Jesús algo de tu día, bueno o malo, antes de contárselo a nadie más. Sin fórmulas: como se le habla a un amigo.",
       cierre: "Cada noche pregúntate: ¿dónde estuviste hoy conmigo? Trae una frase de lo que descubriste a la próxima sesión."
     },
-    audios: [],
+    audios: [
+      { t: "Salmo 16 (15)", d: "«Tú eres mi bien»", src: "/audio/salmo-16.mp3", dur: "1:10" }
+    ],
     materiales: [
       { tipo: "Libro", h: "Lee los capítulos", t: "Imitación de Cristo", d: "Texto completo en textos.info, gratis. Lee en el Libro II los capítulos VII, «Del amor de Jesús sobre todas las cosas», y VIII, «De la familiar amistad con Jesús». Son cortos.", url: "https://www.textos.info/tomas-de-kempis/imitacion-de-cristo/ebook" }
     ],
     biblia: [
       ["Jn 11,28-29", "El Maestro está aquí y te llama"], ["Jn 15,9-17", "Los llamo amigos"],
       ["Ex 33,11", "Cara a cara, como un amigo"], ["Is 41,8", "Abraham, mi amigo"],
-      ["Sal 73,25-26", "Dios es mi porción"],
+      ["Sal 73,25-26", "Dios es mi porción"], ["Sal 16", "Tú eres mi bien"],
       ["Is 40,6-8", "Toda carne es hierba"], ["Mt 6,21", "Donde está tu tesoro"],
       ["Mt 13,44", "El tesoro escondido"], ["Lc 10,38-42", "María a los pies de Jesús"],
       ["Mt 5,44", "Amen a sus enemigos"]
