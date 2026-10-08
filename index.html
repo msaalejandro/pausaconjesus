@@ -287,6 +287,13 @@ h1,h2,h3{text-wrap:balance}
 .lector h3 span{font-family:var(--f-ui);font-size:.55em;font-weight:700;opacity:.6;min-width:1.4em}
 .lector p{margin-top:.75em;max-width:62ch}
 .lector .ref{font-family:var(--f-ui);font-size:.78em;font-weight:700;opacity:.7}
+.lector .ecos{margin-top:1.1em;display:grid;gap:14px}
+.lector .ecos-t{font-family:var(--f-ui);font-size:.7em;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.6}
+.lector .eco{border-left:3px solid var(--cera);padding:2px 0 2px 14px;font-size:.92em}
+.lector .eco small{display:block;font-family:var(--f-ui);font-size:.68em;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--cera)}
+.lector .eco b{display:block;font-family:var(--f-ui);font-size:.86em;margin-top:2px}
+.lector .eco p{margin-top:.25em}
+.agenda .ecos-mini{font-size:14px;color:var(--piedra);margin-top:6px}
 .lector .aterriza{margin-top:1em;font-size:.94em;padding:12px 14px;border-radius:12px;background:color-mix(in srgb,currentColor 7%,transparent)}
 .lector .aterriza b{display:block;font-family:var(--f-ui);font-size:.8em;opacity:.75;margin-bottom:2px}
 .audio{margin:12px 0 0;padding:14px 16px;background:var(--papel);border:1px solid var(--raya);border-radius:16px}
@@ -606,6 +613,7 @@ function momentoAntes(s) {
         <h3><span>${i + 1}</span>${esc(p.t)}</h3>
         ${p.p.map(x => `<p>${esc(x)}</p>`).join("")}
         <p class="ref">${esc(p.refs)}</p>
+        ${(p.ecos || []).length ? `<div class="ecos"><span class="ecos-t">Para profundizar</span>${p.ecos.map(e => `<div class="eco"><small>${esc(e.tipo)}</small><b>${esc(e.t)}</b><p>${esc(e.d)}</p></div>`).join("")}</div>` : ""}
         <div class="aterriza"><b>Para aterrizar</b>${esc(p.a)}</div>
       </section>`).join("")}
     </article>
@@ -717,7 +725,7 @@ function vCoordinador(s) {
       <ol class="agenda">${d.agenda.map(a => `<li><div class="min">${a.min}<small>min</small></div><div><h3>${esc(a.t)}</h3><p>${esc(a.d)}</p></div></li>`).join("")}</ol></section>
     <section class="seccion"><h2 class="h2">Exposición</h2><p class="nota">Unos ${porPunto} minutos por punto. Empieza por la idea central.</p>
       <p class="central" style="margin-top:6px">${esc(s.idea)}</p>
-      <ol class="agenda" style="margin-top:18px">${s.puntos.map((p, i) => `<li><div class="min">${i + 1}<small>${esc(p.refs.split(" · ")[0])}</small></div><div><h3>${esc(p.t)}</h3><p>${esc(p.a)}</p></div></li>`).join("")}</ol></section>
+      <ol class="agenda" style="margin-top:18px">${s.puntos.map((p, i) => `<li><div class="min">${i + 1}<small>${esc(p.refs.split(" · ")[0])}</small></div><div><h3>${esc(p.t)}</h3><p>${esc(p.a)}</p>${(p.ecos || []).length ? `<p class="ecos-mini">Para profundizar: ${p.ecos.map(e => esc(e.t)).join(" · ")}</p>` : ""}</div></li>`).join("")}</ol></section>
     <section class="seccion"><h2 class="h2">Rondas</h2><p class="nota">Lee los acuerdos antes de empezar y usa el temporizador de cada ronda.</p>
       ${d.rondas.map((r, i) => `<div class="ronda"><div class="ronda-cab"><div><h3>${esc(r.t)}</h3><p class="sub">Ronda ${i + 1}, puntos ${esc(r.sub.replace(/^Puntos?\s*/i, ""))}</p></div>
         <button class="btn" data-timer="${r.min}" data-label="Ronda ${i + 1}: ${esc(r.t)}" style="min-height:44px;padding:0 14px">Iniciar ${r.min} min</button></div>
