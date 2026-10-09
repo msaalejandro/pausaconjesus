@@ -79,7 +79,7 @@ window.LECCIONES = {
       { t: "Salmo 63 (62)", d: "«Mi alma tiene sed de ti»", src: "/audio/salmo-63.mp3", dur: "1:21" }
     ],
     videos: [
-      { t: "El desierto", tipo: "Cortometraje · Pausa con Jesús", d: "Una pausa de unos minutos para volver a la reflexión del desierto: dejar los apoyos de siempre y escuchar a Dios hablar al corazón.", yt: "wuQYBxMROLw" }
+      { t: "El desierto", tipo: "Cortometraje · Pausa con Jesús", d: "Una pausa de unos minutos para volver a la reflexión del desierto: dejar los apoyos de siempre y escuchar a Dios hablar al corazón.", yt: "wuQYBxMROLw", destacarHasta: "2026-10-23" }
     ],
     materiales: [
       { tipo: "PDF", t: "Apuntes sobre la oración", d: "Libro completo en Google Drive. Lee el Capítulo VI, «El desierto».", url: "https://drive.google.com/file/d/1NQtbZ2IEXHPJmRNAeYyOb8HkknZFlrjJ/view?usp=drivesdk" }
