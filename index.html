@@ -120,6 +120,22 @@ h1,h2,h3{text-wrap:balance}
 .portada .mas{display:flex;justify-content:center;margin-top:8px}
 .portada .enlace{color:var(--sobre-manto)}
 
+/* Video (cortometrajes): portada liviana, el reproductor carga al tocar */
+.video{margin:0;border-radius:20px;overflow:hidden;background:var(--manto);color:var(--sobre-manto)}
+.video .marco-v{position:relative;aspect-ratio:16/9;background:var(--manto)}
+.video .marco-v iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video .play{position:absolute;inset:0;width:100%;padding:0;border:0;background:none;cursor:pointer;display:block}
+.video .play img{width:100%;height:100%;object-fit:cover;display:block}
+.video .play::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(15,21,34,.55),rgba(15,21,34,0) 55%)}
+.video .play span{position:absolute;z-index:1;left:50%;top:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:var(--sobre-manto);box-shadow:0 6px 22px rgba(0,0,0,.35);display:grid;place-items:center;transition:transform .15s}
+.video .play:hover span,.video .play:focus-visible span{transform:translate(-50%,-50%) scale(1.06)}
+.video .play span::before{content:"";margin-left:5px;border-style:solid;border-width:11px 0 11px 18px;border-color:transparent transparent transparent #1F3358}
+.video figcaption{padding:14px 18px 16px}
+.video figcaption small{display:block;font-size:13px;opacity:.75}
+.video figcaption b{display:block;font-family:var(--f-titulo);font-weight:600;font-size:24px;line-height:1.1;margin-top:2px}
+.video figcaption p{font-size:15px;opacity:.85;margin-top:6px;max-width:56ch}
+.video figcaption a{color:var(--cera-viva);font-weight:700;font-size:15px;display:inline-block;margin-top:8px}
+
 /* El camino: antes · durante · después */
 .camino{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);position:relative}
 .camino::before{content:"";position:absolute;left:16.66%;right:16.66%;top:9px;height:2px;background:currentColor;opacity:.25}
@@ -416,6 +432,11 @@ function copiar(texto, holder) {
 const wa = t => "https://wa.me/?text=" + encodeURIComponent(t);
 const URL_SITIO = GRUPO.url;
 const textoVivir = s => `Para vivir estos días (${s.tema}):\n\n${s.semana.pregunta}\n\n${s.semana.practica}\n${s.semana.cierre}`;
+function bloqueVideo(v, s, conEnlace) {
+  const id = encodeURIComponent(v.yt);
+  return `<figure class="video"><div class="marco-v"><button class="play" data-yt="${id}" aria-label="Reproducir: ${esc(v.t)}"><img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()"><span aria-hidden="true"></span></button></div>
+    <figcaption><small>${esc(v.tipo || "Cortometraje")}${v.dur ? " · " + esc(v.dur) : ""}</small><b>${esc(v.t)}</b>${v.d ? `<p>${esc(v.d)}</p>` : ""}${conEnlace && s ? `<a href="#${s.id}/antes">Ir a la sesión «${esc(s.tema)}»</a>` : ""}</figcaption></figure>`;
+}
 const textoPreparar = s => `Para preparar el corazón (${s.tema}, ${fecha(s.fecha)}):\n\n${s.preparar.pregunta}\n\n${s.preparar.practica}\n${s.preparar.cierre || ""}`.trim();
 const textoInvitar = s => `${GRUPO.nombre} · ${fecha(s.fecha)}\n«${s.tema}»\n\nPrepárate para la sesión aquí: ${URL_SITIO}#${s.id}/antes`;
 const ico = {
@@ -476,6 +497,8 @@ function vInicio() {
   const prep = m !== "despues" && s.preparar;
   const sig = SESIONES.filter(x => x.fecha > s.fecha).sort((a, b) => a.fecha.localeCompare(b.fecha))[0];
   const dAnt = ant && parseDate(ant.fecha);
+  const conVideo = conTema().filter(x => x.fecha <= s.fecha && (x.videos || []).length).sort((a, b) => b.fecha.localeCompare(a.fecha))[0];
+  const pv = conVideo && { s: conVideo, v: conVideo.videos[0] };
   return `
   ${ant ? `<a class="previa" href="#${ant.id}/despues"><div><small>Sesión anterior · ${dAnt.getDate()} ${MES[dAnt.getMonth()]}</small><b>${esc(ant.tema)}</b></div><span class="ir">Repasar</span></a>` : ""}
   <section class="portada" aria-labelledby="p-t">
@@ -496,6 +519,11 @@ function vInicio() {
     <h2 id="v-t">Para vivir estos días</h2>
     <p class="nota">Lo que nos dejó la sesión «${esc(prev.tema)}».</p>
     ${bloqueVivir(prev)}
+  </section>` : ""}
+  ${pv ? `<section class="seccion" aria-labelledby="pv-t">
+    <h2 id="pv-t">Una pausa en video</h2>
+    <p class="nota">Unos minutos para detenerte y volver a lo que hemos vivido.</p>
+    ${bloqueVideo(pv.v, pv.s, true)}
   </section>` : ""}
   ${prev ? `<section class="seccion" aria-labelledby="g-t">
     <h2 id="g-t">Lo que compartió el grupo</h2>
@@ -595,6 +623,7 @@ function momentoAntes(s) {
       ${libro ? `<li><div><h3>${esc(libro.h || "Lee el capítulo")}</h3><p>${esc(libro.d)}</p><a class="btn lleno" href="${esc(libro.url)}" target="_blank" rel="noopener">${ico.pdf}Abrir el libro</a></div></li>` : ""}
       <li><div><h3>Ten a la mano estos textos</h3><p>Búscalos en tu Biblia.${s.notaBiblia ? " " + esc(s.notaBiblia) : ""}</p>
         <div class="citas">${s.biblia.map(([r, d]) => `<span><b>${esc(r)}</b> ${esc(d)}</span>`).join("")}</div></div></li>
+      ${(s.videos || []).length ? `<li><div><h3>Mira el cortometraje</h3><p>Una pausa en imágenes para entrar en el tema.</p><div style="margin-top:12px">${s.videos.map(v => bloqueVideo(v, s)).join("")}</div></div></li>` : ""}
       ${(s.audios || []).length ? `<li><div><h3>Escucha y reza el salmo</h3><p>Una lectura en voz alta para entrar en el tema con calma.</p>${s.audios.map(reproductor).join("")}</div></li>` : ""}
       <li><div><h3>Repasa la guía de lectura</h3><p>El capítulo en ${s.puntos.length} puntos, con una idea para aterrizar cada uno. ${esc(s.lectura || "")}.</p></div></li>
     </ol>
@@ -654,6 +683,7 @@ function momentoDurante(s) {
 
 function momentoDespues(s) {
   return `<p class="intro-momento">La sesión termina, pero lo que se sembró sigue. Llévalo a tu oración de estos días.</p>
+    ${(s.videos || []).length ? `<section class="seccion" style="margin-top:22px" aria-labelledby="x-pv"><h2 class="h2" id="x-pv">Una pausa en video</h2><p class="nota">Para volver al tema cuando lo necesites, o compartirlo con alguien.</p>${s.videos.map(v => bloqueVideo(v, s)).join("")}</section>` : ""}
     ${s.semana ? `<section class="seccion" style="margin-top:22px" aria-labelledby="x-v"><h2 class="h2" id="x-v">Para vivir estos días</h2>${bloqueVivir(s)}${(s.audios || []).length ? `<p class="nota" style="margin:18px 0 0">Puedes acompañar tu oración de estos días con el salmo.</p>${s.audios.map(reproductor).join("")}` : ""}</section>` : ""}
     <section class="seccion" aria-labelledby="x-f">
       <h2 class="h2" id="x-f">Comparte con el grupo</h2>
@@ -871,6 +901,11 @@ document.addEventListener("click", async e => {
     render();
     const tope = posEn($('[role="tabpanel"]')) - $(".momentos").offsetHeight - 6;
     if (SC().scrollTop > tope) SC().scrollTo(0, tope);
+    return;
+  }
+  if (t.dataset.yt) {
+    const m = t.closest(".marco-v"), titulo = t.getAttribute("aria-label").replace(/^Reproducir: /, "");
+    m.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${t.dataset.yt}?autoplay=1&rel=0&playsinline=1" title="${esc(titulo)}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
     return;
   }
   if (t.dataset.copiar) { const s = SESIONES.find(x => x.id === t.dataset.copiar); copiar(t.dataset.prep ? textoPreparar(s) : textoVivir(s), t.closest(".vivir")); return; }

@@ -36,6 +36,7 @@ Cada lección tiene una clave (por ejemplo `"el-desierto"`) y estos campos:
 - `preparar` (opcional): la pregunta, la práctica y el cierre para preparar el corazón antes de la sesión. Mientras la sesión no ha pasado, aparece en Inicio como «Para preparar el corazón» y como primer paso de «Antes».
 - `semana`: la pregunta, la práctica y el cierre para vivir los días siguientes.
 - `audios`: audios de la sesión (título, lema, archivo y duración). Los archivos van en `/audio/`.
+- `videos` (opcional): cortometrajes de YouTube (`t` título, `tipo`, `d` descripción, `yt` el código del video, opcional `dur`). Aparecen en «Antes» y «Después» de su sesión, y el más reciente se muestra en Inicio como «Una pausa en video».
 - `materiales`: el libro o documentos para leer antes (con su enlace). El campo opcional `h` cambia el título del paso «Lee el capítulo», por ejemplo «Lee los capítulos».
 - `biblia`: textos bíblicos con una frase que los resume.
 - `notaBiblia` (opcional): una aclaración junto a los textos bíblicos, por ejemplo que la numeración cambia según la edición.
