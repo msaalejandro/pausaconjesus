@@ -497,7 +497,7 @@ function vInicio() {
   const prep = m !== "despues" && s.preparar;
   const sig = SESIONES.filter(x => x.fecha > s.fecha).sort((a, b) => a.fecha.localeCompare(b.fecha))[0];
   const dAnt = ant && parseDate(ant.fecha);
-  const conVideo = conTema().filter(x => x.fecha <= s.fecha && (x.videos || []).length).sort((a, b) => b.fecha.localeCompare(a.fecha))[0];
+  const conVideo = conVideos().filter(x => x.fecha <= s.fecha)[0];
   const pv = conVideo && { s: conVideo, v: conVideo.videos[0] };
   return `
   ${ant ? `<a class="previa" href="#${ant.id}/despues"><div><small>Sesión anterior · ${dAnt.getDate()} ${MES[dAnt.getMonth()]}</small><b>${esc(ant.tema)}</b></div><span class="ir">Repasar</span></a>` : ""}
@@ -511,6 +511,12 @@ function vInicio() {
     <div class="mas"><a class="enlace" href="${wa(textoInvitar(s))}" target="_blank" rel="noopener">Invitar por WhatsApp</a></div>
   </section>
 
+  ${pv ? `<section class="seccion" aria-labelledby="pv-t">
+    <h2 id="pv-t">Una pausa en video</h2>
+    <p class="nota">Unos minutos para detenerte y volver a lo que hemos vivido.</p>
+    ${bloqueVideo(pv.v, pv.s, true)}
+  </section>` : ""}
+
   ${prep ? `<section class="seccion" aria-labelledby="v-t">
     <h2 id="v-t">Para preparar el corazón</h2>
     <p class="nota">Para llegar a «${esc(s.tema)}» con algo vivo dentro.</p>
@@ -519,11 +525,6 @@ function vInicio() {
     <h2 id="v-t">Para vivir estos días</h2>
     <p class="nota">Lo que nos dejó la sesión «${esc(prev.tema)}».</p>
     ${bloqueVivir(prev)}
-  </section>` : ""}
-  ${pv ? `<section class="seccion" aria-labelledby="pv-t">
-    <h2 id="pv-t">Una pausa en video</h2>
-    <p class="nota">Unos minutos para detenerte y volver a lo que hemos vivido.</p>
-    ${bloqueVideo(pv.v, pv.s, true)}
   </section>` : ""}
   ${prev ? `<section class="seccion" aria-labelledby="g-t">
     <h2 id="g-t">Lo que compartió el grupo</h2>
@@ -773,8 +774,12 @@ function vTemas() {
       <p class="aviso" role="status" aria-live="polite" style="flex-basis:100%;margin-top:2px"></p>
     </form>
     <section class="seccion" style="margin-top:30px" aria-labelledby="tt"><h2 id="tt">Temas del grupo</h2>
-      <div id="temas" style="margin-top:12px"><p class="cargando">Cargando temas…</p></div></section>`;
+      <div id="temas" style="margin-top:12px"><p class="cargando">Cargando temas…</p></div></section>
+    ${conVideos().length ? `<section class="seccion" aria-labelledby="tv"><h2 id="tv">Pausas en video</h2>
+      <p class="nota">Los cortometrajes de los temas que hemos vivido.</p>
+      <div style="display:grid;gap:18px">${conVideos().map(x => x.videos.map(v => bloqueVideo(v, x, true)).join("")).join("")}</div></section>` : ""}`;
 }
+const conVideos = () => conTema().filter(x => (x.videos || []).length).sort((a, b) => b.fecha.localeCompare(a.fecha));
 function filaTema(t, marcados) {
   if (t.estado === "sugerido") {
     const on = marcados.includes(t.id), n = Number(t.votos) || 0;
