@@ -60,13 +60,18 @@ body{height:100%;height:100dvh;display:flex;flex-direction:column;overflow:hidde
 .desliza{flex:1 1 auto;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain}
 .marco{flex:1 1 auto;min-height:0;width:100%;border:0;display:block;background:var(--lino)}
 body.en-marco .nav{display:none}
-.espacios{margin-left:auto;display:grid;grid-template-columns:auto auto;gap:2px;background:var(--papel);border:1px solid var(--raya);border-radius:999px;padding:3px;flex:0 0 auto}
-.espacios a{min-height:38px;padding:0 13px;display:flex;align-items:center;justify-content:center;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;color:var(--piedra)}
+.espacios{margin-left:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;background:var(--papel);border:1px solid var(--raya);border-radius:999px;padding:3px;min-width:0}
+.espacios a{min-height:40px;padding:0 14px;display:flex;align-items:center;justify-content:center;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;color:var(--piedra);white-space:nowrap}
 .espacios a[aria-current="page"]{background:var(--fuerte);color:var(--sobre-fuerte)}
 .top-in:has(.espacios) .marca small{display:none}
 .top-in:has(.espacios) .marca{white-space:nowrap;font-size:22px}
-@media (max-width:370px){.top-in:has(.espacios) .marca{font-size:19px}.espacios a{padding:0 10px;font-size:14px}}
-@media (max-width:340px){.top-in{padding:0 12px;gap:6px}.top-in:has(.espacios) .marca{font-size:17px}.espacios a{padding:0 8px;font-size:13px;min-height:36px}}
+@media (max-width:540px){
+  .top-in:has(.espacios){height:auto;min-height:var(--top-h);display:grid;grid-template-columns:1fr;gap:9px;padding:11px 18px 12px}
+  .top-in:has(.espacios) .marca{font-size:23px}
+  .espacios{margin-left:0;width:100%}
+  .espacios a{padding:0 4px;min-height:42px;font-size:14px}
+}
+@media (max-width:340px){.top-in:has(.espacios){padding-left:12px;padding-right:12px}.espacios a{font-size:13px}}
 body{margin:0;background:var(--lino);color:var(--tinta);font-family:var(--f-ui);font-size:17px;line-height:1.55}
 [hidden]{display:none!important}
 a{color:inherit}
@@ -479,7 +484,7 @@ function encabezado(volver, titulo) {
   $("#top-in").innerHTML = volver
     ? `<a class="volver" href="${volver}">${ico.atras}${volver === "#inicio" ? "Inicio" : "Volver"}</a><span class="titulo-mini">${esc(titulo || "")}</span>`
     : `<a class="marca" href="${ultimaGuia}">${esc(GRUPO.nombre)}<small>${esc(GRUPO.subtitulo)}</small></a>
-       <nav class="espacios" aria-label="Espacios"><a href="${ultimaGuia}"${enCronologia() ? "" : ' aria-current="page"'}>Guía</a><a href="#cronologia"${enCronologia() ? ' aria-current="page"' : ""}>Cronología</a></nav>`;
+       <nav class="espacios" aria-label="Espacios"><a href="${ultimaGuia}"${enCronologia() ? "" : ' aria-current="page"'}>Guía</a><a href="#cronologia"${enCronologia() ? ' aria-current="page"' : ""}>Cronología</a><a href="/iglesias/">Iglesias</a></nav>`;
 }
 
 /* ===== Inicio ===== */
