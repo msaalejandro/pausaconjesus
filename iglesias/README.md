@@ -1,69 +1,78 @@
 # Peregrinos por Querétaro
 
-Sección pública de [Pausa con Jesús](https://pausaconjesus.com/iglesias/) para el grupo que visita iglesias católicas de los **municipios de Querétaro y Corregidora**.
+Sección pública de [Pausa con Jesús](https://pausaconjesus.com/iglesias/) para descubrir iglesias de los **municipios de Querétaro y Corregidora**, con visitas dominicales y Misa al terminar cada jornada.
+
+## Modelo de actividad
+
+- Un recorrido **cada domingo** a partir del 18 de octubre de 2026. Primera propuesta: 29 domingos consecutivos, hasta el 2 de mayo de 2027, abarcando los 85 recintos del inventario inicial.
+- Normalmente se visitan dos iglesias para conocerlas y se termina en una **tercera iglesia para asistir juntos a la Santa Misa**.
+- Dos jornadas tienen solo dos iglesias para completar el total sin repetir templos.
+- La **primera y segunda visita** tienen horarios de referencia tentativos (09:00 y 10:00 h, o 09:30 h si son dos paradas). **La última parada no tiene hora asignada**: se debe consultar la Misa dominical antes de confirmar o ajustar los horarios de las visitas.
+- La última parada fue elegida entre recintos registrados como catedral, parroquia, santuario o basílica. No hay una confirmación expresa con ninguno de los templos. En domingos de celebraciones especiales, puede ser necesario ajustar rutas o actividades.
+- La priorización atiende importancia religiosa y patrimonial más logística; **no expresa jerarquía canónica oficial**.
 
 ## Archivos
 
-- `index.html`: página pública (agenda, inventario, bitácora, búsqueda y filtros).
-- `iglesias.json`: registro único de iglesias. Incluye nombre, tipo, municipio, zona, dirección, prioridad y fuente.
-- `visitas.json`: **única fuente de verdad** para las reuniones programadas y realizadas. Contiene 12 jornadas quincenales **propuestas**, con 36 paradas, sin afirmarlas como confirmadas.
+- `index.html`: interfaz pública, jornadas desplegables, inventario filtrable, bitácora y contadores.
+- `iglesias.json`: 85 recintos únicos iniciales. El inventario aún **no está auditado ni cerrado**.
+- `visitas.json`: agenda por domingo y por iglesia, estado y constancia de asistencia a Misa.
 
-No se usa base de datos ni se exponen credenciales. El contenido es estático y compatible con GitHub Pages.
+Todo funciona en GitHub Pages mediante JSON, sin servidor adicional ni credenciales.
 
-## Programar una visita
+## Confirmar una jornada
 
-1. En GitHub, abrir `iglesias/iglesias.json`, buscar la iglesia y copiar su `id`.
-2. Editar `iglesias/visitas.json` en una rama o directamente en GitHub, conservando el JSON válido.
-3. Editar una jornada propuesta o agregar un objeto nuevo a `visitas` con los campos documentados abajo. Guardar el commit.
+1. En GitHub, abrir `iglesias/visitas.json` y encontrar los registros que comparten `jornada`.
+2. Consultar con la parroquia o santuario final la **hora exacta de la Misa dominical**. Comprobar también apertura de las iglesias anteriores, tiempo de traslado y celebraciones especiales.
+3. Ajustar el `hora` de las primeras paradas, colocar la hora de la Misa en `hora` y `horaMisa` del último registro, confirmar el `puntoReunion` y cambiar `estado` de `propuesta` a `programada` en **todas las paradas** de esa jornada.
+4. Publicar la edición mediante commit. La web se actualizará con el siguiente despliegue.
 
-Ejemplo de **estructura, no una reunión real** (no dejar este ejemplo publicado):
+**Importante:** no pasar el estado de una jornada a `programada` antes de verificar los horarios. Mientras sea `propuesta`, la página mostrará claramente que la fecha y la Misa son tentativas.
 
-```json
-{
-  "id": "visita-001",
-  "iglesiaId": "ig-001",
-  "fecha": "2027-01-16",
-  "hora": "10:00",
-  "duracionMin": 90,
-  "puntoReunion": "Atrio del templo",
-  "estado": "programada",
-  "nota": "Llevar agua y llegar diez minutos antes."
-}
-```
+Los campos principales de cada visita:
 
-- `fecha`: formato YYYY-MM-DD; `hora`: HH:mm de 24 horas, zona **America/Mexico_City**. La propuesta vigente comienza el **24 de octubre de 2026** y termina el **3 de abril de 2027**. Los sábados sugeridos son quincenales, salvo un descanso en Año Nuevo.
-- `duracionMin`: duración aproximada para el enlace de Google Calendar (si falta, 90 minutos).
-- `estado`: `propuesta` (tentativa), `programada` (confirmada), `realizada` o `cancelada`.
-- `puntoReunion`: lugar exacto de reunión; es preferible a una dirección genérica.
-- `nota`: instrucciones para los participantes.
-- `reflexion`: texto opcional, visible en la bitácora cuando la visita se marca `realizada`.
-- `fotos`: arreglo opcional de enlaces públicos HTTPS. No publicar fotos identificables de participantes sin autorización.
+- `jornada`: identificador común de las paradas de un domingo.
+- `numeroJornada`: índice consecutivo en el calendario.
+- `ordenEnJornada`: determina el orden lógico de paradas, independientemente de que la hora de Misa no esté confirmada.
+- `iglesiaId`: identificador estable del recinto en `iglesias.json`.
+- `fecha`: fecha local YYYY-MM-DD (zona `America/Mexico_City`).
+- `rol`: `visita` o `misa`. **Solo la última parada** tiene `rol: "misa"`.
+- `hora`: HH:mm de 24 horas, o `null` mientras no se confirme la hora.
+- `horaMisa`: HH:mm para la Misa cuando esté confirmada; `null` en cualquier otro caso.
+- `estado`: `propuesta`, `programada`, `realizada` o `cancelada`.
+- `misaCelebrada`: `true` **solo** si el grupo asistió realmente a Misa en ese templo.
+- `reflexion` y `fotos`: opcionales para la bitácora. Las fotografías de participantes deben publicarse únicamente con autorización.
 
-Una vez confirmada fecha, apertura y coordinación, cambiar `"estado": "propuesta"` a `"programada"`. Solo entonces se muestra como confirmada. Al terminar una visita, cambiar el mismo objeto a `"estado": "realizada"`; agregar `reflexion` si corresponde. El progreso y la bitácora se actualizarán automáticamente tras publicarse el cambio.
+## Registrar una actividad realizada y actualizar los contadores
 
-Una iglesia puede tener **varias visitas**. Las jornadas propuestas incluyen `jornada`, `numeroJornada`, `tituloJornada`, `zonaJornada` y `modalidad` para agrupar sus tres paradas en el calendario. El `ordenRecorrido` del inventario permite priorizar las 85 iglesias pendientes o programadas. Se cuenta como visitada una sola vez cuando al menos una visita figura como realizada. Las cancelaciones no cuentan como realizadas. Una visita pasada que sigue marcada como programada **no se marca automáticamente como realizada**.
+1. Una vez celebrada la jornada, cambiar a `"estado": "realizada"` únicamente los templos donde el grupo efectivamente estuvo.
+2. Para la iglesia final, marcar además `"misaCelebrada": true` **únicamente si el grupo asistió a la Misa**. Si solo se visitó ese templo o la celebración se canceló, dejar `false`.
+3. Agregar una reflexión o enlaces a fotografías si se desea.
 
-## Agregar o corregir una iglesia
+Los contadores de la portada son:
 
-En `iglesias.json`, incluir un nuevo objeto con un `id` **único y estable**, `nombre`, `tipo` (`parroquia`, `templo`, `santuario`, `basílica` o `catedral`), `municipio` (`Querétaro` o `Corregidora`), `zona`, `direccion` (puede estar vacía), `imperdible` (booleano) y `fuente` (URL).
+- **Iglesias del recorrido**: todas las iglesias únicas presentes en el inventario.
+- **Iglesias visitadas**: iglesias únicas con al menos un registro `realizada`, incluyendo la iglesia donde hubo Misa.
+- **Con Misa compartida**: iglesias únicas con `rol: "misa"`, `estado: "realizada"` y `misaCelebrada: true`.
+- **Por conocer**: total del inventario menos iglesias visitadas.
 
-Evitar duplicar el mismo edificio cuando sea simultáneamente parroquia, santuario o templo. Mantener el `id` al corregir su nombre, porque las visitas usan esa referencia.
+La Misa cuenta también como visita, sin duplicar el templo en el inventario ni el contador de visitadas. Repetir la Misa en una misma iglesia no infla el número de **iglesias** con Misa. Las visitas tentativas o ya vencidas nunca se convierten automáticamente en realizadas.
 
-## Reglas editoriales
+## Inventario y precisión editorial
 
-- El inventario de lanzamiento es **inicial, no exhaustivo**. Incluye iglesias tomadas de listados de la Cancillería, el INAH y fuentes para Corregidora. Verificar adscripción municipal, nombres y direcciones antes de cerrar el conteo definitivo.
-- No inventar horarios de misa, apertura de templos ni recorridos guiados. Las fechas de las 12 jornadas son **propuestas editoriales**, no acuerdos con los templos. No anunciarlas como confirmadas hasta contar con validación.
-- Confirmar disponibilidad con cada templo antes de publicar una reunión.
-- El cronograma muestra **propuestas y visitas confirmadas futuras**, agrupadas por jornada; las realizadas se ven en la bitácora. Una fecha tentativamente vencida desaparece de la agenda hasta ser reprogramada, pero nunca cuenta como visita realizada.
-- El contador público refleja **el inventario cargado**, no una cifra oficial del total de iglesias en cada municipio. El orden de visita es una prioridad editorial por valor religioso, histórico y logística, **no una jerarquía canónica oficial**.
+- Verificar direcciones, municipio, nomenclatura, duplicados y adscripción de parroquias antes de presentar el listado como definitivo.
+- Si un templo comparte los títulos de santuario y parroquia se registra **una sola vez**.
+- Mantener estable el `id` de cada iglesia cuando se corrija su nombre.
+- Confirmar con anticipación la Misa y las condiciones de acceso. Evitar programar paseos dentro de templos durante liturgias.
+- El recorrido semanal comprende Navidad, Cuaresma y Semana Santa/Pascua de 2027; esas jornadas requieren especial sensibilidad pastoral y pueden adaptarse al calendario litúrgico.
+- No anunciar asistencia, reserva de lugares, actividades guiadas ni horarios confirmados sin evidencia.
 
-## Fuentes iniciales
+## Fuentes del inventario inicial
 
-- Directorio por decanatos de la Diócesis: https://cancilleriadiocesisqro.org/decanatos/
-- Relación institucional de parroquias: https://cancilleriadiocesisqro.org/circulares/
-- Patrimonio religioso en el Centro de Querétaro, INAH: https://lugares.inah.gob.mx/es/node/4811
-- Basílica de Nuestra Señora del Pueblito, Secretaría de Cultura: https://sitiosymonumentos.cultura.gob.mx/iii-estudios-monograficos/nuestra-senora-del-pueblito/
+- https://cancilleriadiocesisqro.org/decanatos/
+- https://cancilleriadiocesisqro.org/circulares/
+- https://lugares.inah.gob.mx/es/node/4811
+- https://sitiosymonumentos.cultura.gob.mx/iii-estudios-monograficos/nuestra-senora-del-pueblito/
 
 ## Publicación
 
-La sección vive en `/iglesias/` y aparece enlazada en el selector superior «Guía · Cronología · Iglesias» del sitio principal, con el mismo menú dentro de la nueva página. La publicación depende del merge de la rama en la rama desplegada en GitHub Pages.
+La sección vive en `/iglesias/` y está enlazada desde el selector «Guía · Cronología · Iglesias». Los cambios a `main` se despliegan por GitHub Pages.
