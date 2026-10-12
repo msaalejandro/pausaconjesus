@@ -6,7 +6,7 @@ Sección pública de [Pausa con Jesús](https://pausaconjesus.com/iglesias/) par
 
 - `index.html`: página pública (agenda, inventario, bitácora, búsqueda y filtros).
 - `iglesias.json`: registro único de iglesias. Incluye nombre, tipo, municipio, zona, dirección, prioridad y fuente.
-- `visitas.json`: **única fuente de verdad** para las reuniones programadas y realizadas. Comienza vacío porque no hay fechas del grupo confirmadas.
+- `visitas.json`: **única fuente de verdad** para las reuniones programadas y realizadas. Contiene 12 jornadas quincenales **propuestas**, con 36 paradas, sin afirmarlas como confirmadas.
 
 No se usa base de datos ni se exponen credenciales. El contenido es estático y compatible con GitHub Pages.
 
@@ -14,7 +14,7 @@ No se usa base de datos ni se exponen credenciales. El contenido es estático y 
 
 1. En GitHub, abrir `iglesias/iglesias.json`, buscar la iglesia y copiar su `id`.
 2. Editar `iglesias/visitas.json` en una rama o directamente en GitHub, conservando el JSON válido.
-3. Agregar un objeto en el arreglo `visitas` con los campos documentados abajo. Guardar el commit.
+3. Editar una jornada propuesta o agregar un objeto nuevo a `visitas` con los campos documentados abajo. Guardar el commit.
 
 Ejemplo de **estructura, no una reunión real** (no dejar este ejemplo publicado):
 
@@ -31,17 +31,17 @@ Ejemplo de **estructura, no una reunión real** (no dejar este ejemplo publicado
 }
 ```
 
-- `fecha`: formato YYYY-MM-DD; `hora`: HH:mm de 24 horas, zona **America/Mexico_City**.
+- `fecha`: formato YYYY-MM-DD; `hora`: HH:mm de 24 horas, zona **America/Mexico_City**. La propuesta vigente comienza el **24 de octubre de 2026** y termina el **3 de abril de 2027**. Los sábados sugeridos son quincenales, salvo un descanso en Año Nuevo.
 - `duracionMin`: duración aproximada para el enlace de Google Calendar (si falta, 90 minutos).
-- `estado`: `programada`, `realizada` o `cancelada`.
+- `estado`: `propuesta` (tentativa), `programada` (confirmada), `realizada` o `cancelada`.
 - `puntoReunion`: lugar exacto de reunión; es preferible a una dirección genérica.
 - `nota`: instrucciones para los participantes.
 - `reflexion`: texto opcional, visible en la bitácora cuando la visita se marca `realizada`.
 - `fotos`: arreglo opcional de enlaces públicos HTTPS. No publicar fotos identificables de participantes sin autorización.
 
-Al terminar una visita, cambiar el mismo objeto a `"estado": "realizada"`; agregar `reflexion` si corresponde. El progreso y la bitácora se actualizarán automáticamente tras publicarse el cambio.
+Una vez confirmada fecha, apertura y coordinación, cambiar `"estado": "propuesta"` a `"programada"`. Solo entonces se muestra como confirmada. Al terminar una visita, cambiar el mismo objeto a `"estado": "realizada"`; agregar `reflexion` si corresponde. El progreso y la bitácora se actualizarán automáticamente tras publicarse el cambio.
 
-Una iglesia puede tener **varias visitas**. Se cuenta como visitada una sola vez cuando al menos una visita figura como realizada. Las cancelaciones no cuentan como realizadas. Una visita pasada que sigue marcada como programada **no se marca automáticamente como realizada**.
+Una iglesia puede tener **varias visitas**. Las jornadas propuestas incluyen `jornada`, `numeroJornada`, `tituloJornada`, `zonaJornada` y `modalidad` para agrupar sus tres paradas en el calendario. El `ordenRecorrido` del inventario permite priorizar las 85 iglesias pendientes o programadas. Se cuenta como visitada una sola vez cuando al menos una visita figura como realizada. Las cancelaciones no cuentan como realizadas. Una visita pasada que sigue marcada como programada **no se marca automáticamente como realizada**.
 
 ## Agregar o corregir una iglesia
 
@@ -52,10 +52,10 @@ Evitar duplicar el mismo edificio cuando sea simultáneamente parroquia, santuar
 ## Reglas editoriales
 
 - El inventario de lanzamiento es **inicial, no exhaustivo**. Incluye iglesias tomadas de listados de la Cancillería, el INAH y fuentes para Corregidora. Verificar adscripción municipal, nombres y direcciones antes de cerrar el conteo definitivo.
-- No inventar horarios de misa, apertura de templos, recorridos guiados ni fechas.
+- No inventar horarios de misa, apertura de templos ni recorridos guiados. Las fechas de las 12 jornadas son **propuestas editoriales**, no acuerdos con los templos. No anunciarlas como confirmadas hasta contar con validación.
 - Confirmar disponibilidad con cada templo antes de publicar una reunión.
-- El cronograma ordena por fecha y muestra únicamente visitas programadas a futuro; las realizadas se ven en la bitácora.
-- El contador público refleja **el inventario cargado**, no una cifra oficial del total de iglesias en cada municipio.
+- El cronograma muestra **propuestas y visitas confirmadas futuras**, agrupadas por jornada; las realizadas se ven en la bitácora. Una fecha tentativamente vencida desaparece de la agenda hasta ser reprogramada, pero nunca cuenta como visita realizada.
+- El contador público refleja **el inventario cargado**, no una cifra oficial del total de iglesias en cada municipio. El orden de visita es una prioridad editorial por valor religioso, histórico y logística, **no una jerarquía canónica oficial**.
 
 ## Fuentes iniciales
 

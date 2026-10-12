@@ -33,6 +33,28 @@
 @media(max-width:700px){.hero-inner{grid-template-columns:1fr}.seal{display:none}.filters{grid-template-columns:1fr 1fr}.filters input{grid-column:1/-1}.places{grid-template-columns:1fr}.section-head h2{font-size:32px}}
 @media(max-width:420px){.wrap{padding:0 16px}.hero{padding-top:30px}.hero h1{font-size:54px}.stats{gap:6px}.stat{padding:13px 10px}.stat b{font-size:31px}.stat span{font-size:12px}.tabs a{padding:11px 13px}.visit-card{grid-template-columns:67px 1fr;gap:13px;padding:13px}.calendar-date b{font-size:30px}.feature h2{font-size:37px}.filters{gap:7px}.filters select{font-size:13px;padding-left:7px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* Jornadas: el calendario conserva jerarquía y no satura pantallas móviles. */
+.journey{border:1px solid var(--linea);background:var(--papel);border-radius:19px;overflow:hidden}
+.journey summary{list-style:none;display:flex;align-items:center;gap:15px;padding:17px 18px;cursor:pointer}
+.journey summary::-webkit-details-marker{display:none}
+.journey summary .summary-copy{flex:1;min-width:0}
+.journey summary h3{font:600 26px/1.05 var(--tit);margin:4px 0}
+.journey summary .journey-date{color:var(--gris);font-size:13px}
+.journey summary .chevron{font-size:22px;color:var(--gris);line-height:1;transition:transform .2s}
+.journey[open] summary .chevron{transform:rotate(180deg)}
+.journey .body{padding:0 18px 20px 18px;border-top:1px solid var(--linea)}
+.journey .steps{list-style:none;margin:8px 0 5px;padding:0}
+.journey .steps li{padding:12px 0;border-bottom:1px solid var(--linea);display:grid;grid-template-columns:58px 1fr;gap:10px}
+.journey .steps li:last-child{border-bottom:0}
+.journey .steps time{font-size:15px;color:var(--oro);font-weight:700;font-variant-numeric:tabular-nums}
+.journey .steps strong{font-size:16px;line-height:1.25;display:block}
+.journey .steps small{font-size:13px;color:var(--gris)}
+.journey .journey-icons{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.journey .actions{margin-top:14px}
+.feature .tiny-status{display:inline-block;border:1px solid rgba(243,239,230,.45);padding:3px 9px;border-radius:999px;font-size:12px;margin-top:12px}
+.eyebrow.muted-2{color:var(--gris)}
+.place .rank{font-size:12px;color:var(--oro);font-weight:700;letter-spacing:.03em}
 </style>
 </head>
 <body>
@@ -63,22 +85,25 @@ function month(s){return new Date(s+"T12:00:00").toLocaleDateString("es-MX",{mon
 function stateOf(i){
  const records=visitas.filter(v=>v.iglesiaId===i.id);
  if(records.some(v=>v.estado==="realizada"))return "visitada";
- if(records.some(v=>v.estado==="programada"))return "programada";
+ if(records.some(v=>v.estado==="programada"&&v.fecha>=today()))return "programada";
+ if(records.some(v=>v.estado==="propuesta"&&v.fecha>=today()))return "propuesta";
  return "pendiente";
 }
-function upcoming(){return visitas.filter(v=>v.estado==="programada"&&v.fecha>=today()).sort((a,b)=>(a.fecha+" "+a.hora).localeCompare(b.fecha+" "+b.hora));}
+function upcoming(){return visitas.filter(v=>["programada","propuesta"].includes(v.estado)&&v.fecha>=today()).sort((a,b)=>(a.fecha+" "+a.hora).localeCompare(b.fecha+" "+b.hora));}
 function today(){const f=new Intl.DateTimeFormat("en-CA",{timeZone:"America/Mexico_City",year:"numeric",month:"2-digit",day:"2-digit"});const parts=Object.fromEntries(f.formatToParts(new Date()).filter(x=>x.type!=="literal").map(x=>[x.type,x.value]));return parts.year+"-"+parts.month+"-"+parts.day;}
 function actionLinks(i,v,hero){
  const maps='<a class="btn'+(hero?"":" primary")+'" href="'+esc(mapLink(i))+'" target="_blank" rel="noopener">Ver ubicación ↗</a>';
  if(!v)return maps;
- const name=i.nombre,place=v.puntoReunion||i.direccion||name;
- const text="Pausa con Jesús: visita a "+name+" el "+displayDate(v.fecha)+" a las "+v.hora+". Punto de reunión: "+place+".";
- const share='<a class="btn" href="https://wa.me/?text='+encodeURIComponent(text)+'" target="_blank" rel="noopener">Compartir</a>';
+ const place=v.puntoReunion||i.direccion||i.nombre;
+ const provisional=v.estado==="propuesta";
+ const text="Pausa con Jesús: "+(provisional?"propuesta de visita (SIN CONFIRMAR)":"visita confirmada")+" a "+i.nombre+" el "+displayDate(v.fecha)+" a las "+v.hora+". Punto de reunión: "+place+".";
+ const share='<a class="btn" href="https://wa.me/?text='+encodeURIComponent(text)+'" target="_blank" rel="noopener">Compartir'+(provisional?" propuesta":"")+'</a>';
+ if(provisional)return maps+share;
  const [y,m,d]=v.fecha.split("-").map(Number),[hh,mm]=v.hora.split(":").map(Number);
  const start=v.fecha.replace(/-/g,"")+"T"+v.hora.replace(":","")+"00";
  const endDate=new Date(Date.UTC(y,m-1,d,hh,mm+(v.duracionMin||90)));
  const stamp=endDate.toISOString().replace(/[-:]/g,"").replace(/\.\d{3}Z$/,"");
- const gcal="https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent("Pausa con Jesús · "+name)+"&dates="+start+"/"+stamp.replace("Z","")+"&ctz=America%2FMexico_City&location="+encodeURIComponent(place)+"&details="+encodeURIComponent(v.nota||"Encuentro del grupo Pausa con Jesús.");
+ const gcal="https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent("Pausa con Jesús · "+i.nombre)+"&dates="+start+"/"+stamp.replace("Z","")+"&ctz=America%2FMexico_City&location="+encodeURIComponent(place)+"&details="+encodeURIComponent(v.nota||"Encuentro del grupo Pausa con Jesús.");
  return maps+'<a class="btn" href="'+esc(gcal)+'" target="_blank" rel="noopener">Añadir al calendario</a>'+share;
 }
 function showStats(){
@@ -87,41 +112,66 @@ function showStats(){
  $("progress").style.width=(iglesias.length?Math.round(100*d/iglesias.length):0)+"%";
 }
 function empty(title,body){return '<div class="empty"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M9 41V18l15-10 15 10v23M4 41h40M19 41V28a5 5 0 0 1 10 0v13M24 2v7M19 5h10"/></svg><h3>'+esc(title)+'</h3><p>'+esc(body)+'</p></div>';}
-function eventCard(v){
- const i=look(v.iglesiaId);if(!i)return "";
- const day=v.fecha.split("-")[2];
- return '<article class="visit-card"><div class="calendar-date"><b>'+esc(Number(day))+'</b><small>'+esc(month(v.fecha))+'</small></div><div><span class="eyebrow">'+esc(i.municipio)+' · '+esc(i.tipo)+'</span><h3>'+esc(i.nombre)+'</h3><p class="meta">'+esc(displayDate(v.fecha))+' · '+esc(v.hora)+' h</p><p class="note">Punto de reunión: '+esc(v.puntoReunion||"Por confirmar")+'</p>'+(v.nota?'<p class="note">'+esc(v.nota)+'</p>':"")+'<div class="actions">'+actionLinks(i,v,false)+'</div></div></article>';
+function itineraryUrl(group){
+ const places=group.map(v=>look(v.iglesiaId)).filter(Boolean);
+ if(!places.length)return "#";
+ const address=i=>[i.nombre,i.direccion,i.municipio,"Querétaro, México"].filter(Boolean).join(", ");
+ const parts=["https://www.google.com/maps/dir/?api=1","origin="+encodeURIComponent(address(places[0])),"destination="+encodeURIComponent(address(places[places.length-1]))];
+ if(places.length>2)parts.push("waypoints="+encodeURIComponent(places.slice(1,-1).map(address).join("|")));
+ parts.push("travelmode="+(group[0].modalidad==="caminando"?"walking":"driving"));
+ return parts.join("&").replace("?&","?");
+}
+function daysGrouped(){
+ const arr=upcoming(),groups=new Map();
+ arr.forEach(v=>{
+  const key=v.jornada||v.fecha;
+  if(!groups.has(key))groups.set(key,[]);
+  groups.get(key).push(v);
+ });
+ return [...groups.values()].map(a=>a.sort((x,y)=>x.hora.localeCompare(y.hora)));
+}
+function itineraryCard(group,index){
+ const first=group[0],day=Number(first.fecha.slice(-2)),proposed=group.some(v=>v.estado==="propuesta");
+ const title=first.tituloJornada||look(first.iglesiaId)?.nombre||"Recorrido por Querétaro";
+ const stops=group.map(v=>{
+  const i=look(v.iglesiaId);if(!i)return "";
+  return '<li><time datetime="'+esc(v.fecha+"T"+v.hora)+'">'+esc(v.hora)+'</time><div><strong>'+esc(i.nombre)+'</strong><small>'+esc(i.zona)+' · '+esc(i.municipio)+'</small></div></li>';
+ }).join("");
+ const share="Recorrido "+(first.numeroJornada||"")+" de Pausa con Jesús · "+title+". "+displayDate(first.fecha)+", comenzamos a las "+first.hora+". "+(proposed?"PLAN TENTATIVO por confirmar. ":"")+group.map(v=>v.hora+" "+(look(v.iglesiaId)?.nombre||"")).join(" / ")+".";
+ return '<details class="journey"'+(index===0?' open':"")+'><summary><div class="calendar-date"><b>'+day+'</b><small>'+esc(month(first.fecha))+'</small></div><div class="summary-copy"><span class="eyebrow">Jornada '+esc(first.numeroJornada||index+1)+' · '+esc(first.zonaJornada||"Querétaro")+'</span><h3>'+esc(title)+'</h3><div class="journey-date">'+esc(displayDate(first.fecha))+' · desde las '+esc(first.hora)+'</div><div class="journey-icons"><span class="pill '+(proposed?"":"done")+'">'+(proposed?"Tentativa":"Confirmada")+'</span><span class="pill">'+esc(first.modalidad||"Visita")+'</span></div></div><span class="chevron" aria-hidden="true">⌄</span></summary><div class="body"><ol class="steps">'+stops+'</ol><p class="note">'+(proposed?"Fechas y horas propuestas. Antes de asistir, el grupo debe confirmar apertura de los templos, celebraciones litúrgicas y punto de reunión.":"Recorrido confirmado por la coordinación.")+'</p><div class="actions"><a class="btn primary" href="'+esc(itineraryUrl(group))+'" target="_blank" rel="noopener">Ver ruta en Maps ↗</a><a class="btn" href="https://wa.me/?text='+encodeURIComponent(share)+'" target="_blank" rel="noopener">Compartir '+(proposed?"plan":"recorrido")+'</a></div></div></details>';
 }
 function renderAgenda(){
- const fut=upcoming(),v=fut[0],i=v&&look(v.iglesiaId);
- let html='';
- if(i){html+='<section class="feature"><p class="eyebrow">Nuestro próximo encuentro</p><h2>'+esc(i.nombre)+'</h2><p class="meta">'+esc(displayDate(v.fecha))+' · '+esc(v.hora)+' h</p><p>Punto de reunión: '+esc(v.puntoReunion||"Por confirmar")+'</p><div class="actions">'+actionLinks(i,v,true)+'</div></section>';}
- else{html+='<section class="feature"><p class="eyebrow">Nuestro próximo encuentro</p><h2>El próximo destino está por anunciarse</h2><p>En cuanto el grupo confirme una iglesia, fecha y horario, aparecerán aquí junto con el punto de reunión.</p><div class="actions"><a class="btn" href="#inventario">Explorar las iglesias</a></div></section>';}
- html+='<div class="section-head"><div><h2>Calendario de visitas</h2><p class="subtitle">Reuniones confirmadas, en orden cronológico.</p></div></div>';
- html+=fut.length?'<div class="card-list">'+fut.map(eventCard).join("")+'</div>':empty("Todavía no hay visitas programadas","El inventario ya está listo para empezar a planear. Las fechas se publicarán una vez confirmadas.");
- html+='<div class="announce"><strong>Un encuentro, no solo un recorrido.</strong>La idea es dedicar tiempo a conocer el templo, orar juntos y compartir lo que nos dejó la visita.</div>';
+ const groups=daysGrouped(),first=groups[0],v=first&&first[0],i=v&&look(v.iglesiaId);
+ let html="";
+ if(i){
+  const proposed=first.some(x=>x.estado==="propuesta");
+  html+='<section class="feature"><p class="eyebrow">'+(proposed?"Primera jornada propuesta":"Próxima jornada confirmada")+'</p><h2>'+esc(v.tituloJornada||i.nombre)+'</h2><p class="meta">'+esc(displayDate(v.fecha))+' · inicia a las '+esc(v.hora)+' h</p><p>'+first.length+' iglesias · '+esc(v.modalidad||"recorrido")+' · '+esc(v.zonaJornada||i.municipio)+'</p>'+(proposed?'<span class="tiny-status">Pendiente de confirmar con los templos y el grupo</span>':"")+'<div class="actions"><a class="btn" href="'+esc(itineraryUrl(first))+'" target="_blank" rel="noopener">Ver recorrido en Maps ↗</a></div></section>';
+ }else html+='<section class="feature"><p class="eyebrow">El siguiente recorrido</p><h2>Estamos preparando una nueva jornada</h2><p>El calendario se actualizará cuando haya nuevas propuestas o fechas confirmadas.</p><div class="actions"><a class="btn" href="#inventario">Explorar las iglesias</a></div></section>';
+ html+='<div class="section-head"><div><h2>Calendario del grupo</h2><p class="subtitle">Propuestas quincenales. Cada jornada agrupa iglesias cercanas y marca claramente si está confirmada.</p></div></div>';
+ html+=groups.length?'<div class="card-list">'+groups.map(itineraryCard).join("")+'</div>':empty("Sin próximas jornadas","Las propuestas que hayan quedado atrás deben reprogramarse; nunca se marcarán automáticamente como realizadas.");
+ html+='<div class="announce"><strong>Antes de salir.</strong>La fecha y la ruta son una propuesta hasta que la coordinación confirme los templos. Puedes ver el recorrido en Maps; el calendario de Google se habilita solo para visitas confirmadas.</div>';
  return html;
 }
 function placeCard(i){
- const st=stateOf(i),label={visitada:"Visitada",programada:"Programada",pendiente:"Pendiente"}[st];
- const visits=visitas.filter(v=>v.iglesiaId===i.id && v.estado==="realizada").sort((a,b)=>b.fecha.localeCompare(a.fecha));
- const next=visitas.find(v=>v.iglesiaId===i.id && v.estado==="programada");
- const details='<div class="details" id="detail-'+esc(i.id)+'" hidden><p>'+esc(i.direccion||"Dirección específica por verificar")+'</p>'+(visits.length?'<p>Última visita: '+esc(displayDate(visits[0].fecha))+'</p>':"")+(next?'<p>Programada para '+esc(displayDate(next.fecha))+' a las '+esc(next.hora)+' h.</p>':"")+'<a href="'+esc(i.fuente)+'" target="_blank" rel="noopener">Consultar fuente ↗</a></div>';
- return '<article class="place"><div class="topline"><span class="pill">'+esc(i.tipo)+'</span><span class="pill '+(st==="visitada"?"done":st==="programada"?"next":"")+'">'+label+'</span>'+(i.imperdible?'<span class="pill">Destacada</span>':"")+'</div><h3>'+esc(i.nombre)+'</h3><p class="meta">'+esc(i.zona)+' · '+esc(i.municipio)+'</p><div class="place-links"><a class="text-link" href="'+esc(mapLink(i))+'" target="_blank" rel="noopener">Ubicación ↗</a><button class="text-link" data-detail="'+esc(i.id)+'" aria-expanded="false" aria-controls="detail-'+esc(i.id)+'">Ver detalle</button></div>'+details+'</article>';
+ const st=stateOf(i),label={visitada:"Visitada",programada:"Confirmada",propuesta:"Propuesta",pendiente:"Pendiente"}[st];
+ const done=visitas.filter(v=>v.iglesiaId===i.id && v.estado==="realizada").sort((a,b)=>b.fecha.localeCompare(a.fecha));
+ const next=visitas.find(v=>v.iglesiaId===i.id && ["programada","propuesta"].includes(v.estado)&&v.fecha>=today());
+ const details='<div class="details" id="detail-'+esc(i.id)+'" hidden><p>'+esc(i.direccion||"Dirección específica por verificar")+'</p>'+(done.length?'<p>Última visita: '+esc(displayDate(done[0].fecha))+'</p>':"")+(next?'<p>'+(next.estado==="propuesta"?"Fecha propuesta: ":"Confirmada para ")+esc(displayDate(next.fecha))+' a las '+esc(next.hora)+' h.</p>':"")+'<p>'+esc(i.faseRecorrido||"Por calendarizar")+'</p><a href="'+esc(i.fuente)+'" target="_blank" rel="noopener">Consultar fuente ↗</a></div>';
+ return '<article class="place"><div class="rank">ORDEN DE RECORRIDO · '+String(i.ordenRecorrido||0).padStart(2,"0")+'</div><div class="topline"><span class="pill">'+esc(i.tipo)+'</span><span class="pill '+(st==="visitada"?"done":st==="programada"?"next":"")+'">'+label+'</span>'+(i.imperdible?'<span class="pill">Destacada</span>':"")+'</div><h3>'+esc(i.nombre)+'</h3><p class="meta">'+esc(i.zona)+' · '+esc(i.municipio)+'</p><div class="place-links"><a class="text-link" href="'+esc(mapLink(i))+'" target="_blank" rel="noopener">Ubicación ↗</a><button class="text-link" data-detail="'+esc(i.id)+'" aria-expanded="false" aria-controls="detail-'+esc(i.id)+'">Ver detalle</button></div>'+details+'</article>';
 }
 function filterPlaces(){
  const q=folder($("find").value.trim()),mun=$("mun").value,tp=$("tipo").value,st=$("state").value;
- const shown=iglesias.filter(i=>(!q||folder([i.nombre,i.zona,i.direccion].join(" ")).includes(q))&&(!mun||i.municipio===mun)&&(!tp||i.tipo===tp)&&(!st||stateOf(i)===st)).sort((a,b)=>Number(b.imperdible)-Number(a.imperdible)||a.zona.localeCompare(b.zona,"es")||a.nombre.localeCompare(b.nombre,"es"));
- $("place-count").textContent=shown.length+" de "+iglesias.length+" iglesias";
+ const shown=iglesias.filter(i=>(!q||folder([i.nombre,i.zona,i.direccion].join(" ")).includes(q))&&(!mun||i.municipio===mun)&&(!tp||i.tipo===tp)&&(!st||stateOf(i)===st)).sort((a,b)=>(a.ordenRecorrido||999)-(b.ordenRecorrido||999)||a.nombre.localeCompare(b.nombre,"es"));
+ $("place-count").textContent=shown.length+" de "+iglesias.length+" iglesias · orden sugerido de visita";
  $("place-list").innerHTML=shown.length?shown.map(placeCard).join(""):empty("No encontramos coincidencias","Cambia la búsqueda o los filtros para explorar otras iglesias.");
 }
 function renderInventory(){
  const types=[...new Set(iglesias.map(i=>i.tipo))].sort();
- content.innerHTML='<div class="section-head"><div><h2>Nuestras iglesias</h2><p class="subtitle">Querétaro y Corregidora · Un templo, un registro.</p></div></div>'+
+ content.innerHTML='<div class="section-head"><div><h2>Nuestras iglesias</h2><p class="subtitle">Querétaro y Corregidora · Orden de recorrido por importancia patrimonial, religiosa y cercanía.</p></div></div>'+
  '<div class="filters"><input id="find" type="search" placeholder="Buscar iglesia o colonia…" aria-label="Buscar iglesias">'+
  '<select id="mun" aria-label="Municipio"><option value="">Ambos municipios</option><option>Querétaro</option><option>Corregidora</option></select>'+
  '<select id="tipo" aria-label="Tipo de iglesia"><option value="">Todos los tipos</option>'+types.map(t=>'<option>'+esc(t)+'</option>').join("")+'</select>'+
- '<select id="state" aria-label="Estado de visita"><option value="">Todos los estados</option><option value="pendiente">Pendientes</option><option value="programada">Programadas</option><option value="visitada">Visitadas</option></select></div>'+
+ '<select id="state" aria-label="Estado de visita"><option value="">Todos los estados</option><option value="pendiente">Pendientes</option><option value="propuesta">Propuestas</option><option value="programada">Confirmadas</option><option value="visitada">Visitadas</option></select></div>'+
  '<p id="place-count" class="count"></p><div id="place-list" class="places"></div>'+
  '<div class="announce"><strong>Inventario en construcción.</strong>La lista inicial está documentada, pero todavía puede incorporar más parroquias y templos históricos. Ningún recinto se considera visitado sin una visita registrada.</div>';
  ["find","mun","tipo","state"].forEach(id=>$(id).addEventListener(id==="find"?"input":"change",filterPlaces));
@@ -153,7 +203,7 @@ Promise.all([
  fetch("./visitas.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("Agenda");return r.json();})
 ]).then(([a,v])=>{
  if(!Array.isArray(a.iglesias)||!Array.isArray(v.visitas))throw Error("Estructura de datos");
- iglesias=a.iglesias;visitas=v.visitas.filter(x=>x&&x.iglesiaId&&x.fecha&&x.estado&&(["realizada","programada","cancelada"].includes(x.estado)));
+ iglesias=a.iglesias;visitas=v.visitas.filter(x=>x&&x.iglesiaId&&x.fecha&&x.estado&&(["realizada","programada","propuesta","cancelada"].includes(x.estado)));
  showStats();route();
 }).catch(e=>{console.error(e);content.innerHTML=empty("No pudimos cargar el recorrido","Intenta actualizar la página. Si el problema continúa, avisa a la coordinación del grupo.");});
 </script>
