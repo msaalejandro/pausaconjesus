@@ -89,7 +89,7 @@ h1,h2,h3{text-wrap:balance}
 
 /* Navegación inferior */
 .nav{position:relative;flex:0 0 auto;z-index:30;background:var(--papel);border-top:1px solid var(--raya);padding-bottom:env(safe-area-inset-bottom,0px)}
-.nav-in{max-width:640px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);height:var(--nav-h)}
+.nav-in{max-width:640px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);height:var(--nav-h)}
 .nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:var(--piedra);font-size:13px}
 .nav svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .nav a[aria-current="page"]{color:var(--tinta);font-weight:700}
@@ -369,6 +369,7 @@ textarea.copia{width:100%;min-height:90px;margin-top:12px;padding:10px;border-ra
 <nav class="nav" aria-label="Secciones"><div class="nav-in">
   <a href="#inicio" data-nav="inicio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v4M10 5h4"/><path d="M5 21V11l7-4 7 4v10"/><path d="M10 21v-5h4v5"/></svg>Inicio</a>
   <a href="#sesiones" data-nav="sesiones"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Sesiones</a>
+  <a href="/iglesias/" data-nav="iglesias"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-8a3 3 0 0 1 6 0v8M12 2v3"/></svg>Iglesias</a>
   <a href="#temas" data-nav="temas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V16h5v-.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/></svg>Temas</a>
 </div></nav>
 <div id="timer-slot"></div>
@@ -518,6 +519,15 @@ function vInicio() {
     ${camino(s)}
     <a class="btn lleno" href="${cta[0]}">${cta[1]}</a>
     <div class="mas"><a class="enlace" href="${wa(textoInvitar(s))}" target="_blank" rel="noopener">Invitar por WhatsApp</a></div>
+  </section>
+
+  <section class="seccion" aria-labelledby="iglesias-t" style="margin-top:22px">
+    <a href="/iglesias/" style="display:block;border:1px solid var(--raya);background:var(--papel);border-radius:19px;text-decoration:none;padding:19px 20px">
+      <span style="color:var(--cera);font-size:13px;font-weight:700;letter-spacing:.05em">NUEVA ACTIVIDAD DEL GRUPO</span>
+      <h2 id="iglesias-t" style="font-family:var(--f-titulo);font-size:30px;font-weight:600;margin:7px 0">Peregrinos por Querétaro</h2>
+      <p style="color:var(--piedra);font-size:15px;margin-bottom:12px">Recorreremos las iglesias de Querétaro y Corregidora. Consulta las visitas, los lugares pendientes y nuestro avance.</p>
+      <span style="font-size:15px;font-weight:700;text-decoration:underline;text-decoration-color:var(--cera);text-underline-offset:4px">Conocer el recorrido →</span>
+    </a>
   </section>
 
   ${destacado ? "" : secVideo}
