@@ -1,0 +1,861 @@
+{
+  "version": "1.0.0",
+  "actualizado": "2026-10-11",
+  "estado": "inventario inicial en verificación; no representa un padrón exhaustivo",
+  "ambito": [
+    "Querétaro",
+    "Corregidora"
+  ],
+  "iglesias": [
+    {
+      "id": "ig-001",
+      "nombre": "Parroquia de Santiago Apóstol",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Centro Histórico",
+      "direccion": "Próspero C. Vega 4, Centro Histórico",
+      "imperdible": true,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/"
+    },
+    {
+      "id": "ig-002",
+      "nombre": "Santuario de Nuestra Señora de Guadalupe (La Congregación)",
+      "tipo": "santuario",
+      "municipio": "Querétaro",
+      "zona": "Centro Histórico",
+      "direccion": "Pasteur esq. 16 de Septiembre, Centro Histórico",
+      "imperdible": true,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/"
+    },
+    {
+      "id": "ig-003",
+      "nombre": "Templo de La Merced",
+      "tipo": "templo",
+      "municipio": "Querétaro",
+      "zona": "Centro Histórico",
+      "direccion": "Independencia 82, Centro Histórico",
+      "imperdible": true,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/"
+    },
+    {
+      "id": "ig-004",
+      "nombre": "Templo de la Santa Cruz",
+      "tipo": "templo",
+      "municipio": "Querétaro",
+      "zona": "Centro Histórico",
+      "direccion": "Independencia esq. Felipe Luna, Centro Histórico",
+      "imperdible": true,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/"
+    },
+    {
+      "id": "ig-005",
+      "nombre": "Parroquia del Sagrado Corazón de Jesús (Santa Clara)",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Centro Histórico",
+      "direccion": "Madero 42 bis esq. Allende, Centro Histórico",
+      "imperdible": true,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/"
+    },
+    {
+      "id": "ig-006",
+      "nombre": "Templo de San Francisco de Asís",
+      "tipo": "templo",
+      "municipio": "Querétaro",
+      "zona": "Centro Histórico",
+      "direccion": "Andador Vergara 2 Sur, Centro Histórico",
+      "imperdible": true,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/"
+    },
+    {
+      "id": "ig-007",
+      "nombre": "Templo de San Antonio de Padua",
+      "tipo": "templo",
+      "municipio": "Querétaro",
+      "zona": "Centro Histórico",
+      "direccion": "Ángela Peralta 16, Centro Histórico",
+      "imperdible": true,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/"
+    },
+    {
+      "id": "ig-008",
+      "nombre": "Templo de Santo Domingo",
+      "tipo": "templo",
+      "municipio": "Querétaro",
+      "zona": "Centro Histórico",
+      "direccion": "Pino Suárez 55, Centro Histórico",
+      "imperdible": true,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/"
+    },
+    {
+      "id": "ig-009",
+      "nombre": "Templo Expiatorio de San José de Gracia",
+      "tipo": "templo",
+      "municipio": "Querétaro",
+      "zona": "Centro Histórico",
+      "direccion": "Madero 36, Centro Histórico",
+      "imperdible": true,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/"
+    },
+    {
+      "id": "ig-010",
+      "nombre": "Templo de Santa Rosa de Viterbo",
+      "tipo": "templo",
+      "municipio": "Querétaro",
+      "zona": "Centro Histórico",
+      "direccion": "Arteaga esq. Ezequiel Montes, Centro Histórico",
+      "imperdible": true,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/"
+    },
+    {
+      "id": "ig-011",
+      "nombre": "Templo del Espíritu Santo",
+      "tipo": "templo",
+      "municipio": "Querétaro",
+      "zona": "Centro Histórico",
+      "direccion": "Ocampo 34, Centro Histórico",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/"
+    },
+    {
+      "id": "ig-012",
+      "nombre": "Templo de San Agustín",
+      "tipo": "templo",
+      "municipio": "Querétaro",
+      "zona": "Centro Histórico",
+      "direccion": "Pino Suárez 18, Centro Histórico",
+      "imperdible": true,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/"
+    },
+    {
+      "id": "ig-013",
+      "nombre": "Templo del Carmen",
+      "tipo": "templo",
+      "municipio": "Querétaro",
+      "zona": "Centro Histórico",
+      "direccion": "Juárez esq. Morelos, Centro Histórico",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/"
+    },
+    {
+      "id": "ig-014",
+      "nombre": "Templo de Carmelitas",
+      "tipo": "templo",
+      "municipio": "Querétaro",
+      "zona": "Centro Histórico",
+      "direccion": "Ocampo 4 Norte esq. Balvanera, Centro Histórico",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/"
+    },
+    {
+      "id": "ig-015",
+      "nombre": "Catedral de San Felipe Neri",
+      "tipo": "catedral",
+      "municipio": "Querétaro",
+      "zona": "Centro Histórico",
+      "direccion": "Madero esq. Ocampo, Centro Histórico",
+      "imperdible": true,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/"
+    },
+    {
+      "id": "ig-016",
+      "nombre": "Templo de Capuchinas",
+      "tipo": "templo",
+      "municipio": "Querétaro",
+      "zona": "Centro Histórico",
+      "direccion": "Hidalgo esq. Guerrero, Centro Histórico",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/"
+    },
+    {
+      "id": "ig-017",
+      "nombre": "Templo de Teresitas (Santo Nombre de Jesús)",
+      "tipo": "templo",
+      "municipio": "Querétaro",
+      "zona": "Centro Histórico",
+      "direccion": "Reforma 46, Centro Histórico",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/"
+    },
+    {
+      "id": "ig-018",
+      "nombre": "Templo del Calvarito",
+      "tipo": "templo",
+      "municipio": "Querétaro",
+      "zona": "Centro Histórico",
+      "direccion": "Barrio de la Cruz, Centro Histórico",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/"
+    },
+    {
+      "id": "ig-019",
+      "nombre": "Parroquia de la Divina Pastora",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Centro / Oriente",
+      "direccion": "21 de Marzo 134-B, San Francisquito",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/"
+    },
+    {
+      "id": "ig-020",
+      "nombre": "Parroquia de Pentecostés",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Centro / Oriente",
+      "direccion": "Av. Cimatario 201, colonia El Marqués",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/"
+    },
+    {
+      "id": "ig-021",
+      "nombre": "Parroquia de Nuestra Señora del Perpetuo Socorro",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Centro / Oriente",
+      "direccion": "Puente de Alvarado esq. Seminario, Carretas",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/"
+    },
+    {
+      "id": "ig-022",
+      "nombre": "Parroquia de San Isidro",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Centro / Oriente",
+      "direccion": "Av. Pathé 5, Pathé",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/"
+    },
+    {
+      "id": "ig-023",
+      "nombre": "Parroquia de María Puerta del Cielo",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Centro / Oriente",
+      "direccion": "Asteroides 405, Bolaños",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/"
+    },
+    {
+      "id": "ig-024",
+      "nombre": "Parroquia de Jesús de Nazareth",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Centro / Oriente",
+      "direccion": "Cerro del Peñón 13, Colinas del Cimatario",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/"
+    },
+    {
+      "id": "ig-025",
+      "nombre": "Templo Expiatorio del Sagrado Corazón de Jesús de la Misericordia",
+      "tipo": "templo",
+      "municipio": "Querétaro",
+      "zona": "Centro / Oriente",
+      "direccion": "Magnolias 32, Jardines de Querétaro",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/"
+    },
+    {
+      "id": "ig-026",
+      "nombre": "Parroquia de Santa Ana",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Poniente / Sur",
+      "direccion": "Mariano Escobedo 177, Centro Histórico",
+      "imperdible": true,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-ana/"
+    },
+    {
+      "id": "ig-027",
+      "nombre": "Templo de San Antoñito",
+      "tipo": "templo",
+      "municipio": "Querétaro",
+      "zona": "Poniente / Sur",
+      "direccion": "Ignacio Pérez esq. Hidalgo, Centro Histórico",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-ana/"
+    },
+    {
+      "id": "ig-028",
+      "nombre": "Parroquia de Cristo Rey",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Poniente / Sur",
+      "direccion": "Madero 297 Poniente, Niños Héroes",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-ana/"
+    },
+    {
+      "id": "ig-029",
+      "nombre": "Parroquia de Nuestra Señora de San Juan de los Lagos",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Poniente / Sur",
+      "direccion": "Calle 25 401, Lomas de Casa Blanca",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-ana/"
+    },
+    {
+      "id": "ig-030",
+      "nombre": "Parroquia del Divino Redentor",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Poniente / Sur",
+      "direccion": "Avenida 24 1601, Lomas de Casa Blanca",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-ana/"
+    },
+    {
+      "id": "ig-031",
+      "nombre": "Parroquia de Nuestra Señora del Rosario del Rayo",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Poniente / Sur",
+      "direccion": "",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-ana/"
+    },
+    {
+      "id": "ig-032",
+      "nombre": "Templo de San Felipe de Jesús",
+      "tipo": "templo",
+      "municipio": "Querétaro",
+      "zona": "Poniente / Sur",
+      "direccion": "Germán Patiño esq. Federico Montes, Aragón",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-ana/"
+    },
+    {
+      "id": "ig-033",
+      "nombre": "Templo de la Divina Providencia (Casa Blanca)",
+      "tipo": "templo",
+      "municipio": "Querétaro",
+      "zona": "Poniente / Sur",
+      "direccion": "Plan de Ayala esq. Emiliano Zapata, Casa Blanca",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-ana/"
+    },
+    {
+      "id": "ig-034",
+      "nombre": "Parroquia de Nuestra Señora de Guadalupe (Reforma Agraria)",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Poniente / Sur",
+      "direccion": "Blvd. de las Américas 111, Reforma Agraria",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-ana/"
+    },
+    {
+      "id": "ig-035",
+      "nombre": "Parroquia de Nuestra Señora de Lourdes",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Poniente / Sur",
+      "direccion": "Jesús Reyes Heroles 411, Lázaro Cárdenas",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-ana/"
+    },
+    {
+      "id": "ig-036",
+      "nombre": "Parroquia de Nuestra Señora del Rosario y San Martín Caballero",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Poniente / Sur",
+      "direccion": "Isla Monte Cristo s/n, Loma Linda",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-ana/"
+    },
+    {
+      "id": "ig-037",
+      "nombre": "Parroquia del Santo Niño de la Salud",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Norte / San Pablo",
+      "direccion": "Jiménez 82, Lindavista",
+      "imperdible": true,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/"
+    },
+    {
+      "id": "ig-038",
+      "nombre": "Templo de Santa Cecilia",
+      "tipo": "templo",
+      "municipio": "Querétaro",
+      "zona": "Norte / San Pablo",
+      "direccion": "Riva Palacio 148, Lindavista",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/"
+    },
+    {
+      "id": "ig-039",
+      "nombre": "Parroquia de San Sebastián",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Norte / San Pablo",
+      "direccion": "Primavera 20 Oriente, San Sebastián",
+      "imperdible": true,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/"
+    },
+    {
+      "id": "ig-040",
+      "nombre": "Parroquia de San Agustín del Retablo",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Norte / San Pablo",
+      "direccion": "San Agustín del Retablo esq. Jericó, El Retablo",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/"
+    },
+    {
+      "id": "ig-041",
+      "nombre": "Parroquia de la Resurrección",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Norte / San Pablo",
+      "direccion": "San Roque 35, Lindavista",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/"
+    },
+    {
+      "id": "ig-042",
+      "nombre": "Parroquia de las Bienaventuranzas",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Norte / San Pablo",
+      "direccion": "Río Candelaria 807, Menchaca I",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/"
+    },
+    {
+      "id": "ig-043",
+      "nombre": "Parroquia de María Madre de la Iglesia",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Norte / San Pablo",
+      "direccion": "Guadalupe 24 esq. Reforma, San Pablo",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/"
+    },
+    {
+      "id": "ig-044",
+      "nombre": "Parroquia de Jesucristo Sumo y Eterno Sacerdote",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Norte / San Pablo",
+      "direccion": "",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/"
+    },
+    {
+      "id": "ig-045",
+      "nombre": "Templo del Señor de la Misericordia (Norte)",
+      "tipo": "templo",
+      "municipio": "Querétaro",
+      "zona": "Norte / San Pablo",
+      "direccion": "",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/"
+    },
+    {
+      "id": "ig-046",
+      "nombre": "Parroquia de San Pedro Apóstol (San Pedrito Peñuelas)",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Norte / San Pablo",
+      "direccion": "San Pedrito Peñuelas",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/"
+    },
+    {
+      "id": "ig-047",
+      "nombre": "Parroquia Cristo Profeta",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Norte / San Pablo",
+      "direccion": "",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/"
+    },
+    {
+      "id": "ig-048",
+      "nombre": "Parroquia de San José el Alto",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Norte / San Pablo",
+      "direccion": "San José el Alto",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/"
+    },
+    {
+      "id": "ig-049",
+      "nombre": "Parroquia de Santa Ana (El Salitre)",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Norte / San Pablo",
+      "direccion": "El Salitre",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/"
+    },
+    {
+      "id": "ig-050",
+      "nombre": "Parroquia de la Inmaculada Concepción de María",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Norte / San Pablo",
+      "direccion": "",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/"
+    },
+    {
+      "id": "ig-051",
+      "nombre": "Parroquia de Santa Rosa de Lima",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Santa Rosa Jáuregui / Juriquilla",
+      "direccion": "Juárez 2, Santa Rosa Jáuregui",
+      "imperdible": true,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-rosa-de-lima/"
+    },
+    {
+      "id": "ig-052",
+      "nombre": "Parroquia del Señor de la Piedad",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Santa Rosa Jáuregui / Juriquilla",
+      "direccion": "Azahares s/n, Jurica",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-rosa-de-lima/"
+    },
+    {
+      "id": "ig-053",
+      "nombre": "Parroquia de San José (Buenavista)",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Santa Rosa Jáuregui / Juriquilla",
+      "direccion": "Buenavista",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-rosa-de-lima/"
+    },
+    {
+      "id": "ig-054",
+      "nombre": "Parroquia del Beato Juan Diego (Jofrito)",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Santa Rosa Jáuregui / Juriquilla",
+      "direccion": "Camino Real s/n, Jofrito",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-rosa-de-lima/"
+    },
+    {
+      "id": "ig-055",
+      "nombre": "Parroquia de San Judas Tadeo y de la Santa Cruz",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Santa Rosa Jáuregui / Juriquilla",
+      "direccion": "Blvd. Universitario, Juriquilla",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-rosa-de-lima/"
+    },
+    {
+      "id": "ig-056",
+      "nombre": "Parroquia del Sagrado Corazón de Jesús (Puerto de Aguirre)",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Santa Rosa Jáuregui / Juriquilla",
+      "direccion": "Puerto de Aguirre",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-rosa-de-lima/"
+    },
+    {
+      "id": "ig-057",
+      "nombre": "Parroquia de San Pablo Apóstol (Montenegro)",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Santa Rosa Jáuregui / Juriquilla",
+      "direccion": "Montenegro",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-rosa-de-lima/"
+    },
+    {
+      "id": "ig-058",
+      "nombre": "Parroquia de San Miguel Arcángel (Carrillo Puerto)",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Poniente / Carrillo Puerto",
+      "direccion": "Calzada Guadalupe Victoria 14, Felipe Carrillo Puerto",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-san-miguel-arcangel/"
+    },
+    {
+      "id": "ig-059",
+      "nombre": "Parroquia de Nuestra Señora de la Paz",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Poniente / Carrillo Puerto",
+      "direccion": "Agua 259, Satélite",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-san-miguel-arcangel/"
+    },
+    {
+      "id": "ig-060",
+      "nombre": "Parroquia de Corpus Christi",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Poniente / Carrillo Puerto",
+      "direccion": "Puebla esq. Durango, Obrera",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-san-miguel-arcangel/"
+    },
+    {
+      "id": "ig-061",
+      "nombre": "Parroquia de Santa María Magdalena",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Poniente / Carrillo Puerto",
+      "direccion": "Juárez esq. Hidalgo, Santa María Magdalena",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-san-miguel-arcangel/"
+    },
+    {
+      "id": "ig-062",
+      "nombre": "Parroquia del Beato Rafael Guízar Valencia",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Poniente / Carrillo Puerto",
+      "direccion": "Miguel Hidalgo, Tlacote el Bajo",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-san-miguel-arcangel/"
+    },
+    {
+      "id": "ig-063",
+      "nombre": "Parroquia de Nuestra Señora de la Luz",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Poniente / Carrillo Puerto",
+      "direccion": "Av. de la Luz esq. Tepehuas, Cerrito Colorado",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-san-miguel-arcangel/"
+    },
+    {
+      "id": "ig-064",
+      "nombre": "Parroquia del Misterio de la Encarnación del Hijo de Dios",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Poniente / Carrillo Puerto",
+      "direccion": "Alpes 200 esq. Cofre de Perote, Loma Bonita",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-san-miguel-arcangel/"
+    },
+    {
+      "id": "ig-065",
+      "nombre": "Parroquia de la Divina Providencia (Los Sauces)",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Poniente / Carrillo Puerto",
+      "direccion": "Av. Madrid 231, Los Sauces",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-san-miguel-arcangel/"
+    },
+    {
+      "id": "ig-066",
+      "nombre": "Rectoría de Nuestra Señora del Rocío",
+      "tipo": "templo",
+      "municipio": "Querétaro",
+      "zona": "Poniente / Carrillo Puerto",
+      "direccion": "El Rocío",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-san-miguel-arcangel/"
+    },
+    {
+      "id": "ig-067",
+      "nombre": "Parroquia de San Pedro Mártir",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Poniente / Carrillo Puerto",
+      "direccion": "San Pedro Mártir",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-san-miguel-arcangel/"
+    },
+    {
+      "id": "ig-068",
+      "nombre": "Parroquia de la Purísima Concepción (Hércules)",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Oriente / Hércules",
+      "direccion": "Av. del Río 1, Hércules",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-sn-pedro-apostol/"
+    },
+    {
+      "id": "ig-069",
+      "nombre": "Parroquia del Señor de la Transfiguración (Milenio III)",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Oriente / Hércules",
+      "direccion": "Milenio III",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-sn-pedro-apostol/"
+    },
+    {
+      "id": "ig-070",
+      "nombre": "Parroquia de la Virgen de la Anunciación",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Zona metropolitana",
+      "direccion": "",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/circulares/"
+    },
+    {
+      "id": "ig-071",
+      "nombre": "Parroquia de Nuestra Señora de la Esperanza",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Zona metropolitana",
+      "direccion": "",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/circulares/"
+    },
+    {
+      "id": "ig-072",
+      "nombre": "Parroquia de la Sagrada Familia",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Zona metropolitana",
+      "direccion": "",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/circulares/"
+    },
+    {
+      "id": "ig-073",
+      "nombre": "Parroquia de los Beatos Mártires Mexicanos de Cristo Rey",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Zona metropolitana",
+      "direccion": "",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/circulares/"
+    },
+    {
+      "id": "ig-074",
+      "nombre": "Parroquia de San Juan Pablo II (Querétaro)",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Zona metropolitana",
+      "direccion": "",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/circulares/"
+    },
+    {
+      "id": "ig-075",
+      "nombre": "Parroquia de la Ascensión del Señor",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Zona metropolitana",
+      "direccion": "",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/circulares/"
+    },
+    {
+      "id": "ig-076",
+      "nombre": "Basílica de Nuestra Señora del Pueblito",
+      "tipo": "basílica",
+      "municipio": "Corregidora",
+      "zona": "El Pueblito",
+      "direccion": "El Pueblito, Corregidora",
+      "imperdible": true,
+      "fuente": "https://sitiosymonumentos.cultura.gob.mx/iii-estudios-monograficos/nuestra-senora-del-pueblito/"
+    },
+    {
+      "id": "ig-077",
+      "nombre": "Parroquia de San Francisco Galileo",
+      "tipo": "parroquia",
+      "municipio": "Corregidora",
+      "zona": "El Pueblito / Santa Bárbara",
+      "direccion": "Francisco I. Madero 27, El Pueblito",
+      "imperdible": true,
+      "fuente": "https://cancilleriadiocesisqro.org/circulares/"
+    },
+    {
+      "id": "ig-078",
+      "nombre": "Parroquia de Nuestra Señora de los Ángeles",
+      "tipo": "parroquia",
+      "municipio": "Corregidora",
+      "zona": "El Pueblito / Santa Bárbara",
+      "direccion": "",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/circulares/"
+    },
+    {
+      "id": "ig-079",
+      "nombre": "Parroquia de Nuestra Señora de San Juan de los Lagos (La Negreta)",
+      "tipo": "parroquia",
+      "municipio": "Corregidora",
+      "zona": "El Pueblito / Santa Bárbara",
+      "direccion": "La Negreta",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/circulares/"
+    },
+    {
+      "id": "ig-080",
+      "nombre": "Parroquia de Nuestra Señora del Rosario (Bravo)",
+      "tipo": "parroquia",
+      "municipio": "Corregidora",
+      "zona": "El Pueblito / Santa Bárbara",
+      "direccion": "Bravo",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/circulares/"
+    },
+    {
+      "id": "ig-081",
+      "nombre": "Parroquia de Santa Bárbara",
+      "tipo": "parroquia",
+      "municipio": "Corregidora",
+      "zona": "El Pueblito / Santa Bárbara",
+      "direccion": "Santa Bárbara",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/circulares/"
+    },
+    {
+      "id": "ig-082",
+      "nombre": "Parroquia del Espíritu Santo (Corregidora)",
+      "tipo": "parroquia",
+      "municipio": "Corregidora",
+      "zona": "El Pueblito / Santa Bárbara",
+      "direccion": "",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/circulares/"
+    },
+    {
+      "id": "ig-083",
+      "nombre": "Parroquia de Nuestra Señora de Fátima (San José de los Olvera)",
+      "tipo": "parroquia",
+      "municipio": "Corregidora",
+      "zona": "El Pueblito / Santa Bárbara",
+      "direccion": "San José de los Olvera",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/circulares/"
+    },
+    {
+      "id": "ig-084",
+      "nombre": "Parroquia de San Juan Pablo II (Corregidora)",
+      "tipo": "parroquia",
+      "municipio": "Corregidora",
+      "zona": "El Pueblito / Santa Bárbara",
+      "direccion": "Bosque de Versalles 200",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/circulares/"
+    },
+    {
+      "id": "ig-085",
+      "nombre": "Santuario de Schoenstatt",
+      "tipo": "santuario",
+      "municipio": "Corregidora",
+      "zona": "Los Olvera",
+      "direccion": "Camino a Los Olvera, Corregidora",
+      "imperdible": true,
+      "fuente": "https://www.corregidora.gob.mx/Documentos/2012-2015/transparencia/XXV/lugares_para_visitar.pdf"
+    }
+  ]
+}
