@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "actualizado": "2026-10-11",
   "estado": "inventario inicial en verificación; no representa un padrón exhaustivo",
   "ambito": [
@@ -8,16 +8,16 @@
   ],
   "iglesias": [
     {
-      "id": "ig-015",
-      "nombre": "Catedral de San Felipe Neri",
-      "tipo": "catedral",
+      "id": "ig-010",
+      "nombre": "Templo de Santa Rosa de Viterbo",
+      "tipo": "templo",
       "municipio": "Querétaro",
       "zona": "Centro Histórico",
-      "direccion": "Madero esq. Ocampo, Centro Histórico",
+      "direccion": "Arteaga esq. Ezequiel Montes, Centro Histórico",
       "imperdible": true,
       "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/",
       "ordenRecorrido": 1,
-      "faseRecorrido": "Jornadas propuestas"
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-005",
@@ -29,19 +29,19 @@
       "imperdible": true,
       "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/",
       "ordenRecorrido": 2,
-      "faseRecorrido": "Jornadas propuestas"
+      "faseRecorrido": "Domingo propuesto"
     },
     {
-      "id": "ig-010",
-      "nombre": "Templo de Santa Rosa de Viterbo",
-      "tipo": "templo",
+      "id": "ig-015",
+      "nombre": "Catedral de San Felipe Neri",
+      "tipo": "catedral",
       "municipio": "Querétaro",
       "zona": "Centro Histórico",
-      "direccion": "Arteaga esq. Ezequiel Montes, Centro Histórico",
+      "direccion": "Madero esq. Ocampo, Centro Histórico",
       "imperdible": true,
       "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/",
       "ordenRecorrido": 3,
-      "faseRecorrido": "Jornadas propuestas"
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-006",
@@ -53,7 +53,7 @@
       "imperdible": true,
       "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/",
       "ordenRecorrido": 4,
-      "faseRecorrido": "Jornadas propuestas"
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-001",
@@ -65,7 +65,7 @@
       "imperdible": true,
       "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/",
       "ordenRecorrido": 5,
-      "faseRecorrido": "Jornadas propuestas"
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-002",
@@ -77,7 +77,7 @@
       "imperdible": true,
       "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/",
       "ordenRecorrido": 6,
-      "faseRecorrido": "Jornadas propuestas"
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-004",
@@ -89,7 +89,7 @@
       "imperdible": true,
       "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/",
       "ordenRecorrido": 7,
-      "faseRecorrido": "Jornadas propuestas"
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-003",
@@ -101,7 +101,19 @@
       "imperdible": true,
       "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/",
       "ordenRecorrido": 8,
-      "faseRecorrido": "Jornadas propuestas"
+      "faseRecorrido": "Domingo propuesto"
+    },
+    {
+      "id": "ig-019",
+      "nombre": "Parroquia de la Divina Pastora",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Centro / Oriente",
+      "direccion": "21 de Marzo 134-B, San Francisquito",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/",
+      "ordenRecorrido": 9,
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-007",
@@ -112,8 +124,8 @@
       "direccion": "Ángela Peralta 16, Centro Histórico",
       "imperdible": true,
       "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/",
-      "ordenRecorrido": 9,
-      "faseRecorrido": "Jornadas propuestas"
+      "ordenRecorrido": 10,
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-012",
@@ -124,32 +136,8 @@
       "direccion": "Pino Suárez 18, Centro Histórico",
       "imperdible": true,
       "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/",
-      "ordenRecorrido": 10,
-      "faseRecorrido": "Jornadas propuestas"
-    },
-    {
-      "id": "ig-008",
-      "nombre": "Templo de Santo Domingo",
-      "tipo": "templo",
-      "municipio": "Querétaro",
-      "zona": "Centro Histórico",
-      "direccion": "Pino Suárez 55, Centro Histórico",
-      "imperdible": true,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/",
       "ordenRecorrido": 11,
-      "faseRecorrido": "Jornadas propuestas"
-    },
-    {
-      "id": "ig-009",
-      "nombre": "Templo Expiatorio de San José de Gracia",
-      "tipo": "templo",
-      "municipio": "Querétaro",
-      "zona": "Centro Histórico",
-      "direccion": "Madero 36, Centro Histórico",
-      "imperdible": true,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/",
-      "ordenRecorrido": 12,
-      "faseRecorrido": "Jornadas propuestas"
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-026",
@@ -160,32 +148,44 @@
       "direccion": "Mariano Escobedo 177, Centro Histórico",
       "imperdible": true,
       "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-ana/",
-      "ordenRecorrido": 13,
-      "faseRecorrido": "Jornadas propuestas"
+      "ordenRecorrido": 12,
+      "faseRecorrido": "Domingo propuesto"
     },
     {
-      "id": "ig-027",
-      "nombre": "Templo de San Antoñito",
-      "tipo": "templo",
-      "municipio": "Querétaro",
-      "zona": "Poniente / Sur",
-      "direccion": "Ignacio Pérez esq. Hidalgo, Centro Histórico",
-      "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-ana/",
-      "ordenRecorrido": 14,
-      "faseRecorrido": "Jornadas propuestas"
-    },
-    {
-      "id": "ig-016",
-      "nombre": "Templo de Capuchinas",
+      "id": "ig-008",
+      "nombre": "Templo de Santo Domingo",
       "tipo": "templo",
       "municipio": "Querétaro",
       "zona": "Centro Histórico",
-      "direccion": "Hidalgo esq. Guerrero, Centro Histórico",
-      "imperdible": false,
+      "direccion": "Pino Suárez 55, Centro Histórico",
+      "imperdible": true,
       "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/",
+      "ordenRecorrido": 13,
+      "faseRecorrido": "Domingo propuesto"
+    },
+    {
+      "id": "ig-009",
+      "nombre": "Templo Expiatorio de San José de Gracia",
+      "tipo": "templo",
+      "municipio": "Querétaro",
+      "zona": "Centro Histórico",
+      "direccion": "Madero 36, Centro Histórico",
+      "imperdible": true,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/",
+      "ordenRecorrido": 14,
+      "faseRecorrido": "Domingo propuesto"
+    },
+    {
+      "id": "ig-028",
+      "nombre": "Parroquia de Cristo Rey",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Poniente / Sur",
+      "direccion": "Madero 297 Poniente, Niños Héroes",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-ana/",
       "ordenRecorrido": 15,
-      "faseRecorrido": "Jornadas propuestas"
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-014",
@@ -197,7 +197,7 @@
       "imperdible": false,
       "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/",
       "ordenRecorrido": 16,
-      "faseRecorrido": "Jornadas propuestas"
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-013",
@@ -209,19 +209,31 @@
       "imperdible": false,
       "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/",
       "ordenRecorrido": 17,
-      "faseRecorrido": "Jornadas propuestas"
+      "faseRecorrido": "Domingo propuesto"
     },
     {
-      "id": "ig-011",
-      "nombre": "Templo del Espíritu Santo",
+      "id": "ig-031",
+      "nombre": "Parroquia de Nuestra Señora del Rosario del Rayo",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Poniente / Sur",
+      "direccion": "",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-ana/",
+      "ordenRecorrido": 18,
+      "faseRecorrido": "Domingo propuesto"
+    },
+    {
+      "id": "ig-016",
+      "nombre": "Templo de Capuchinas",
       "tipo": "templo",
       "municipio": "Querétaro",
       "zona": "Centro Histórico",
-      "direccion": "Ocampo 34, Centro Histórico",
+      "direccion": "Hidalgo esq. Guerrero, Centro Histórico",
       "imperdible": false,
       "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/",
-      "ordenRecorrido": 18,
-      "faseRecorrido": "Jornadas propuestas"
+      "ordenRecorrido": 19,
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-017",
@@ -232,20 +244,8 @@
       "direccion": "Reforma 46, Centro Histórico",
       "imperdible": false,
       "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/",
-      "ordenRecorrido": 19,
-      "faseRecorrido": "Jornadas propuestas"
-    },
-    {
-      "id": "ig-018",
-      "nombre": "Templo del Calvarito",
-      "tipo": "templo",
-      "municipio": "Querétaro",
-      "zona": "Centro Histórico",
-      "direccion": "Barrio de la Cruz, Centro Histórico",
-      "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/",
       "ordenRecorrido": 20,
-      "faseRecorrido": "Jornadas propuestas"
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-039",
@@ -257,43 +257,43 @@
       "imperdible": true,
       "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/",
       "ordenRecorrido": 21,
-      "faseRecorrido": "Jornadas propuestas"
+      "faseRecorrido": "Domingo propuesto"
     },
     {
-      "id": "ig-037",
-      "nombre": "Parroquia del Santo Niño de la Salud",
-      "tipo": "parroquia",
-      "municipio": "Querétaro",
-      "zona": "Norte / San Pablo",
-      "direccion": "Jiménez 82, Lindavista",
-      "imperdible": true,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/",
-      "ordenRecorrido": 22,
-      "faseRecorrido": "Jornadas propuestas"
-    },
-    {
-      "id": "ig-038",
-      "nombre": "Templo de Santa Cecilia",
+      "id": "ig-011",
+      "nombre": "Templo del Espíritu Santo",
       "tipo": "templo",
       "municipio": "Querétaro",
-      "zona": "Norte / San Pablo",
-      "direccion": "Riva Palacio 148, Lindavista",
+      "zona": "Centro Histórico",
+      "direccion": "Ocampo 34, Centro Histórico",
       "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/",
-      "ordenRecorrido": 23,
-      "faseRecorrido": "Jornadas propuestas"
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/",
+      "ordenRecorrido": 22,
+      "faseRecorrido": "Domingo propuesto"
     },
     {
-      "id": "ig-040",
-      "nombre": "Parroquia de San Agustín del Retablo",
+      "id": "ig-018",
+      "nombre": "Templo del Calvarito",
+      "tipo": "templo",
+      "municipio": "Querétaro",
+      "zona": "Centro Histórico",
+      "direccion": "Barrio de la Cruz, Centro Histórico",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/",
+      "ordenRecorrido": 23,
+      "faseRecorrido": "Domingo propuesto"
+    },
+    {
+      "id": "ig-022",
+      "nombre": "Parroquia de San Isidro",
       "tipo": "parroquia",
       "municipio": "Querétaro",
-      "zona": "Norte / San Pablo",
-      "direccion": "San Agustín del Retablo esq. Jericó, El Retablo",
+      "zona": "Centro / Oriente",
+      "direccion": "Av. Pathé 5, Pathé",
       "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/",
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/",
       "ordenRecorrido": 24,
-      "faseRecorrido": "Jornadas propuestas"
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-025",
@@ -305,7 +305,7 @@
       "imperdible": false,
       "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/",
       "ordenRecorrido": 25,
-      "faseRecorrido": "Jornadas propuestas"
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-021",
@@ -317,31 +317,7 @@
       "imperdible": false,
       "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/",
       "ordenRecorrido": 26,
-      "faseRecorrido": "Jornadas propuestas"
-    },
-    {
-      "id": "ig-022",
-      "nombre": "Parroquia de San Isidro",
-      "tipo": "parroquia",
-      "municipio": "Querétaro",
-      "zona": "Centro / Oriente",
-      "direccion": "Av. Pathé 5, Pathé",
-      "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/",
-      "ordenRecorrido": 27,
-      "faseRecorrido": "Jornadas propuestas"
-    },
-    {
-      "id": "ig-019",
-      "nombre": "Parroquia de la Divina Pastora",
-      "tipo": "parroquia",
-      "municipio": "Querétaro",
-      "zona": "Centro / Oriente",
-      "direccion": "21 de Marzo 134-B, San Francisquito",
-      "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/",
-      "ordenRecorrido": 28,
-      "faseRecorrido": "Jornadas propuestas"
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-020",
@@ -352,20 +328,44 @@
       "direccion": "Av. Cimatario 201, colonia El Marqués",
       "imperdible": false,
       "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/",
-      "ordenRecorrido": 29,
-      "faseRecorrido": "Jornadas propuestas"
+      "ordenRecorrido": 27,
+      "faseRecorrido": "Domingo propuesto"
     },
     {
-      "id": "ig-024",
-      "nombre": "Parroquia de Jesús de Nazareth",
+      "id": "ig-038",
+      "nombre": "Templo de Santa Cecilia",
+      "tipo": "templo",
+      "municipio": "Querétaro",
+      "zona": "Norte / San Pablo",
+      "direccion": "Riva Palacio 148, Lindavista",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/",
+      "ordenRecorrido": 28,
+      "faseRecorrido": "Domingo propuesto"
+    },
+    {
+      "id": "ig-040",
+      "nombre": "Parroquia de San Agustín del Retablo",
       "tipo": "parroquia",
       "municipio": "Querétaro",
-      "zona": "Centro / Oriente",
-      "direccion": "Cerro del Peñón 13, Colinas del Cimatario",
+      "zona": "Norte / San Pablo",
+      "direccion": "San Agustín del Retablo esq. Jericó, El Retablo",
       "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/",
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/",
+      "ordenRecorrido": 29,
+      "faseRecorrido": "Domingo propuesto"
+    },
+    {
+      "id": "ig-037",
+      "nombre": "Parroquia del Santo Niño de la Salud",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Norte / San Pablo",
+      "direccion": "Jiménez 82, Lindavista",
+      "imperdible": true,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/",
       "ordenRecorrido": 30,
-      "faseRecorrido": "Jornadas propuestas"
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-051",
@@ -377,7 +377,7 @@
       "imperdible": true,
       "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-rosa-de-lima/",
       "ordenRecorrido": 31,
-      "faseRecorrido": "Jornadas propuestas"
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-055",
@@ -389,7 +389,7 @@
       "imperdible": false,
       "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-rosa-de-lima/",
       "ordenRecorrido": 32,
-      "faseRecorrido": "Jornadas propuestas"
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-052",
@@ -401,19 +401,19 @@
       "imperdible": false,
       "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-rosa-de-lima/",
       "ordenRecorrido": 33,
-      "faseRecorrido": "Jornadas propuestas"
+      "faseRecorrido": "Domingo propuesto"
     },
     {
-      "id": "ig-076",
-      "nombre": "Basílica de Nuestra Señora del Pueblito",
-      "tipo": "basílica",
+      "id": "ig-085",
+      "nombre": "Santuario de Schoenstatt",
+      "tipo": "santuario",
       "municipio": "Corregidora",
-      "zona": "El Pueblito",
-      "direccion": "El Pueblito, Corregidora",
+      "zona": "Los Olvera",
+      "direccion": "Camino a Los Olvera, Corregidora",
       "imperdible": true,
-      "fuente": "https://sitiosymonumentos.cultura.gob.mx/iii-estudios-monograficos/nuestra-senora-del-pueblito/",
+      "fuente": "https://www.corregidora.gob.mx/Documentos/2012-2015/transparencia/XXV/lugares_para_visitar.pdf",
       "ordenRecorrido": 34,
-      "faseRecorrido": "Jornadas propuestas"
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-077",
@@ -425,43 +425,43 @@
       "imperdible": true,
       "fuente": "https://cancilleriadiocesisqro.org/circulares/",
       "ordenRecorrido": 35,
-      "faseRecorrido": "Jornadas propuestas"
+      "faseRecorrido": "Domingo propuesto"
     },
     {
-      "id": "ig-085",
-      "nombre": "Santuario de Schoenstatt",
-      "tipo": "santuario",
+      "id": "ig-076",
+      "nombre": "Basílica de Nuestra Señora del Pueblito",
+      "tipo": "basílica",
       "municipio": "Corregidora",
-      "zona": "Los Olvera",
-      "direccion": "Camino a Los Olvera, Corregidora",
+      "zona": "El Pueblito",
+      "direccion": "El Pueblito, Corregidora",
       "imperdible": true,
-      "fuente": "https://www.corregidora.gob.mx/Documentos/2012-2015/transparencia/XXV/lugares_para_visitar.pdf",
+      "fuente": "https://sitiosymonumentos.cultura.gob.mx/iii-estudios-monograficos/nuestra-senora-del-pueblito/",
       "ordenRecorrido": 36,
-      "faseRecorrido": "Jornadas propuestas"
+      "faseRecorrido": "Domingo propuesto"
     },
     {
-      "id": "ig-023",
-      "nombre": "Parroquia de María Puerta del Cielo",
-      "tipo": "parroquia",
-      "municipio": "Querétaro",
-      "zona": "Centro / Oriente",
-      "direccion": "Asteroides 405, Bolaños",
-      "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/",
-      "ordenRecorrido": 37,
-      "faseRecorrido": "Por calendarizar"
-    },
-    {
-      "id": "ig-028",
-      "nombre": "Parroquia de Cristo Rey",
-      "tipo": "parroquia",
+      "id": "ig-027",
+      "nombre": "Templo de San Antoñito",
+      "tipo": "templo",
       "municipio": "Querétaro",
       "zona": "Poniente / Sur",
-      "direccion": "Madero 297 Poniente, Niños Héroes",
+      "direccion": "Ignacio Pérez esq. Hidalgo, Centro Histórico",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-ana/",
+      "ordenRecorrido": 37,
+      "faseRecorrido": "Domingo propuesto"
+    },
+    {
+      "id": "ig-032",
+      "nombre": "Templo de San Felipe de Jesús",
+      "tipo": "templo",
+      "municipio": "Querétaro",
+      "zona": "Poniente / Sur",
+      "direccion": "Germán Patiño esq. Federico Montes, Aragón",
       "imperdible": false,
       "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-ana/",
       "ordenRecorrido": 38,
-      "faseRecorrido": "Por calendarizar"
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-029",
@@ -473,7 +473,19 @@
       "imperdible": false,
       "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-ana/",
       "ordenRecorrido": 39,
-      "faseRecorrido": "Por calendarizar"
+      "faseRecorrido": "Domingo propuesto"
+    },
+    {
+      "id": "ig-033",
+      "nombre": "Templo de la Divina Providencia (Casa Blanca)",
+      "tipo": "templo",
+      "municipio": "Querétaro",
+      "zona": "Poniente / Sur",
+      "direccion": "Plan de Ayala esq. Emiliano Zapata, Casa Blanca",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-ana/",
+      "ordenRecorrido": 40,
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-030",
@@ -484,20 +496,8 @@
       "direccion": "Avenida 24 1601, Lomas de Casa Blanca",
       "imperdible": false,
       "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-ana/",
-      "ordenRecorrido": 40,
-      "faseRecorrido": "Por calendarizar"
-    },
-    {
-      "id": "ig-031",
-      "nombre": "Parroquia de Nuestra Señora del Rosario del Rayo",
-      "tipo": "parroquia",
-      "municipio": "Querétaro",
-      "zona": "Poniente / Sur",
-      "direccion": "",
-      "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-ana/",
       "ordenRecorrido": 41,
-      "faseRecorrido": "Por calendarizar"
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-034",
@@ -509,7 +509,7 @@
       "imperdible": false,
       "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-ana/",
       "ordenRecorrido": 42,
-      "faseRecorrido": "Por calendarizar"
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-035",
@@ -521,7 +521,7 @@
       "imperdible": false,
       "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-ana/",
       "ordenRecorrido": 43,
-      "faseRecorrido": "Por calendarizar"
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-036",
@@ -533,283 +533,31 @@
       "imperdible": false,
       "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-ana/",
       "ordenRecorrido": 44,
-      "faseRecorrido": "Por calendarizar"
+      "faseRecorrido": "Domingo propuesto"
     },
     {
-      "id": "ig-032",
-      "nombre": "Templo de San Felipe de Jesús",
-      "tipo": "templo",
+      "id": "ig-024",
+      "nombre": "Parroquia de Jesús de Nazareth",
+      "tipo": "parroquia",
       "municipio": "Querétaro",
-      "zona": "Poniente / Sur",
-      "direccion": "Germán Patiño esq. Federico Montes, Aragón",
+      "zona": "Centro / Oriente",
+      "direccion": "Cerro del Peñón 13, Colinas del Cimatario",
       "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-ana/",
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/",
       "ordenRecorrido": 45,
-      "faseRecorrido": "Por calendarizar"
+      "faseRecorrido": "Domingo propuesto"
     },
     {
-      "id": "ig-033",
-      "nombre": "Templo de la Divina Providencia (Casa Blanca)",
-      "tipo": "templo",
+      "id": "ig-023",
+      "nombre": "Parroquia de María Puerta del Cielo",
+      "tipo": "parroquia",
       "municipio": "Querétaro",
-      "zona": "Poniente / Sur",
-      "direccion": "Plan de Ayala esq. Emiliano Zapata, Casa Blanca",
+      "zona": "Centro / Oriente",
+      "direccion": "Asteroides 405, Bolaños",
       "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-ana/",
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santiago/",
       "ordenRecorrido": 46,
-      "faseRecorrido": "Por calendarizar"
-    },
-    {
-      "id": "ig-041",
-      "nombre": "Parroquia de la Resurrección",
-      "tipo": "parroquia",
-      "municipio": "Querétaro",
-      "zona": "Norte / San Pablo",
-      "direccion": "San Roque 35, Lindavista",
-      "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/",
-      "ordenRecorrido": 47,
-      "faseRecorrido": "Por calendarizar"
-    },
-    {
-      "id": "ig-042",
-      "nombre": "Parroquia de las Bienaventuranzas",
-      "tipo": "parroquia",
-      "municipio": "Querétaro",
-      "zona": "Norte / San Pablo",
-      "direccion": "Río Candelaria 807, Menchaca I",
-      "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/",
-      "ordenRecorrido": 48,
-      "faseRecorrido": "Por calendarizar"
-    },
-    {
-      "id": "ig-043",
-      "nombre": "Parroquia de María Madre de la Iglesia",
-      "tipo": "parroquia",
-      "municipio": "Querétaro",
-      "zona": "Norte / San Pablo",
-      "direccion": "Guadalupe 24 esq. Reforma, San Pablo",
-      "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/",
-      "ordenRecorrido": 49,
-      "faseRecorrido": "Por calendarizar"
-    },
-    {
-      "id": "ig-044",
-      "nombre": "Parroquia de Jesucristo Sumo y Eterno Sacerdote",
-      "tipo": "parroquia",
-      "municipio": "Querétaro",
-      "zona": "Norte / San Pablo",
-      "direccion": "",
-      "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/",
-      "ordenRecorrido": 50,
-      "faseRecorrido": "Por calendarizar"
-    },
-    {
-      "id": "ig-046",
-      "nombre": "Parroquia de San Pedro Apóstol (San Pedrito Peñuelas)",
-      "tipo": "parroquia",
-      "municipio": "Querétaro",
-      "zona": "Norte / San Pablo",
-      "direccion": "San Pedrito Peñuelas",
-      "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/",
-      "ordenRecorrido": 51,
-      "faseRecorrido": "Por calendarizar"
-    },
-    {
-      "id": "ig-047",
-      "nombre": "Parroquia Cristo Profeta",
-      "tipo": "parroquia",
-      "municipio": "Querétaro",
-      "zona": "Norte / San Pablo",
-      "direccion": "",
-      "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/",
-      "ordenRecorrido": 52,
-      "faseRecorrido": "Por calendarizar"
-    },
-    {
-      "id": "ig-048",
-      "nombre": "Parroquia de San José el Alto",
-      "tipo": "parroquia",
-      "municipio": "Querétaro",
-      "zona": "Norte / San Pablo",
-      "direccion": "San José el Alto",
-      "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/",
-      "ordenRecorrido": 53,
-      "faseRecorrido": "Por calendarizar"
-    },
-    {
-      "id": "ig-049",
-      "nombre": "Parroquia de Santa Ana (El Salitre)",
-      "tipo": "parroquia",
-      "municipio": "Querétaro",
-      "zona": "Norte / San Pablo",
-      "direccion": "El Salitre",
-      "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/",
-      "ordenRecorrido": 54,
-      "faseRecorrido": "Por calendarizar"
-    },
-    {
-      "id": "ig-050",
-      "nombre": "Parroquia de la Inmaculada Concepción de María",
-      "tipo": "parroquia",
-      "municipio": "Querétaro",
-      "zona": "Norte / San Pablo",
-      "direccion": "",
-      "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/",
-      "ordenRecorrido": 55,
-      "faseRecorrido": "Por calendarizar"
-    },
-    {
-      "id": "ig-045",
-      "nombre": "Templo del Señor de la Misericordia (Norte)",
-      "tipo": "templo",
-      "municipio": "Querétaro",
-      "zona": "Norte / San Pablo",
-      "direccion": "",
-      "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/",
-      "ordenRecorrido": 56,
-      "faseRecorrido": "Por calendarizar"
-    },
-    {
-      "id": "ig-058",
-      "nombre": "Parroquia de San Miguel Arcángel (Carrillo Puerto)",
-      "tipo": "parroquia",
-      "municipio": "Querétaro",
-      "zona": "Poniente / Carrillo Puerto",
-      "direccion": "Calzada Guadalupe Victoria 14, Felipe Carrillo Puerto",
-      "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-san-miguel-arcangel/",
-      "ordenRecorrido": 57,
-      "faseRecorrido": "Por calendarizar"
-    },
-    {
-      "id": "ig-059",
-      "nombre": "Parroquia de Nuestra Señora de la Paz",
-      "tipo": "parroquia",
-      "municipio": "Querétaro",
-      "zona": "Poniente / Carrillo Puerto",
-      "direccion": "Agua 259, Satélite",
-      "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-san-miguel-arcangel/",
-      "ordenRecorrido": 58,
-      "faseRecorrido": "Por calendarizar"
-    },
-    {
-      "id": "ig-060",
-      "nombre": "Parroquia de Corpus Christi",
-      "tipo": "parroquia",
-      "municipio": "Querétaro",
-      "zona": "Poniente / Carrillo Puerto",
-      "direccion": "Puebla esq. Durango, Obrera",
-      "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-san-miguel-arcangel/",
-      "ordenRecorrido": 59,
-      "faseRecorrido": "Por calendarizar"
-    },
-    {
-      "id": "ig-061",
-      "nombre": "Parroquia de Santa María Magdalena",
-      "tipo": "parroquia",
-      "municipio": "Querétaro",
-      "zona": "Poniente / Carrillo Puerto",
-      "direccion": "Juárez esq. Hidalgo, Santa María Magdalena",
-      "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-san-miguel-arcangel/",
-      "ordenRecorrido": 60,
-      "faseRecorrido": "Por calendarizar"
-    },
-    {
-      "id": "ig-062",
-      "nombre": "Parroquia del Beato Rafael Guízar Valencia",
-      "tipo": "parroquia",
-      "municipio": "Querétaro",
-      "zona": "Poniente / Carrillo Puerto",
-      "direccion": "Miguel Hidalgo, Tlacote el Bajo",
-      "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-san-miguel-arcangel/",
-      "ordenRecorrido": 61,
-      "faseRecorrido": "Por calendarizar"
-    },
-    {
-      "id": "ig-063",
-      "nombre": "Parroquia de Nuestra Señora de la Luz",
-      "tipo": "parroquia",
-      "municipio": "Querétaro",
-      "zona": "Poniente / Carrillo Puerto",
-      "direccion": "Av. de la Luz esq. Tepehuas, Cerrito Colorado",
-      "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-san-miguel-arcangel/",
-      "ordenRecorrido": 62,
-      "faseRecorrido": "Por calendarizar"
-    },
-    {
-      "id": "ig-064",
-      "nombre": "Parroquia del Misterio de la Encarnación del Hijo de Dios",
-      "tipo": "parroquia",
-      "municipio": "Querétaro",
-      "zona": "Poniente / Carrillo Puerto",
-      "direccion": "Alpes 200 esq. Cofre de Perote, Loma Bonita",
-      "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-san-miguel-arcangel/",
-      "ordenRecorrido": 63,
-      "faseRecorrido": "Por calendarizar"
-    },
-    {
-      "id": "ig-065",
-      "nombre": "Parroquia de la Divina Providencia (Los Sauces)",
-      "tipo": "parroquia",
-      "municipio": "Querétaro",
-      "zona": "Poniente / Carrillo Puerto",
-      "direccion": "Av. Madrid 231, Los Sauces",
-      "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-san-miguel-arcangel/",
-      "ordenRecorrido": 64,
-      "faseRecorrido": "Por calendarizar"
-    },
-    {
-      "id": "ig-067",
-      "nombre": "Parroquia de San Pedro Mártir",
-      "tipo": "parroquia",
-      "municipio": "Querétaro",
-      "zona": "Poniente / Carrillo Puerto",
-      "direccion": "San Pedro Mártir",
-      "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-san-miguel-arcangel/",
-      "ordenRecorrido": 65,
-      "faseRecorrido": "Por calendarizar"
-    },
-    {
-      "id": "ig-066",
-      "nombre": "Rectoría de Nuestra Señora del Rocío",
-      "tipo": "templo",
-      "municipio": "Querétaro",
-      "zona": "Poniente / Carrillo Puerto",
-      "direccion": "El Rocío",
-      "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-san-miguel-arcangel/",
-      "ordenRecorrido": 66,
-      "faseRecorrido": "Por calendarizar"
-    },
-    {
-      "id": "ig-068",
-      "nombre": "Parroquia de la Purísima Concepción (Hércules)",
-      "tipo": "parroquia",
-      "municipio": "Querétaro",
-      "zona": "Oriente / Hércules",
-      "direccion": "Av. del Río 1, Hércules",
-      "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-sn-pedro-apostol/",
-      "ordenRecorrido": 67,
-      "faseRecorrido": "Por calendarizar"
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-069",
@@ -820,56 +568,140 @@
       "direccion": "Milenio III",
       "imperdible": false,
       "fuente": "https://cancilleriadiocesisqro.org/decanato-de-sn-pedro-apostol/",
-      "ordenRecorrido": 68,
-      "faseRecorrido": "Por calendarizar"
+      "ordenRecorrido": 47,
+      "faseRecorrido": "Domingo propuesto"
     },
     {
-      "id": "ig-053",
-      "nombre": "Parroquia de San José (Buenavista)",
+      "id": "ig-068",
+      "nombre": "Parroquia de la Purísima Concepción (Hércules)",
       "tipo": "parroquia",
       "municipio": "Querétaro",
-      "zona": "Santa Rosa Jáuregui / Juriquilla",
-      "direccion": "Buenavista",
+      "zona": "Oriente / Hércules",
+      "direccion": "Av. del Río 1, Hércules",
       "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-rosa-de-lima/",
-      "ordenRecorrido": 69,
-      "faseRecorrido": "Por calendarizar"
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-sn-pedro-apostol/",
+      "ordenRecorrido": 48,
+      "faseRecorrido": "Domingo propuesto"
     },
     {
-      "id": "ig-054",
-      "nombre": "Parroquia del Beato Juan Diego (Jofrito)",
-      "tipo": "parroquia",
+      "id": "ig-045",
+      "nombre": "Templo del Señor de la Misericordia (Norte)",
+      "tipo": "templo",
       "municipio": "Querétaro",
-      "zona": "Santa Rosa Jáuregui / Juriquilla",
-      "direccion": "Camino Real s/n, Jofrito",
+      "zona": "Norte / San Pablo",
+      "direccion": "",
       "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-rosa-de-lima/",
-      "ordenRecorrido": 70,
-      "faseRecorrido": "Por calendarizar"
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/",
+      "ordenRecorrido": 49,
+      "faseRecorrido": "Domingo propuesto"
     },
     {
-      "id": "ig-056",
-      "nombre": "Parroquia del Sagrado Corazón de Jesús (Puerto de Aguirre)",
+      "id": "ig-041",
+      "nombre": "Parroquia de la Resurrección",
       "tipo": "parroquia",
       "municipio": "Querétaro",
-      "zona": "Santa Rosa Jáuregui / Juriquilla",
-      "direccion": "Puerto de Aguirre",
+      "zona": "Norte / San Pablo",
+      "direccion": "San Roque 35, Lindavista",
       "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-rosa-de-lima/",
-      "ordenRecorrido": 71,
-      "faseRecorrido": "Por calendarizar"
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/",
+      "ordenRecorrido": 50,
+      "faseRecorrido": "Domingo propuesto"
     },
     {
-      "id": "ig-057",
-      "nombre": "Parroquia de San Pablo Apóstol (Montenegro)",
+      "id": "ig-043",
+      "nombre": "Parroquia de María Madre de la Iglesia",
       "tipo": "parroquia",
       "municipio": "Querétaro",
-      "zona": "Santa Rosa Jáuregui / Juriquilla",
-      "direccion": "Montenegro",
+      "zona": "Norte / San Pablo",
+      "direccion": "Guadalupe 24 esq. Reforma, San Pablo",
       "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-rosa-de-lima/",
-      "ordenRecorrido": 72,
-      "faseRecorrido": "Por calendarizar"
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/",
+      "ordenRecorrido": 51,
+      "faseRecorrido": "Domingo propuesto"
+    },
+    {
+      "id": "ig-042",
+      "nombre": "Parroquia de las Bienaventuranzas",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Norte / San Pablo",
+      "direccion": "Río Candelaria 807, Menchaca I",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/",
+      "ordenRecorrido": 52,
+      "faseRecorrido": "Domingo propuesto"
+    },
+    {
+      "id": "ig-044",
+      "nombre": "Parroquia de Jesucristo Sumo y Eterno Sacerdote",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Norte / San Pablo",
+      "direccion": "",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/",
+      "ordenRecorrido": 53,
+      "faseRecorrido": "Domingo propuesto"
+    },
+    {
+      "id": "ig-046",
+      "nombre": "Parroquia de San Pedro Apóstol (San Pedrito Peñuelas)",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Norte / San Pablo",
+      "direccion": "San Pedrito Peñuelas",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/",
+      "ordenRecorrido": 54,
+      "faseRecorrido": "Domingo propuesto"
+    },
+    {
+      "id": "ig-047",
+      "nombre": "Parroquia Cristo Profeta",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Norte / San Pablo",
+      "direccion": "",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/",
+      "ordenRecorrido": 55,
+      "faseRecorrido": "Domingo propuesto"
+    },
+    {
+      "id": "ig-048",
+      "nombre": "Parroquia de San José el Alto",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Norte / San Pablo",
+      "direccion": "San José el Alto",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/",
+      "ordenRecorrido": 56,
+      "faseRecorrido": "Domingo propuesto"
+    },
+    {
+      "id": "ig-049",
+      "nombre": "Parroquia de Santa Ana (El Salitre)",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Norte / San Pablo",
+      "direccion": "El Salitre",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/",
+      "ordenRecorrido": 57,
+      "faseRecorrido": "Domingo propuesto"
+    },
+    {
+      "id": "ig-050",
+      "nombre": "Parroquia de la Inmaculada Concepción de María",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Norte / San Pablo",
+      "direccion": "",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-del-santo-nino-de-la-salud/",
+      "ordenRecorrido": 58,
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-070",
@@ -880,8 +712,8 @@
       "direccion": "",
       "imperdible": false,
       "fuente": "https://cancilleriadiocesisqro.org/circulares/",
-      "ordenRecorrido": 73,
-      "faseRecorrido": "Por calendarizar"
+      "ordenRecorrido": 59,
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-071",
@@ -892,20 +724,128 @@
       "direccion": "",
       "imperdible": false,
       "fuente": "https://cancilleriadiocesisqro.org/circulares/",
-      "ordenRecorrido": 74,
-      "faseRecorrido": "Por calendarizar"
+      "ordenRecorrido": 60,
+      "faseRecorrido": "Domingo propuesto"
     },
     {
-      "id": "ig-072",
-      "nombre": "Parroquia de la Sagrada Familia",
+      "id": "ig-066",
+      "nombre": "Rectoría de Nuestra Señora del Rocío",
+      "tipo": "templo",
+      "municipio": "Querétaro",
+      "zona": "Poniente / Carrillo Puerto",
+      "direccion": "El Rocío",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-san-miguel-arcangel/",
+      "ordenRecorrido": 61,
+      "faseRecorrido": "Domingo propuesto"
+    },
+    {
+      "id": "ig-059",
+      "nombre": "Parroquia de Nuestra Señora de la Paz",
       "tipo": "parroquia",
       "municipio": "Querétaro",
-      "zona": "Zona metropolitana",
-      "direccion": "",
+      "zona": "Poniente / Carrillo Puerto",
+      "direccion": "Agua 259, Satélite",
       "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/circulares/",
-      "ordenRecorrido": 75,
-      "faseRecorrido": "Por calendarizar"
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-san-miguel-arcangel/",
+      "ordenRecorrido": 62,
+      "faseRecorrido": "Domingo propuesto"
+    },
+    {
+      "id": "ig-058",
+      "nombre": "Parroquia de San Miguel Arcángel (Carrillo Puerto)",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Poniente / Carrillo Puerto",
+      "direccion": "Calzada Guadalupe Victoria 14, Felipe Carrillo Puerto",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-san-miguel-arcangel/",
+      "ordenRecorrido": 63,
+      "faseRecorrido": "Domingo propuesto"
+    },
+    {
+      "id": "ig-060",
+      "nombre": "Parroquia de Corpus Christi",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Poniente / Carrillo Puerto",
+      "direccion": "Puebla esq. Durango, Obrera",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-san-miguel-arcangel/",
+      "ordenRecorrido": 64,
+      "faseRecorrido": "Domingo propuesto"
+    },
+    {
+      "id": "ig-065",
+      "nombre": "Parroquia de la Divina Providencia (Los Sauces)",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Poniente / Carrillo Puerto",
+      "direccion": "Av. Madrid 231, Los Sauces",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-san-miguel-arcangel/",
+      "ordenRecorrido": 65,
+      "faseRecorrido": "Domingo propuesto"
+    },
+    {
+      "id": "ig-063",
+      "nombre": "Parroquia de Nuestra Señora de la Luz",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Poniente / Carrillo Puerto",
+      "direccion": "Av. de la Luz esq. Tepehuas, Cerrito Colorado",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-san-miguel-arcangel/",
+      "ordenRecorrido": 66,
+      "faseRecorrido": "Domingo propuesto"
+    },
+    {
+      "id": "ig-061",
+      "nombre": "Parroquia de Santa María Magdalena",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Poniente / Carrillo Puerto",
+      "direccion": "Juárez esq. Hidalgo, Santa María Magdalena",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-san-miguel-arcangel/",
+      "ordenRecorrido": 67,
+      "faseRecorrido": "Domingo propuesto"
+    },
+    {
+      "id": "ig-062",
+      "nombre": "Parroquia del Beato Rafael Guízar Valencia",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Poniente / Carrillo Puerto",
+      "direccion": "Miguel Hidalgo, Tlacote el Bajo",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-san-miguel-arcangel/",
+      "ordenRecorrido": 68,
+      "faseRecorrido": "Domingo propuesto"
+    },
+    {
+      "id": "ig-067",
+      "nombre": "Parroquia de San Pedro Mártir",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Poniente / Carrillo Puerto",
+      "direccion": "San Pedro Mártir",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-san-miguel-arcangel/",
+      "ordenRecorrido": 69,
+      "faseRecorrido": "Domingo propuesto"
+    },
+    {
+      "id": "ig-064",
+      "nombre": "Parroquia del Misterio de la Encarnación del Hijo de Dios",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Poniente / Carrillo Puerto",
+      "direccion": "Alpes 200 esq. Cofre de Perote, Loma Bonita",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-san-miguel-arcangel/",
+      "ordenRecorrido": 70,
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-073",
@@ -916,8 +856,20 @@
       "direccion": "",
       "imperdible": false,
       "fuente": "https://cancilleriadiocesisqro.org/circulares/",
-      "ordenRecorrido": 76,
-      "faseRecorrido": "Por calendarizar"
+      "ordenRecorrido": 71,
+      "faseRecorrido": "Domingo propuesto"
+    },
+    {
+      "id": "ig-072",
+      "nombre": "Parroquia de la Sagrada Familia",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Zona metropolitana",
+      "direccion": "",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/circulares/",
+      "ordenRecorrido": 72,
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-074",
@@ -928,8 +880,8 @@
       "direccion": "",
       "imperdible": false,
       "fuente": "https://cancilleriadiocesisqro.org/circulares/",
-      "ordenRecorrido": 77,
-      "faseRecorrido": "Por calendarizar"
+      "ordenRecorrido": 73,
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-075",
@@ -940,8 +892,56 @@
       "direccion": "",
       "imperdible": false,
       "fuente": "https://cancilleriadiocesisqro.org/circulares/",
+      "ordenRecorrido": 74,
+      "faseRecorrido": "Domingo propuesto"
+    },
+    {
+      "id": "ig-053",
+      "nombre": "Parroquia de San José (Buenavista)",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Santa Rosa Jáuregui / Juriquilla",
+      "direccion": "Buenavista",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-rosa-de-lima/",
+      "ordenRecorrido": 75,
+      "faseRecorrido": "Domingo propuesto"
+    },
+    {
+      "id": "ig-054",
+      "nombre": "Parroquia del Beato Juan Diego (Jofrito)",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Santa Rosa Jáuregui / Juriquilla",
+      "direccion": "Camino Real s/n, Jofrito",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-rosa-de-lima/",
+      "ordenRecorrido": 76,
+      "faseRecorrido": "Domingo propuesto"
+    },
+    {
+      "id": "ig-056",
+      "nombre": "Parroquia del Sagrado Corazón de Jesús (Puerto de Aguirre)",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Santa Rosa Jáuregui / Juriquilla",
+      "direccion": "Puerto de Aguirre",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-rosa-de-lima/",
+      "ordenRecorrido": 77,
+      "faseRecorrido": "Domingo propuesto"
+    },
+    {
+      "id": "ig-057",
+      "nombre": "Parroquia de San Pablo Apóstol (Montenegro)",
+      "tipo": "parroquia",
+      "municipio": "Querétaro",
+      "zona": "Santa Rosa Jáuregui / Juriquilla",
+      "direccion": "Montenegro",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/decanato-de-santa-rosa-de-lima/",
       "ordenRecorrido": 78,
-      "faseRecorrido": "Por calendarizar"
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-078",
@@ -953,7 +953,7 @@
       "imperdible": false,
       "fuente": "https://cancilleriadiocesisqro.org/circulares/",
       "ordenRecorrido": 79,
-      "faseRecorrido": "Por calendarizar"
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-079",
@@ -965,19 +965,7 @@
       "imperdible": false,
       "fuente": "https://cancilleriadiocesisqro.org/circulares/",
       "ordenRecorrido": 80,
-      "faseRecorrido": "Por calendarizar"
-    },
-    {
-      "id": "ig-080",
-      "nombre": "Parroquia de Nuestra Señora del Rosario (Bravo)",
-      "tipo": "parroquia",
-      "municipio": "Corregidora",
-      "zona": "El Pueblito / Santa Bárbara",
-      "direccion": "Bravo",
-      "imperdible": false,
-      "fuente": "https://cancilleriadiocesisqro.org/circulares/",
-      "ordenRecorrido": 81,
-      "faseRecorrido": "Por calendarizar"
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-081",
@@ -988,8 +976,8 @@
       "direccion": "Santa Bárbara",
       "imperdible": false,
       "fuente": "https://cancilleriadiocesisqro.org/circulares/",
-      "ordenRecorrido": 82,
-      "faseRecorrido": "Por calendarizar"
+      "ordenRecorrido": 81,
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-082",
@@ -1000,8 +988,20 @@
       "direccion": "",
       "imperdible": false,
       "fuente": "https://cancilleriadiocesisqro.org/circulares/",
+      "ordenRecorrido": 82,
+      "faseRecorrido": "Domingo propuesto"
+    },
+    {
+      "id": "ig-080",
+      "nombre": "Parroquia de Nuestra Señora del Rosario (Bravo)",
+      "tipo": "parroquia",
+      "municipio": "Corregidora",
+      "zona": "El Pueblito / Santa Bárbara",
+      "direccion": "Bravo",
+      "imperdible": false,
+      "fuente": "https://cancilleriadiocesisqro.org/circulares/",
       "ordenRecorrido": 83,
-      "faseRecorrido": "Por calendarizar"
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-083",
@@ -1013,7 +1013,7 @@
       "imperdible": false,
       "fuente": "https://cancilleriadiocesisqro.org/circulares/",
       "ordenRecorrido": 84,
-      "faseRecorrido": "Por calendarizar"
+      "faseRecorrido": "Domingo propuesto"
     },
     {
       "id": "ig-084",
@@ -1025,8 +1025,8 @@
       "imperdible": false,
       "fuente": "https://cancilleriadiocesisqro.org/circulares/",
       "ordenRecorrido": 85,
-      "faseRecorrido": "Por calendarizar"
+      "faseRecorrido": "Domingo propuesto"
     }
   ],
-  "criterioOrden": "Orden sugerido por relevancia patrimonial y religiosa, cercanía entre templos y facilidad de recorrido. No expresa jerarquía canónica oficial."
+  "criterioOrden": "29 domingos propuestos; recorrido espiritual y patrimonial por zonas. Misa dominical en el último recinto de cada jornada. El orden no expresa jerarquía eclesiástica oficial."
 }
