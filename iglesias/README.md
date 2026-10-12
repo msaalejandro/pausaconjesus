@@ -66,4 +66,4 @@ Evitar duplicar el mismo edificio cuando sea simultáneamente parroquia, santuar
 
 ## Publicación
 
-La sección vive en `/iglesias/` y aparece enlazada en el inicio y la navegación inferior del sitio principal. La publicación depende del merge de la rama en la rama desplegada en GitHub Pages.
+La sección vive en `/iglesias/` y aparece enlazada en el selector superior «Guía · Cronología · Iglesias» del sitio principal, con el mismo menú dentro de la nueva página. La publicación depende del merge de la rama en la rama desplegada en GitHub Pages.
