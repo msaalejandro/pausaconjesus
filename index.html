@@ -414,8 +414,17 @@ const store = {
 };
 const esc = t => String(t ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const parseDate = s => { const [y, m, d] = s.split("-").map(Number); return new Date(y, m - 1, d); };
-const hoy = (() => { const n = new Date(); return new Date(n.getFullYear(), n.getMonth(), n.getDate()); })();
-const dias = s => Math.round((parseDate(s) - hoy) / 864e5);
+// Comparar días de calendario del grupo, independientemente de la zona del visitante.
+const relojGrupo = new Intl.DateTimeFormat("en-US", {
+  timeZone: "America/Mexico_City", year: "numeric", month: "2-digit", day: "2-digit"
+});
+const fechaHoyGrupo = (ahora = new Date()) => {
+  const partes = Object.fromEntries(relojGrupo.formatToParts(ahora).map(p => [p.type, p.value]));
+  return `${partes.year}-${partes.month}-${partes.day}`;
+};
+const diaCalendario = s => { const [y, m, d] = s.split("-").map(Number); return Date.UTC(y, m - 1, d) / 864e5; };
+const dias = (s, ahora = new Date()) => diaCalendario(s) - diaCalendario(fechaHoyGrupo(ahora));
+let diaMostrado = fechaHoyGrupo();
 const MES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
 const cap = t => t.charAt(0).toUpperCase() + t.slice(1);
 const fecha = s => cap(parseDate(s).toLocaleDateString("es-MX", { weekday: "long", day: "numeric", month: "long" }).replace(",", ""));
@@ -529,7 +538,7 @@ function vInicio() {
   ${destacado ? secVideo : ""}
   ${ant ? `<a class="previa" href="#${ant.id}/despues"><div><small>Sesión anterior · ${dAnt.getDate()} ${MES[dAnt.getMonth()]}</small><b>${esc(ant.tema)}</b></div><span class="ir">Repasar</span></a>` : ""}
   <section class="portada" aria-labelledby="p-t">
-    <div class="cuando"><span>${m === "despues" ? "Última sesión" : "Próxima sesión"} · ${fecha(s.fecha)}</span><b>${cuenta(s.fecha)}</b></div>
+    <div class="cuando"><span>${m === "despues" ? "Última sesión" : m === "durante" ? "Sesión de hoy" : "Próxima sesión"} · ${fecha(s.fecha)}</span><b>${cuenta(s.fecha)}</b></div>
     <h1 id="p-t">${esc(s.tema)}</h1>
     <p class="fuente">${esc(s.fuente)}</p>
     <p class="idea">${esc(s.idea)}</p>
@@ -880,6 +889,7 @@ function ruta() {
   return { base, sub };
 }
 function render() {
+  diaMostrado = fechaHoyGrupo();
   const { base, sub } = ruta();
   const ses = SESIONES.find(s => s.id === base && s.tema);
   const coord = base.startsWith("coord-") ? SESIONES.find(s => "coord-" + s.id === base && s.dinamica) : null;
@@ -1077,6 +1087,20 @@ function iniciarTimer(seg, label) {
 }
 function pintarT() { const m = Math.floor(restante / 60), s = restante % 60; const v = $("#t-v"); if (v) v.textContent = `${m}:${String(s).padStart(2, "0")}`; }
 function pararTimer() { clearInterval(tm); $("#timer-slot").innerHTML = ""; try { bloqueo && bloqueo.release(); } catch (e) {} bloqueo = null; }
+
+// Actualizar al cambiar el día o regresar a una pestaña que estuvo suspendida.
+function actualizarDia() {
+  if (document.hidden || fechaHoyGrupo() === diaMostrado) return;
+  // No interrumpir una reflexión o pregunta que todavía se está escribiendo.
+  if ([...document.querySelectorAll('form textarea, form input[type="text"]')].some(el => el.value.trim())) return;
+  const desplazamiento = SC().scrollTop;
+  render();
+  SC().scrollTop = desplazamiento;
+}
+document.addEventListener("visibilitychange", actualizarDia);
+window.addEventListener("pageshow", actualizarDia);
+window.addEventListener("focus", actualizarDia);
+setInterval(actualizarDia, 30000);
 
 render();
 </script>
