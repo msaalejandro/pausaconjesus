@@ -201,6 +201,9 @@ window.LECCIONES = {
     audios: [
       { t: "Salmo 16 (15)", d: "«Tú eres mi bien»", src: "/audio/salmo-16.mp3", dur: "1:10" }
     ],
+    videos: [
+      { t: "La amistad con Jesús", tipo: "Cortometraje · Pausa con Jesús", d: "Una pausa en imágenes para preparar la sesión y volver a la reflexión sobre nuestra amistad con Jesús.", yt: "pK3men65aus", destacarHasta: "2026-10-30" }
+    ],
     materiales: [
       { tipo: "Libro", h: "Lee los capítulos", t: "Imitación de Cristo", d: "Texto completo en textos.info, gratis. Lee en el Libro II los capítulos VII, «Del amor de Jesús sobre todas las cosas», VIII, «De la familiar amistad con Jesús», y XI, «Cuán pocos son los que aman la cruz de Cristo». Son cortos.", url: "https://www.textos.info/tomas-de-kempis/imitacion-de-cristo/ebook" }
     ],
