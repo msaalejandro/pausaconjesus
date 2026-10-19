@@ -1,72 +1,70 @@
 # Peregrinos por Querétaro
 
-Sección pública de [Pausa con Jesús](https://pausaconjesus.com/iglesias/) para descubrir iglesias de los **municipios de Querétaro y Corregidora**, con visitas dominicales y Misa al terminar cada jornada.
+Sección pública de [Pausa con Jesús](https://pausaconjesus.com/iglesias/) para conocer iglesias de los municipios de Querétaro y Corregidora mediante recorridos dominicales.
 
 ## Modelo de actividad
 
-- Un recorrido **cada domingo** a partir del 18 de octubre de 2026. Primera propuesta: 29 domingos consecutivos, hasta el 2 de mayo de 2027, abarcando los 85 recintos del inventario inicial.
-- Normalmente se visitan dos iglesias para conocerlas y se termina en una **tercera iglesia para asistir juntos a la Santa Misa**.
-- Dos jornadas tienen solo dos iglesias para completar el total sin repetir templos.
-- La **primera y segunda visita** tienen horarios de referencia tentativos (09:00 y 10:00 h, o 09:30 h si son dos paradas). **La última parada no tiene hora asignada**: se debe consultar la Misa dominical antes de confirmar o ajustar los horarios de las visitas.
-- La última parada fue elegida entre recintos registrados como catedral, parroquia, santuario o basílica. No hay una confirmación expresa con ninguno de los templos. En domingos de celebraciones especiales, puede ser necesario ajustar rutas o actividades.
-- La priorización atiende importancia religiosa y patrimonial más logística; **no expresa jerarquía canónica oficial**.
+- Cada jornada reúne **de dos a cinco iglesias cercanas**. No se completa el cupo de cinco si eso obliga a cruzar la ciudad.
+- En el Centro Histórico los recorridos son peatonales. Las cuatro primeras rutas futuras fueron medidas en Google Maps el 19 de octubre de 2026: entre 1.4 y 3.6 km totales a pie.
+- Fuera del Centro las jornadas se organizan por microzonas y se propone traslado en vehículo. El enlace «Ver ruta y distancia en Maps» recalcula el trayecto y el tráfico.
+- La **última iglesia de cada jornada** conserva el rol `misa`. Su horario permanece pendiente hasta verificarlo directamente con el templo.
+- Todas las fechas futuras permanecen como `propuesta` hasta comprobar apertura, celebraciones, acceso y tiempo real de traslado.
+
+La primera jornada ocurrió el domingo 18 de octubre de 2026. El archivo conserva su propuesta original, pero no marca ninguna iglesia como visitada ni ninguna Misa como celebrada: falta confirmar con el grupo qué ocurrió realmente.
 
 ## Archivos
 
-- `index.html`: interfaz pública, jornadas desplegables, inventario filtrable, bitácora y contadores.
-- `iglesias.json`: 85 recintos únicos iniciales. El inventario aún **no está auditado ni cerrado**.
-- `visitas.json`: agenda por domingo y por iglesia, estado y constancia de asistencia a Misa.
+- `index.html`: interfaz pública, rutas desplegables, inventario, bitácora y contadores.
+- `iglesias.json`: inventario inicial de 85 recintos únicos, con direcciones revisadas y enlaces de fuente.
+- `visitas.json`: jornadas y paradas en formato compacto.
 
 Todo funciona en GitHub Pages mediante JSON, sin servidor adicional ni credenciales.
 
+## Estructura de `visitas.json`
+
+Cada elemento de `jornadas` contiene:
+
+- `id`, `numero`, `fecha`, `titulo` y `zona`.
+- `modalidad`: `caminando` o `en vehículo`.
+- `estado`: `propuesta`, `programada`, `realizada` o `cancelada`.
+- `distanciaKm`, `trasladoMin` y `rutaVerificada`, cuando existe una medición guardada.
+- `paradas`: lista ordenada de iglesias. La última debe tener `rol: "misa"`.
+
+Cada parada puede contener `hora`, `horaMisa`, `estado`, `misaCelebrada`, `puntoReunion`, `nota`, `reflexion` y `fotos`. Si omite `estado`, hereda el de la jornada.
+
 ## Confirmar una jornada
 
-1. En GitHub, abrir `iglesias/visitas.json` y encontrar los registros que comparten `jornada`.
-2. Consultar con la parroquia o santuario final la **hora exacta de la Misa dominical**. Comprobar también apertura de las iglesias anteriores, tiempo de traslado y celebraciones especiales.
-3. Ajustar el `hora` de las primeras paradas, colocar la hora de la Misa en `hora` y `horaMisa` del último registro, confirmar el `puntoReunion` y cambiar `estado` de `propuesta` a `programada` en **todas las paradas** de esa jornada.
-4. Publicar la edición mediante commit. La web se actualizará con el siguiente despliegue.
+1. Abrir `iglesias/visitas.json` y localizar la jornada.
+2. Consultar con todos los templos su apertura y, especialmente, la hora exacta de la Misa en la última parada.
+3. Abrir la ruta de Google Maps y comprobar el tiempo actualizado, cierres y accesibilidad.
+4. Añadir las horas, confirmar el punto de reunión y cambiar la jornada a `programada`.
 
-**Importante:** no pasar el estado de una jornada a `programada` antes de verificar los horarios. Mientras sea `propuesta`, la página mostrará claramente que la fecha y la Misa son tentativas.
+No se debe anunciar una propuesta como confirmada ni asignar una hora de Misa sin evidencia.
 
-Los campos principales de cada visita:
+## Registrar una jornada realizada
 
-- `jornada`: identificador común de las paradas de un domingo.
-- `numeroJornada`: índice consecutivo en el calendario.
-- `ordenEnJornada`: determina el orden lógico de paradas, independientemente de que la hora de Misa no esté confirmada.
-- `iglesiaId`: identificador estable del recinto en `iglesias.json`.
-- `fecha`: fecha local YYYY-MM-DD (zona `America/Mexico_City`).
-- `rol`: `visita` o `misa`. **Solo la última parada** tiene `rol: "misa"`.
-- `hora`: HH:mm de 24 horas, o `null` mientras no se confirme la hora.
-- `horaMisa`: HH:mm para la Misa cuando esté confirmada; `null` en cualquier otro caso.
-- `estado`: `propuesta`, `programada`, `realizada` o `cancelada`.
-- `misaCelebrada`: `true` **solo** si el grupo asistió realmente a Misa en ese templo.
-- `reflexion` y `fotos`: opcionales para la bitácora. Las fotografías de participantes deben publicarse únicamente con autorización.
+1. Cambiar a `realizada` únicamente las paradas donde el grupo efectivamente estuvo.
+2. En la última iglesia, usar `misaCelebrada: true` solo si el grupo asistió a la celebración.
+3. Si no se completó toda la ruta, establecer el estado en cada parada en lugar de cambiar toda la jornada.
+4. Agregar reflexión y fotografías únicamente cuando corresponda y exista autorización.
 
-## Registrar una actividad realizada y actualizar los contadores
+Los contadores se mantienen separados:
 
-1. Una vez celebrada la jornada, cambiar a `"estado": "realizada"` únicamente los templos donde el grupo efectivamente estuvo.
-2. Para la iglesia final, marcar además `"misaCelebrada": true` **únicamente si el grupo asistió a la Misa**. Si solo se visitó ese templo o la celebración se canceló, dejar `false`.
-3. Agregar una reflexión o enlaces a fotografías si se desea.
+- **Iglesias del recorrido**: total único del inventario.
+- **Iglesias visitadas**: iglesias únicas con al menos una parada `realizada`.
+- **Con Misa compartida**: iglesias únicas con rol `misa`, estado `realizada` y `misaCelebrada: true`.
+- **Por conocer**: total menos visitadas.
 
-Los contadores de la portada son:
+Una Misa cuenta también como visita, pero no duplica el templo. Una propuesta vencida nunca se convierte automáticamente en realizada.
 
-- **Iglesias del recorrido**: todas las iglesias únicas presentes en el inventario.
-- **Iglesias visitadas**: iglesias únicas con al menos un registro `realizada`, incluyendo la iglesia donde hubo Misa.
-- **Con Misa compartida**: iglesias únicas con `rol: "misa"`, `estado: "realizada"` y `misaCelebrada: true`.
-- **Por conocer**: total del inventario menos iglesias visitadas.
+## Precisión editorial
 
-La Misa cuenta también como visita, sin duplicar el templo en el inventario ni el contador de visitadas. Repetir la Misa en una misma iglesia no infla el número de **iglesias** con Misa. Las visitas tentativas o ya vencidas nunca se convierten automáticamente en realizadas.
+- Mantener estable el `id` de cada iglesia al corregir nombre o dirección.
+- Evitar duplicados cuando un mismo recinto tenga varios títulos o funciones.
+- Verificar horarios, acceso y celebraciones especiales antes de cada domingo.
+- El 21 de marzo de 2027 coincide con Domingo de Ramos; esa propuesta requiere revisión pastoral especial.
 
-## Inventario y precisión editorial
-
-- Verificar direcciones, municipio, nomenclatura, duplicados y adscripción de parroquias antes de presentar el listado como definitivo.
-- Si un templo comparte los títulos de santuario y parroquia se registra **una sola vez**.
-- Mantener estable el `id` de cada iglesia cuando se corrija su nombre.
-- Confirmar con anticipación la Misa y las condiciones de acceso. Evitar programar paseos dentro de templos durante liturgias.
-- El recorrido semanal comprende Navidad, Cuaresma y Semana Santa/Pascua de 2027; esas jornadas requieren especial sensibilidad pastoral y pueden adaptarse al calendario litúrgico.
-- No anunciar asistencia, reserva de lugares, actividades guiadas ni horarios confirmados sin evidencia.
-
-## Fuentes del inventario inicial
+Fuentes principales:
 
 - https://cancilleriadiocesisqro.org/decanatos/
 - https://cancilleriadiocesisqro.org/circulares/
@@ -75,4 +73,4 @@ La Misa cuenta también como visita, sin duplicar el templo en el inventario ni 
 
 ## Publicación
 
-La sección vive en `/iglesias/` y está enlazada desde el selector «Guía · Cronología · Iglesias». Los cambios a `main` se despliegan por GitHub Pages.
+La sección vive en `/iglesias/`. Los cambios a `main` se despliegan mediante GitHub Pages.
