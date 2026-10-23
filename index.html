@@ -377,6 +377,13 @@ textarea.copia{width:100%;min-height:90px;margin-top:12px;padding:10px;border-ra
   .h-vista{font-size:52px}
 }
 @media (prefers-reduced-motion: reduce){*{transition:none!important;scroll-behavior:auto!important}}
+.ficha-tema p + p,.oracion-tema p,.seccion > p + p{margin-top:12px}
+.fuentes-tema ul{padding-left:1.2em;display:grid;gap:16px}
+.fuentes-tema a{font-weight:700;text-underline-offset:3px;overflow-wrap:anywhere}
+.fuentes-tema li p{font-size:15px;color:var(--piedra);margin-top:4px}
+.oracion-tema p{font-family:var(--f-lectura);line-height:1.8}
+.agenda li > div:last-child{min-width:0;overflow-wrap:anywhere}
+.agenda li p + p{margin-top:10px}
 </style>
 </head>
 <body>
@@ -391,8 +398,8 @@ textarea.copia{width:100%;min-height:90px;margin-top:12px;padding:10px;border-ra
 </div></nav>
 <div id="timer-slot"></div>
 
-<script src="/datos/lecciones.js?v=aa63fe50"></script>
-<script src="/datos/grupo.js"></script>
+<script src="/datos/lecciones.js?v=luz-20261025"></script>
+<script src="/datos/grupo.js?v=luz-20261025"></script>
 <script>
 /* ===== Contenido del grupo. Cada quincena se agrega una sesión aquí. ===== */
 /* Las lecciones viven en datos/lecciones.js y el calendario del grupo en datos/grupo.js.
@@ -646,19 +653,56 @@ function vSesion(s, m) {
     <div role="tabpanel">${cuerpo}</div>`;
 }
 
+/* Campos opcionales para las nuevas lecciones; las anteriores conservan su contenido. */
+function bloqueFicha(s) {
+  if (!s.lecturaBase && !s.objetivo && !s.preguntaCentral) return "";
+  return `<section class="seccion ficha-tema" aria-label="Claves del encuentro">
+    ${s.preguntaCentral ? `<h2 class="h2">La pregunta que nos acompaña</h2><p class="central">${esc(s.preguntaCentral)}</p>` : ""}
+    ${s.objetivo ? `<p><b>Propósito.</b> ${esc(s.objetivo)}</p>` : ""}
+    ${s.lecturaBase ? `<p><b>Lectura base.</b> ${esc(s.lecturaBase)}</p>` : ""}
+  </section>`;
+}
+function bloqueFuentes(s) {
+  if (!(s.fuentes || []).length) return "";
+  return `<section class="seccion fuentes-tema" aria-label="Fuentes del tema"><h2 class="h2">Fuentes para profundizar</h2>
+    <ul>${s.fuentes.map(f => `<li><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.t)}</a><p>${esc(f.d)}</p></li>`).join("")}</ul></section>`;
+}
+function bloqueOracion(s, coord = false) {
+  const lineas = coord ? s.oracion : (s.oracionPublica || s.oracion);
+  if (!(lineas || []).length) return "";
+  return `<section class="seccion oracion-tema" aria-label="Oración del encuentro"><h2 class="h2">Oración</h2>
+    <p>${lineas.map(esc).join("<br>")}</p></section>`;
+}
+function bloquePuente(s) {
+  return s.puente ? `<section class="seccion"><h2 class="h2">Hacia el siguiente encuentro</h2><p class="central">${esc(s.puente)}</p></section>` : "";
+}
+function bloqueCoordinacion(s, parte) {
+  const c = s.coordinacion;
+  if (!c) return "";
+  if (parte === "preparar") return `<section class="seccion"><h2 class="h2">Preparación de quien coordina</h2>
+    ${c.preparacion.map(p => `<p>${esc(p)}</p>`).join("")}</section>
+    <section class="seccion"><h2 class="h2">Apertura · lista para leer</h2>
+    ${c.apertura.map(p => `<p>${esc(p)}</p>`).join("")}
+    <div class="aterriza"><b>Pregunta inicial</b>${esc(c.preguntaInicial)}</div>
+    <p>${esc(c.indicacionLectura)}</p></section>`;
+  return `<section class="seccion"><h2 class="h2">Puesta en común</h2><p>${esc(c.puestaComun)}</p></section>
+    <section class="seccion"><h2 class="h2">Cierre · listo para leer</h2><p>${esc(c.cierre)}</p><p>${esc(c.silencio)}</p></section>
+    ${bloqueOracion(s, true)}${bloquePuente(s)}${bloqueFuentes(s)}`;
+}
 function momentoAntes(s) {
   const libro = (s.materiales || [])[0];
   const abierto = store.get("panel", false);
   return `<p class="intro-momento fuera-enfoque">Para llegar con el corazón dispuesto. Tómate tu tiempo; no hace falta hacerlo todo de una vez.</p>
     <p class="central fuera-enfoque">${esc(s.idea)}</p>
+    ${bloqueFicha(s)}
     <ol class="pasos fuera-enfoque" style="margin-top:22px">
       ${s.preparar ? `<li><div><h3>Lleva esta pregunta a la oración</h3><p><i>${esc(s.preparar.pregunta)}</i></p><p>${esc(s.preparar.practica)}${s.preparar.cierre ? " " + esc(s.preparar.cierre) : ""}</p></div></li>` : ""}
-      ${libro ? `<li><div><h3>${esc(libro.h || "Lee el capítulo")}</h3><p>${esc(libro.d)}</p><a class="btn lleno" href="${esc(libro.url)}" target="_blank" rel="noopener">${ico.pdf}Abrir el libro</a></div></li>` : ""}
+      ${libro ? `<li><div><h3>${esc(libro.h || "Lee el capítulo")}</h3><p>${esc(libro.d)}</p><a class="btn lleno" href="${esc(libro.url)}" target="_blank" rel="noopener">${ico.pdf}${esc(libro.boton || "Abrir el libro")}</a></div></li>` : ""}
       <li><div><h3>Ten a la mano estos textos</h3><p>Búscalos en tu Biblia.${s.notaBiblia ? " " + esc(s.notaBiblia) : ""}</p>
         <div class="citas">${s.biblia.map(([r, d]) => `<span><b>${esc(r)}</b> ${esc(d)}</span>`).join("")}</div></div></li>
       ${(s.videos || []).length ? `<li><div><h3>Mira el cortometraje</h3><p>Una pausa en imágenes para entrar en el tema.</p><div style="margin-top:12px">${s.videos.map(v => bloqueVideo(v, s)).join("")}</div></div></li>` : ""}
       ${(s.audios || []).length ? `<li><div><h3>Escucha y reza el salmo</h3><p>Una lectura en voz alta para entrar en el tema con calma.</p>${s.audios.map(reproductor).join("")}</div></li>` : ""}
-      <li><div><h3>Repasa la guía de lectura</h3><p>El capítulo en ${s.puntos.length} puntos, con una idea para aterrizar cada uno. ${esc(s.lectura || "")}.</p></div></li>
+      <li><div><h3>Repasa la guía de lectura</h3><p>${esc(s.lecturaBase ? "El tema" : "El capítulo")} en ${s.puntos.length} puntos, con una idea para aterrizar cada uno. ${esc(s.lectura || "")}.</p></div></li>
     </ol>
     <div class="barra-lectura">
       <button class="btn" data-act="panel" aria-expanded="${abierto}" aria-controls="panel"><span style="font-family:var(--f-lectura)">Aa</span> Ajustar lectura</button>
@@ -671,7 +715,7 @@ function momentoAntes(s) {
       <div class="fila"><span>Fondo</span>${seg("fondo", [["pagina", "Claro"], ["sepia", "Sepia"], ["noche", "Noche"]], lectura.fondo)}</div>
     </div>
     <article class="lector" id="lector" data-letra="${lectura.letra}" data-fondo="${lectura.fondo}">
-      ${s.puntos.map((p, i) => `<section class="punto">
+      ${s.puntos.map((p, i) => `<section class="punto"${p.id ? ` id="lectura-${esc(p.id)}"` : ""}>
         <h3><span>${i + 1}</span>${esc(p.t)}</h3>
         ${p.p.map(x => `<p>${esc(x)}</p>`).join("")}
         <p class="ref">${esc(p.refs)}</p>
@@ -679,6 +723,8 @@ function momentoAntes(s) {
         <div class="aterriza"><b>Para aterrizar</b>${esc(p.a)}</div>
       </section>`).join("")}
     </article>
+    ${bloqueFuentes(s)}
+    <a class="coord" href="#coord-${s.id}"><b>¿Coordinas esta sesión?</b><span>Prepara el encuentro con la guía y sus preguntas.</span></a>
     ${formaPregunta(s)}`;
 }
 function reproductor(a) {
@@ -706,18 +752,22 @@ function momentoDurante(s) {
     </section>
     <section class="seccion" aria-labelledby="d-r">
       <h2 class="h2" id="d-r">Preguntas por ronda</h2>
-      <p class="nota">En grupos de 3 o 4 personas, una ronda a la vez.</p>
+      <p class="nota">${esc(d.grupos || "En grupos de 3 o 4 personas, una ronda a la vez.")}</p>
       ${d.rondas.map((r, i) => `<div class="ronda"><div class="ronda-cab"><div><h3>${esc(r.t)}</h3><p class="sub">Ronda ${i + 1}, sobre los puntos ${esc(r.sub.replace(/^Puntos?\s*/i, ""))}</p></div></div>
         <ol>${r.q.map(q => `<li>${esc(q)}</li>`).join("")}</ol></div>`).join("")}
     </section>
+    ${bloqueOracion(s)}${bloquePuente(s)}
     ${formaPregunta(s)}
     <a class="coord" href="#coord-${s.id}"><b>¿Coordinas esta sesión?</b><span>Abre el guion de exposición y el temporizador de las rondas.</span></a>`;
 }
 
 function momentoDespues(s) {
-  return `<p class="intro-momento">La sesión termina, pero lo que se sembró sigue. Llévalo a tu oración de estos días.</p>
+  return `<p class="intro-momento">${esc(s.coordinacion && dias(s.fecha) >= 0 ? "Material para retomar después del encuentro. Puedes volver aquí cuando lo necesites." : "La sesión termina, pero lo que se sembró sigue. Llévalo a tu oración de estos días.")}</p>
     ${(s.videos || []).length ? `<section class="seccion" style="margin-top:22px" aria-labelledby="x-pv"><h2 class="h2" id="x-pv">Una pausa en video</h2><p class="nota">Para volver al tema cuando lo necesites, o compartirlo con alguien.</p>${s.videos.map(v => bloqueVideo(v, s)).join("")}</section>` : ""}
     ${s.semana ? `<section class="seccion" style="margin-top:22px" aria-labelledby="x-v"><h2 class="h2" id="x-v">Para vivir estos días</h2>${bloqueVivir(s)}${(s.audios || []).length ? `<p class="nota" style="margin:18px 0 0">Puedes acompañar tu oración de estos días con el salmo.</p>${s.audios.map(reproductor).join("")}` : ""}</section>` : ""}
+    ${s.coordinacion ? `<section class="seccion" aria-label="Recapitulación"><h2 class="h2">Vuelve al recorrido</h2><ol class="agenda">${s.puntos.map((p, i) => `<li><div class="min">${i + 1}</div><div><h3>${esc(p.t)}</h3><p>${esc(p.p[0])}</p><p>${esc(p.a)}</p><a class="enlace" href="#${s.id}/antes">Leer el desarrollo completo</a></div></li>`).join("")}</ol></section>
+    <section class="seccion"><h2 class="h2">Preguntas para continuar</h2><ol class="preguntas-l">${s.dinamica.rondas.flatMap(r => r.q).map(q => `<li>${esc(q)}</li>`).join("")}</ol></section>` : ""}
+    ${bloqueOracion(s)}${bloquePuente(s)}${bloqueFuentes(s)}
     <section class="seccion" aria-labelledby="x-f">
       <h2 class="h2" id="x-f">Comparte con el grupo</h2>
       <p class="nota">Una reflexión sobre la sesión, o una intención para que el grupo rece contigo. Se publica en cuanto la envías.</p>
@@ -784,15 +834,23 @@ function vCoordinador(s) {
       <div id="preguntas-coord" data-sid="${esc(s.id)}"><p class="cargando">Cargando preguntas…</p></div></section>
     <section class="seccion"><h2 class="h2">Intenciones para el cierre</h2><p class="nota">Puedes nombrarlas en la oración final.</p>
       <div id="intenciones-coord"><p class="cargando">Cargando intenciones…</p></div></section>
+    ${bloqueFicha(s)}${bloqueCoordinacion(s, "preparar")}
     <section class="seccion"><h2 class="h2">Orden y tiempos</h2><p class="nota">${d.duracion} minutos en total.</p>
       <ol class="agenda">${d.agenda.map(a => `<li><div class="min">${a.min}<small>min</small></div><div><h3>${esc(a.t)}</h3><p>${esc(a.d)}</p></div></li>`).join("")}</ol></section>
     <section class="seccion"><h2 class="h2">Exposición</h2><p class="nota">Unos ${porPunto} minutos por punto. Empieza por la idea central.</p>
       <p class="central" style="margin-top:6px">${esc(s.idea)}</p>
-      <ol class="agenda" style="margin-top:18px">${s.puntos.map((p, i) => `<li><div class="min">${i + 1}<small>${esc(p.refs.split(" · ")[0])}</small></div><div><h3>${esc(p.t)}</h3><p>${esc(p.a)}</p>${(p.ecos || []).length ? `<p class="ecos-mini">Para profundizar: ${p.ecos.map(e => esc(e.t)).join(" · ")}</p>` : ""}</div></li>`).join("")}</ol></section>
+      <ol class="agenda" style="margin-top:18px">${s.puntos.map((p, i) => `<li${p.id ? ` id="coord-${esc(p.id)}"` : ""}><div class="min">${i + 1}<small>${esc(p.refs.split(" · ")[0])}</small></div><div><h3>${esc(p.t)}</h3>
+      ${s.coordinacion ? p.p.map(x => `<p>${esc(x)}</p>`).join("") : ""}
+      <p><b>Para aterrizar.</b> ${esc(p.a)}</p>
+      ${p.pregunta ? `<p><b>Pregunta para conversar.</b> ${esc(p.pregunta)}</p>` : ""}
+      ${p.transicion ? `<p><b>Transición.</b> ${esc(p.transicion)}</p>` : ""}
+      ${(p.ecos || []).length ? `<p class="ecos-mini">Para profundizar: ${p.ecos.map(e => esc(e.t)).join(" · ")}</p>` : ""}</div></li>`).join("")}</ol></section>
     <section class="seccion"><h2 class="h2">Rondas</h2><p class="nota">Lee los acuerdos antes de empezar y usa el temporizador de cada ronda.</p>
+      ${s.coordinacion ? `<p>${esc(d.grupos)}</p><p>${esc(s.coordinacion.instruccionesGrupos)}</p><ul class="acuerdos">${d.reglas.map(r => `<li>${esc(r)}</li>`).join("")}</ul>` : ""}
       ${d.rondas.map((r, i) => `<div class="ronda"><div class="ronda-cab"><div><h3>${esc(r.t)}</h3><p class="sub">Ronda ${i + 1}, puntos ${esc(r.sub.replace(/^Puntos?\s*/i, ""))}</p></div>
         <button class="btn" data-timer="${r.min}" data-label="Ronda ${i + 1}: ${esc(r.t)}" style="min-height:44px;padding:0 14px">Iniciar ${r.min} min</button></div>
-        <ol>${r.q.map(q => `<li>${esc(q)}</li>`).join("")}</ol></div>`).join("")}</section>`;
+        <ol>${r.q.map(q => `<li>${esc(q)}</li>`).join("")}</ol></div>`).join("")}</section>
+    ${bloqueCoordinacion(s, "cerrar")}`;
 }
 
 /* ===== Temas ===== */

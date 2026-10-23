@@ -13,6 +13,7 @@ window.GRUPO = {
   api: "https://restrategia-n8n.fcwppp.easypanel.host/webhook/pausa",
   calendario: [
     { fecha: "2026-10-02", leccion: "el-desierto" },
-    { fecha: "2026-10-16", leccion: "la-amistad-con-jesus" }
+    { fecha: "2026-10-16", leccion: "la-amistad-con-jesus" },
+    { fecha: "2026-10-25", leccion: "la-amistad-que-ilumina" }
   ]
 };

@@ -217,5 +217,369 @@ window.LECCIONES = {
       ["Mt 20,22", "¿Pueden beber el cáliz?"], ["Lc 9,23", "Tome su cruz y sígame"],
       ["Lc 10,38-42", "María a los pies de Jesús"], ["Sal 16", "Tú eres mi bien, mi copa"]
     ]
-  }
+  },
+
+  "la-amistad-que-ilumina": {
+  "tema": "La amistad que ilumina",
+  "fuente": "Evangelio · Juan 8,12 y Mateo 5,14-16",
+  "categoria": "Vida interior",
+  "lectura": "12 min de lectura",
+  "idea": "Después del desierto y del encuentro con Jesús como amigo, descubrimos cómo su amistad transforma nuestra vida: recibimos su luz, aprendemos a mirar con Él y compartimos su amor en lo cotidiano.",
+  "preguntaCentral": "¿Qué empieza a cambiar en mi manera de ver y de vivir cuando dejo que Jesús sea mi amigo?",
+  "objetivo": "Reconocer a Jesús como la luz que recibimos y permitir que su amistad transforme nuestra mirada, nuestras decisiones y nuestro trato con los demás.",
+  "lecturaBase": "Juan 8,12 y Mateo 5,14-16",
+  "puntos": [
+    {
+      "id": "P1",
+      "t": "Una luz nos encuentra",
+      "refs": "Jn 1,4-9 · Ex 13,21-22",
+      "p": [
+        "En el desierto, la columna de fuego permitía al pueblo avanzar de noche. La oscuridad seguía alrededor, pero Dios ofrecía una presencia que orientaba el camino.",
+        "Quizá todavía cargamos preguntas, dificultades o incertidumbre. La amistad con Jesús puede comenzar precisamente ahí, cuando le permitimos acompañarnos sin exigirnos haber resuelto primero toda nuestra vida.",
+        "En el prólogo de Juan, la luz procede del Verbo. Antes de preguntarnos cuánto estamos haciendo por Dios, podemos reconocer cómo se ha acercado Él a nosotros."
+      ],
+      "a": "Reconoce con gratitud una forma concreta en la que has recibido ayuda para caminar.",
+      "pregunta": "¿Recuerdas una persona, una palabra o un momento que te ayudó a encontrar dirección cuando no sabías cómo seguir?",
+      "transicion": "Si Jesús se acerca para acompañarnos, ¿qué significa dejar que sea Él quien nos oriente?",
+      "ecos": [
+        {
+          "tipo": "Magisterio",
+          "t": "Lumen fidei, 4",
+          "d": "Francisco explica que la fe nace del encuentro con Dios y con un amor que nos precede. Ese encuentro abre una nueva mirada sobre nuestra existencia."
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "t": "El amigo nos enseña a mirar",
+      "refs": "Jn 8,12 · Jn 9,35-41",
+      "p": [
+        "La amistad nos permite conocer la mirada del otro: qué considera valioso, qué le duele y qué espera. En nuestra relación con Jesús también hay un aprendizaje: acercarnos a las personas desde lo que Él nos revela del Padre.",
+        "En Juan 9, el encuentro del hombre que había sido ciego culmina en reconocer a Jesús y creer en Él. La visión física y el descubrimiento de quién es Jesús forman parte del relato, pero no son idénticos.",
+        "Ser iluminados por Cristo implica revisar nuestros criterios. Quizá hemos medido a alguien por su utilidad, sus errores, su apariencia o su éxito. Conocer a Jesús nos invita a descubrir qué estamos dejando de ver."
+      ],
+      "a": "Detén un juicio apresurado y escucha antes de sacar una conclusión.",
+      "pregunta": "¿Sobre qué persona o situación necesitas pedirle a Jesús que te ayude a mirar de otra manera?",
+      "transicion": "Aprender a mirar también supone reconocer que nuestra propia mirada necesita cambiar.",
+      "ecos": [
+        {
+          "tipo": "Padres de la Iglesia",
+          "t": "San Agustín · Tratado sobre Juan 34,8-9",
+          "d": "Agustín relaciona la promesa de la luz con seguir a Cristo y necesitar su ayuda para hacerlo. Es una interpretación espiritual que invita a caminar con Él."
+        }
+      ]
+    },
+    {
+      "id": "P3",
+      "t": "Dejarnos iluminar",
+      "refs": "Mt 6,19-24",
+      "p": [
+        "Jesús habla del ojo como lámpara del cuerpo dentro de una enseñanza que incluye el tesoro, el corazón y el servicio a Dios o al dinero. Nuestra manera de mirar está relacionada con aquello a lo que damos valor.",
+        "Podemos preguntarnos qué está orientando nuestras decisiones. El deseo de reconocimiento, la comparación o el miedo pueden ocupar tanto espacio que terminamos viendo todo desde ellos.",
+        "La amistad con Jesús abre un espacio para hablar con verdad: reconocer lo que nos mueve, lo que nos cuesta y lo que necesita conversión. Esta es una aplicación pastoral del pasaje; no significa que cualquier confusión, tristeza o falta de emoción religiosa sea consecuencia de una culpa personal."
+      ],
+      "a": "Lleva a la oración una decisión concreta y pregúntate qué estás tratando de proteger o conseguir con ella.",
+      "pregunta": "¿Qué suele pesar más en tus decisiones: la aprobación, la seguridad, el miedo, el amor, la confianza…?",
+      "transicion": "Cuando permitimos que esa luz transforme nuestro interior, empieza a notarse en nuestra manera de vivir.",
+      "ecos": [
+        {
+          "tipo": "Contexto bíblico",
+          "t": "La mirada y el tesoro",
+          "d": "Conviene leer Mateo 6,22-23 dentro de Mateo 6,19-24: la lámpara del cuerpo aparece entre la enseñanza sobre el tesoro y la advertencia sobre servir a dos señores."
+        }
+      ]
+    },
+    {
+      "id": "P4",
+      "t": "Una amistad que se vuelve visible",
+      "refs": "Mt 5,14-16",
+      "p": [
+        "La lámpara está puesta para alumbrar a quienes se encuentran en la casa. Jesús vincula la luz de los discípulos con unas obras que llevan a reconocer al Padre.",
+        "Podemos comenzar por nuestra propia casa: las relaciones y responsabilidades cercanas. ¿Qué ocurre con las personas cuando convivimos con ellas? ¿Encuentran escucha, honestidad, paciencia y disposición para ayudar?",
+        "Recibimos de Cristo la luz que compartimos. Su amistad puede hacerse visible al cumplir una promesa, reconocer un error o tratar con dignidad a una persona que otros ignoran."
+      ],
+      "a": "Elige una respuesta concreta de escucha, honestidad, paciencia o reparación en una relación cercana.",
+      "pregunta": "¿En qué relación cercana podría hacerse más visible tu amistad con Jesús?",
+      "transicion": "Las obras que iluminan tienen una forma reconocible: el amor al otro.",
+      "ecos": [
+        {
+          "tipo": "Catecismo",
+          "t": "CCE 748 · Una luz recibida",
+          "d": "El Catecismo explica que la Iglesia recibe de Cristo la luz que comunica y la compara con la luna que refleja la luz del sol. Nuestra aplicación personal parte de esa dependencia de Él."
+        }
+      ]
+    },
+    {
+      "id": "P5",
+      "t": "La luz toma forma de amor",
+      "refs": "Is 58,6-10 · 1 Jn 2,9-11",
+      "p": [
+        "Isaías relaciona la luz con compartir el pan, acoger y liberar de la opresión. La primera carta de Juan vincula permanecer en la luz con amar al hermano.",
+        "Podemos disfrutar mucho una reunión o una lectura espiritual; la pregunta posterior es cómo ese encuentro afecta nuestra disponibilidad para los demás.",
+        "El amor puede tomar una forma sencilla y exigente: dedicar tiempo, atender una necesidad que habíamos ignorado, reparar un daño o acompañar a alguien sin pretender resolverle toda la vida. Ayudar requiere escuchar qué necesita la otra persona."
+      ],
+      "a": "Escoge una ayuda posible para esta semana, proporcionada y respetuosa de lo que la otra persona necesita.",
+      "pregunta": "¿Qué necesidad cercana has visto, pero todavía no has atendido?",
+      "transicion": "Para sostener esa disponibilidad también necesitamos cuidar nuestra relación con Jesús.",
+      "ecos": [
+        {
+          "tipo": "Magisterio",
+          "t": "Benedicto XVI · Ángelus del 6 de febrero de 2011",
+          "d": "Relaciona Isaías 58 con Mateo 5: unidos a Cristo, los discípulos pueden comunicar el amor de Dios en medio de la indiferencia y del egoísmo."
+        }
+      ]
+    },
+    {
+      "id": "P6",
+      "t": "Cuidar el aceite",
+      "refs": "Mt 25,1-13",
+      "p": [
+        "Las diez jóvenes esperan al esposo. Todas se adormecen; la diferencia es que cinco han llevado aceite de reserva. El centro de la parábola es la preparación para el encuentro.",
+        "Desde ahí podemos relacionarla con la amistad que venimos trabajando: hay disposiciones que se cultivan con tiempo y no pueden improvisarse en el último momento.",
+        "Francisco propone cuidar la vida interior mediante el silencio, la escucha de la Palabra y el tiempo dedicado al Señor. Seguimos esa aplicación pastoral; no afirmamos que el aceite tenga un único significado simbólico obligatorio.",
+        "Cuidar esta relación puede incluir oración, sacramentos, comunidad y servicio. Cada uno puede reconocer qué espacio necesita recuperar, sin medir la cercanía con Dios por la intensidad de sus emociones."
+      ],
+      "a": "Elige una práctica pequeña y sostenible y un momento concreto para realizarla.",
+      "pregunta": "¿Qué espacio de tu relación con Jesús quisieras cuidar con mayor constancia?",
+      "transicion": "Esa amistad nos dispone a seguirlo también cuando amar se vuelve difícil.",
+      "ecos": [
+        {
+          "tipo": "Aplicación pastoral",
+          "t": "Francisco · Ángelus del 12 de noviembre de 2023",
+          "d": "El comentario de Francisco invita a cuidar con constancia la vida interior, dando tiempo al silencio, a la Palabra y al Señor. La preparación para encontrarse con Jesús sigue siendo el centro."
+        }
+      ]
+    },
+    {
+      "id": "P7",
+      "t": "Seguir la luz hasta la entrega",
+      "refs": "Jn 12,24-36 · Jn 15,13-15",
+      "p": [
+        "En Juan 12 aparecen, dentro de un mismo desarrollo, el grano que muere para dar fruto, el anuncio de Jesús elevado y la invitación a caminar en la luz. Esta cercanía ofrece un puente bíblico hacia la siguiente sesión sobre la Cruz.",
+        "Aprender a amar como Jesús puede pedirnos tiempo, renuncias, reconciliación y fidelidad cuando desaparece la comodidad inicial.",
+        "El mismo Jesús que llama amigos a sus discípulos habla de entregar la vida por ellos. En la próxima sesión contemplaremos con mayor profundidad qué nos revela su Cruz sobre ese amor.",
+        "Seguir a Jesús no significa buscar el sufrimiento ni permanecer en una situación de violencia. La reflexión se dirige a la entrega amorosa y al seguimiento."
+      ],
+      "a": "Reconoce un paso posible de generosidad, sin imponerte una promesa pública.",
+      "pregunta": "¿Qué te cuesta entregar cuando intentas amar de verdad?",
+      "transicion": "Ahora vamos a conversar sobre lo que este recorrido toca en nuestra vida.",
+      "ecos": [
+        {
+          "tipo": "Continuidad bíblica",
+          "t": "De la luz a la Cruz",
+          "d": "Juan 12,24-36 reúne el grano que muere, la elevación de Jesús y la invitación a creer en la luz. Luz y entrega pertenecen al mismo camino de seguimiento."
+        }
+      ]
+    }
+  ],
+  "preparar": {
+    "pregunta": "¿En qué parte de mi vida necesito que Jesús me ayude a ver con más claridad?",
+    "practica": "Busca unos minutos de tranquilidad y lee Juan 8,12 y Mateo 5,14-16. Quédate con una palabra o imagen. Recuerda a una persona que te haya ayudado a descubrir algo de la cercanía de Dios.",
+    "cierre": "Lleva una pregunta abierta al encuentro. No necesitas preparar una respuesta para compartir."
+  },
+  "semana": {
+    "pregunta": "¿Qué empieza a cambiar en mi manera de ver y de vivir cuando dejo que Jesús sea mi amigo?",
+    "practica": "Elige un gesto concreto de amor y un momento para encontrarte con Jesús. Procura que ambos sean posibles dentro de tu vida actual.",
+    "cierre": "Vuelve al punto que más te acompañó. Puedes retomar estas preguntas personalmente o con alguien de confianza."
+  },
+  "dinamica": {
+    "duracion": 60,
+    "grupos": "En grupos de 3 a 5 personas. Conversen con calma; cada quien puede compartir hasta donde se sienta cómodo.",
+    "agenda": [
+      {
+        "min": 7,
+        "t": "Apertura y lectura",
+        "d": "Recuperar el camino del desierto a la amistad con Jesús. Escuchar dos o tres intervenciones y leer Juan 8,12 y Mateo 5,14-16. Los tiempos son una propuesta ajustable."
+      },
+      {
+        "min": 28,
+        "t": "Exposición por puntos",
+        "d": "Cuatro minutos por punto. Recibir la luz, aprender a mirar, dejarnos transformar, compartir el amor, cuidar la amistad y abrir el paso hacia la Cruz."
+      },
+      {
+        "min": 15,
+        "t": "Grupos pequeños",
+        "d": "Grupos de 3 a 5 personas. Una sola ronda con cuatro preguntas; se puede pasar una pregunta y escuchar."
+      },
+      {
+        "min": 4,
+        "t": "Puesta en común",
+        "d": "Una idea voluntaria por grupo. No relatar experiencias personales ajenas. Recoger dos o tres coincidencias sin comentar cada intervención."
+      },
+      {
+        "min": 6,
+        "t": "Cierre, oración y puente",
+        "d": "Leer Salmo 27,1. Un minuto de silencio: Jesús, ¿qué parte de mi vida quiero poner hoy delante de ti? Rezar juntos y abrir la pregunta hacia la Cruz."
+      }
+    ],
+    "rondas": [
+      {
+        "t": "La amistad que ilumina",
+        "sub": "Puntos 1 a 7",
+        "min": 15,
+        "q": [
+          "¿Qué parte del recorrido se parece más al momento que estás viviendo?",
+          "¿Qué te gustaría aprender a mirar de otra manera con Jesús?",
+          "¿Dónde podría convertirse esa nueva mirada en un gesto de amor esta semana?",
+          "¿Qué te ayudaría a cuidar tu amistad con Él para sostener ese paso?"
+        ]
+      }
+    ],
+    "reglas": [
+      "Cada quien comparte hasta donde se sienta cómodo.",
+      "Se puede pasar una pregunta y simplemente escuchar.",
+      "Escuchar sin juzgar ni ofrecer consejos que no se hayan pedido.",
+      "Lo personal que alguien comparta se queda en el grupo."
+    ]
+  },
+  "coordinacion": {
+    "preparacion": [
+      "Lee previamente Juan 8,12; Mateo 5,14-16; Isaías 58,6-10 y Mateo 25,1-13. Para comprender el cierre, revisa Juan 12,24-36.",
+      "Intención: ayudar a descubrir cómo la amistad con Jesús transforma nuestra mirada y se expresa en amor concreto.",
+      "Recibimos de Cristo la luz que compartimos (CCE 748). Las diez vírgenes hablan de prepararse para el encuentro; el cuidado de la vida interior es una aplicación pastoral.",
+      "No interpretes las dificultades de los participantes como falta de fe. Ofrece preguntas y espacio para escuchar. Permite que alguien guarde silencio.",
+      "Los 60 minutos y su reparto son una propuesta. Conserva espacio real para la conversación en pequeños grupos."
+    ],
+    "apertura": [
+      "En el desierto reconocimos algunas de las cosas que cargamos y nuestra necesidad de Dios. Después nos encontramos con Jesús ofreciéndonos su amistad.",
+      "Hoy queremos preguntarnos qué empieza a cambiar cuando lo dejamos acercarse: cómo vemos nuestra vida, cómo decidimos y cómo tratamos a quienes caminan con nosotros."
+    ],
+    "preguntaInicial": "¿Recuerdas una ocasión en la que alguien te ayudó a ver con más claridad una situación que no comprendías?",
+    "indicacionLectura": "Escucha dos o tres intervenciones. Introduce las lecturas: hay personas cuya cercanía nos ayuda a mirar de otra manera; escuchemos cómo habla Jesús de la luz y qué nos invita a vivir. Lean Juan 8,12 y Mateo 5,14-16 en la Biblia que utilice la comunidad. Deja unos segundos de silencio.",
+    "instruccionesGrupos": "Cada quien puede compartir hasta donde se sienta cómodo. También pueden pasar una pregunta y simplemente escuchar. Procuremos comprender a quien habla, sin juzgar ni ofrecer consejos que no nos haya pedido. Lo personal que alguien comparta se queda en el grupo.",
+    "puestaComun": "Invita a cada grupo a compartir voluntariamente una idea del tema que les haya ayudado, sin relatar experiencias personales ajenas. Recoge dos o tres coincidencias; no hace falta comentar cada intervención.",
+    "cierre": "Hoy hemos recorrido un camino: reconocer la luz que recibimos, permitir que transforme nuestra mirada y compartirla en nuestra manera de amar. Cada uno puede llevarse una pregunta y un paso pequeño para esta semana.",
+    "silencio": "Lee Salmo 27,1. Deja un minuto de silencio con esta invitación: Jesús, ¿qué parte de mi vida quiero poner hoy delante de ti?"
+  },
+  "oracion": [
+    "Jesús, amigo nuestro,",
+    "gracias por acercarte a nuestra vida.",
+    "Enséñanos a reconocer tu presencia,",
+    "a mirar con verdad y con misericordia,",
+    "y a recibir la ayuda que necesitamos.",
+    "Que nuestra amistad contigo",
+    "se haga visible en el cuidado de los demás.",
+    "Ayúdanos a darte tiempo",
+    "y a seguir caminando contigo",
+    "también cuando amar nos cueste.",
+    "Amén."
+  ],
+  "oracionPublica": [
+    "Jesús, amigo nuestro,",
+    "ilumina nuestra mirada.",
+    "Ayúdanos a reconocer tu presencia,",
+    "a escuchar con atención",
+    "y a cuidar a quienes tenemos cerca.",
+    "Que el amor que recibimos de ti",
+    "encuentre lugar en nuestras decisiones",
+    "y en nuestra manera de vivir.",
+    "Amén."
+  ],
+  "puente": "La Cruz: ¿qué descubrimos de la amistad de Jesús cuando contemplamos hasta dónde llega su amor?",
+  "audios": [],
+  "videos": [],
+  "materiales": [
+    {
+      "tipo": "Biblia",
+      "h": "Lee los pasajes",
+      "t": "Juan 8,12 y Mateo 5,14-16",
+      "d": "Lectura base: busca ambos pasajes en tu Biblia. En el enlace puedes consultar Juan 8; Mateo 5 también está enlazado en las fuentes al final de la guía.",
+      "url": "https://bible.usccb.org/bible/john/8",
+      "boton": "Abrir Juan 8"
+    }
+  ],
+  "biblia": [
+    [
+      "Jn 8,12",
+      "Jesús, luz del mundo"
+    ],
+    [
+      "Mt 5,14-16",
+      "La lámpara que ilumina la casa"
+    ],
+    [
+      "Jn 1,4-9",
+      "Recibir la luz y dar testimonio"
+    ],
+    [
+      "Ex 13,21-22",
+      "Dios guía en el desierto"
+    ],
+    [
+      "Jn 9,35-41",
+      "Reconocer a Jesús y aprender a ver"
+    ],
+    [
+      "Mt 6,19-24",
+      "El tesoro y la mirada"
+    ],
+    [
+      "Is 58,6-10",
+      "La luz y el amor concreto"
+    ],
+    [
+      "1 Jn 2,9-11",
+      "Amar al hermano"
+    ],
+    [
+      "Mt 25,1-13",
+      "Prepararse para el encuentro"
+    ],
+    [
+      "Jn 12,24-36",
+      "La luz y la entrega"
+    ],
+    [
+      "Jn 15,13-15",
+      "Amigos y entrega de la vida"
+    ],
+    [
+      "Sal 27,1",
+      "El Señor, luz y salvación"
+    ]
+  ],
+  "notaBiblia": "La lectura base es Juan 8,12 y Mateo 5,14-16. Los demás pasajes son apoyos; no hace falta leerlos todos durante el encuentro.",
+  "fuentes": [
+    {
+      "t": "Biblia · Juan 8",
+      "d": "Juan 8,12: Jesús se presenta como luz del mundo.",
+      "url": "https://bible.usccb.org/bible/john/8"
+    },
+    {
+      "t": "Biblia · Mateo 5",
+      "d": "Mateo 5,14-16: lámpara, obras y gloria del Padre.",
+      "url": "https://bible.usccb.org/bible/matthew/5"
+    },
+    {
+      "t": "Biblia · Juan 12",
+      "d": "Juan 12,24-36: grano, elevación y luz; puente hacia la Cruz.",
+      "url": "https://bible.usccb.org/bible/john/12"
+    },
+    {
+      "t": "Catecismo de la Iglesia Católica · 748",
+      "d": "La Iglesia recibe de Cristo la luz que comunica.",
+      "url": "https://www.vatican.va/archive/catechism_sp/p1s2c3a9_sp.html"
+    },
+    {
+      "t": "Francisco · Lumen fidei, 4",
+      "d": "29 de junio de 2013. El encuentro con Dios abre una mirada transformada.",
+      "url": "https://www.vatican.va/content/francesco/es/encyclicals/documents/papa-francesco_20130629_enciclica-lumen-fidei.html"
+    },
+    {
+      "t": "San Agustín · Tratados sobre Juan 34,8-9",
+      "d": "Extracto reproducido por las Obras Misionales Pontificias, 16 de marzo de 2023. Interpretación patrística sobre la luz y el seguimiento.",
+      "url": "https://www.ppoomm.va/es/documentazioni/documenti-pum/meditaciones-misioneras/cuaresma-2023/cuarto-domingo-cuaresma-2023.html"
+    },
+    {
+      "t": "Benedicto XVI · Ángelus del 6 de febrero de 2011",
+      "d": "Mateo 5, Isaías 58 y el testimonio cristiano.",
+      "url": "https://www.vatican.va/content/benedict-xvi/es/angelus/2011/documents/hf_ben-xvi_ang_20110206.html"
+    },
+    {
+      "t": "Francisco · Ángelus del 12 de noviembre de 2023",
+      "d": "Preparación para el encuentro y cuidado de la vida interior: aplicación pastoral de las diez vírgenes.",
+      "url": "https://www.vatican.va/content/francesco/es/angelus/2023/documents/20231112-angelus.html"
+    }
+  ]
+}
 };
