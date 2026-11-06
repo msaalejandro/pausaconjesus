@@ -175,6 +175,12 @@ h1,h2,h3{text-wrap:balance}
 .cargando{color:var(--piedra)}
 .h-vista{font-family:var(--f-titulo);font-weight:600;font-size:44px;line-height:1;margin:18px 0 8px}
 
+/* Inicio: el bloque del grupo, separado de lo de la sesión */
+.comunidad{margin-top:52px;padding-top:30px;border-top:1px solid var(--raya)}
+.comunidad .sub{padding:22px 0 6px;border-top:1px solid var(--raya);margin-top:22px}
+.comunidad .sub:first-of-type{border-top:0;margin-top:6px;padding-top:6px}
+.comunidad .sub > h3{font-family:var(--f-titulo);font-weight:600;font-size:25px;line-height:1.1;margin-bottom:4px}
+
 /* Pregunta para vivir */
 .vivir{background:var(--cera-suave);border-radius:20px;padding:22px 20px}
 .vivir .de{font-size:15px;color:var(--cera);font-weight:700}
@@ -358,6 +364,16 @@ h1,h2,h3{text-wrap:balance}
 .salir-enfoque{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:50}
 body.enfoque .top,body.enfoque .nav,body.enfoque .momentos,body.enfoque .s-cab,body.enfoque .barra-lectura,body.enfoque .panel,body.enfoque .fuera-enfoque{display:none!important}
 body.enfoque .lector{border:0;margin-top:12px}
+
+/* Índice de la guía: los puntos en orden, para saltar a uno */
+.indice{margin-top:30px}
+.indice ol{list-style:none;margin:10px 0 0;padding:0;border-top:1px solid var(--raya)}
+.indice li{border-bottom:1px solid var(--raya)}
+.indice button{display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:baseline;width:100%;min-height:48px;padding:10px 0;border:0;background:none;text-align:left;cursor:pointer;font-size:17px;line-height:1.35}
+.indice button span{font-weight:700;color:var(--cera);font-variant-numeric:tabular-nums}
+.indice button:hover{color:var(--manto)}
+.lector .punto:focus{outline:none}
+.lector .punto:focus-visible{outline:2px solid var(--cera);outline-offset:6px}
 
 /* Durante */
 .agenda{list-style:none;margin:0;padding:0}
@@ -573,6 +589,8 @@ function vInicio() {
     <div class="mas">${m === "despues" ? `<a class="enlace" href="#${s.id}/antes">Leer el tema</a>` : ""}<a class="enlace" href="${wa(textoInvitar(s))}" target="_blank" rel="noopener">Invitar por WhatsApp</a></div>
   </section>
 
+  ${sig ? `<section class="seccion" aria-labelledby="s-t"><h2 id="s-t">La siguiente</h2><ul class="linea"><li>${filaSesion(sig)}</li></ul></section>` : ""}
+
   ${destacado ? "" : secVideo}
 
   ${prep ? `<section class="seccion" aria-labelledby="v-t">
@@ -584,29 +602,33 @@ function vInicio() {
     <p class="nota">Lo que nos dejó la sesión «${esc(prev.tema)}».</p>
     ${bloqueVivir(prev)}
   </section>` : ""}
-  ${prev ? `<section class="seccion" aria-labelledby="g-t">
-    <h2 id="g-t">Lo que compartió el grupo</h2>
-    <p class="nota">Reflexiones de la sesión «${esc(prev.tema)}».</p>
+  <section class="seccion comunidad" aria-labelledby="c-t">
+  <h2 id="c-t">Del grupo</h2>
+  <p class="nota">Lo que compartimos, por lo que rezamos y lo que queremos estudiar.</p>
+  ${prev ? `<div class="sub">
+    <h3 id="g-t">Reflexiones</h3>
+    <p class="nota">De la sesión «${esc(prev.tema)}».</p>
     <div id="voces-inicio" data-sid="${esc(prev.id)}"><p class="cargando">Cargando reflexiones…</p></div>
     <a class="enlace" href="#${prev.id}/despues">Escribir mi reflexión</a>
-  </section>` : ""}
+  </div>` : ""}
 
-  <section class="seccion" aria-labelledby="i-t">
-    <h2 id="i-t">Intenciones del grupo</h2>
+  <div class="sub">
+    <h3 id="i-t">Intenciones</h3>
     <p class="nota">Toca la vela para decir que rezas por esa intención. Aquí quedan las de los últimos 15 días.</p>
     <div id="intenciones-inicio"><p class="cargando">Cargando intenciones…</p></div>
     <button class="enlace pedir" data-act="pedir" aria-expanded="false" aria-controls="pedir-forma">Pedir oración al grupo</button>
     <div id="pedir-forma" hidden style="margin-top:12px">${formaCompartir(s.id, "intencion")}</div>
-  </section>
+  </div>
 
-  <section class="seccion" aria-labelledby="t-t">
-    <h2 id="t-t">¿Qué estudiamos después?</h2>
+  <div class="sub">
+    <h3 id="t-t">¿Qué estudiamos después?</h3>
     <p class="nota">Los temas elegidos y las sugerencias con más interés.</p>
     <div id="temas-inicio"><p class="cargando">Cargando temas…</p></div>
     <a class="enlace" href="#sugerencias">Sugerir un tema</a>
+  </div>
   </section>
 
-  ${sig ? `<section class="seccion" aria-labelledby="s-t"><h2 id="s-t">La siguiente</h2><ul class="linea"><li>${filaSesion(sig)}</li></ul></section>` : ""}`;
+`;
 }
 
 function bloqueVivir(s, prep) {
@@ -736,8 +758,12 @@ function momentoAntes(s) {
       <div class="fila"><span>Espacio</span>${seg("int", [["compacto", "Menos"], ["normal", "Normal"], ["amplio", "Más"]], lectura.int)}</div>
       <div class="fila"><span>Fondo</span>${seg("fondo", [["pagina", "Claro"], ["sepia", "Sepia"], ["noche", "Noche"]], lectura.fondo)}</div>
     </div>
+    <nav class="indice fuera-enfoque" aria-label="Puntos de la guía">
+      <h2 class="h2">En esta guía</h2>
+      <ol>${s.puntos.map((p, i) => `<li><button type="button" data-ir="${i}"><span>${i + 1}</span>${esc(p.t)}</button></li>`).join("")}</ol>
+    </nav>
     <article class="lector" id="lector" data-letra="${lectura.letra}" data-fondo="${lectura.fondo}">
-      ${s.puntos.map((p, i) => `<section class="punto"${p.id ? ` id="lectura-${esc(p.id)}"` : ""}>
+      ${s.puntos.map((p, i) => `<section class="punto" data-punto="${i}"${p.id ? ` id="lectura-${esc(p.id)}"` : ""} tabindex="-1">
         <h3><span>${i + 1}</span>${esc(p.t)}</h3>
         ${p.p.map(x => `<p>${esc(x)}</p>`).join("")}
         <p class="ref">${esc(p.refs)}</p>
@@ -1024,6 +1050,14 @@ function aplicarLectura() {
 /* ===== Eventos ===== */
 document.addEventListener("click", async e => {
   const t = e.target.closest("button, a"); if (!t) return;
+  if (t.dataset.ir) {
+    const destino = document.querySelector(`[data-punto="${t.dataset.ir}"]`); if (!destino) return;
+    const pegado = $(".momentos"), alto = pegado ? pegado.offsetHeight : 0;
+    const quieto = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    SC().scrollTo({ top: posEn(destino) - alto - 12, behavior: quieto ? "auto" : "smooth" });
+    destino.focus({ preventScroll: true });
+    return;
+  }
   if (t.dataset.momento) {
     const { base } = ruta();
     history.replaceState(null, "", `#${base}/${t.dataset.momento}`);
