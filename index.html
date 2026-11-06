@@ -22,8 +22,8 @@
 <meta name="twitter:title" content="Pausa con Jesús | Oración, encuentro y camino">
 <meta name="twitter:description" content="Un espacio para hacer una pausa, orar y volver al corazón.">
 <meta name="twitter:image" content="https://pausaconjesus.com/imagenes/Pausa%20con%20Jes%C3%BAs%20en%20la%20campi%C3%B1a.png">
-<meta name="theme-color" content="#EDF0F3" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0F1522" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#F3EDE2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14171F" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -34,19 +34,20 @@
 /* Una sola idea fuerte: la sesión como un camino de tres momentos (antes, durante, después).
    El bloque azul de inicio es lo único llamativo; todo lo demás es tranquilo, como una pausa. */
 :root{
-  --lino:#EDF0F3;      /* fondo */
-  --papel:#FBFCFD;     /* superficies */
-  --tinta:#1A2233;     /* texto */
-  --piedra:#5B6475;    /* texto secundario */
-  --raya:#D6DCE3;      /* líneas */
-  --manto:#1F3358;     /* azul de la marca */
-  --manto-suave:#DFE6F1;
-  --sobre-manto:#F3EFE6;
-  --cera:#8A6420;      /* oro para texto sobre claro */
-  --cera-viva:#E3C27A; /* oro sobre azul */
-  --cera-suave:#F2EAD9;
+  /* Paleta de papel: la misma de los cortometrajes (marfil, índigo y dorado suave) */
+  --lino:#F3EDE2;      /* fondo: papel marfil */
+  --papel:#FBF8F2;     /* superficies */
+  --tinta:#1E2433;     /* texto */
+  --piedra:#5C5245;    /* texto secundario, sepia */
+  --raya:#E0D6C5;      /* líneas */
+  --manto:#2E3A5C;     /* índigo de la noche de la serie */
+  --manto-suave:#E6E3EA;
+  --sobre-manto:#F1E8D6;
+  --cera:#785616;      /* oro para texto sobre claro */
+  --cera-viva:#D9AE5B; /* dorado suave sobre índigo */
+  --cera-suave:#F1E6CF;
   --error:#A8261B;
-  --fuerte:#1F3358; --sobre-fuerte:#F3EFE6;
+  --fuerte:#2E3A5C; --sobre-fuerte:#F1E8D6;
   --f-titulo:"Cormorant Garamond","Iowan Old Style",Georgia,serif;
   --f-ui:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
   --f-lectura:"Literata",Georgia,"Times New Roman",serif;
@@ -62,15 +63,15 @@
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --lino:#0F1522; --papel:#161E2E; --tinta:#E9E6DF; --piedra:#A0A7B5; --raya:#283246;
-    --manto:#1D2C4B; --manto-suave:#22304D; --sobre-manto:#F1ECE1;
-    --cera:#E0BE74; --cera-viva:#E9CB86; --cera-suave:#2A2416; --error:#F2B8B5; --fuerte:#E9E6DF; --sobre-fuerte:#0F1522; color-scheme:dark;
+    --lino:#14171F; --papel:#1C202B; --tinta:#EDE6DA; --piedra:#B3AA9C; --raya:#2C3140;
+    --manto:#2E3A5C; --manto-suave:#262E45; --sobre-manto:#F1E8D6;
+    --cera:#D9AE5B; --cera-viva:#E5C27A; --cera-suave:#2A2418; --error:#F2B8B5; --fuerte:#EDE6DA; --sobre-fuerte:#14171F; color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --lino:#0F1522; --papel:#161E2E; --tinta:#E9E6DF; --piedra:#A0A7B5; --raya:#283246;
-  --manto:#1D2C4B; --manto-suave:#22304D; --sobre-manto:#F1ECE1;
-  --cera:#E0BE74; --cera-viva:#E9CB86; --cera-suave:#2A2416; --error:#F2B8B5; --fuerte:#E9E6DF; --sobre-fuerte:#0F1522; color-scheme:dark;
+  --lino:#14171F; --papel:#1C202B; --tinta:#EDE6DA; --piedra:#B3AA9C; --raya:#2C3140;
+  --manto:#2E3A5C; --manto-suave:#262E45; --sobre-manto:#F1E8D6;
+  --cera:#D9AE5B; --cera-viva:#E5C27A; --cera-suave:#2A2418; --error:#F2B8B5; --fuerte:#EDE6DA; --sobre-fuerte:#14171F; color-scheme:dark;
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;height:100%;overscroll-behavior:none}
@@ -154,7 +155,7 @@ h1,h2,h3{text-wrap:balance}
 .video .play{position:absolute;inset:0;width:100%;padding:0;border:0;background:none;cursor:pointer;display:block}
 .video .play img{width:100%;height:100%;object-fit:cover;display:block}
 .video .play::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(15,21,34,.55),rgba(15,21,34,0) 55%)}
-.video .play span{position:absolute;z-index:1;left:50%;top:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:var(--sobre-manto);box-shadow:0 6px 22px rgba(0,0,0,.35);display:grid;place-items:center;transition:transform var(--d-press) var(--ease-out)}
+.video .play span{position:absolute;z-index:1;left:50%;top:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:var(--sobre-manto);display:grid;place-items:center;transition:transform var(--d-press) var(--ease-out)}
 .video .play:focus-visible span{transform:translate(-50%,-50%) scale(1.06)}
 .video .play span::before{content:"";margin-left:5px;border-style:solid;border-width:11px 0 11px 18px;border-color:transparent transparent transparent #1F3358}
 .video figcaption{padding:14px 18px 16px}
@@ -430,29 +431,223 @@ textarea.copia{width:100%;min-height:90px;margin-top:12px;padding:10px;border-ra
 .col-sesion > .previa:first-child,.col-sesion > .seccion:first-child{margin-top:28px}
 .col-sesion > .previa{margin-top:28px}
 
-/* ===== Escritorio: la sesión y el grupo lado a lado ===== */
-@media (min-width:760px){
-  .portada-txt{padding:30px 36px 30px}
-}
+/* ===== Marco: el mismo en todas las vistas ===== */
 @media (min-width:1080px){
   :root{--nav-h:0px}
-  body.ancho .top-in,body.ancho .nav-in{max-width:1240px;padding-left:40px;padding-right:40px}
-  .wrap.ancho{max-width:1240px;padding:0 40px 80px}
+  .top-in,.nav-in{max-width:1240px;padding-left:40px;padding-right:40px}
+  .wrap{max-width:1240px;padding:0 40px 0}
   /* Las secciones de la guía suben junto al encabezado: una sola franja arriba */
   .top{order:0}.nav{order:1}.desliza,.marco{order:2}
   .nav{background:var(--lino);border-top:0;padding-bottom:0}
-  .nav-in{max-width:640px;height:auto;padding:0 18px 10px;display:flex;gap:6px;grid-template-columns:none}
+  .nav-in{height:auto;padding-bottom:10px;display:flex;gap:6px;grid-template-columns:none}
   .nav a{flex-direction:row;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;font-size:var(--t-b)}
+  .nav a:first-child{margin-left:-16px}
   .nav a svg{width:20px;height:20px}
   .nav a[aria-current="page"]{background:var(--papel)}
-  .portada{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);margin-top:8px}
-  .portada h1{font-size:clamp(64px,5.6vw,84px)}
-  .portada-img{order:2;aspect-ratio:auto;min-height:100%}
-  .portada-txt{padding:56px 56px 48px;display:flex;flex-direction:column;justify-content:center}
-  .portada .idea{font-size:var(--t-l);max-width:34ch}
-  .inicio-cols{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:64px;align-items:start}
-  .comunidad{margin:28px 0 0;padding:34px 32px 24px;border-radius:var(--r)}
+  /* Vistas de dos columnas: lo principal y su acompañante */
+  .vista-2{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:72px;align-items:start}
+  .v2-lado > .seccion:first-child{margin-top:28px}
+  .h-vista{font-size:var(--t-d)}
+  .vista-sesion{display:grid;grid-template-columns:minmax(0,720px) minmax(0,1fr);gap:72px;align-items:start}
+  .s-lado{display:block!important;position:sticky;top:24px;margin-top:34px}
+  .s-lado figure{margin:0 0 14px;aspect-ratio:4/5;overflow:hidden;background:var(--cera-suave)}
+  .s-lado img{width:100%;height:100%;object-fit:cover;display:block}
+  .s-lado-f{color:var(--piedra);margin-bottom:12px}
+  .momentos{margin-left:0;margin-right:0;padding-left:0;padding-right:0}
 }
+.s-lado{display:none}
+.vista-sesion,.vista-2{min-width:0}
+
+/* ===== Inicio: la pausa abre la página ===== */
+.wrap.ancho{max-width:none;padding:0}
+.ancho .sec{max-width:1240px;margin-left:auto;margin-right:auto;padding:0 18px}
+@media (min-width:1080px){.ancho .sec{padding:0 40px}}
+.sec{margin-top:96px}
+@media (min-width:1080px){.sec{margin-top:160px}}
+.sec h2{font-family:var(--f-titulo);font-weight:600;font-size:var(--t-h);line-height:1.05;margin-bottom:8px;letter-spacing:-.01em}
+@media (min-width:1080px){.sec h2{font-size:clamp(36px,3.4vw,52px)}}
+.sec figure{margin:0}
+.sec picture,.s-lado picture{display:block;width:100%;height:100%}
+.sec picture img{display:block;width:100%;height:100%;object-fit:cover}
+
+/* Portada a pantalla completa */
+.hero{position:relative;height:calc(100svh - var(--top-h) - var(--nav-h) - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));min-height:520px;overflow:hidden;background:#F1E6CF;color:#1E2433}
+/* La ilustración es clara en ambos temas: la tinta y el botón de la portada no cambian con el modo oscuro */
+.hero .btn.lleno,.pausa .btn.lleno{background:#2E3A5C;border-color:#2E3A5C;color:#F1E8D6}
+.pausa .btn:not(.lleno){background:#FBF8F2;border-color:#E0D6C5;color:#1E2433}
+.hero-img,.hero-img img{position:absolute;inset:0;width:100%;height:100%}
+.hero-img img{object-fit:cover;object-position:50% 85%;animation:asienta 1600ms var(--ease-out) both}
+.hero-txt{position:relative;z-index:1;padding:28px 20px 0;max-width:640px}
+.hero h1{font-family:var(--f-titulo);font-weight:600;font-size:clamp(46px,12vw,96px);line-height:.95;letter-spacing:-.02em;white-space:nowrap}
+.hero-lema{font-size:var(--t-l);line-height:1.3;margin-top:12px;max-width:26ch}
+.hero-quincena{margin-top:14px;font-size:var(--t-b)}
+.hero-quincena a{font-weight:700;text-underline-offset:4px;text-decoration-color:var(--cera)}
+.hero-quincena span{color:inherit;opacity:.85}
+.hero-acc{display:flex;flex-wrap:wrap;align-items:center;gap:8px 22px;margin-top:22px}
+.hero .enlace{color:inherit}
+@media (max-width:759px){
+  .hero[data-tono-v="oscuro"]{color:var(--sobre-manto)}
+  .hero[data-tono-v="oscuro"] .btn.lleno{background:var(--sobre-manto);border-color:var(--sobre-manto);color:#2E3A5C}
+  .hero[data-tono-v="oscuro"] .hero-quincena a{text-decoration-color:var(--cera-viva)}
+  .hero-acc .btn{width:100%}
+}
+@media (min-width:760px){
+  .hero{height:calc(100svh - var(--top-h) - 54px);min-height:600px}
+  .hero-txt{padding:7vh 40px 0;max-width:720px}
+  /* Velo neutro solo bajo el texto, para que se lea sobre la ilustración */
+  .hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(243,237,226,.92) 0%,rgba(243,237,226,.72) 34%,rgba(243,237,226,0) 58%);pointer-events:none}
+}
+@media (min-width:1080px){.hero-txt{padding-left:max(40px,calc((100vw - 1240px)/2 + 40px))}}
+
+/* Esta quincena */
+.quincena{display:grid;gap:28px;align-items:center}
+.q-img{aspect-ratio:4/5;overflow:hidden;background:var(--cera-suave);max-width:520px}
+.q-txt h2{font-size:clamp(42px,9vw,72px)!important;line-height:.98}
+.q-txt .fuente{color:var(--piedra);margin-top:6px}
+.q-txt .idea{font-family:var(--f-titulo);font-style:italic;font-weight:500;font-size:var(--t-l);line-height:1.35;margin:18px 0 26px;max-width:36ch}
+.q-txt .camino{color:var(--tinta);margin-bottom:24px;max-width:460px}
+.q-txt .camino li::before{background:var(--lino)}
+.q-txt .camino li.ahora::before{border-color:var(--cera);background:var(--cera);box-shadow:none}
+.q-txt .sin-fecha{color:var(--piedra);margin:-8px 0 18px}
+.q-acc{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px}
+@media (min-width:1080px){.quincena{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px}.q-img{max-width:none}}
+
+/* Para vivir / preparar */
+.vivir-sec .vivir{margin-top:18px;max-width:860px}
+.vivir-sec .vivir q{font-size:clamp(22px,2.4vw,30px);max-width:38ch}
+
+/* Tres momentos, en diagonal */
+.m-cab{max-width:760px}
+.declara{font-family:var(--f-titulo);font-weight:500;font-size:clamp(22px,2.4vw,32px);line-height:1.25;margin-top:6px;max-width:30ch}
+.diagonal{list-style:none;margin:40px 0 0;padding:0;display:grid;gap:56px}
+.diagonal a{display:block;text-decoration:none;color:inherit}
+.diagonal picture{display:block;overflow:hidden;background:var(--cera-suave)}
+.diagonal p{margin-top:14px;max-width:38ch}
+.diagonal b{font-weight:700}
+.diagonal em{font-style:normal;font-weight:700;color:var(--cera)}
+.d-antes picture{aspect-ratio:3/4;width:100%}
+.d-durante picture{aspect-ratio:1/1;width:62%;margin-left:auto}
+.d-durante p{margin-left:auto;width:62%}
+.d-despues picture{aspect-ratio:16/10;width:78%}
+@media (min-width:1080px){
+  .momentos-sec{position:relative}
+  .m-cab{position:absolute;left:calc(50% + 20px);top:0;width:calc(50% - 60px)}
+  .diagonal{display:block;position:relative;margin-top:0;min-height:1100px}
+  .diagonal li{position:absolute}
+  .d-antes{left:40px;top:0;width:calc((100% - 80px) * 4/12)}
+  .d-antes picture{width:100%}
+  .d-durante{left:calc(40px + (100% - 80px) * 5/12);top:340px;width:calc((100% - 80px) * 3/12)}
+  .d-durante picture,.d-durante p{width:100%}
+  .d-despues{left:calc(40px + (100% - 80px) * 7/12);top:720px;width:calc((100% - 80px) * 5/12)}
+  .d-despues picture{width:100%}
+  @media (hover:hover) and (pointer:fine){.diagonal a:hover picture img{transform:scale(1.03)}}
+  .diagonal picture img{transition:transform 700ms var(--ease-out)}
+}
+
+/* Video */
+.video-sec .video{margin-top:18px;max-width:980px;border-radius:0}
+
+/* Rezamos unos por otros: la lista vive sobre el muro tranquilo del nicho */
+.velas-sec{position:relative}
+.velas-img{aspect-ratio:16/9;overflow:hidden;background:var(--cera-suave);margin:0 -18px 24px!important}
+.velas-txt .btn.pedir{margin-top:16px}
+@media (min-width:1080px){
+  .ancho .velas-sec{max-width:none;padding:0}
+  .velas-img{margin:0!important;width:100%;aspect-ratio:auto;height:clamp(640px,52vw,860px)}
+  .velas-txt{position:absolute;top:0;bottom:0;right:max(40px,calc((100vw - 1240px)/2 + 40px));width:min(520px,40vw);padding:64px 0;overflow:auto}
+  .velas-txt .intenciones{border-top-color:rgba(94,74,54,.2)}
+  .velas-txt .intenciones li{border-bottom-color:rgba(94,74,54,.2)}
+  .velas-sec{color:#2B2219}
+  .velas-sec .nota,.velas-sec small{color:#5E4A36}
+}
+
+/* Lo que comparte el grupo */
+.grupo-sec{display:grid;gap:64px}
+.g-col .btn{margin-top:16px}
+@media (min-width:1080px){.grupo-sec{grid-template-columns:1fr 1fr;gap:72px}}
+
+/* El camino del grupo */
+.camino-sec{display:grid;gap:24px}
+.c-fotos{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--cera-suave)}
+.c-foto{position:absolute!important;inset:0;opacity:0;transition:opacity 500ms ease}
+.c-foto.activa{opacity:1}
+.c-lista ol{list-style:none;margin:16px 0 18px;padding:0}
+.c-lista ol a{display:grid;grid-template-columns:104px 1fr;gap:2px 14px;padding:14px 0;text-decoration:none;color:var(--piedra)}
+.c-lista ol a.activa{color:var(--tinta)}
+.c-fecha{grid-row:span 2;white-space:nowrap;font-family:var(--f-titulo);font-weight:600;font-size:var(--t-l);line-height:1.1}
+.c-tema{font-family:var(--f-titulo);font-weight:600;font-size:var(--t-l);line-height:1.15}
+.c-fuente{font-size:var(--t-s)}
+.c-lista a.activa .c-tema{color:var(--tinta)}
+@media (max-width:1079px){.c-fotos{position:sticky;top:0;z-index:2}}
+@media (min-width:1080px){
+  .camino-sec{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:72px;align-items:start}
+  .c-fotos{position:sticky;top:12vh;aspect-ratio:4/5}
+  .c-lista{padding-top:6vh}
+  .c-lista ol a{padding:18px 0}
+  .c-tema,.c-fecha{font-size:clamp(24px,2vw,30px)}
+}
+
+/* Tu lugar está apartado */
+.lugar-sec{display:grid;gap:28px;align-items:center}
+.ancho .lugar-sec{background:var(--papel);max-width:none;padding:64px max(18px,calc((100vw - 1240px)/2 + 18px))}
+.l-frase{font-family:var(--f-titulo);font-weight:500;font-size:clamp(22px,2.4vw,32px);line-height:1.3;margin-top:8px;max-width:34ch}
+.l-frase a{color:inherit;text-decoration-thickness:3px;text-underline-offset:6px;text-decoration-color:var(--cera)}
+.l-txt .nota{margin-top:18px}
+.l-silla{aspect-ratio:1/1;overflow:hidden;width:min(260px,60vw);background:var(--cera-suave)}
+@media (min-width:1080px){.ancho .lugar-sec{grid-template-columns:1fr auto;padding:96px max(40px,calc((100vw - 1240px)/2 + 40px))}.l-silla{width:300px}}
+
+/* Pie: el nombre vuelve a todo lo ancho */
+.pie-sitio{background:var(--manto);color:var(--sobre-manto);margin-top:96px;padding:48px 18px 20px}
+.wrap:not(.ancho) .pie-sitio{margin-left:-18px;margin-right:-18px}
+.pie-cols{max-width:1240px;margin:0 auto;display:grid;gap:28px}
+.pie-cols div{display:flex;flex-direction:column;gap:10px}
+.pie-cols b{font-size:var(--t-s);opacity:.8}
+.pie-cols a{color:inherit;font-weight:700;text-decoration:none}
+.pie-cols a span{display:block;font-weight:400;opacity:.8;font-size:var(--t-s)}
+.pie-marca{max-width:1240px;margin:64px auto 0;font-family:var(--f-titulo);font-weight:600;font-size:min(14.6vw,182px);line-height:.85;letter-spacing:-.03em;white-space:nowrap;overflow:hidden}
+@media (min-width:760px){.pie-cols{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:1080px){.pie-sitio{padding:72px 40px 24px;margin-top:160px}.wrap:not(.ancho) .pie-sitio{margin-left:calc((100vw - 1240px)/-2 - 40px);margin-right:calc((100vw - 1240px)/-2 - 40px);padding-left:max(40px,calc((100vw - 1240px)/2 + 40px));padding-right:max(40px,calc((100vw - 1240px)/2 + 40px))}}
+@media (min-width:1080px) and (max-width:1320px){.wrap:not(.ancho) .pie-sitio{margin-left:-40px;margin-right:-40px}}
+
+/* En Inicio el pie sigue directo a «Tu lugar está apartado» */
+.ancho .pie-sitio{margin-top:0!important}
+
+/* Entradas por partes al llegar cada sección */
+.por-ver > *{opacity:0;transform:translateY(24px);transition:opacity 600ms var(--ease-out),transform 700ms var(--ease-out)}
+.por-ver.visto > *{opacity:1;transform:none}
+.por-ver.visto > *:nth-child(2){transition-delay:80ms}
+.por-ver.visto > *:nth-child(3){transition-delay:160ms}
+.por-ver.visto > *:nth-child(n+4){transition-delay:220ms}
+.hero-txt > *{animation:entra 520ms var(--ease-out) both}
+.hero-txt > *:nth-child(2){animation-delay:90ms}
+.hero-txt > *:nth-child(3){animation-delay:170ms}
+.hero-txt > *:nth-child(4){animation-delay:250ms}
+
+/* La pausa de un minuto */
+.pausa{border:0;padding:0;margin:0;width:100vw;height:100dvh;max-width:none;max-height:none;background:#F1E6CF;color:#1E2433}
+.pausa::backdrop{background:var(--manto)}
+.pausa[open]{display:grid;animation:aparece 420ms ease both}
+.pausa .hero-img img{animation:respira 12s ease-in-out infinite alternate}
+.pausa-in{position:relative;z-index:1;place-self:start center;width:min(620px,100%);padding:56px 24px 24px;text-align:center}
+.pausa::after{content:"";position:absolute;inset:0;background:rgba(243,237,226,.55);pointer-events:none}
+.pausa[data-tono-v="oscuro"]::after{background:rgba(20,23,31,.35)}
+@media (max-width:759px){.pausa[data-tono-v="oscuro"]{color:var(--sobre-manto)}.pausa[data-tono-v="oscuro"] .a-base{stroke:rgba(241,232,214,.3)}.pausa[data-tono-v="oscuro"] .btn.lleno{background:var(--sobre-manto);color:#2E3A5C;border-color:var(--sobre-manto)}}
+@media (min-width:760px){.pausa::after{background:rgba(243,237,226,.6)}}
+.pausa-x{position:fixed;top:14px;right:14px;z-index:2;width:48px;height:48px;border-radius:999px;border:0;background:var(--papel);color:var(--tinta);display:grid;place-items:center;cursor:pointer}
+.pausa-x svg{width:20px;height:20px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round}
+.pausa-cita{font-weight:700;font-size:var(--t-s)}
+.pausa-frase{font-family:var(--f-titulo);font-style:italic;font-weight:500;font-size:clamp(24px,3vw,34px);line-height:1.25;margin:14px auto 0;max-width:24ch}
+.pausa-anillo{position:relative;width:150px;height:150px;margin:28px auto 0}
+.pausa-anillo svg{width:100%;height:100%;transform:rotate(-90deg)}
+.pausa-anillo circle{fill:none;stroke-width:5}
+.a-base{stroke:rgba(46,58,92,.18)}
+.a-avance{stroke:var(--cera);stroke-linecap:round;transition:stroke-dashoffset 250ms linear}
+.pausa-anillo b{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--f-titulo);font-weight:600;font-size:var(--t-h);font-variant-numeric:tabular-nums}
+.pausa-anillo{animation:late 10s ease-in-out infinite}
+.pausa-guia{margin-top:18px}
+.pausa-fin{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:20px}
+@keyframes respira{from{transform:scale(1)}to{transform:scale(1.06)}}
+@keyframes late{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
 
 /* ===== Interacción: cada toque recibe respuesta ===== */
 .btn,.like,.enlace,.volver,.momentos button,.seg button,.arranques button,.tipo span,.espacios a,.nav a,.timer button,.indice button{transition:transform var(--d-press) var(--ease-out),background-color var(--d-ui) ease,color var(--d-ui) ease,border-color var(--d-ui) ease}
@@ -519,6 +714,9 @@ h1[tabindex="-1"]:focus{outline:none}
   @keyframes cuenta{from{opacity:0}to{opacity:1}}
   .btn:active,.like:active,.momentos button:active,.seg button:active,.arranques button:active,.tipo label:active span,.espacios a:active,.nav a:active,.timer button:active,.enlace:active,.volver:active,.indice button:active,.previa:active,.linea a:active,.acceso-tema:active,.libro:active,.proxima .ses:active,.material:active,.coord:active{transform:none}
   .video .play span{transition:none}
+  .por-ver > *{transform:none!important}
+  .pausa .hero-img img,.pausa-anillo{animation:none}
+  .diagonal picture img{transition:none}
 }
 </style>
 </head>
@@ -650,8 +848,7 @@ const enCronologia = () => (location.hash || "").slice(1).split("/")[0] === "cro
 function encabezado(volver, titulo) {
   $("#top-in").innerHTML = volver
     ? `<a class="volver" href="${volver}">${ico.atras}${{ "#inicio": "Inicio", "#calendario": "Calendario" }[volver] || "Volver"}</a><span class="titulo-mini">${esc(titulo || "")}</span>`
-    : `<a class="marca" href="${ultimaGuia}">${esc(GRUPO.nombre)}<small>${esc(GRUPO.subtitulo)}</small></a>
-       <nav class="espacios" aria-label="Espacios"><a href="${ultimaGuia}"${enCronologia() ? "" : ' aria-current="page"'}>Guía</a><a href="#cronologia"${enCronologia() ? ' aria-current="page"' : ""}>Cronología</a><a href="/iglesias/">Iglesias</a></nav>`;
+    : `<a class="marca" href="${enCronologia() ? ultimaGuia : "#inicio"}">${esc(GRUPO.nombre)}<small>${enCronologia() ? "Volver a la guía" : esc(GRUPO.subtitulo)}</small></a>`;
 }
 
 /* ===== Inicio ===== */
@@ -660,90 +857,203 @@ function camino(s, enPortada) {
   const m = momentoDe(s), i = MOMENTOS.findIndex(([k]) => k === m);
   return `<ol class="camino" aria-label="Momento de la sesión">${MOMENTOS.map(([k, l], j) => `<li class="${j < i ? "hecho" : j === i ? "ahora" : ""}"${j === i ? ' aria-current="step"' : ""}>${l}</li>`).join("")}</ol>`;
 }
+/* ===== Imágenes papercraft (misma silla en todo el sitio) ===== */
+const IMG = "/imagenes/papel/";
+function foto(nombre, anchos, alt, extra = "") {
+  const set = ext => anchos.map(w => `${IMG}${nombre}-${w}.${ext} ${w}w`).join(", ");
+  const chico = Math.min(...anchos);
+  return `<picture><source type="image/webp" srcset="${set("webp")}" sizes="(min-width:1080px) 50vw, 100vw"><img src="${IMG}${nombre}-${chico}.jpg" srcset="${set("jpg")}" sizes="(min-width:1080px) 50vw, 100vw" alt="${esc(alt)}" loading="lazy" decoding="async"${extra}></picture>`;
+}
+// Imagen de cada lección: el campo `imagen` en lecciones.js manda; si no, la de su clave.
+const IMAGEN_SESION = {
+  "el-desierto": ["sesion-el-desierto", "La silla de papel sola en un desierto de dunas al amanecer."],
+  "la-amistad-con-jesus": ["sesion-la-amistad-con-jesus", "Jesús, de papel, sentado bajo un olivo junto a una silla vacía con el rebozo, esperando."],
+  "la-amistad-que-ilumina": ["sesion-la-amistad-que-ilumina", "La silla con una lámpara encendida junto al camino que sube a un pueblo con ventanas iluminadas."]
+};
+const POR_DEFINIR = ["sesion-por-definir", "La silla junto a una puerta en arco por donde entra la luz de la mañana, lista para alguien."];
+const imgDe = s => (s && s.imagen) || (s && IMAGEN_SESION[s.leccion]) || POR_DEFINIR;
+// Portada según el momento de la quincena. Escritorio: terraza de día (hasta tener las horizontales de amanecer y noche).
+const PORTADA = {
+  antes:   { h: "portada-dia", v: "portada-antes-v", tonoV: "claro", alt: "La silla con un libro cerrado en una terraza de papel al amanecer; al fondo, una capilla blanca entre cipreses." },
+  durante: { h: "portada-dia", v: "portada-antes-v", tonoV: "claro", alt: "La silla con el rebozo en una terraza de papel; al fondo, la capilla blanca con su campanario." },
+  despues: { h: "portada-dia", v: "portada-despues-v", tonoV: "oscuro", alt: "De noche, la silla con una linterna encendida en el asiento frente a la capilla con su ventana iluminada." }
+};
+function fotoPortada(p) {
+  const s = (n, ws, ext) => ws.map(w => `${IMG}${n}-${w}.${ext} ${w}w`).join(", ");
+  return `<picture class="hero-img">
+    <source media="(max-width:759px)" type="image/webp" srcset="${s(p.v, [720, 1080], "webp")}" sizes="100vw">
+    <source media="(max-width:759px)" srcset="${s(p.v, [720, 1080], "jpg")}" sizes="100vw">
+    <source type="image/webp" srcset="${s(p.h, [1400, 2400], "webp")}" sizes="100vw">
+    <img src="${IMG}${p.h}-1400.jpg" srcset="${s(p.h, [1400, 2400], "jpg")}" sizes="100vw" alt="${esc(p.alt)}" fetchpriority="high" decoding="async">
+  </picture>`;
+}
+const fraseDe = s => s.preguntaCentral || (s.preparar && s.preparar.pregunta) || (s.semana && s.semana.pregunta) || s.idea;
+
 function vInicio() {
-  const s = actual(); const m = momentoDe(s);
+  const s = actual(); const m = momentoDe(s); const p = PORTADA[m];
   const cta = {
     antes: [`#${s.id}/antes`, "Prepárate para la sesión"],
     durante: [`#${s.id}/durante`, "Abrir la sesión de hoy"],
     despues: [`#${s.id}/despues`, "Comparte lo que te llevaste"]
   }[m];
-  const ant = anteriorA(s);
-  const prev = m === "despues" ? s : ant;
+  const prev = m === "despues" ? s : anteriorA(s);
   const prep = m !== "despues" && s.preparar;
-  const sig = SESIONES.filter(x => x.fecha > s.fecha).sort((a, b) => a.fecha.localeCompare(b.fecha))[0];
-  const dAnt = ant && parseDate(ant.fecha);
+  const sig = SESIONES.filter(x => dias(x.fecha) > 0 && x.fecha > s.fecha).sort((a, b) => a.fecha.localeCompare(b.fecha))[0];
+  const proxima = m === "despues" ? sig : s;
   const conVideo = conVideos().filter(x => x.fecha <= s.fecha)[0];
   const pv = conVideo && { s: conVideo, v: conVideo.videos[0] };
-  const destacado = pv && pv.v.destacarHasta && dias(pv.v.destacarHasta) >= 0;
-  const secVideo = pv ? `<section class="seccion${destacado ? " destacado" : ""}" aria-labelledby="pv-t">
-    ${destacado ? `<p class="nuevo">Nuevo</p>` : ""}<h2 id="pv-t">Una pausa en video</h2>
-    <p class="nota">Unos minutos para detenerte y volver a lo que hemos vivido.</p>
-    ${bloqueVideo(pv.v, pv.s, true)}
-  </section>` : "";
-  const img = s.imagen || IMAGEN_PORTADA;
+  const [imgS, altS] = imgDe(s);
+  const momentoTxt = { antes: "Próxima sesión", durante: "Sesión de hoy", despues: "Última sesión" }[m];
+  const linea = [...conTema(), ...SESIONES.filter(x => !x.tema && dias(x.fecha) >= 0)].sort((a, b) => a.fecha.localeCompare(b.fecha));
+  const aqui = k => k === m ? ' aria-current="step"' : "";
   return `
-  <section class="portada" aria-labelledby="p-t">
-    <picture class="portada-img">${img.webp ? `<source type="image/webp" srcset="${img.webp}">` : ""}<img src="${esc(img.src)}" alt="${esc(img.alt || "")}" width="1040" height="435" fetchpriority="high"></picture>
-    <div class="portada-txt">
-    <div class="cuando"><span>${m === "despues" ? "Última sesión" : m === "durante" ? "Sesión de hoy" : "Próxima sesión"} · ${fecha(s.fecha)}</span><b>${cuenta(s.fecha)}</b></div>
-    <h1 id="p-t">${esc(s.tema)}</h1>
-    <p class="fuente">${esc(s.fuente)}</p>
-    <p class="idea">${esc(s.idea)}</p>
-    ${camino(s)}
-    ${m === "despues" && !SESIONES.some(x => dias(x.fecha) > 0) ? `<p class="sin-fecha">La próxima fecha todavía no está en el calendario.</p>` : ""}
-    <a class="btn lleno" href="${cta[0]}">${cta[1]}</a>
-    <div class="mas">${m === "despues" ? `<a class="enlace" href="#${s.id}/antes">Leer el tema</a>` : ""}<a class="enlace" href="${wa(textoInvitar(s))}" target="_blank" rel="noopener">Invitar por WhatsApp</a></div>
+  <section class="hero" data-tono-v="${p.tonoV}" aria-labelledby="h-t">
+    ${fotoPortada(p)}
+    <div class="hero-txt">
+      <h1 id="h-t">${esc(GRUPO.nombre)}</h1>
+      <p class="hero-lema">Un grupo que se detiene cada quince días a orar.</p>
+      <p class="hero-quincena">${momentoTxt}: <a href="#${s.id}/${m}">${esc(s.tema)}</a><span> · ${fecha(s.fecha)} · ${cuenta(s.fecha)}</span></p>
+      <div class="hero-acc">
+        <button class="btn lleno" data-act="pausa">Hacer una pausa de un minuto</button>
+        <a class="enlace" href="${cta[0]}">${cta[1]}</a>
+      </div>
     </div>
   </section>
 
-  <div class="inicio-cols">
-  <div class="col-sesion">
-  ${destacado ? secVideo : ""}
-  ${ant ? `<a class="previa" href="#${ant.id}/despues"><div><small>Sesión anterior · ${dAnt.getDate()} ${MES[dAnt.getMonth()]}</small><b>${esc(ant.tema)}</b></div><span class="ir">Repasar</span></a>` : ""}
+  <section class="sec quincena" aria-labelledby="q-t">
+    <figure class="q-img">${foto(imgS + "-45", [600, 960], altS)}</figure>
+    <div class="q-txt">
+      <h2 id="q-t">${esc(s.tema)}</h2>
+      <p class="fuente">${esc(s.fuente)}</p>
+      <p class="idea">${esc(s.idea)}</p>
+      ${camino(s)}
+      ${m === "despues" && !sig ? `<p class="sin-fecha">La próxima fecha todavía no está en el calendario.</p>` : ""}
+      <div class="q-acc">
+        <a class="btn lleno" href="${cta[0]}">${cta[1]}</a>
+        ${m === "despues" ? `<a class="enlace" href="#${s.id}/antes">Leer el tema</a>` : ""}
+        <a class="enlace" href="${wa(textoInvitar(s))}" target="_blank" rel="noopener">Invitar por WhatsApp</a>
+      </div>
+    </div>
+  </section>
 
-  ${sig ? `<section class="seccion" aria-labelledby="s-t"><h2 id="s-t">La siguiente</h2><ul class="linea"><li>${filaSesion(sig)}</li></ul></section>` : ""}
-
-  ${destacado ? "" : secVideo}
-
-  ${prep ? `<section class="seccion" aria-labelledby="v-t">
+  ${prep ? `<section class="sec vivir-sec" aria-labelledby="v-t">
     <h2 id="v-t">Para preparar el corazón</h2>
     <p class="nota">Para llegar a «${esc(s.tema)}» con algo vivo dentro.</p>
     ${bloqueVivir(s, true)}
-  </section>` : prev && prev.semana ? `<section class="seccion" aria-labelledby="v-t">
+  </section>` : prev && prev.semana ? `<section class="sec vivir-sec" aria-labelledby="v-t">
     <h2 id="v-t">Para vivir estos días</h2>
     <p class="nota">Lo que nos dejó la sesión «${esc(prev.tema)}».</p>
     ${bloqueVivir(prev)}
   </section>` : ""}
-  </div>
-  <div class="col-grupo">
-  <section class="seccion comunidad" aria-labelledby="c-t">
-  <h2 id="c-t">Del grupo</h2>
-  <p class="nota">Lo que compartimos, por lo que rezamos y lo que queremos estudiar.</p>
-  ${prev ? `<div class="sub">
-    <h3 id="g-t">Reflexiones</h3>
-    <p class="nota">De la sesión «${esc(prev.tema)}».</p>
-    <div id="voces-inicio" data-sid="${esc(prev.id)}"><p class="cargando">Cargando reflexiones…</p></div>
-    <a class="enlace" href="#${prev.id}/despues">Escribir mi reflexión</a>
-  </div>` : ""}
 
-  <div class="sub">
-    <h3 id="i-t">Intenciones</h3>
-    <p class="nota">Toca la vela para decir que rezas por esa intención. Aquí quedan las de los últimos 15 días.</p>
-    <div id="intenciones-inicio"><p class="cargando">Cargando intenciones…</p></div>
-    <button class="enlace pedir" data-act="pedir" aria-expanded="false" aria-controls="pedir-forma">Pedir oración al grupo</button>
-    <div id="pedir-forma" hidden style="margin-top:12px">${formaCompartir(s.id, "intencion")}</div>
-  </div>
-
-  <div class="sub">
-    <h3 id="t-t">¿Qué estudiamos después?</h3>
-    <p class="nota">Los temas elegidos y las sugerencias con más interés.</p>
-    <div id="temas-inicio"><p class="cargando">Cargando temas…</p></div>
-    <a class="enlace" href="#sugerencias">Sugerir un tema</a>
-  </div>
+  <section class="sec momentos-sec" aria-labelledby="m-t">
+    <div class="m-cab">
+      <h2 id="m-t">Tres momentos</h2>
+      <p class="declara">Cada quince días dejamos todo un rato para escuchar a Jesús, y volvemos distintos.</p>
+    </div>
+    <ol class="diagonal">
+      <li class="d-antes"${aqui("antes")}><a href="#${s.id}/antes">${foto("momento-antes", [900], "La silla al amanecer con un libro en el asiento.")}<p><b>Antes de la sesión.</b> Lees el tema con calma y llevas una pregunta a la oración.${m === "antes" ? " <em>Aquí estamos.</em>" : ""}</p></a></li>
+      <li class="d-durante"${aqui("durante")}><a href="#${s.id}/durante">${foto("momento-durante", [900], "La capilla blanca en lo alto de un camino de piedras de papel.")}<p><b>El día de la sesión.</b> Nos reunimos, compartimos lo que vivimos y hacemos silencio juntos.${m === "durante" ? " <em>Aquí estamos.</em>" : ""}</p></a></li>
+      <li class="d-despues"${aqui("despues")}><a href="#${s.id}/despues">${foto("momento-despues", [1200], "De noche, la silla con una linterna encendida frente a la capilla.")}<p><b>En la semana.</b> Nos llevamos una pregunta y una práctica para vivirla en lo cotidiano.${m === "despues" ? " <em>Aquí estamos.</em>" : ""}</p></a></li>
+    </ol>
   </section>
-  </div>
-  </div>
+
+  ${pv ? `<section class="sec video-sec" aria-labelledby="pv-t">
+    <h2 id="pv-t">Una pausa en video</h2>
+    <p class="nota">Unos minutos para detenerte y volver a lo que hemos vivido.</p>
+    ${bloqueVideo(pv.v, pv.s, true)}
+  </section>` : ""}
+
+  <section class="sec velas-sec" id="velas" aria-labelledby="i-t">
+    <figure class="velas-img">${foto("velas", [1200, 2000], "Un nicho en un muro de papel con velas de papel, unas encendidas y otras esperando.")}</figure>
+    <div class="velas-txt">
+      <h2 id="i-t">Rezamos unos por otros</h2>
+      <p class="nota">Toca la vela para decir que rezas por esa intención. Aquí quedan las de los últimos 15 días.</p>
+      <div id="intenciones-inicio"><p class="cargando">Cargando intenciones…</p></div>
+      <button class="btn pedir" data-act="pedir" aria-expanded="false" aria-controls="pedir-forma">Pedir oración al grupo</button>
+      <div id="pedir-forma" hidden style="margin-top:14px">${formaCompartir(s.id, "intencion")}</div>
+    </div>
+  </section>
+
+  <section class="sec grupo-sec" aria-label="Lo que comparte el grupo">
+    ${prev ? `<div class="g-col">
+      <h2 id="g-t">Lo que compartimos</h2>
+      <p class="nota">Reflexiones de la sesión «${esc(prev.tema)}».</p>
+      <div id="voces-inicio" data-sid="${esc(prev.id)}"><p class="cargando">Cargando reflexiones…</p></div>
+      <a class="btn" href="#${prev.id}/despues">Escribir mi reflexión</a>
+    </div>` : ""}
+    <div class="g-col">
+      <h2 id="t-t">¿Qué estudiamos después?</h2>
+      <p class="nota">Los temas elegidos y las sugerencias con más interés.</p>
+      <div id="temas-inicio"><p class="cargando">Cargando temas…</p></div>
+      <a class="btn" href="#sugerencias">Sugerir un tema</a>
+    </div>
+  </section>
+
+  <section class="sec camino-sec" aria-labelledby="c-t">
+    <div class="c-fotos" aria-hidden="true">${linea.map((x, i) => `<figure class="c-foto${x.id === s.id ? " activa" : ""}" data-c="${esc(x.id)}">${foto(imgDe(x)[0] + "-45", [600, 960], "")}</figure>`).join("")}</div>
+    <div class="c-lista">
+      <h2 id="c-t">El camino del grupo</h2>
+      <ol>${linea.map(x => { const d = parseDate(x.fecha); return `<li><a href="#${x.id}${x.tema ? "/" + momentoDe(x) : ""}" data-c="${esc(x.id)}"${x.id === s.id ? ' class="activa"' : ""}><span class="c-fecha">${d.getDate()} ${MES[d.getMonth()]}</span><span class="c-tema">${esc(x.tema || "Tema por definir")}</span>${x.fuente ? `<span class="c-fuente">${esc(x.fuente)}</span>` : ""}</a></li>`; }).join("")}</ol>
+      <a class="enlace" href="#calendario">Ver el calendario completo</a>
+    </div>
+  </section>
+
+  <section class="sec lugar-sec" aria-labelledby="l-t">
+    <div class="l-txt">
+      <h2 id="l-t">Tu lugar está apartado</h2>
+      <p class="l-frase">${proxima ? `Nos vemos ${dias(proxima.fecha) === 0 ? "hoy" : "el " + fecha(proxima.fecha).toLowerCase()}${proxima.tema ? ` para «${esc(proxima.tema)}»` : ""}. Si alguien necesita una pausa, ` : "Pronto anunciamos la próxima fecha. Mientras tanto, si alguien necesita una pausa, "}<a href="${wa(textoInvitar(proxima || s))}" target="_blank" rel="noopener">invítale por WhatsApp</a>.</p>
+      <p class="nota">${esc(GRUPO.ritmo)}</p>
+    </div>
+    <figure class="l-silla">${foto("silla", [500, 900], "La silla de papel con su rebozo, esperando.")}</figure>
+  </section>
 `;
+}
+
+/* ===== Pie de página: lo del grupo y los espacios que lo acompañan ===== */
+function pie() {
+  return `<footer class="pie-sitio" aria-label="Pie de página">
+    <div class="pie-cols">
+      <div><b>La guía</b><a href="#inicio">Inicio</a><a href="#calendario">Calendario</a><a href="#sugerencias">Sugerencias</a></div>
+      <div><b>También del grupo</b><a href="#cronologia">Plenitud de los Tiempos <span>La cronología del Nuevo Testamento</span></a><a href="/iglesias/">Peregrinos por Querétaro <span>Las iglesias que hemos visitado</span></a></div>
+      <div><b>El grupo</b><span>${esc(GRUPO.ritmo)}</span><a href="${wa(GRUPO.nombre + " · " + URL_SITIO)}" target="_blank" rel="noopener">Compartir el sitio por WhatsApp</a></div>
+    </div>
+    <p class="pie-marca" aria-hidden="true">${esc(GRUPO.nombre)}</p>
+  </footer>`;
+}
+
+/* ===== La pausa de un minuto ===== */
+let pausaTm = null;
+function abrirPausa() {
+  const s = actual(), p = PORTADA[momentoDe(s)], cita = (s.biblia || [])[0];
+  let d = $("#pausa");
+  if (!d) { d = document.createElement("dialog"); d.id = "pausa"; d.className = "pausa"; document.body.appendChild(d); d.addEventListener("close", () => { clearInterval(pausaTm); }); }
+  const total = 60, R = 54, C = 2 * Math.PI * R;
+  d.dataset.tonoV = p.tonoV;
+  d.innerHTML = `${fotoPortada(p)}
+    <div class="pausa-in" role="document">
+      <button class="pausa-x" data-act="cerrar-pausa" aria-label="Terminar la pausa"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      ${cita ? `<p class="pausa-cita">${esc(cita[1])} · ${esc(cita[0])}</p>` : ""}
+      <p class="pausa-frase">${esc(fraseDe(s))}</p>
+      <div class="pausa-anillo" aria-hidden="true"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="${R}" class="a-base"/><circle cx="60" cy="60" r="${R}" class="a-avance" style="stroke-dasharray:${C};stroke-dashoffset:0"/></svg><b id="pausa-s">60</b></div>
+      <p class="pausa-guia" id="pausa-guia" aria-live="polite">Respira despacio. Quédate aquí un momento.</p>
+      <div class="pausa-fin" id="pausa-fin" hidden>
+        <a class="btn lleno" href="#velas" data-act="pausa-velas">Encender una vela</a>
+        <a class="btn" href="#${s.id}/despues" data-act="pausa-escribir">Escribir lo que me llevé</a>
+      </div>
+    </div>`;
+  d.showModal();
+  const ini = Date.now(), av = d.querySelector(".a-avance"), num = d.querySelector("#pausa-s");
+  clearInterval(pausaTm);
+  pausaTm = setInterval(() => {
+    const t = Math.min(total, (Date.now() - ini) / 1000), r = Math.ceil(total - t);
+    av.style.strokeDashoffset = String(C * (t / total)); num.textContent = r;
+    if (t >= total) {
+      clearInterval(pausaTm); num.textContent = "Amén";
+      $("#pausa-guia").textContent = "Gracias por esta pausa. Llévala contigo.";
+      $("#pausa-fin").hidden = false; $("#pausa-fin a").focus();
+    }
+  }, 250);
 }
 
 function bloqueVivir(s, prep) {
@@ -778,13 +1088,16 @@ function vCalendario() {
   pasadas.forEach(x => { const mm = mesAnio(x.fecha); const g = meses[meses.length - 1]; if (g && g.mes === mm) g.ses.push(x); else meses.push({ mes: mm, ses: [x] }); });
   return `<h1 class="h-vista">Calendario</h1>
     <p class="nota">${esc(GRUPO.ritmo)} Toca cualquier fecha para abrir su tema completo: la guía de lectura, las preguntas y lo que compartió el grupo.</p>
+    <div class="vista-2"><div class="v2-main">
     ${prox ? `<h2 class="rotulo">${dias(prox.fecha) === 0 ? "Hoy" : "Próxima sesión"}</h2>${tarjetaProxima(prox)}` : ""}
     ${despues.length ? `<h2 class="rotulo">Más adelante</h2><ul class="linea">${despues.map(x => `<li>${filaSesion(x)}</li>`).join("")}</ul>` : ""}
     ${meses.length ? `<h2 class="rotulo">Anteriores</h2>${meses.map((g, i) => `<details class="grupo-mes"${i < 2 ? " open" : ""}><summary>${esc(g.mes)} <span>${g.ses.length} ${g.ses.length === 1 ? "sesión" : "sesiones"}</span></summary>
       <ul class="linea">${g.ses.map(x => `<li>${filaSesion(x)}</li>`).join("")}</ul></details>`).join("")}` : ""}
+    </div><aside class="v2-lado">
     ${conVideos().length ? `<section class="seccion" aria-labelledby="tv"><h2 id="tv">Pausas en video</h2>
       <p class="nota">Los cortometrajes de los temas que hemos vivido.</p>
-      <div style="display:grid;gap:18px">${conVideos().map(x => x.videos.map(v => bloqueVideo(v, x, true)).join("")).join("")}</div></section>` : ""}`;
+      <div style="display:grid;gap:18px">${conVideos().map(x => x.videos.map(v => bloqueVideo(v, x, true)).join("")).join("")}</div></section>` : ""}
+    </aside></div>`;
 }
 function tarjetaProxima(s) {
   const d = parseDate(s.fecha);
@@ -800,8 +1113,8 @@ function tarjetaProxima(s) {
 /* ===== Página de una sesión ===== */
 function vSesion(s, m) {
   const cuerpo = { antes: momentoAntes, durante: momentoDurante, despues: momentoDespues }[m](s);
-  const deHoy = momentoDe(s);
-  return `<div class="s-cab">
+  const deHoy = momentoDe(s); const [im, alt] = imgDe(s);
+  return `<div class="vista-sesion"><div class="s-main"><div class="s-cab">
       <div class="cuando"><span>${fecha(s.fecha)}</span><b>${cuenta(s.fecha)}</b></div>
       <h1>${esc(s.tema)}</h1>
       <p class="fuente">${esc(s.fuente)}</p>
@@ -809,7 +1122,12 @@ function vSesion(s, m) {
     <div class="momentos"><div class="momentos-in" role="tablist" aria-label="Momentos de la sesión">
       ${MOMENTOS.map(([k, l]) => `<button role="tab" data-momento="${k}" aria-selected="${k === m}"><span class="m-l">${l}${k === deHoy ? '<span class="hoy" title="Ahora" aria-label="(ahora)"></span>' : ""}</span><small>${PISTA[k]}</small></button>`).join("")}
     </div></div>
-    <div role="tabpanel">${cuerpo}</div>`;
+    <div role="tabpanel">${cuerpo}</div></div>
+    <aside class="s-lado" aria-label="La sesión">
+      <figure>${foto(im + "-45", [600, 960], alt)}</figure>
+      <p class="s-lado-f">${fecha(s.fecha)} · ${cuenta(s.fecha)}</p>
+      <a class="btn" href="${wa(textoInvitar(s))}" target="_blank" rel="noopener">${ico.wa}Invitar por WhatsApp</a>
+    </aside></div>`;
 }
 
 /* Campos opcionales para las nuevas lecciones; las anteriores conservan su contenido. */
@@ -1030,14 +1348,17 @@ function vCoordinador(s) {
 function vSugerencias() {
   return `<h1 class="h-vista">Sugerencias</h1>
     <p class="nota">¿Qué te gustaría estudiar en las próximas sesiones? Propón un tema o marca con el corazón los que también te interesan. Los temas de cada fecha están en <a href="#calendario">Calendario</a>.</p>
+    <div class="vista-2"><div class="v2-main">
     <form class="tema-forma" data-form="tema" novalidate>
       <input type="text" name="tema" maxlength="120" placeholder="Ej. El perdón, la Virgen María…" aria-label="Tu sugerencia de tema">
       <div class="trampa" aria-hidden="true"><label>No llenar<input type="text" name="web" tabindex="-1" autocomplete="off"></label></div>
       <button class="btn lleno" type="submit">Sugerir</button>
       <p class="aviso" role="status" aria-live="polite" style="flex-basis:100%;margin-top:2px"></p>
     </form>
-    <section class="seccion" style="margin-top:30px" aria-labelledby="tt"><h2 id="tt">Lo que ha propuesto el grupo</h2>
-      <div id="temas" style="margin-top:12px"><p class="cargando">Cargando temas…</p></div></section>`;
+    </div><aside class="v2-lado">
+    <section class="seccion" aria-labelledby="tt"><h2 id="tt">Lo que ha propuesto el grupo</h2>
+      <div id="temas" style="margin-top:12px"><p class="cargando">Cargando temas…</p></div></section>
+    </aside></div>`;
 }
 const conVideos = () => conTema().filter(x => (x.videos || []).length).sort((a, b) => b.fecha.localeCompare(a.fecha));
 function filaTema(t, marcados) {
@@ -1120,6 +1441,31 @@ function ruta() {
   return { base, sub };
 }
 let animarSoloPanel = false;
+// Cada sección del inicio entra una vez, por partes, cuando llega a la vista.
+let obsEntradas = null;
+function observarEntradas(raiz) {
+  const secs = raiz.querySelectorAll(".sec, .pie-sitio");
+  if (!("IntersectionObserver" in window)) { secs.forEach(x => x.classList.add("visto")); return; }
+  if (obsEntradas) obsEntradas.disconnect();
+  obsEntradas = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("visto"); obsEntradas.unobserve(e.target); } }), { root: SC(), rootMargin: "0px 0px -12% 0px", threshold: 0.08 });
+  secs.forEach(x => { x.classList.add("por-ver"); obsEntradas.observe(x); });
+}
+// El camino del grupo: la imagen fija cambia con la sesión que se señala o que pasa por el centro.
+let obsCamino = null;
+function caminoActivo(raiz) {
+  const sec = raiz.querySelector(".camino-sec"); if (!sec) return;
+  const marcar = id => {
+    sec.querySelectorAll(".c-foto").forEach(f => f.classList.toggle("activa", f.dataset.c === id));
+    sec.querySelectorAll(".c-lista a[data-c]").forEach(a => a.classList.toggle("activa", a.dataset.c === id));
+  };
+  sec.addEventListener("pointerover", e => { const a = e.target.closest("a[data-c]"); if (a) marcar(a.dataset.c); });
+  sec.addEventListener("focusin", e => { const a = e.target.closest("a[data-c]"); if (a) marcar(a.dataset.c); });
+  if ("IntersectionObserver" in window && matchMedia("(max-width:1079px)").matches) {
+    if (obsCamino) obsCamino.disconnect();
+    obsCamino = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) marcar(e.target.dataset.c); }), { root: SC(), rootMargin: "-45% 0px -45% 0px" });
+    sec.querySelectorAll(".c-lista a[data-c]").forEach(a => obsCamino.observe(a));
+  }
+}
 function entrar(el, clase) {
   if (!el) return;
   el.classList.remove("entra", "entra-panel"); void el.offsetWidth; el.classList.add(clase);
@@ -1164,10 +1510,11 @@ function render() {
   }
   if (nav) { const a = document.querySelector(`[data-nav="${nav}"]`); if (a) a.setAttribute("aria-current", "page"); }
   const app = $("#app"), soloPanel = animarSoloPanel; animarSoloPanel = false;
-  app.innerHTML = html;
-  const ancho = !ses && !coord && (VISTAS.includes(base) ? base : "inicio") === "inicio";
-  app.classList.toggle("ancho", ancho); document.body.classList.toggle("ancho", ancho);
-  entrar(soloPanel ? $('[role="tabpanel"]', app) : app, soloPanel ? "entra-panel" : "entra");
+  const esInicio = !ses && !coord && (VISTAS.includes(base) ? base : "inicio") === "inicio";
+  app.innerHTML = html + (coord ? "" : pie());
+  app.classList.toggle("ancho", esInicio); document.body.classList.toggle("v-inicio", esInicio);
+  if (esInicio && !soloPanel) { observarEntradas(app); caminoActivo(app); }
+  else entrar(soloPanel ? $('[role="tabpanel"]', app) : app, soloPanel ? "entra-panel" : "entra");
   aplicarLectura();
   pintarVoces(); pintarTemas(); pintarIntenciones(); pintarPreguntas();
   alScroll();
@@ -1204,6 +1551,15 @@ document.addEventListener("click", async e => {
   }
   if (t.dataset.copiar) { const s = SESIONES.find(x => x.id === t.dataset.copiar); copiar(t.dataset.prep ? textoPreparar(s) : textoVivir(s), t.closest(".vivir")); return; }
   if (t.dataset.timer) { iniciarTimer(+t.dataset.timer * 60, t.dataset.label); return; }
+  if (t.dataset.act === "pausa") { abrirPausa(); return; }
+  if (t.dataset.act === "cerrar-pausa") { $("#pausa").close(); return; }
+  if (t.dataset.act === "pausa-velas") {
+    e.preventDefault(); $("#pausa").close();
+    if (ruta().base !== "inicio") { location.hash = "#inicio"; setTimeout(() => { const v = $("#velas"); if (v) SC().scrollTo({ top: posEn(v) - 8, behavior: "smooth" }); }, 120); }
+    else { const v = $("#velas"); if (v) SC().scrollTo({ top: posEn(v) - 8, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }); }
+    return;
+  }
+  if (t.dataset.act === "pausa-escribir") { $("#pausa").close(); return; }
   if (t.dataset.act === "panel") { const p = $("#panel"); p.hidden = !p.hidden; t.setAttribute("aria-expanded", String(!p.hidden)); store.set("panel", !p.hidden); return; }
   if (t.dataset.act === "enfoque") {
     document.body.classList.add("enfoque");
