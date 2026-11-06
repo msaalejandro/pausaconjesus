@@ -55,12 +55,15 @@
   --nav-h:66px; --top-h:56px;
   /* Cinco tamaños hacen todo el trabajo: nota, cuerpo, entrada, encabezado y título */
   --t-s:15px; --t-b:17px; --t-l:22px; --t-h:30px; --t-d:clamp(46px,8.5vw + 14px,92px);
+  /* En escritorio el paso de encabezado sube a 36px; sigue siendo uno solo */
   /* Una sola esquina para superficies; los botones son redondos (999px) */
   --r:16px;
   /* Movimiento: curvas con intención y duraciones cortas */
   --ease-out:cubic-bezier(.23,1,.32,1); --ease-in-out:cubic-bezier(.77,0,.175,1);
   --d-press:160ms; --d-ui:220ms;
 }
+@media (min-width:1080px){:root{--t-h:36px}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     --lino:#14171F; --papel:#1C202B; --tinta:#EDE6DA; --piedra:#B3AA9C; --raya:#2C3140;
@@ -248,6 +251,14 @@ h1,h2,h3{text-wrap:balance}
 .temas span{flex:1;min-width:0;overflow-wrap:anywhere;font-size:var(--t-b)}
 .like{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;min-height:44px;min-width:68px;justify-content:center;padding:0 14px;border-radius:999px;border:1px solid var(--raya);background:var(--papel);cursor:pointer;font-weight:700;font-variant-numeric:tabular-nums}
 .like svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8}
+.orar{min-height:48px;min-width:76px}
+.orar svg.vela-papel{width:24px;height:24px;stroke-width:1.3;stroke-linejoin:round;stroke-linecap:round}
+.vela-papel .cuerpo{fill:#B5653F;stroke:#8E4A2C}
+.vela-papel .borde{stroke:#F1E8D6;opacity:.6}
+.vela-papel .pabilo{stroke:#5E4A36}
+.vela-papel .flama{fill:none;stroke:currentColor;stroke-dasharray:2 1.6}
+.orar[aria-pressed="true"] .vela-papel .flama{fill:#D9AE5B;stroke:#B88A3A;stroke-dasharray:none}
+.orar[aria-pressed="true"]{background:var(--cera-suave)}
 .like[aria-pressed="true"]{background:var(--manto-suave);border-color:transparent}
 .like[aria-pressed="true"] svg{fill:var(--cera);stroke:var(--cera)}
 .like:disabled{opacity:.6}
@@ -465,7 +476,6 @@ textarea.copia{width:100%;min-height:90px;margin-top:12px;padding:10px;border-ra
 .sec{margin-top:96px}
 @media (min-width:1080px){.sec{margin-top:160px}}
 .sec h2{font-family:var(--f-titulo);font-weight:600;font-size:var(--t-h);line-height:1.05;margin-bottom:8px;letter-spacing:-.01em}
-@media (min-width:1080px){.sec h2{font-size:clamp(36px,3.4vw,52px)}}
 .sec figure{margin:0}
 .sec picture,.s-lado picture{display:block;width:100%;height:100%}
 .sec picture img{display:block;width:100%;height:100%;object-fit:cover}
@@ -478,12 +488,13 @@ textarea.copia{width:100%;min-height:90px;margin-top:12px;padding:10px;border-ra
 .hero-img,.hero-img img{position:absolute;inset:0;width:100%;height:100%}
 .hero-img img{object-fit:cover;object-position:50% 85%;animation:asienta 1600ms var(--ease-out) both}
 .hero-txt{position:relative;z-index:1;padding:28px 20px 0;max-width:640px}
-.hero h1{font-family:var(--f-titulo);font-weight:600;font-size:clamp(46px,12vw,96px);line-height:.95;letter-spacing:-.02em;white-space:nowrap}
+.hero h1{font-family:var(--f-titulo);font-weight:600;font-size:var(--t-d);line-height:.95;letter-spacing:-.02em;white-space:nowrap}
 .hero-lema{font-size:var(--t-l);line-height:1.3;margin-top:12px;max-width:26ch}
 .hero-quincena{margin-top:14px;font-size:var(--t-b)}
 .hero-quincena a{font-weight:700;text-underline-offset:4px;text-decoration-color:var(--cera)}
 .hero-quincena span{color:inherit;opacity:.85}
 .hero-acc{display:flex;flex-wrap:wrap;align-items:center;gap:8px 22px;margin-top:22px}
+.hero-acc + .hero-quincena{margin-top:16px}
 .hero .enlace{color:inherit}
 @media (max-width:759px){
   .hero[data-tono-v="oscuro"]{color:var(--sobre-manto)}
@@ -493,16 +504,20 @@ textarea.copia{width:100%;min-height:90px;margin-top:12px;padding:10px;border-ra
 }
 @media (min-width:760px){
   .hero{height:calc(100svh - var(--top-h) - 54px);min-height:600px}
-  .hero-txt{padding:7vh 40px 0;max-width:720px}
-  /* Velo neutro solo bajo el texto, para que se lea sobre la ilustración */
-  .hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(243,237,226,.92) 0%,rgba(243,237,226,.72) 34%,rgba(243,237,226,0) 58%);pointer-events:none}
+  /* El texto vive en el cielo tranquilo de arriba, centrado (el único momento centrado de la página) */
+  /* Centrado en el claro del cielo entre los cipreses y la capilla, no en la pantalla */
+  .hero-txt{margin:0 0 0 max(20px,calc(37vw - 290px));padding:6vh 0 0;max-width:580px;text-align:center}
+  .hero h1{font-size:clamp(56px,5.4vw,84px)}
+  .hero-lema{margin-left:auto;margin-right:auto}
+  .hero-acc{justify-content:center}
+  .hero-img img{object-position:50% 100%}
 }
-@media (min-width:1080px){.hero-txt{padding-left:max(40px,calc((100vw - 1240px)/2 + 40px))}}
 
 /* Esta quincena */
 .quincena{display:grid;gap:28px;align-items:center}
-.q-img{aspect-ratio:4/5;overflow:hidden;background:var(--cera-suave);max-width:520px}
-.q-txt h2{font-size:clamp(42px,9vw,72px)!important;line-height:.98}
+.q-img{display:none;aspect-ratio:4/5;overflow:hidden;background:var(--cera-suave)}
+.q-img-m{aspect-ratio:16/9;overflow:hidden;background:var(--cera-suave);margin:18px -18px 0!important}
+.q-txt h2{font-size:var(--t-d)!important;line-height:.98}
 .q-txt .fuente{color:var(--piedra);margin-top:6px}
 .q-txt .idea{font-family:var(--f-titulo);font-style:italic;font-weight:500;font-size:var(--t-l);line-height:1.35;margin:18px 0 26px;max-width:36ch}
 .q-txt .camino{color:var(--tinta);margin-bottom:24px;max-width:460px}
@@ -510,15 +525,20 @@ textarea.copia{width:100%;min-height:90px;margin-top:12px;padding:10px;border-ra
 .q-txt .camino li.ahora::before{border-color:var(--cera);background:var(--cera);box-shadow:none}
 .q-txt .sin-fecha{color:var(--piedra);margin:-8px 0 18px}
 .q-acc{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px}
-@media (min-width:1080px){.quincena{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px}.q-img{max-width:none}}
+@media (min-width:1080px){.quincena{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px}.q-img{display:block}.q-img-m{display:none}}
 
 /* Para vivir / preparar */
-.vivir-sec .vivir{margin-top:18px;max-width:860px}
-.vivir-sec .vivir q{font-size:clamp(22px,2.4vw,30px);max-width:38ch}
+.ancho .vivir-sec{max-width:none;background:var(--manto);color:var(--sobre-manto);padding:56px max(18px,calc((100vw - 1240px)/2 + 18px)) 60px}
+@media (min-width:1080px){.ancho .vivir-sec{padding:96px max(40px,calc((100vw - 1240px)/2 + 40px))}}
+.vivir-sec .nota{color:inherit;opacity:.85}
+.vivir-sec .vivir{margin-top:18px;max-width:860px;background:none;padding:0;border-radius:0}
+.vivir-sec .vivir p{max-width:62ch}
+.vivir-sec .vivir .btn{background:var(--sobre-manto);border-color:var(--sobre-manto);color:#2E3A5C}
+.vivir-sec .vivir q{font-size:var(--t-h);max-width:30ch}
 
 /* Tres momentos, en diagonal */
 .m-cab{max-width:760px}
-.declara{font-family:var(--f-titulo);font-weight:500;font-size:clamp(22px,2.4vw,32px);line-height:1.25;margin-top:6px;max-width:30ch}
+.declara{font-family:var(--f-titulo);font-weight:500;font-size:var(--t-h);line-height:1.25;margin-top:6px;max-width:30ch}
 .diagonal{list-style:none;margin:40px 0 0;padding:0;display:grid;gap:56px}
 .diagonal a{display:block;text-decoration:none;color:inherit}
 .diagonal picture{display:block;overflow:hidden;background:var(--cera-suave)}
@@ -584,13 +604,12 @@ textarea.copia{width:100%;min-height:90px;margin-top:12px;padding:10px;border-ra
   .c-fotos{position:sticky;top:12vh;aspect-ratio:4/5}
   .c-lista{padding-top:6vh}
   .c-lista ol a{padding:18px 0}
-  .c-tema,.c-fecha{font-size:clamp(24px,2vw,30px)}
 }
 
 /* Tu lugar está apartado */
 .lugar-sec{display:grid;gap:28px;align-items:center}
 .ancho .lugar-sec{background:var(--papel);max-width:none;padding:64px max(18px,calc((100vw - 1240px)/2 + 18px))}
-.l-frase{font-family:var(--f-titulo);font-weight:500;font-size:clamp(22px,2.4vw,32px);line-height:1.3;margin-top:8px;max-width:34ch}
+.l-frase{font-family:var(--f-titulo);font-weight:500;font-size:var(--t-h);line-height:1.3;margin-top:8px;max-width:34ch}
 .l-frase a{color:inherit;text-decoration-thickness:3px;text-underline-offset:6px;text-decoration-color:var(--cera)}
 .l-txt .nota{margin-top:18px}
 .l-silla{aspect-ratio:1/1;overflow:hidden;width:min(260px,60vw);background:var(--cera-suave)}
@@ -636,7 +655,7 @@ textarea.copia{width:100%;min-height:90px;margin-top:12px;padding:10px;border-ra
 .pausa-x{position:fixed;top:14px;right:14px;z-index:2;width:48px;height:48px;border-radius:999px;border:0;background:var(--papel);color:var(--tinta);display:grid;place-items:center;cursor:pointer}
 .pausa-x svg{width:20px;height:20px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round}
 .pausa-cita{font-weight:700;font-size:var(--t-s)}
-.pausa-frase{font-family:var(--f-titulo);font-style:italic;font-weight:500;font-size:clamp(24px,3vw,34px);line-height:1.25;margin:14px auto 0;max-width:24ch}
+.pausa-frase{font-family:var(--f-titulo);font-style:italic;font-weight:500;font-size:var(--t-h);line-height:1.25;margin:14px auto 0;max-width:24ch}
 .pausa-anillo{position:relative;width:150px;height:150px;margin:28px auto 0}
 .pausa-anillo svg{width:100%;height:100%;transform:rotate(-90deg)}
 .pausa-anillo circle{fill:none;stroke-width:5}
@@ -815,7 +834,7 @@ const ico = {
   copiar: `<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h8"/></svg>`,
   pdf: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>`,
   corazon: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>`,
-  vela: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5c1.6 1.9 1.6 3.6 0 5.2-1.6-1.6-1.6-3.3 0-5.2z"/><rect x="8.5" y="10" width="7" height="11" rx="1.2"/></svg>`,
+  vela: `<svg class="vela-papel" viewBox="0 0 24 24" aria-hidden="true"><path class="flama" d="M12 2.2c1.9 2.3 1.8 4.3.1 6.1-1.8-1.7-2-3.9-.1-6.1z"/><path class="pabilo" d="M12 8.4v1.6"/><path class="cuerpo" d="M8.3 10.4l7.5-.3.4 10.9-8.3.2z"/><path class="borde" d="M8.4 12.6l7.6-.2"/></svg>`,
   sig: `<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>`,
   atras: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>`
 };
@@ -903,7 +922,9 @@ function vInicio() {
   const conVideo = conVideos().filter(x => x.fecha <= s.fecha)[0];
   const pv = conVideo && { s: conVideo, v: conVideo.videos[0] };
   const [imgS, altS] = imgDe(s);
-  const momentoTxt = { antes: "Próxima sesión", durante: "Sesión de hoy", despues: "Última sesión" }[m];
+  const lineaSesion = m === "durante" ? `Hoy: <a href="#${s.id}/durante">${esc(s.tema)}</a>`
+    : m === "antes" ? `Próxima sesión: <a href="#${s.id}/antes">${esc(s.tema)}</a><span> · ${fecha(s.fecha).toLowerCase()} · ${cuenta(s.fecha).toLowerCase()}</span>`
+    : `Última sesión: <a href="#${s.id}/despues">${esc(s.tema)}</a><span> · ${fecha(s.fecha).toLowerCase()}</span>`;
   const linea = [...conTema(), ...SESIONES.filter(x => !x.tema && dias(x.fecha) >= 0)].sort((a, b) => a.fecha.localeCompare(b.fecha));
   const aqui = k => k === m ? ' aria-current="step"' : "";
   return `
@@ -912,11 +933,8 @@ function vInicio() {
     <div class="hero-txt">
       <h1 id="h-t">${esc(GRUPO.nombre)}</h1>
       <p class="hero-lema">Un grupo que se detiene cada quince días a orar.</p>
-      <p class="hero-quincena">${momentoTxt}: <a href="#${s.id}/${m}">${esc(s.tema)}</a><span> · ${fecha(s.fecha)} · ${cuenta(s.fecha)}</span></p>
-      <div class="hero-acc">
-        <button class="btn lleno" data-act="pausa">Hacer una pausa de un minuto</button>
-        <a class="enlace" href="${cta[0]}">${cta[1]}</a>
-      </div>
+      <div class="hero-acc"><button class="btn lleno" data-act="pausa">Hacer una pausa de un minuto</button></div>
+      <p class="hero-quincena">${lineaSesion}</p>
     </div>
   </section>
 
@@ -925,8 +943,8 @@ function vInicio() {
     <div class="q-txt">
       <h2 id="q-t">${esc(s.tema)}</h2>
       <p class="fuente">${esc(s.fuente)}</p>
+      <figure class="q-img-m">${foto(imgS, [960, 1600], altS)}</figure>
       <p class="idea">${esc(s.idea)}</p>
-      ${camino(s)}
       ${m === "despues" && !sig ? `<p class="sin-fecha">La próxima fecha todavía no está en el calendario.</p>` : ""}
       <div class="q-acc">
         <a class="btn lleno" href="${cta[0]}">${cta[1]}</a>
@@ -944,24 +962,6 @@ function vInicio() {
     <h2 id="v-t">Para vivir estos días</h2>
     <p class="nota">Lo que nos dejó la sesión «${esc(prev.tema)}».</p>
     ${bloqueVivir(prev)}
-  </section>` : ""}
-
-  <section class="sec momentos-sec" aria-labelledby="m-t">
-    <div class="m-cab">
-      <h2 id="m-t">Tres momentos</h2>
-      <p class="declara">Cada quince días dejamos todo un rato para escuchar a Jesús, y volvemos distintos.</p>
-    </div>
-    <ol class="diagonal">
-      <li class="d-antes"${aqui("antes")}><a href="#${s.id}/antes">${foto("momento-antes", [900], "La silla al amanecer con un libro en el asiento.")}<p><b>Antes de la sesión.</b> Lees el tema con calma y llevas una pregunta a la oración.${m === "antes" ? " <em>Aquí estamos.</em>" : ""}</p></a></li>
-      <li class="d-durante"${aqui("durante")}><a href="#${s.id}/durante">${foto("momento-durante", [900], "La capilla blanca en lo alto de un camino de piedras de papel.")}<p><b>El día de la sesión.</b> Nos reunimos, compartimos lo que vivimos y hacemos silencio juntos.${m === "durante" ? " <em>Aquí estamos.</em>" : ""}</p></a></li>
-      <li class="d-despues"${aqui("despues")}><a href="#${s.id}/despues">${foto("momento-despues", [1200], "De noche, la silla con una linterna encendida frente a la capilla.")}<p><b>En la semana.</b> Nos llevamos una pregunta y una práctica para vivirla en lo cotidiano.${m === "despues" ? " <em>Aquí estamos.</em>" : ""}</p></a></li>
-    </ol>
-  </section>
-
-  ${pv ? `<section class="sec video-sec" aria-labelledby="pv-t">
-    <h2 id="pv-t">Una pausa en video</h2>
-    <p class="nota">Unos minutos para detenerte y volver a lo que hemos vivido.</p>
-    ${bloqueVideo(pv.v, pv.s, true)}
   </section>` : ""}
 
   <section class="sec velas-sec" id="velas" aria-labelledby="i-t">
@@ -988,6 +988,24 @@ function vInicio() {
       <div id="temas-inicio"><p class="cargando">Cargando temas…</p></div>
       <a class="btn" href="#sugerencias">Sugerir un tema</a>
     </div>
+  </section>
+
+  ${pv ? `<section class="sec video-sec" aria-labelledby="pv-t">
+    <h2 id="pv-t">Una pausa en video</h2>
+    <p class="nota">Unos minutos para detenerte y volver a lo que hemos vivido.</p>
+    ${bloqueVideo(pv.v, pv.s, true)}
+  </section>` : ""}
+
+  <section class="sec momentos-sec" aria-labelledby="m-t">
+    <div class="m-cab">
+      <h2 id="m-t">Tres momentos</h2>
+      <p class="declara">Cada quince días dejamos todo un rato para escuchar a Jesús, y volvemos distintos.</p>
+    </div>
+    <ol class="diagonal">
+      <li class="d-antes"${aqui("antes")}><a href="#${s.id}/antes">${foto("momento-antes", [900], "La silla al amanecer con un libro en el asiento.")}<p><b>Antes de la sesión.</b> Lees el tema con calma y llevas una pregunta a la oración.${m === "antes" ? " <em>Aquí estamos.</em>" : ""}</p></a></li>
+      <li class="d-durante"${aqui("durante")}><a href="#${s.id}/durante">${foto("momento-durante", [900], "La capilla blanca en lo alto de un camino de piedras de papel.")}<p><b>El día de la sesión.</b> Nos reunimos, compartimos lo que vivimos y hacemos silencio juntos.${m === "durante" ? " <em>Aquí estamos.</em>" : ""}</p></a></li>
+      <li class="d-despues"${aqui("despues")}><a href="#${s.id}/despues">${foto("momento-despues", [1200], "De noche, la silla con una linterna encendida frente a la capilla.")}<p><b>En la semana.</b> Nos llevamos una pregunta y una práctica para vivirla en lo cotidiano.${m === "despues" ? " <em>Aquí estamos.</em>" : ""}</p></a></li>
+    </ol>
   </section>
 
   <section class="sec camino-sec" aria-labelledby="c-t">
@@ -1029,9 +1047,10 @@ function abrirPausa() {
   let d = $("#pausa");
   if (!d) { d = document.createElement("dialog"); d.id = "pausa"; d.className = "pausa"; document.body.appendChild(d); d.addEventListener("close", () => { clearInterval(pausaTm); }); }
   const total = 60, R = 54, C = 2 * Math.PI * R;
-  d.dataset.tonoV = p.tonoV;
+  d.dataset.tonoV = p.tonoV; d.setAttribute("aria-labelledby", "pausa-t");
   d.innerHTML = `${fotoPortada(p)}
     <div class="pausa-in" role="document">
+      <h2 id="pausa-t" class="sr">Una pausa de un minuto</h2>
       <button class="pausa-x" data-act="cerrar-pausa" aria-label="Terminar la pausa"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
       ${cita ? `<p class="pausa-cita">${esc(cita[1])} · ${esc(cita[0])}</p>` : ""}
       <p class="pausa-frase">${esc(fraseDe(s))}</p>
