@@ -532,7 +532,9 @@ h1[tabindex="-1"]:focus{outline:none}
   @keyframes apoya{from{opacity:0}to{opacity:1}}
   @keyframes prende{from{opacity:.3}to{opacity:1}}
   .orar.enciende .f1,.orar.enciende .f2,.orar.enciende .f3{animation:none}
-  .hero.colocar .hero-img img{animation:aparece 420ms ease both}
+  .hero.colocar .hero-img .escena{animation:aparece 420ms ease both}
+  .capa i{animation:none!important}
+  .vuelo{display:none}
   .pausa-anillo{animation:none}
   .flamas i{animation:none}
   @keyframes cuenta{from{opacity:0}to{opacity:1}}
@@ -545,8 +547,33 @@ h1[tabindex="-1"]:focus{outline:none}
    y su suelo se desvanece en el marfil de la página. Cada escena vive en un solo lugar. */
 .desliza{overflow-x:clip}
 .hero,.franja{position:relative;width:100vw;margin-left:calc(50% - 50vw)}
-.hero-img,.franja-img{display:block}
-.hero-img img{display:block;width:100%;height:auto;-webkit-mask-image:linear-gradient(#000 74%,transparent);mask-image:linear-gradient(#000 74%,transparent);animation:aparece 700ms ease both}
+.franja-img{display:block}
+.hero-img{display:block;position:relative;overflow:hidden;-webkit-mask-image:linear-gradient(#000 74%,transparent);mask-image:linear-gradient(#000 74%,transparent)}
+.hero-img .escena{position:relative;width:100%;aspect-ratio:1438/2576}
+@media (min-width:760px){.hero-img .escena{aspect-ratio:2576/1438}}
+.hero-img picture,.hero-img img{display:block;width:100%;height:100%}
+.capa{position:absolute;inset:0}
+.capa i{position:absolute;background-repeat:no-repeat}
+@media (max-width:759px){.capa-h{display:none}}
+@media (min-width:760px){.capa-v{display:none}}
+/* La escena viva: cada recorte se mueve a su ritmo, solo mientras la portada se ve */
+.capa i,.vuelo,.pajaro{animation-play-state:paused!important}
+.con-flamas.viva .capa i,.con-flamas.viva .vuelo,.con-flamas.viva .pajaro{animation-play-state:running!important}
+.k-flama{transform-origin:50% 92%;animation:tiembla-fuerte var(--d,540ms) steps(1,end) var(--r,0ms) infinite}
+.k-flama:not([style*="--d"]){animation-duration:540ms}
+@keyframes tiembla-fuerte{0%{transform:none}20%{transform:rotate(-6deg) scaleY(1.08)}40%{transform:rotate(3deg) scaleY(.95)}60%{transform:rotate(-2deg) scaleY(1.05)}80%{transform:rotate(5deg) scaleY(.98)}}
+.k-ventana{opacity:0;animation:pulso 3700ms ease-in-out infinite}
+@keyframes pulso{0%,100%{opacity:0}12%{opacity:.7}18%{opacity:.25}42%{opacity:.85}50%{opacity:.35}72%{opacity:.75}}
+.k-estrella{animation:titila var(--d) steps(1,end) var(--r) infinite}
+@keyframes titila{0%{transform:none}30%{transform:scale(1.45) rotate(14deg)}45%{transform:scale(1.15) rotate(6deg)}70%{transform:scale(1.3) rotate(-8deg)}}
+.k-nube{animation:deriva var(--d) var(--ease-in-out) var(--r) infinite alternate}
+@keyframes deriva{from{transform:translateX(-30%)}to{transform:translateX(30%)}}
+/* Pájaros del alba: cruzan el cielo aleteando a saltos; luego una pausa antes de volver */
+.vuelo{position:absolute;left:0;right:0;height:0;transform:translateX(-12%);animation:cruza var(--v) linear var(--vr) infinite}
+.pajaro{position:absolute;left:0;top:0;translate:0 -50%;background-size:300% 100%;background-repeat:no-repeat;animation:aleteo 330ms steps(3) infinite,mece 2.4s var(--ease-in-out) infinite alternate}
+@keyframes cruza{0%{transform:translateX(-12%)}55%,100%{transform:translateX(106%)}}
+@keyframes aleteo{from{background-position:0% 0}to{background-position:150% 0}}
+@keyframes mece{from{transform:translateY(-40%)}to{transform:translateY(40%)}}
 .hero-txt{position:absolute;left:0;right:0;top:0;padding:calc(var(--top-h) + env(safe-area-inset-top,0px) + 14px) 18px 0;max-width:640px;margin:0 auto}
 .hero .cuando{color:var(--piedra)}
 .hero .cuando b{color:var(--cera)}
@@ -559,7 +586,7 @@ h1[tabindex="-1"]:focus{outline:none}
 .hero.oscuro .cuando b{color:var(--cera-viva)}
 .hero.oscuro .btn.lleno{background:var(--sobre-manto);border-color:var(--sobre-manto);color:#2E3A5C}
 .hero.oscuro .enlace{color:var(--sobre-manto);text-decoration-color:var(--cera-viva)}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .hero:not(.oscuro) .hero-img img,:root:not([data-theme="light"]) .franja-img img,:root:not([data-theme="light"]) .flamas i{filter:brightness(.8) saturate(.95)}}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .hero:not(.oscuro) .hero-img img,:root:not([data-theme="light"]) .hero:not(.oscuro) .capa i,:root:not([data-theme="light"]) .franja-img img,:root:not([data-theme="light"]) .flamas i{filter:brightness(.8) saturate(.95)}}
 @media (prefers-color-scheme: dark) and (max-width:1079px){
   :root:not([data-theme="light"]) .hero:not(.oscuro){color:#1E2433}
   :root:not([data-theme="light"]) .hero:not(.oscuro) .cuando,:root:not([data-theme="light"]) .hero:not(.oscuro) .fuente{color:#4A4238}
@@ -571,13 +598,13 @@ h1[tabindex="-1"]:focus{outline:none}
 .entra > .hero{animation:none}
 /* Stop-motion: la escena baja en tres cuadros de 160 ms mientras aparece con suavidad;
    el texto entra después, escalonado. Al volver a Inicio en la misma visita, solo un fundido. */
-.hero.colocar .hero-img img{animation:aparece 420ms var(--ease-out) both,colocar 480ms steps(1,end) both}
+.hero.colocar .hero-img .escena{animation:aparece 420ms var(--ease-out) both,colocar 480ms steps(1,end) both}
 .hero.colocar .hero-txt > *{animation:entra 380ms var(--ease-out) both}
 .hero.colocar .hero-txt > *:nth-child(1){animation-delay:160ms}
 .hero.colocar .hero-txt > *:nth-child(2){animation-delay:210ms}
 .hero.colocar .hero-txt > *:nth-child(3){animation-delay:260ms}
 .hero.colocar .hero-txt > *:nth-child(4){animation-delay:310ms}
-.hero:not(.colocar) .hero-img img{animation:aparece 240ms ease both}
+.hero:not(.colocar) .hero-img .escena{animation:aparece 240ms ease both}
 @keyframes colocar{0%{transform:translateY(12px) scale(1.012)}33%{transform:translateY(5px) scale(1.005)}66%{transform:translateY(1px)}100%{transform:none}}
 /* Al bajar, la escena se queda un poco atrás del texto, como el fondo de un diorama.
    Corre fuera del hilo principal donde el navegador lo permite; donde no, no pasa nada. */
@@ -599,8 +626,8 @@ body.en-inicio.hero-oscuro:not(.top-solido) .top{color:var(--sobre-manto)}
 /* Franjas: la escena propia de una sesión, de Oración y de Conoce el grupo */
 .franja-img{--alto:clamp(210px,56.25vw,500px);position:relative;height:var(--alto);overflow:hidden;-webkit-mask-image:linear-gradient(transparent 0,#000 9%,#000 68%,transparent);mask-image:linear-gradient(transparent 0,#000 9%,#000 68%,transparent)}
 /* Igual que object-fit:cover con object-position, pero con capas encima que siguen a la foto */
-.escena{position:absolute;left:var(--fx,50%);top:var(--fy,60%);width:max(100%,calc(var(--alto) * 1.7914));aspect-ratio:2576/1438;transform:translate(calc(-1 * var(--fx,50%)),calc(-1 * var(--fy,60%)));animation:aparece 320ms ease both}
-.escena img{display:block;width:100%;height:100%}
+.franja-img .escena{position:absolute;left:var(--fx,50%);top:var(--fy,60%);width:max(100%,calc(var(--alto) * 1.7914));aspect-ratio:2576/1438;transform:translate(calc(-1 * var(--fx,50%)),calc(-1 * var(--fy,60%)));animation:aparece 320ms ease both}
+.franja-img .escena img{display:block;width:100%;height:100%}
 /* Velas vivas: cada flama de papel se inclina a saltos desde su mecha (stop-motion, ~8 poses por segundo),
    cada una con su ritmo. Solo mientras la escena está en pantalla. */
 .flamas{position:absolute;inset:0}
@@ -629,7 +656,8 @@ body.en-inicio.hero-oscuro:not(.top-solido) .top{color:var(--sobre-manto)}
   .hero.oscuro::after{content:"";grid-column:1/-1;order:3;height:80px;background:linear-gradient(#1D2944,var(--lino))}
   .hero-txt{position:static;order:1;max-width:none;margin:0;padding:0 24px 40px max(40px,calc((100vw - 1240px) / 2 + 40px))}
   .hero-img{order:2}
-  .hero-img img{-webkit-mask-image:linear-gradient(to right,transparent 0,#000 16%),linear-gradient(transparent 0,#000 8%,#000 76%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent 0,#000 16%),linear-gradient(transparent 0,#000 8%,#000 76%,transparent);mask-composite:intersect}
+  .hero-img .escena{--ew:max(100%,calc(min(56.25vw,90svh) * 1.7914));position:absolute;bottom:0;left:50%;width:var(--ew);margin-left:calc(var(--ew) / -2)}
+  .hero-img{height:min(56.25vw,90svh);-webkit-mask-image:linear-gradient(to right,transparent 0,#000 16%),linear-gradient(transparent 0,#000 8%,#000 76%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent 0,#000 16%),linear-gradient(transparent 0,#000 8%,#000 76%,transparent);mask-composite:intersect}
   .hero h1{font-size:clamp(56px,4.6vw,76px);max-width:none}
   .hero + .ini{margin-top:8px}
   .ini{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 72px;align-items:start}
@@ -834,10 +862,14 @@ function encabezado(volver, titulo) {
 
 /* ===== El mundo de papel: cada escena en un solo lugar ===== */
 const IMG = "/imagenes/mundo/";
+/* Capas que se mueven sobre cada portada (recortes de la misma foto): fijo, flama, ventana, estrella, nube.
+   [tipo, izq %, arriba %, ancho %, alto %, posición en la tira %, tamaño de la tira ancho %, alto %, ms por ciclo, desfase ms] */
+const CAPAS = {"durante-v":{"src":"inicio-durante-v-tira.webp","p":[["fijo",30.181,63.16,9.179,5.784,0.0,406.06,100.0,0,0],["flama",32.684,65.023,3.268,2.95,27.403,1140.43,196.05,0,0],["ventana",77.399,60.365,5.216,4.62,39.696,714.67,125.21,0,0],["estrella",67.038,10.132,2.434,1.475,51.896,1531.43,392.11,2200,0],["estrella",32.684,10.637,2.712,1.514,59.759,1374.36,382.05,2800,731],["estrella",90.96,14.441,1.669,0.97,66.016,2233.33,596.0,3400,1462],["estrella",9.944,17.508,3.06,1.825,73.984,1218.18,317.02,4100,2193],["estrella",56.537,18.866,2.017,1.203,80.868,1848.28,480.65,2200,2924],["estrella",24.965,21.312,2.086,1.203,87.154,1786.67,480.65,2800,655],["estrella",1.53,24.612,2.156,1.281,93.663,1729.03,451.52,3400,1386],["estrella",89.36,29.775,1.947,1.126,99.606,1914.29,513.79,4100,2117]]},"durante-h":{"src":"inicio-durante-h-tira.webp","p":[["flama",33.113,50.974,2.096,4.52,0.0,825.93,160.0,0,0],["ventana",73.486,49.722,2.795,7.232,14.973,619.44,100.0,0,0],["estrella",30.124,3.408,1.669,3.338,32.258,1037.21,216.67,2200,0],["estrella",9.278,3.894,1.553,2.851,43.103,1115.0,253.66,2800,731],["estrella",78.882,4.52,1.165,2.225,52.163,1486.67,325.0,3400,1462],["estrella",19.953,5.285,1.126,2.156,59.712,1537.93,335.48,4100,2193],["estrella",53.727,5.494,1.009,2.017,66.667,1715.38,358.62,2200,2924],["estrella",37.811,9.666,1.048,2.017,73.508,1651.85,358.62,2800,655],["estrella",88.509,12.239,0.815,1.53,79.294,2123.81,472.73,3400,1386],["estrella",76.087,13.421,0.932,1.878,85.308,1858.33,385.19,4100,2117],["estrella",11.724,14.325,1.087,1.947,92.344,1592.86,371.43,2200,2848],["estrella",26.048,15.09,1.087,2.086,99.522,1592.86,346.67,2800,579]]},"despues-v":{"src":"inicio-despues-v-tira.webp","p":[["nube",13.143,51.863,21.001,3.377,0.0,193.38,100.0,12000,0],["nube",57.302,55.047,19.332,3.067,99.346,210.07,110.13,15000,7000]]},"despues-h":{"src":"inicio-despues-h-tira.webp","p":[["nube",18.207,21.627,15.023,7.58,0.0,194.83,100.0,13000,0],["nube",53.533,28.164,14.092,7.371,99.488,207.71,102.83,16000,9000]]}};
+const AVE = {"src": "pajaro-tira.webp", "ratio": 1.1564}, AVES = {"v":[[44,11,13,0.6],[50,7.5,13,2.8]],"h":[[11,4.4,14,0.6],[19,3.1,14,3.0]]};
 const ESCENAS = {
-  antes:   { v: "inicio-antes-v",   h: "inicio-antes-h",   alt: "Al amanecer, la silla de papel con el rebozo y un libro en el asiento espera en la terraza frente a la capilla." },
-  durante: { v: "inicio-durante-v", h: "inicio-durante-h", alt: "De noche, la silla con el rebozo y una linterna encendida en la terraza; la capilla tiene su ventana iluminada.", oscuro: true },
-  despues: { v: "inicio-despues-v", h: "inicio-despues-h", alt: "A la mañana siguiente, el rebozo doblado en la silla, la linterna apagada sobre el muro y el camino que baja hacia el pueblo." }
+  antes:   { aves: true, v: "inicio-antes-v",   h: "inicio-antes-h",   alt: "Al amanecer, la silla de papel con el rebozo y un libro en el asiento espera en la terraza frente a la capilla." },
+  durante: { capas: "durante", v: "inicio-durante-v-capas", h: "inicio-durante-h-capas", alt: "De noche, la silla con el rebozo y una linterna encendida en la terraza; la capilla tiene su ventana iluminada.", oscuro: true },
+  despues: { capas: "despues", v: "inicio-despues-v-capas", h: "inicio-despues-h-capas", alt: "A la mañana siguiente, el rebozo doblado en la silla, la linterna apagada sobre el muro y el camino que baja hacia el pueblo." }
 };
 const LUGARES = {
   oracion: { base: "oracion-velas-limpio", alt: "Un nicho en la pared de la capilla con velas de papel encendidas y el rebozo colgando del alféizar.", foco: "28% 55%",
@@ -848,11 +880,21 @@ const LUGARES = {
 };
 const srcset = (base, ws) => ws.map(w => `${IMG}${base}-${w}.webp ${w}w`).join(", ");
 const H_W = [960, 1600, 2400], V_W = [720, 1080, 1438];
+function capaEscena(c, o) {
+  if (!c) return "";
+  return `<div class="capa capa-${o}" aria-hidden="true">${c.p.map(([t, x, y, w, hh, bx, bw, bh, d, r]) =>
+    `<i class="k-${t}" style="left:${x}%;top:${y}%;width:${w}%;height:${hh}%;background-image:url(${IMG}${c.src});background-size:${bw}% ${bh}%;background-position:${bx}% 0${d ? `;--d:${d}ms;--r:-${r}ms` : ""}"></i>`).join("")}</div>`;
+}
+function capaAves(o) {
+  return `<div class="capa capa-${o}" aria-hidden="true">${AVES[o].map(([y, w, s, r]) =>
+    `<span class="vuelo" style="top:${y}%;--v:${s}s;--vr:${r}s"><i class="pajaro" style="width:${w}%;aspect-ratio:${AVE.ratio};background-image:url(${IMG}${AVE.src})"></i></span>`).join("")}</div>`;
+}
 function fotoHero(e) {
-  return `<picture class="hero-img">
+  const capas = e.capas ? capaEscena(CAPAS[e.capas + "-v"], "v") + capaEscena(CAPAS[e.capas + "-h"], "h") : e.aves ? capaAves("v") + capaAves("h") : "";
+  return `<div class="hero-img"><div class="escena"><picture>
     <source media="(max-width:759px)" type="image/webp" srcset="${srcset(e.v, V_W)}" sizes="100vw">
     <source type="image/webp" srcset="${srcset(e.h, H_W)}" sizes="100vw">
-    <img src="${IMG}${e.h}-1600.jpg" alt="${esc(e.alt)}" width="2576" height="1438" fetchpriority="high"></picture>`;
+    <img src="${IMG}${e.h}-1600.jpg" alt="${esc(e.alt)}" width="2576" height="1438" fetchpriority="high"></picture>${capas}</div></div>`;
 }
 function capaFlamas(f) {
   if (!f) return "";
@@ -897,7 +939,7 @@ function vInicio() {
   const sigTxt = sig ? `${fecha(sig.fecha)} · ${sig.tema ? "«" + esc(sig.tema) + "»" : "tema por definir"}` : "";
   const rs = m === "despues" ? s : anteriorA(s);
   return `
-  <section class="hero${e.oscuro ? " oscuro" : ""}${colocarHero() ? " colocar" : ""}" aria-labelledby="p-t">
+  <section class="hero${e.oscuro ? " oscuro" : ""}${colocarHero() ? " colocar" : ""}${e.capas || e.aves ? " con-flamas" : ""}" aria-labelledby="p-t">
     ${fotoHero(e)}
     <div class="hero-txt">
       <div class="cuando"><span>${rot} · ${fecha(s.fecha)}</span><b>${cuenta(s.fecha)}</b></div>
@@ -1659,7 +1701,7 @@ window.addEventListener("hashchange", () => {
 
 /* ===== Velas vivas: solo se mueven mientras la escena se ve ===== */
 const ojoFlamas = "IntersectionObserver" in window ? new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle("viva", e.isIntersecting))) : null;
-function vigilarFlamas() { document.querySelectorAll(".franja.con-flamas").forEach(f => ojoFlamas ? ojoFlamas.observe(f) : f.classList.add("viva")); }
+function vigilarFlamas() { document.querySelectorAll(".con-flamas").forEach(f => ojoFlamas ? ojoFlamas.observe(f) : f.classList.add("viva")); }
 
 /* ===== Pantalla encendida en el modo reunión ===== */
 let bloqueoReunion = null, quiereReunion = false;
