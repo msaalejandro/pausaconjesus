@@ -74,7 +74,7 @@ body{height:100%;height:100dvh;display:flex;flex-direction:column;overflow:hidde
 .marco{flex:1 1 auto;min-height:0;width:100%;border:0;display:block;background:var(--lino)}
 body.en-marco .nav{display:none}
 .espacios{margin-left:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;background:var(--papel);border:1px solid var(--raya);border-radius:999px;padding:3px;min-width:0}
-.espacios a{min-height:40px;padding:0 14px;display:flex;align-items:center;justify-content:center;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;color:var(--piedra);white-space:nowrap}
+.espacios a{min-height:44px;padding:0 14px;display:flex;align-items:center;justify-content:center;border-radius:999px;font-weight:700;font-size:14px;text-decoration:none;color:var(--piedra);white-space:nowrap}
 .espacios a[aria-current="page"]{background:var(--fuerte);color:var(--sobre-fuerte)}
 .top-in:has(.espacios) .marca small{display:none}
 .top-in:has(.espacios) .marca{white-space:nowrap;font-size:22px}
@@ -82,7 +82,7 @@ body.en-marco .nav{display:none}
   .top-in:has(.espacios){height:auto;min-height:var(--top-h);display:grid;grid-template-columns:1fr;gap:9px;padding:11px 18px 12px}
   .top-in:has(.espacios) .marca{font-size:23px}
   .espacios{margin-left:0;width:100%}
-  .espacios a{padding:0 4px;min-height:42px;font-size:14px}
+  .espacios a{padding:0 4px;min-height:44px;font-size:14px}
 }
 @media (max-width:340px){.top-in:has(.espacios){padding-left:12px;padding-right:12px}.espacios a{font-size:13px}}
 body{margin:0;background:var(--lino);color:var(--tinta);font-family:var(--f-ui);font-size:17px;line-height:1.55}
@@ -97,7 +97,7 @@ h1,h2,h3{text-wrap:balance}
 /* Encabezado */
 .top{position:relative;flex:0 0 auto;z-index:20;background:var(--lino);padding-top:env(safe-area-inset-top,0px)}
 .top-in{max-width:640px;margin:0 auto;height:var(--top-h);padding:0 18px;display:flex;align-items:center;gap:10px}
-.marca{font-family:var(--f-titulo);font-weight:700;font-size:23px;line-height:1;text-decoration:none}
+.marca{font-family:var(--f-titulo);font-weight:700;font-size:23px;line-height:1;text-decoration:none;padding:11px 0;margin:-11px 0}
 .marca small{display:block;font-family:var(--f-ui);font-weight:400;font-size:12px;color:var(--piedra);margin-top:3px}
 .volver{display:inline-flex;align-items:center;gap:4px;min-height:44px;padding:0 10px 0 0;border:0;background:none;color:var(--tinta);font-weight:700;cursor:pointer;text-decoration:none}
 .volver svg{width:20px;height:20px}
@@ -135,10 +135,11 @@ h1,h2,h3{text-wrap:balance}
 .previa .ir{margin-left:auto;font-weight:700;color:var(--cera);font-size:14px;white-space:nowrap}
 .previa + .portada{margin-top:10px}
 .seccion.destacado{margin-top:14px;margin-bottom:28px}
-.nuevo{display:inline-block;font-size:13px;font-weight:700;color:var(--cera);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.nuevo{display:inline-block;font-size:14px;font-weight:700;color:var(--cera);margin-bottom:4px}
 .portada .btn.lleno{width:100%;background:var(--sobre-manto);border-color:var(--sobre-manto);color:#1F3358;min-height:54px;font-size:17px}
 .portada .mas{display:flex;justify-content:center;flex-wrap:wrap;gap:0 24px;margin-top:8px}
 .portada .enlace{color:var(--sobre-manto)}
+.portada .sin-fecha{font-size:15px;opacity:.9;margin:-6px 0 16px;text-align:center}
 
 /* Video (cortometrajes): portada liviana, el reproductor carga al tocar */
 .video{margin:0;border-radius:20px;overflow:hidden;background:var(--manto);color:var(--sobre-manto)}
@@ -154,7 +155,7 @@ h1,h2,h3{text-wrap:balance}
 .video figcaption small{display:block;font-size:13px;opacity:.75}
 .video figcaption b{display:block;font-family:var(--f-titulo);font-weight:600;font-size:24px;line-height:1.1;margin-top:2px}
 .video figcaption p{font-size:15px;opacity:.85;margin-top:6px;max-width:56ch}
-.video figcaption a{color:var(--cera-viva);font-weight:700;font-size:15px;display:inline-block;margin-top:8px}
+.video figcaption a{color:var(--cera-viva);font-weight:700;font-size:15px;display:inline-flex;align-items:center;min-height:44px;margin-top:2px}
 
 /* El camino: antes · durante · después */
 .camino{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);position:relative}
@@ -200,7 +201,7 @@ h1,h2,h3{text-wrap:balance}
 .tipo input:checked + span{background:var(--fuerte);border-color:var(--fuerte);color:var(--sobre-fuerte)}
 .tipo input:focus-visible + span{outline:2px solid var(--cera);outline-offset:2px}
 .arranques{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 10px}
-.arranques button{border:1px dashed var(--cera);background:none;border-radius:999px;min-height:40px;padding:0 14px;font-size:15px;cursor:pointer;color:var(--tinta)}
+.arranques button{border:1px dashed var(--cera);background:none;border-radius:999px;min-height:44px;padding:0 14px;font-size:15px;cursor:pointer;color:var(--tinta)}
 .preguntas-l{margin:0;padding-left:1.3em;display:grid;gap:12px;font-family:var(--f-lectura);font-size:18px;line-height:1.5}
 .grupo-t{font-size:16px;color:var(--piedra);margin:24px 0 6px}
 .temas small{display:block;color:var(--cera);font-size:14px;font-weight:700;margin-top:3px}
@@ -253,7 +254,7 @@ h1,h2,h3{text-wrap:balance}
 .linea a:hover .dia{background:var(--papel)}
 .acceso-tema{display:flex;align-items:center;gap:14px;margin-top:22px;padding:16px 18px;background:var(--papel);border:1px solid var(--raya);border-radius:18px;text-decoration:none;color:inherit}
 .acceso-tema > span{flex:1;min-width:0}
-.acceso-tema small{display:block;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--cera)}
+.acceso-tema small{display:block;font-size:14px;font-weight:700;color:var(--cera)}
 .acceso-tema b{display:block;font-family:var(--f-titulo);font-weight:600;font-size:24px;line-height:1.1;margin-top:2px}
 .acceso-tema span span{display:block;color:var(--piedra);font-size:15px;margin-top:2px}
 .acceso-tema .chev{width:22px;height:22px;color:var(--cera)}
@@ -296,7 +297,7 @@ h1,h2,h3{text-wrap:balance}
 .momentos-in{border-radius:18px}
 .momentos button{border:0;background:none;border-radius:14px;min-height:52px;padding:4px 2px;font-weight:700;font-size:16px;line-height:1.15;color:var(--piedra);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center}
 .momentos .m-l{display:flex;align-items:center;gap:6px}
-.momentos button small{font-weight:400;font-size:12px;opacity:.85}
+.momentos button small{font-weight:400;font-size:12px}
 .momentos button[aria-selected="true"]{background:var(--fuerte);color:var(--sobre-fuerte)}
 .momentos .hoy{width:7px;height:7px;border-radius:50%;background:var(--cera)}
 .momentos button[aria-selected="true"] .hoy{background:var(--cera-viva)}
@@ -315,15 +316,17 @@ h1,h2,h3{text-wrap:balance}
 .citas{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
 .citas span{font-size:15px;padding:6px 12px;border-radius:999px;background:var(--papel);border:1px solid var(--raya)}
 .citas span b{font-weight:700}
+.mas-citas summary{display:inline-flex;align-items:center;min-height:44px;margin-top:4px;font-weight:700;cursor:pointer;text-decoration:underline;text-decoration-color:var(--cera);text-underline-offset:4px}
+.mas-citas[open] summary{display:none}
 
 /* Lector */
 .barra-lectura{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px;flex-wrap:wrap}
-.barra-lectura .btn{min-height:42px;padding:0 16px;font-size:15px}
+.barra-lectura .btn{min-height:44px;padding:0 16px;font-size:15px}
 .panel{margin-top:12px;background:var(--papel);border:1px solid var(--raya);border-radius:18px;padding:16px;display:grid;gap:14px}
 .fila{display:grid;grid-template-columns:100px 1fr;align-items:center;gap:10px}
 .fila > span{font-size:14px;color:var(--piedra);font-weight:700}
 .seg{display:flex;border:1px solid var(--raya);border-radius:999px;overflow:hidden;min-width:0}
-.seg button{flex:1;border:0;background:none;min-height:42px;padding:0 6px;cursor:pointer;font-size:15px}
+.seg button{flex:1;border:0;background:none;min-height:44px;padding:0 6px;cursor:pointer;font-size:15px}
 .seg button+button{border-left:1px solid var(--raya)}
 .seg button[aria-pressed="true"]{background:var(--manto-suave);font-weight:700}
 .lector{margin-top:14px;background:var(--hoja,var(--papel));color:var(--letra,var(--tinta));border-radius:20px;border:1px solid var(--raya);padding:24px 20px 30px;font-family:var(--f-lectura);font-size:var(--leer-tam);line-height:var(--leer-int)}
@@ -337,9 +340,9 @@ h1,h2,h3{text-wrap:balance}
 .lector p{margin-top:.75em;max-width:62ch}
 .lector .ref{font-family:var(--f-ui);font-size:.78em;font-weight:700;opacity:.7}
 .lector .ecos{margin-top:1.1em;display:grid;gap:14px}
-.lector .ecos-t{font-family:var(--f-ui);font-size:.7em;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.6}
+.lector .ecos-t{font-family:var(--f-ui);font-size:.78em;font-weight:700;opacity:.7}
 .lector .eco{border-left:3px solid var(--cera);padding:2px 0 2px 14px;font-size:.92em}
-.lector .eco small{display:block;font-family:var(--f-ui);font-size:.68em;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--cera)}
+.lector .eco small{display:block;font-family:var(--f-ui);font-size:.76em;font-weight:700;color:var(--cera)}
 .lector .eco b{display:block;font-family:var(--f-ui);font-size:.86em;margin-top:2px}
 .lector .eco p{margin-top:.25em}
 .agenda .ecos-mini{font-size:14px;color:var(--piedra);margin-top:6px}
@@ -565,6 +568,7 @@ function vInicio() {
     <p class="fuente">${esc(s.fuente)}</p>
     <p class="idea">${esc(s.idea)}</p>
     ${camino(s)}
+    ${m === "despues" && !SESIONES.some(x => dias(x.fecha) > 0) ? `<p class="sin-fecha">La próxima fecha todavía no está en el calendario.</p>` : ""}
     <a class="btn lleno" href="${cta[0]}">${cta[1]}</a>
     <div class="mas">${m === "despues" ? `<a class="enlace" href="#${s.id}/antes">Leer el tema</a>` : ""}<a class="enlace" href="${wa(textoInvitar(s))}" target="_blank" rel="noopener">Invitar por WhatsApp</a></div>
   </section>
@@ -637,9 +641,9 @@ function vCalendario() {
   pasadas.forEach(x => { const mm = mesAnio(x.fecha); const g = meses[meses.length - 1]; if (g && g.mes === mm) g.ses.push(x); else meses.push({ mes: mm, ses: [x] }); });
   return `<h1 class="h-vista">Calendario</h1>
     <p class="nota">${esc(GRUPO.ritmo)} Toca cualquier fecha para abrir su tema completo: la guía de lectura, las preguntas y lo que compartió el grupo.</p>
-    ${prox ? `<p class="rotulo">${dias(prox.fecha) === 0 ? "Hoy" : "Próxima sesión"}</p>${tarjetaProxima(prox)}` : ""}
-    ${despues.length ? `<p class="rotulo">Más adelante</p><ul class="linea">${despues.map(x => `<li>${filaSesion(x)}</li>`).join("")}</ul>` : ""}
-    ${meses.length ? `<p class="rotulo">Anteriores</p>${meses.map((g, i) => `<details class="grupo-mes"${i < 2 ? " open" : ""}><summary>${esc(g.mes)} <span>${g.ses.length} ${g.ses.length === 1 ? "sesión" : "sesiones"}</span></summary>
+    ${prox ? `<h2 class="rotulo">${dias(prox.fecha) === 0 ? "Hoy" : "Próxima sesión"}</h2>${tarjetaProxima(prox)}` : ""}
+    ${despues.length ? `<h2 class="rotulo">Más adelante</h2><ul class="linea">${despues.map(x => `<li>${filaSesion(x)}</li>`).join("")}</ul>` : ""}
+    ${meses.length ? `<h2 class="rotulo">Anteriores</h2>${meses.map((g, i) => `<details class="grupo-mes"${i < 2 ? " open" : ""}><summary>${esc(g.mes)} <span>${g.ses.length} ${g.ses.length === 1 ? "sesión" : "sesiones"}</span></summary>
       <ul class="linea">${g.ses.map(x => `<li>${filaSesion(x)}</li>`).join("")}</ul></details>`).join("")}` : ""}
     ${conVideos().length ? `<section class="seccion" aria-labelledby="tv"><h2 id="tv">Pausas en video</h2>
       <p class="nota">Los cortometrajes de los temas que hemos vivido.</p>
@@ -717,7 +721,7 @@ function momentoAntes(s) {
       ${s.preparar ? `<li><div><h3>Lleva esta pregunta a la oración</h3><p><i>${esc(s.preparar.pregunta)}</i></p><p>${esc(s.preparar.practica)}${s.preparar.cierre ? " " + esc(s.preparar.cierre) : ""}</p></div></li>` : ""}
       ${libro ? `<li><div><h3>${esc(libro.h || "Lee el capítulo")}</h3><p>${esc(libro.d)}</p><a class="btn lleno" href="${esc(libro.url)}" target="_blank" rel="noopener">${ico.pdf}${esc(libro.boton || "Abrir el libro")}</a></div></li>` : ""}
       <li><div><h3>Ten a la mano estos textos</h3><p>Búscalos en tu Biblia.${s.notaBiblia ? " " + esc(s.notaBiblia) : ""}</p>
-        <div class="citas">${s.biblia.map(([r, d]) => `<span><b>${esc(r)}</b> ${esc(d)}</span>`).join("")}</div></div></li>
+        ${citas(s.biblia)}</div></li>
       ${(s.videos || []).length ? `<li><div><h3>Mira el cortometraje</h3><p>Una pausa en imágenes para entrar en el tema.</p><div style="margin-top:12px">${s.videos.map(v => bloqueVideo(v, s)).join("")}</div></div></li>` : ""}
       ${(s.audios || []).length ? `<li><div><h3>Escucha y reza el salmo</h3><p>Una lectura en voz alta para entrar en el tema con calma.</p>${s.audios.map(reproductor).join("")}</div></li>` : ""}
       <li><div><h3>Repasa la guía de lectura</h3><p>${esc(s.lecturaBase ? "El tema" : "El capítulo")} en ${s.puntos.length} puntos, con una idea para aterrizar cada uno. ${esc(s.lectura || "")}.</p></div></li>
@@ -744,6 +748,12 @@ function momentoAntes(s) {
     ${bloqueFuentes(s)}
     <a class="coord" href="#coord-${s.id}"><b>¿Coordinas esta sesión?</b><span>Prepara el encuentro con la guía y sus preguntas.</span></a>
     ${formaPregunta(s)}`;
+}
+function citas(lista) {
+  const chip = ([r, d]) => `<span><b>${esc(r)}</b> ${esc(d)}</span>`;
+  if (lista.length <= 7) return `<div class="citas">${lista.map(chip).join("")}</div>`;
+  return `<div class="citas">${lista.slice(0, 6).map(chip).join("")}</div>
+    <details class="mas-citas"><summary>Ver los otros ${lista.length - 6} textos</summary><div class="citas">${lista.slice(6).map(chip).join("")}</div></details>`;
 }
 function reproductor(a) {
   return `<figure class="audio"><figcaption><b>${esc(a.t)}</b><span>${esc(a.dur || "")}</span></figcaption>
