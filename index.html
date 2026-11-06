@@ -496,14 +496,27 @@ h1[tabindex="-1"]:focus{outline:none}
 .entra .portada-txt > *:nth-child(4){animation-delay:160ms}
 .entra .portada-txt > *:nth-child(n+5){animation-delay:210ms}
 .entra-panel{animation:entra-suave 240ms var(--ease-out) both}
-.llega > ul > li,.llega > ol > li{animation:entra 320ms var(--ease-out) both;animation-delay:calc(var(--i,0) * 45ms)}
+.llega > ul > li,.llega > ol > li{animation:apoya 320ms var(--ease-out) both;animation-delay:calc(var(--i,0) * 45ms)}
+@keyframes apoya{from{opacity:0;transform:translateY(6px) rotate(-.4deg)}to{opacity:1;transform:none}}
 .marco-v iframe{animation:aparece 280ms ease both}
 #pedir-forma:not([hidden]),#panel:not([hidden]){animation:entra-suave 240ms var(--ease-out) both}
 .timer{animation:sube 280ms var(--ease-out) both}
 .toast{animation:baja 240ms var(--ease-out) both;transition:opacity 180ms ease}
 .toast.sale{opacity:0}
-.orar svg path{transform-box:fill-box;transform-origin:50% 100%}
-.orar.enciende svg path{animation:llama 560ms var(--ease-out)}
+/* La vela: al encenderla, la flama de papel aparece y tiembla a saltos (tres recortes
+   que se alternan cada 100 ms, como la flama de los micros), un poco más de un segundo. */
+.orar .flama{transform-box:fill-box;transform-origin:50% 100%}
+.orar .f2,.orar .f3{opacity:0}
+.orar[aria-pressed="true"] svg{fill:none;stroke:var(--cera)}
+.orar[aria-pressed="true"] .flama{fill:var(--cera-viva);stroke:var(--cera)}
+.orar.enciende .flama{animation:prende 140ms var(--ease-out)}
+.orar.enciende .f1{animation:corte-a 300ms linear 4}
+.orar.enciende .f2{animation:corte-b 300ms linear 4}
+.orar.enciende .f3{animation:corte-c 300ms linear 4}
+@keyframes prende{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
+@keyframes corte-a{0%,32%{opacity:1}33%,100%{opacity:0}}
+@keyframes corte-b{0%,32%{opacity:0}33%,65%{opacity:1}66%,100%{opacity:0}}
+@keyframes corte-c{0%,65%{opacity:0}66%,99%{opacity:1}100%{opacity:0}}
 .orar.enciende b{animation:cuenta 320ms var(--ease-out)}
 .like b{display:inline-block}
 
@@ -516,6 +529,11 @@ h1[tabindex="-1"]:focus{outline:none}
   @keyframes sube{from{opacity:0}to{opacity:1}}
   @keyframes baja{from{opacity:0}to{opacity:1}}
   @keyframes llama{from{opacity:.3}to{opacity:1}}
+  @keyframes apoya{from{opacity:0}to{opacity:1}}
+  @keyframes prende{from{opacity:.3}to{opacity:1}}
+  .orar.enciende .f1,.orar.enciende .f2,.orar.enciende .f3{animation:none}
+  .hero.colocar .hero-img img{animation:aparece 420ms ease both}
+  .pausa-anillo{animation:none}
   @keyframes cuenta{from{opacity:0}to{opacity:1}}
   .btn:active,.like:active,.momentos button:active,.seg button:active,.arranques button:active,.tipo label:active span,.espacios a:active,.nav a:active,.timer button:active,.enlace:active,.volver:active,.indice button:active,.previa:active,.linea a:active,.acceso-tema:active,.libro:active,.proxima .ses:active,.material:active,.coord:active{transform:none}
   .video .play span{transition:none}
@@ -548,6 +566,26 @@ h1[tabindex="-1"]:focus{outline:none}
   :root:not([data-theme="light"]) .hero:not(.oscuro) .btn.lleno{background:#2E3A5C;border-color:#2E3A5C;color:#F1E8D6}
   :root:not([data-theme="light"]) .hero:not(.oscuro) .enlace{color:#1E2433}}
 .hero + .ini{margin-top:-6vw}
+.ini{position:relative;z-index:1}
+.entra > .hero{animation:none}
+/* Stop-motion: la escena baja en tres cuadros de 160 ms mientras aparece con suavidad;
+   el texto entra después, escalonado. Al volver a Inicio en la misma visita, solo un fundido. */
+.hero.colocar .hero-img img{animation:aparece 420ms var(--ease-out) both,colocar 480ms steps(1,end) both}
+.hero.colocar .hero-txt > *{animation:entra 380ms var(--ease-out) both}
+.hero.colocar .hero-txt > *:nth-child(1){animation-delay:160ms}
+.hero.colocar .hero-txt > *:nth-child(2){animation-delay:210ms}
+.hero.colocar .hero-txt > *:nth-child(3){animation-delay:260ms}
+.hero.colocar .hero-txt > *:nth-child(4){animation-delay:310ms}
+.hero:not(.colocar) .hero-img img{animation:aparece 240ms ease both}
+@keyframes colocar{0%{transform:translateY(12px) scale(1.012)}33%{transform:translateY(5px) scale(1.005)}66%{transform:translateY(1px)}100%{transform:none}}
+/* Al bajar, la escena se queda un poco atrás del texto, como el fondo de un diorama.
+   Corre fuera del hilo principal donde el navegador lo permite; donde no, no pasa nada. */
+@supports (animation-timeline: scroll()){
+  @media (prefers-reduced-motion: no-preference){
+    .hero-img{animation:profundidad linear both;animation-timeline:scroll(nearest);animation-range:0px 700px}
+    @keyframes profundidad{from{transform:none}to{transform:translateY(90px)}}
+  }
+}
 @media (max-width:1079px){.hero:not(.oscuro) .cuando b{color:#64460F}} /* AA sobre el cielo del alba y de la mañana */
 
 /* El encabezado flota sobre el cielo de la portada y se vuelve papel al bajar */
@@ -558,7 +596,7 @@ body.en-inicio.hero-oscuro:not(.top-solido) .top{color:var(--sobre-manto)}
 @media (prefers-color-scheme: dark) and (max-width:1079px){:root:not([data-theme="light"]) body.en-inicio:not(.hero-oscuro):not(.top-solido) .top{color:#1E2433}}
 
 /* Franjas: la escena propia de una sesión, de Oración y de Conoce el grupo */
-.franja-img img{display:block;width:100%;height:clamp(210px,56.25vw,500px);object-fit:cover;object-position:var(--foco,50% 60%);-webkit-mask-image:linear-gradient(transparent 0,#000 9%,#000 68%,transparent);mask-image:linear-gradient(transparent 0,#000 9%,#000 68%,transparent);animation:aparece 700ms ease both}
+.franja-img img{display:block;width:100%;height:clamp(210px,56.25vw,500px);object-fit:cover;object-position:var(--foco,50% 60%);-webkit-mask-image:linear-gradient(transparent 0,#000 9%,#000 68%,transparent);mask-image:linear-gradient(transparent 0,#000 9%,#000 68%,transparent);animation:aparece 320ms ease both}
 .franja + *{margin-top:-28px;position:relative}
 
 /* Inicio, debajo de la portada */
@@ -634,15 +672,17 @@ body.en-inicio.hero-oscuro:not(.top-solido) .top{color:var(--sobre-manto)}
 .pausa-x svg{width:20px;height:20px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round}
 .pausa-cita{font-weight:700;font-size:var(--t-s);color:var(--cera)}
 .pausa-frase{font-family:var(--f-titulo);font-style:italic;font-weight:500;font-size:var(--t-h);line-height:1.25;margin:14px auto 0;max-width:24ch;text-wrap:balance}
-.pausa-anillo{position:relative;width:150px;height:150px;margin:28px auto 0;animation:late 10s ease-in-out infinite}
+.pausa-anillo{position:relative;width:150px;height:150px;margin:28px auto 0;animation:respira 8s var(--ease-in-out) infinite}
+.pausa-anillo.quieto{animation:none}
+.pausa[open] .pausa-in{animation:entra 360ms var(--ease-out) both}
 .pausa-anillo svg{width:100%;height:100%;transform:rotate(-90deg)}
 .pausa-anillo circle{fill:none;stroke-width:5}
 .a-base{stroke:var(--raya)}
-.a-avance{stroke:var(--cera-viva);stroke-linecap:round;transition:stroke-dashoffset 250ms linear}
+.a-avance{stroke:var(--cera-viva);stroke-linecap:round;transition:stroke-dashoffset 220ms var(--ease-out)}
 .pausa-anillo b{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--f-titulo);font-weight:600;font-size:var(--t-h);font-variant-numeric:tabular-nums}
 .pausa-guia{margin-top:18px;color:var(--piedra)}
 .pausa-fin{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:20px}
-@keyframes late{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+@keyframes respira{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 @media (prefers-reduced-motion: reduce){.pausa-anillo{animation:none}}
 </style>
@@ -743,7 +783,7 @@ const ico = {
   copiar: `<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h8"/></svg>`,
   pdf: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>`,
   corazon: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>`,
-  vela: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5c1.6 1.9 1.6 3.6 0 5.2-1.6-1.6-1.6-3.3 0-5.2z"/><rect x="8.5" y="10" width="7" height="11" rx="1.2"/></svg>`,
+  vela: `<svg viewBox="0 0 24 24" aria-hidden="true"><g class="flama"><path class="f1" d="M12 2.6l1.7 2.7.3 1.9-1 1.4h-1.9l-1-1.4.3-2z"/><path class="f2" d="M13 2l1 3-.2 2.1-1.1 1.4h-1.8l-.9-1.5.6-2.1z"/><path class="f3" d="M11.1 3.2l2.1 2.4.5 1.6-1 1.5-1.8.1-1.1-1.4.2-2z"/></g><path class="mecha" d="M12 8.6V10"/><rect class="cuerpo" x="8.5" y="10" width="7" height="11" rx="1.2"/></svg>`,
   sig: `<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>`,
   anillo: `<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 8 8"/></svg>`,
   atras: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>`
@@ -822,6 +862,8 @@ function focoInicio() {
   if (proxT) return { s: proxT, m: "antes", prox: null };
   return { s: ult || actual(), m: "despues", prox };
 }
+let heroColocado = false;
+function colocarHero() { if (heroColocado) return false; heroColocado = true; return true; }
 const fraseDe = s => s.preguntaCentral || (s.preparar && s.preparar.pregunta) || (s.semana && s.semana.pregunta) || s.idea;
 function vInicio() {
   const { s, m, prox } = focoInicio();
@@ -836,7 +878,7 @@ function vInicio() {
   const sigTxt = sig ? `${fecha(sig.fecha)} · ${sig.tema ? "«" + esc(sig.tema) + "»" : "tema por definir"}` : "";
   const rs = m === "despues" ? s : anteriorA(s);
   return `
-  <section class="hero${e.oscuro ? " oscuro" : ""}" aria-labelledby="p-t">
+  <section class="hero${e.oscuro ? " oscuro" : ""}${colocarHero() ? " colocar" : ""}" aria-labelledby="p-t">
     ${fotoHero(e)}
     <div class="hero-txt">
       <div class="cuando"><span>${rot} · ${fecha(s.fecha)}</span><b>${cuenta(s.fecha)}</b></div>
@@ -962,7 +1004,7 @@ function abrirPausa(sid) {
       ${cita ? `<p class="pausa-cita">${esc(cita[0])}</p>` : ""}
       <p class="pausa-frase">${esc(fraseDe(s))}</p>
       <div class="pausa-anillo" aria-hidden="true"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="${R}" class="a-base"/><circle cx="60" cy="60" r="${R}" class="a-avance" style="stroke-dasharray:${C};stroke-dashoffset:0"/></svg><b id="pausa-s">60</b></div>
-      <p class="pausa-guia" id="pausa-guia" aria-live="polite">Respira despacio. Quédate aquí un momento.</p>
+      <p class="pausa-guia" id="pausa-guia" aria-live="polite">Respira con el círculo: inhala cuando crece, exhala cuando vuelve.</p>
       <div class="pausa-fin" id="pausa-fin" hidden>
         <a class="btn lleno" href="#oracion" data-act="cerrar-pausa">Encender una vela</a>
         ${dias(s.fecha) <= 0 ? `<a class="btn" href="#${s.id}/despues" data-act="cerrar-pausa">Escribir lo que me llevé</a>` : `<a class="btn" href="#${s.id}/antes" data-act="cerrar-pausa">Leer el tema</a>`}
@@ -972,14 +1014,14 @@ function abrirPausa(sid) {
   const ini = Date.now(), av = d.querySelector(".a-avance"), num = d.querySelector("#pausa-s");
   clearInterval(pausaTm);
   pausaTm = setInterval(() => {
-    const t = Math.min(total, (Date.now() - ini) / 1000);
-    av.style.strokeDashoffset = String(C * (t / total)); num.textContent = Math.ceil(total - t);
+    const t = Math.min(total, Math.floor((Date.now() - ini) / 1000));
+    av.style.strokeDashoffset = String(C * (t / total)); num.textContent = total - t;
     if (t >= total) {
-      clearInterval(pausaTm); num.textContent = "Amén";
+      clearInterval(pausaTm); num.textContent = "Amén"; d.querySelector(".pausa-anillo").classList.add("quieto");
       $("#pausa-guia").textContent = "Gracias por esta pausa. Llévala contigo.";
       $("#pausa-fin").hidden = false; $("#pausa-fin a").focus();
     }
-  }, 250);
+  }, 200);
 }
 
 function bloqueVivir(s, prep) {
