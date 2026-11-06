@@ -10,7 +10,7 @@ window.GRUPO = {
   subtitulo: "Guía para sesiones grupales",
   ritmo: "Un viernes sí y uno no.",
   url: "https://pausaconjesus.com/",
-  api: "https://restrategia-n8n.fcwppp.easypanel.host/webhook/pausa",
+  api: "https://automatizaciones.restrategia.com/webhook/pausa",
   calendario: [
     { fecha: "2026-10-02", leccion: "el-desierto" },
     { fecha: "2026-10-16", leccion: "la-amistad-con-jesus" },
