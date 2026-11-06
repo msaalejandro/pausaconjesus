@@ -6,6 +6,7 @@
    ===================================================================== */
 window.LECCIONES = {
   "el-desierto": {
+    imagen: { base: "sesion-el-desierto", foco: "50% 72%", alt: "La silla de papel con el rebozo, sola en medio de dunas de papel arrugado bajo un cielo marfil." },
     tema: "El desierto",
     fuente: "Apuntes sobre la oración · Capítulo VI",
     categoria: "Oración",
@@ -95,6 +96,7 @@ window.LECCIONES = {
   },
 
   "la-amistad-con-jesus": {
+    imagen: { base: "sesion-la-amistad-con-jesus", foco: "55% 62%", alt: "Jesús, sentado en una silla de papel bajo un árbol, junto a otra silla vacía con el rebozo: un lugar junto a Él." },
     tema: "La amistad con Jesús",
     fuente: "Imitación de Cristo · Libro II, capítulos VII, VIII y XI",
     categoria: "Vida interior",
@@ -220,6 +222,7 @@ window.LECCIONES = {
   },
 
   "la-amistad-que-ilumina": {
+  "imagen": { "base": "sesion-la-amistad-que-ilumina", "foco": "40% 62%", "alt": "De noche, la silla con el rebozo y una lamparita encendida junto a un camino de piedras que sube hacia las casas iluminadas del pueblo." },
   "tema": "La amistad que ilumina",
   "fuente": "Evangelio · Juan 8,12 y Mateo 5,14-16",
   "categoria": "Vida interior",

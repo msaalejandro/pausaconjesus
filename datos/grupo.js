@@ -9,6 +9,12 @@ window.GRUPO = {
   nombre: "Pausa con Jesús",
   subtitulo: "Guía para sesiones grupales",
   ritmo: "Un viernes sí y uno no.",
+  // Para «Conoce el grupo». Mientras estén vacíos no se muestran.
+  hora: "",          // p. ej. "A las 8 de la noche."
+  lugar: "",         // p. ej. "Capilla de …, Querétaro."
+  // «Quiero ir a la próxima»: abre WhatsApp con un mensaje ya escrito. El número no se muestra en la página.
+  // Con whatsapp vacío y enlaceGrupo vacío, WhatsApp pide elegir a quién enviarlo.
+  contacto: { whatsapp: "", enlaceGrupo: "" },
   url: "https://pausaconjesus.com/",
   api: "https://restrategia-n8n.fcwppp.easypanel.host/webhook/pausa",
   calendario: [
