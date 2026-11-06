@@ -534,6 +534,7 @@ h1[tabindex="-1"]:focus{outline:none}
   .orar.enciende .f1,.orar.enciende .f2,.orar.enciende .f3{animation:none}
   .hero.colocar .hero-img img{animation:aparece 420ms ease both}
   .pausa-anillo{animation:none}
+  .flamas i{animation:none}
   @keyframes cuenta{from{opacity:0}to{opacity:1}}
   .btn:active,.like:active,.momentos button:active,.seg button:active,.arranques button:active,.tipo label:active span,.espacios a:active,.nav a:active,.timer button:active,.enlace:active,.volver:active,.indice button:active,.previa:active,.linea a:active,.acceso-tema:active,.libro:active,.proxima .ses:active,.material:active,.coord:active{transform:none}
   .video .play span{transition:none}
@@ -558,7 +559,7 @@ h1[tabindex="-1"]:focus{outline:none}
 .hero.oscuro .cuando b{color:var(--cera-viva)}
 .hero.oscuro .btn.lleno{background:var(--sobre-manto);border-color:var(--sobre-manto);color:#2E3A5C}
 .hero.oscuro .enlace{color:var(--sobre-manto);text-decoration-color:var(--cera-viva)}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .hero:not(.oscuro) .hero-img img,:root:not([data-theme="light"]) .franja-img img{filter:brightness(.8) saturate(.95)}}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .hero:not(.oscuro) .hero-img img,:root:not([data-theme="light"]) .franja-img img,:root:not([data-theme="light"]) .flamas i{filter:brightness(.8) saturate(.95)}}
 @media (prefers-color-scheme: dark) and (max-width:1079px){
   :root:not([data-theme="light"]) .hero:not(.oscuro){color:#1E2433}
   :root:not([data-theme="light"]) .hero:not(.oscuro) .cuando,:root:not([data-theme="light"]) .hero:not(.oscuro) .fuente{color:#4A4238}
@@ -596,7 +597,16 @@ body.en-inicio.hero-oscuro:not(.top-solido) .top{color:var(--sobre-manto)}
 @media (prefers-color-scheme: dark) and (max-width:1079px){:root:not([data-theme="light"]) body.en-inicio:not(.hero-oscuro):not(.top-solido) .top{color:#1E2433}}
 
 /* Franjas: la escena propia de una sesión, de Oración y de Conoce el grupo */
-.franja-img img{display:block;width:100%;height:clamp(210px,56.25vw,500px);object-fit:cover;object-position:var(--foco,50% 60%);-webkit-mask-image:linear-gradient(transparent 0,#000 9%,#000 68%,transparent);mask-image:linear-gradient(transparent 0,#000 9%,#000 68%,transparent);animation:aparece 320ms ease both}
+.franja-img{--alto:clamp(210px,56.25vw,500px);position:relative;height:var(--alto);overflow:hidden;-webkit-mask-image:linear-gradient(transparent 0,#000 9%,#000 68%,transparent);mask-image:linear-gradient(transparent 0,#000 9%,#000 68%,transparent)}
+/* Igual que object-fit:cover con object-position, pero con capas encima que siguen a la foto */
+.escena{position:absolute;left:var(--fx,50%);top:var(--fy,60%);width:max(100%,calc(var(--alto) * 1.7914));aspect-ratio:2576/1438;transform:translate(calc(-1 * var(--fx,50%)),calc(-1 * var(--fy,60%)));animation:aparece 320ms ease both}
+.escena img{display:block;width:100%;height:100%}
+/* Velas vivas: cada flama de papel se inclina a saltos desde su mecha (stop-motion, ~8 poses por segundo),
+   cada una con su ritmo. Solo mientras la escena está en pantalla. */
+.flamas{position:absolute;inset:0}
+.flamas i{position:absolute;background-repeat:no-repeat;transform-origin:50% 96%;animation:tiembla var(--d) steps(1,end) var(--r) infinite;animation-play-state:paused}
+.franja.viva .flamas i{animation-play-state:running}
+@keyframes tiembla{0%{transform:none}25%{transform:rotate(calc(var(--s) * -2.4deg)) scaleY(1.02)}50%{transform:rotate(calc(var(--s) * 1.4deg)) scaleY(.98)}75%{transform:rotate(calc(var(--s) * -.8deg)) scaleY(1.01)}}
 .franja + *{margin-top:-28px;position:relative}
 
 /* Inicio, debajo de la portada */
@@ -830,7 +840,10 @@ const ESCENAS = {
   despues: { v: "inicio-despues-v", h: "inicio-despues-h", alt: "A la mañana siguiente, el rebozo doblado en la silla, la linterna apagada sobre el muro y el camino que baja hacia el pueblo." }
 };
 const LUGARES = {
-  oracion: { base: "oracion-velas", alt: "Un nicho en la pared de la capilla con velas de papel encendidas y el rebozo colgando del alféizar.", foco: "28% 55%" },
+  oracion: { base: "oracion-velas-limpio", alt: "Un nicho en la pared de la capilla con velas de papel encendidas y el rebozo colgando del alféizar.", foco: "28% 55%",
+    // Las flamas se recortaron de la escena original y van encima, cada una con su propio temblor.
+    // [izq %, arriba %, ancho %, alto %, posición en la tira %, tamaño de la tira ancho %, alto %, ms por ciclo, desfase ms, sentido]
+    flamas: { src: "oracion-flamas.webp", lista: [[35.17,35.19,1.71,5.15,0.0,1445.5,114.9,600,154,-1],[37.38,37.55,1.67,5.01,7.76,1479.1,118.1,480,37,1],[27.87,36.02,1.71,4.59,15.37,1445.5,128.8,600,596,1],[29.23,38.66,1.51,4.03,22.95,1630.8,146.6,720,219,1],[23.25,36.58,1.75,5.01,30.12,1413.3,118.1,480,222,-1],[38.9,40.4,1.98,4.24,38.46,1247.1,139.3,480,123,1],[39.36,44.65,1.71,5.22,46.96,1445.5,113.3,720,434,1],[29.15,44.44,1.98,5.91,55.38,1247.1,100.0,720,126,1],[31.02,46.52,1.75,5.63,63.79,1413.3,104.9,720,63,-1],[26.94,47.08,1.82,5.01,71.99,1353.2,118.1,480,113,1],[22.48,54.17,1.94,5.91,80.72,1272.0,100.0,720,136,-1],[19.95,55.56,1.86,5.42,89.29,1325.0,109.0,660,147,1],[23.95,57.51,2.29,5.08,99.65,1078.0,116.4,720,315,1]] } },
   conoce: { base: "conoce-arco", alt: "Un arco abierto en la pared y, junto a él, la silla con el rebozo: un lugar para quien llega.", foco: "50% 62%" }
 };
 const srcset = (base, ws) => ws.map(w => `${IMG}${base}-${w}.webp ${w}w`).join(", ");
@@ -841,11 +854,17 @@ function fotoHero(e) {
     <source type="image/webp" srcset="${srcset(e.h, H_W)}" sizes="100vw">
     <img src="${IMG}${e.h}-1600.jpg" alt="${esc(e.alt)}" width="2576" height="1438" fetchpriority="high"></picture>`;
 }
+function capaFlamas(f) {
+  if (!f) return "";
+  return `<div class="flamas" aria-hidden="true">${f.lista.map(([x, y, w, h, p, bw, bh, d, r, s]) =>
+    `<i style="left:${x}%;top:${y}%;width:${w}%;height:${h}%;background-image:url(${IMG}${f.src});background-size:${bw}% ${bh}%;background-position:${p}% 0;--d:${d}ms;--r:-${r}ms;--s:${s}"></i>`).join("")}</div>`;
+}
 function franja(img) {
   if (!img || !img.base) return "";
-  return `<div class="franja" style="--foco:${esc(img.foco || "50% 60%")}"><picture class="franja-img">
+  const [fx, fy] = (img.foco || "50% 60%").split(/\s+/);
+  return `<div class="franja${img.flamas ? " con-flamas" : ""}" style="--fx:${esc(fx)};--fy:${esc(fy || "60%")}"><div class="franja-img"><div class="escena"><picture>
     <source type="image/webp" srcset="${srcset(img.base, H_W)}" sizes="100vw">
-    <img src="${IMG}${img.base}-1600.jpg" alt="${esc(img.alt || "")}" width="2576" height="1438" fetchpriority="high"></picture></div>`;
+    <img src="${IMG}${img.base}-1600.jpg" alt="${esc(img.alt || "")}" width="2576" height="1438" fetchpriority="high"></picture>${capaFlamas(img.flamas)}</div></div></div>`;
 }
 
 /* ===== Inicio: el «hoy» del miembro ===== */
@@ -1461,7 +1480,7 @@ function render() {
   app.classList.toggle("ancho", ancho); document.body.classList.toggle("ancho", ancho);
   entrar(soloPanel ? $('[role="tabpanel"]', app) : app, soloPanel ? "entra-panel" : "entra");
   aplicarLectura();
-  pintarVoces(); pintarTemas(); pintarIntenciones(); pintarPreguntas(); pintarVivas();
+  pintarVoces(); pintarTemas(); pintarIntenciones(); pintarPreguntas(); pintarVivas(); vigilarFlamas();
   if (sub === "pedir") { const ta = $("#pedir-forma textarea"); if (ta) setTimeout(() => ta.focus({ preventScroll: false }), 60); }
   alScroll();
 }
@@ -1637,6 +1656,10 @@ window.addEventListener("hashchange", () => {
   // Quien navega con teclado o lector de pantalla llega al título de la vista nueva.
   const h = $("#app h1"); if (h) { h.tabIndex = -1; h.focus({ preventScroll: true }); }
 });
+
+/* ===== Velas vivas: solo se mueven mientras la escena se ve ===== */
+const ojoFlamas = "IntersectionObserver" in window ? new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle("viva", e.isIntersecting))) : null;
+function vigilarFlamas() { document.querySelectorAll(".franja.con-flamas").forEach(f => ojoFlamas ? ojoFlamas.observe(f) : f.classList.add("viva")); }
 
 /* ===== Pantalla encendida en el modo reunión ===== */
 let bloqueoReunion = null, quiereReunion = false;
