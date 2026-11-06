@@ -14,6 +14,6 @@ window.GRUPO = {
   calendario: [
     { fecha: "2026-10-02", leccion: "el-desierto" },
     { fecha: "2026-10-16", leccion: "la-amistad-con-jesus" },
-    { fecha: "2026-10-25", leccion: "la-amistad-que-ilumina" }
+    { fecha: "2026-11-06", leccion: "la-amistad-que-ilumina", id: "s-2026-10-25" }  // se recorrió del domingo 25 de octubre; conserva su id para no perder reflexiones ni enlaces
   ]
 };
