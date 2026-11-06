@@ -63,6 +63,9 @@
   --d-press:160ms; --d-ui:220ms;
 }
 @media (min-width:1080px){:root{--t-h:36px}}
+/* Las frases grandes son frases, no títulos: 22px en celular, 36px en escritorio */
+.declara,.l-frase,.vivir-sec .vivir q,.pausa-frase{font-size:var(--t-l)!important}
+@media (min-width:1080px){.declara,.l-frase,.vivir-sec .vivir q,.pausa-frase{font-size:var(--t-h)!important}}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
@@ -525,7 +528,7 @@ textarea.copia{width:100%;min-height:90px;margin-top:12px;padding:10px;border-ra
 .q-txt .camino li.ahora::before{border-color:var(--cera);background:var(--cera);box-shadow:none}
 .q-txt .sin-fecha{color:var(--piedra);margin:-8px 0 18px}
 .q-acc{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px}
-@media (min-width:1080px){.quincena{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px}.q-img{display:block}.q-img-m{display:none}}
+@media (min-width:1080px){.quincena{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px}.q-img{display:block;order:-1}.q-img-m{display:none}}
 
 /* Para vivir / preparar */
 .ancho .vivir-sec{max-width:none;background:var(--manto);color:var(--sobre-manto);padding:56px max(18px,calc((100vw - 1240px)/2 + 18px)) 60px}
@@ -533,6 +536,12 @@ textarea.copia{width:100%;min-height:90px;margin-top:12px;padding:10px;border-ra
 .vivir-sec .nota{color:inherit;opacity:.85}
 .vivir-sec .vivir{margin-top:18px;max-width:860px;background:none;padding:0;border-radius:0}
 .vivir-sec .vivir p{max-width:62ch}
+@media (min-width:1080px){
+  .vivir-sec .vivir{max-width:none;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:72px;align-items:start}
+  .vivir-sec .vivir q{grid-column:1;grid-row:1 / span 4;margin-top:0}
+  .vivir-sec .vivir > p,.vivir-sec .vivir .acciones{grid-column:2}
+  .vivir-sec .vivir > p:first-of-type{margin-top:0}
+}
 .vivir-sec .vivir .btn{background:var(--sobre-manto);border-color:var(--sobre-manto);color:#2E3A5C}
 .vivir-sec .vivir q{font-size:var(--t-h);max-width:30ch}
 
@@ -598,11 +607,12 @@ textarea.copia{width:100%;min-height:90px;margin-top:12px;padding:10px;border-ra
 .c-tema{font-family:var(--f-titulo);font-weight:600;font-size:var(--t-l);line-height:1.15}
 .c-fuente{font-size:var(--t-s)}
 .c-lista a.activa .c-tema{color:var(--tinta)}
-@media (max-width:1079px){.c-fotos{position:sticky;top:0;z-index:2}}
 @media (min-width:1080px){
-  .camino-sec{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:72px;align-items:start}
+  .camino-sec{grid-template-columns:minmax(0,5fr) minmax(0,6fr);column-gap:72px;row-gap:0;align-items:start}
+  .camino-sec > h2{grid-column:2;padding-top:6vh}
+  .camino-sec .c-fotos{grid-column:1;grid-row:1 / span 2}
+  .camino-sec .c-lista{grid-column:2;padding-top:0}
   .c-fotos{position:sticky;top:12vh;aspect-ratio:4/5}
-  .c-lista{padding-top:6vh}
   .c-lista ol a{padding:18px 0}
 }
 
@@ -613,6 +623,7 @@ textarea.copia{width:100%;min-height:90px;margin-top:12px;padding:10px;border-ra
 .l-frase a{color:inherit;text-decoration-thickness:3px;text-underline-offset:6px;text-decoration-color:var(--cera)}
 .l-txt .nota{margin-top:18px}
 .l-silla{aspect-ratio:1/1;overflow:hidden;width:min(260px,60vw);background:var(--cera-suave)}
+@media (min-width:760px){.ancho .lugar-sec{grid-template-columns:1fr auto;gap:40px}.l-silla{width:220px}}
 @media (min-width:1080px){.ancho .lugar-sec{grid-template-columns:1fr auto;padding:96px max(40px,calc((100vw - 1240px)/2 + 40px))}.l-silla{width:300px}}
 
 /* Pie: el nombre vuelve a todo lo ancho */
@@ -939,7 +950,6 @@ function vInicio() {
   </section>
 
   <section class="sec quincena" aria-labelledby="q-t">
-    <figure class="q-img">${foto(imgS + "-45", [600, 960], altS)}</figure>
     <div class="q-txt">
       <h2 id="q-t">${esc(s.tema)}</h2>
       <p class="fuente">${esc(s.fuente)}</p>
@@ -952,6 +962,7 @@ function vInicio() {
         <a class="enlace" href="${wa(textoInvitar(s))}" target="_blank" rel="noopener">Invitar por WhatsApp</a>
       </div>
     </div>
+    <figure class="q-img">${foto(imgS + "-45", [600, 960], altS)}</figure>
   </section>
 
   ${prep ? `<section class="sec vivir-sec" aria-labelledby="v-t">
@@ -1009,9 +1020,9 @@ function vInicio() {
   </section>
 
   <section class="sec camino-sec" aria-labelledby="c-t">
+    <h2 id="c-t">El camino del grupo</h2>
     <div class="c-fotos" aria-hidden="true">${linea.map((x, i) => `<figure class="c-foto${x.id === s.id ? " activa" : ""}" data-c="${esc(x.id)}">${foto(imgDe(x)[0] + "-45", [600, 960], "")}</figure>`).join("")}</div>
     <div class="c-lista">
-      <h2 id="c-t">El camino del grupo</h2>
       <ol>${linea.map(x => { const d = parseDate(x.fecha); return `<li><a href="#${x.id}${x.tema ? "/" + momentoDe(x) : ""}" data-c="${esc(x.id)}"${x.id === s.id ? ' class="activa"' : ""}><span class="c-fecha">${d.getDate()} ${MES[d.getMonth()]}</span><span class="c-tema">${esc(x.tema || "Tema por definir")}</span>${x.fuente ? `<span class="c-fuente">${esc(x.fuente)}</span>` : ""}</a></li>`; }).join("")}</ol>
       <a class="enlace" href="#calendario">Ver el calendario completo</a>
     </div>
