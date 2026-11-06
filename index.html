@@ -108,7 +108,7 @@ h1,h2,h3{text-wrap:balance}
 /* Navegación inferior */
 .nav{position:relative;flex:0 0 auto;z-index:30;background:var(--papel);border-top:1px solid var(--raya);padding-bottom:env(safe-area-inset-bottom,0px)}
 .nav-in{max-width:640px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);height:var(--nav-h)}
-.nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:var(--piedra);font-size:13px}
+.nav a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-decoration:none;color:var(--piedra);font-size:14px}
 .nav svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .nav a[aria-current="page"]{color:var(--tinta);font-weight:700}
 .nav a[aria-current="page"] svg{stroke:var(--cera)}
@@ -137,7 +137,7 @@ h1,h2,h3{text-wrap:balance}
 .seccion.destacado{margin-top:14px;margin-bottom:28px}
 .nuevo{display:inline-block;font-size:13px;font-weight:700;color:var(--cera);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
 .portada .btn.lleno{width:100%;background:var(--sobre-manto);border-color:var(--sobre-manto);color:#1F3358;min-height:54px;font-size:17px}
-.portada .mas{display:flex;justify-content:center;margin-top:8px}
+.portada .mas{display:flex;justify-content:center;flex-wrap:wrap;gap:0 24px;margin-top:8px}
 .portada .enlace{color:var(--sobre-manto)}
 
 /* Video (cortometrajes): portada liviana, el reproductor carga al tocar */
@@ -246,7 +246,17 @@ h1,h2,h3{text-wrap:balance}
 .dia span{font-size:13px;color:var(--piedra)}
 .linea h3{font-family:var(--f-titulo);font-weight:600;font-size:26px;line-height:1.05}
 .linea .meta{color:var(--piedra);font-size:15px;margin-top:4px}
-.linea .estado{display:inline-block;margin-top:8px;font-size:14px;font-weight:700;color:var(--cera)}
+.linea .estado{display:inline-flex;align-items:center;gap:2px;margin-top:8px;font-size:15px;font-weight:700;color:var(--cera)}
+.chev{width:18px;height:18px;flex:0 0 auto}
+.linea a{border-radius:14px;margin:0 -8px;padding-left:8px;padding-right:8px;transition:background .15s}
+.linea a:hover{background:var(--papel)}
+.linea a:hover .dia{background:var(--papel)}
+.acceso-tema{display:flex;align-items:center;gap:14px;margin-top:22px;padding:16px 18px;background:var(--papel);border:1px solid var(--raya);border-radius:18px;text-decoration:none;color:inherit}
+.acceso-tema > span{flex:1;min-width:0}
+.acceso-tema small{display:block;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--cera)}
+.acceso-tema b{display:block;font-family:var(--f-titulo);font-weight:600;font-size:24px;line-height:1.1;margin-top:2px}
+.acceso-tema span span{display:block;color:var(--piedra);font-size:15px;margin-top:2px}
+.acceso-tema .chev{width:22px;height:22px;color:var(--cera)}
 .linea .sin h3{color:var(--piedra);font-style:italic;font-weight:500}
 .mes{font-weight:700;color:var(--piedra);font-size:15px;padding:18px 0 4px 80px}
 .rotulo{font-weight:700;color:var(--piedra);font-size:15px;margin:28px 0 10px}
@@ -283,7 +293,10 @@ h1,h2,h3{text-wrap:balance}
 .s-cab .fuente{color:var(--piedra);font-size:15px}
 .momentos{position:sticky;top:0;z-index:15;background:var(--lino);margin:22px -18px 0;padding:8px 18px 10px;border-bottom:1px solid var(--raya)}
 .momentos-in{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;background:var(--papel);border:1px solid var(--raya);border-radius:999px;padding:4px}
-.momentos button{border:0;background:none;border-radius:999px;min-height:44px;font-weight:700;font-size:16px;color:var(--piedra);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
+.momentos-in{border-radius:18px}
+.momentos button{border:0;background:none;border-radius:14px;min-height:52px;padding:4px 2px;font-weight:700;font-size:16px;line-height:1.15;color:var(--piedra);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.momentos .m-l{display:flex;align-items:center;gap:6px}
+.momentos button small{font-weight:400;font-size:12px;opacity:.85}
 .momentos button[aria-selected="true"]{background:var(--fuerte);color:var(--sobre-fuerte)}
 .momentos .hoy{width:7px;height:7px;border-radius:50%;background:var(--cera)}
 .momentos button[aria-selected="true"] .hoy{background:var(--cera-viva)}
@@ -393,8 +406,8 @@ textarea.copia{width:100%;min-height:90px;margin-top:12px;padding:10px;border-ra
 <iframe class="marco" id="marco-crono" title="Cronología: Plenitud de los Tiempos" allow="fullscreen" hidden></iframe>
 <nav class="nav" aria-label="Secciones"><div class="nav-in">
   <a href="#inicio" data-nav="inicio"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v4M10 5h4"/><path d="M5 21V11l7-4 7 4v10"/><path d="M10 21v-5h4v5"/></svg>Inicio</a>
-  <a href="#sesiones" data-nav="sesiones"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Sesiones</a>
-  <a href="#temas" data-nav="temas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V16h5v-.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/></svg>Temas</a>
+  <a href="#calendario" data-nav="calendario"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/></svg>Calendario</a>
+  <a href="#sugerencias" data-nav="sugerencias"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V16h5v-.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3z"/></svg>Sugerencias</a>
 </div></nav>
 <div id="timer-slot"></div>
 
@@ -447,6 +460,7 @@ function cuenta(s) {
 /* El momento de cada sesión según la fecha: antes, durante (el mismo día) o después */
 const momentoDe = s => { const n = dias(s.fecha); return n > 0 ? "antes" : n === 0 ? "durante" : "despues"; };
 const MOMENTOS = [["antes", "Antes"], ["durante", "Durante"], ["despues", "Después"]];
+const PISTA = { antes: "El tema", durante: "La sesión", despues: "Para vivirlo" };
 const conTema = () => SESIONES.filter(s => s.tema);
 function actual() {
   const fut = conTema().filter(s => dias(s.fecha) >= 0).sort((a, b) => a.fecha.localeCompare(b.fecha));
@@ -481,6 +495,7 @@ const ico = {
   pdf: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>`,
   corazon: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/></svg>`,
   vela: `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5c1.6 1.9 1.6 3.6 0 5.2-1.6-1.6-1.6-3.3 0-5.2z"/><rect x="8.5" y="10" width="7" height="11" rx="1.2"/></svg>`,
+  sig: `<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>`,
   atras: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>`
 };
 
@@ -511,7 +526,7 @@ let ultimaGuia = "#inicio";
 const enCronologia = () => (location.hash || "").slice(1).split("/")[0] === "cronologia";
 function encabezado(volver, titulo) {
   $("#top-in").innerHTML = volver
-    ? `<a class="volver" href="${volver}">${ico.atras}${volver === "#inicio" ? "Inicio" : "Volver"}</a><span class="titulo-mini">${esc(titulo || "")}</span>`
+    ? `<a class="volver" href="${volver}">${ico.atras}${{ "#inicio": "Inicio", "#calendario": "Calendario" }[volver] || "Volver"}</a><span class="titulo-mini">${esc(titulo || "")}</span>`
     : `<a class="marca" href="${ultimaGuia}">${esc(GRUPO.nombre)}<small>${esc(GRUPO.subtitulo)}</small></a>
        <nav class="espacios" aria-label="Espacios"><a href="${ultimaGuia}"${enCronologia() ? "" : ' aria-current="page"'}>Guía</a><a href="#cronologia"${enCronologia() ? ' aria-current="page"' : ""}>Cronología</a><a href="/iglesias/">Iglesias</a></nav>`;
 }
@@ -551,7 +566,7 @@ function vInicio() {
     <p class="idea">${esc(s.idea)}</p>
     ${camino(s)}
     <a class="btn lleno" href="${cta[0]}">${cta[1]}</a>
-    <div class="mas"><a class="enlace" href="${wa(textoInvitar(s))}" target="_blank" rel="noopener">Invitar por WhatsApp</a></div>
+    <div class="mas">${m === "despues" ? `<a class="enlace" href="#${s.id}/antes">Leer el tema</a>` : ""}<a class="enlace" href="${wa(textoInvitar(s))}" target="_blank" rel="noopener">Invitar por WhatsApp</a></div>
   </section>
 
   ${destacado ? "" : secVideo}
@@ -584,7 +599,7 @@ function vInicio() {
     <h2 id="t-t">¿Qué estudiamos después?</h2>
     <p class="nota">Los temas elegidos y las sugerencias con más interés.</p>
     <div id="temas-inicio"><p class="cargando">Cargando temas…</p></div>
-    <a class="enlace" href="#temas">Sugerir un tema</a>
+    <a class="enlace" href="#sugerencias">Sugerir un tema</a>
   </section>
 
   ${sig ? `<section class="seccion" aria-labelledby="s-t"><h2 id="s-t">La siguiente</h2><ul class="linea"><li>${filaSesion(sig)}</li></ul></section>` : ""}`;
@@ -603,16 +618,16 @@ function bloqueVivir(s, prep) {
   </div>`;
 }
 
-/* ===== Sesiones ===== */
+/* ===== Calendario ===== */
 function filaSesion(s) {
   const d = parseDate(s.fecha);
   const dia = `<div class="dia" aria-hidden="true"><b>${d.getDate()}</b><span>${MES[d.getMonth()]}</span></div>`;
   if (!s.tema) return `<div class="sin">${dia}<div><h3>Tema por definir</h3><p class="meta">${fecha(s.fecha)}</p></div></div>`;
   const n = dias(s.fecha);
-  const est = n > 0 ? cuenta(s.fecha) : n === 0 ? "Es hoy" : "Ya fue: puedes ponerte al día";
-  return `<a href="#${s.id}">${dia}<div><h3>${esc(s.tema)}</h3><p class="meta">${esc(s.fuente)}</p><span class="estado">${est}</span></div></a>`;
+  const est = n > 0 ? cuenta(s.fecha) : n === 0 ? "Es hoy" : "Leer el tema";
+  return `<a href="#${s.id}/${n < 0 ? "antes" : momentoDe(s)}">${dia}<div><h3>${esc(s.tema)}</h3><p class="meta">${esc(s.fuente)}</p><span class="estado">${est}${n < 0 ? ico.sig : ""}</span></div></a>`;
 }
-function vSesiones() {
+function vCalendario() {
   const asc = (a, b) => a.fecha.localeCompare(b.fecha);
   const futuras = SESIONES.filter(x => dias(x.fecha) >= 0).sort(asc);
   const pasadas = SESIONES.filter(x => dias(x.fecha) < 0 && x.tema).sort((a, b) => b.fecha.localeCompare(a.fecha));
@@ -620,12 +635,15 @@ function vSesiones() {
   const despues = futuras.filter(x => x !== prox);
   const meses = [];
   pasadas.forEach(x => { const mm = mesAnio(x.fecha); const g = meses[meses.length - 1]; if (g && g.mes === mm) g.ses.push(x); else meses.push({ mes: mm, ses: [x] }); });
-  return `<h1 class="h-vista">Sesiones</h1>
-    <p class="nota">${esc(GRUPO.ritmo)} Si faltaste a alguna, aquí está todo para ponerte al día.</p>
+  return `<h1 class="h-vista">Calendario</h1>
+    <p class="nota">${esc(GRUPO.ritmo)} Toca cualquier fecha para abrir su tema completo: la guía de lectura, las preguntas y lo que compartió el grupo.</p>
     ${prox ? `<p class="rotulo">${dias(prox.fecha) === 0 ? "Hoy" : "Próxima sesión"}</p>${tarjetaProxima(prox)}` : ""}
     ${despues.length ? `<p class="rotulo">Más adelante</p><ul class="linea">${despues.map(x => `<li>${filaSesion(x)}</li>`).join("")}</ul>` : ""}
     ${meses.length ? `<p class="rotulo">Anteriores</p>${meses.map((g, i) => `<details class="grupo-mes"${i < 2 ? " open" : ""}><summary>${esc(g.mes)} <span>${g.ses.length} ${g.ses.length === 1 ? "sesión" : "sesiones"}</span></summary>
-      <ul class="linea">${g.ses.map(x => `<li>${filaSesion(x)}</li>`).join("")}</ul></details>`).join("")}` : ""}`;
+      <ul class="linea">${g.ses.map(x => `<li>${filaSesion(x)}</li>`).join("")}</ul></details>`).join("")}` : ""}
+    ${conVideos().length ? `<section class="seccion" aria-labelledby="tv"><h2 id="tv">Pausas en video</h2>
+      <p class="nota">Los cortometrajes de los temas que hemos vivido.</p>
+      <div style="display:grid;gap:18px">${conVideos().map(x => x.videos.map(v => bloqueVideo(v, x, true)).join("")).join("")}</div></section>` : ""}`;
 }
 function tarjetaProxima(s) {
   const d = parseDate(s.fecha);
@@ -648,7 +666,7 @@ function vSesion(s, m) {
       <p class="fuente">${esc(s.fuente)}</p>
     </div>
     <div class="momentos"><div class="momentos-in" role="tablist" aria-label="Momentos de la sesión">
-      ${MOMENTOS.map(([k, l]) => `<button role="tab" data-momento="${k}" aria-selected="${k === m}">${l}${k === deHoy ? '<span class="hoy" title="Ahora" aria-label="(ahora)"></span>' : ""}</button>`).join("")}
+      ${MOMENTOS.map(([k, l]) => `<button role="tab" data-momento="${k}" aria-selected="${k === m}"><span class="m-l">${l}${k === deHoy ? '<span class="hoy" title="Ahora" aria-label="(ahora)"></span>' : ""}</span><small>${PISTA[k]}</small></button>`).join("")}
     </div></div>
     <div role="tabpanel">${cuerpo}</div>`;
 }
@@ -692,7 +710,7 @@ function bloqueCoordinacion(s, parte) {
 function momentoAntes(s) {
   const libro = (s.materiales || [])[0];
   const abierto = store.get("panel", false);
-  return `<p class="intro-momento fuera-enfoque">Para llegar con el corazón dispuesto. Tómate tu tiempo; no hace falta hacerlo todo de una vez.</p>
+  return `<p class="intro-momento fuera-enfoque">${dias(s.fecha) < 0 ? "Esta sesión ya pasó. Aquí está el tema completo para leerlo, ponerte al día o volver a él cuando lo necesites." : "Para llegar con el corazón dispuesto. Tómate tu tiempo; no hace falta hacerlo todo de una vez."}</p>
     <p class="central fuera-enfoque">${esc(s.idea)}</p>
     ${bloqueFicha(s)}
     <ol class="pasos fuera-enfoque" style="margin-top:22px">
@@ -761,8 +779,12 @@ function momentoDurante(s) {
     <a class="coord" href="#coord-${s.id}"><b>¿Coordinas esta sesión?</b><span>Abre el guion de exposición y el temporizador de las rondas.</span></a>`;
 }
 
+function accesoTema(s) {
+  return `<a class="acceso-tema" href="#${s.id}/antes"><span><small>El tema completo</small><b>Guía de lectura en ${s.puntos.length} puntos</b><span>${esc(s.fuente)}</span></span>${ico.sig}</a>`;
+}
 function momentoDespues(s) {
   return `<p class="intro-momento">${esc(s.coordinacion && dias(s.fecha) >= 0 ? "Material para retomar después del encuentro. Puedes volver aquí cuando lo necesites." : "La sesión termina, pero lo que se sembró sigue. Llévalo a tu oración de estos días.")}</p>
+    ${accesoTema(s)}
     ${(s.videos || []).length ? `<section class="seccion" style="margin-top:22px" aria-labelledby="x-pv"><h2 class="h2" id="x-pv">Una pausa en video</h2><p class="nota">Para volver al tema cuando lo necesites, o compartirlo con alguien.</p>${s.videos.map(v => bloqueVideo(v, s)).join("")}</section>` : ""}
     ${s.semana ? `<section class="seccion" style="margin-top:22px" aria-labelledby="x-v"><h2 class="h2" id="x-v">Para vivir estos días</h2>${bloqueVivir(s)}${(s.audios || []).length ? `<p class="nota" style="margin:18px 0 0">Puedes acompañar tu oración de estos días con el salmo.</p>${s.audios.map(reproductor).join("")}` : ""}</section>` : ""}
     ${s.coordinacion ? `<section class="seccion" aria-label="Recapitulación"><h2 class="h2">Vuelve al recorrido</h2><ol class="agenda">${s.puntos.map((p, i) => `<li><div class="min">${i + 1}</div><div><h3>${esc(p.t)}</h3><p>${esc(p.p[0])}</p><p>${esc(p.a)}</p><a class="enlace" href="#${s.id}/antes">Leer el desarrollo completo</a></div></li>`).join("")}</ol></section>
@@ -854,20 +876,17 @@ function vCoordinador(s) {
 }
 
 /* ===== Temas ===== */
-function vTemas() {
-  return `<h1 class="h-vista">Temas</h1>
-    <p class="nota">¿Qué te gustaría estudiar en las próximas sesiones? Sugiere un tema o marca con el corazón los que también te interesan. Cuando se elija uno, aparecerá arriba con su fecha.</p>
+function vSugerencias() {
+  return `<h1 class="h-vista">Sugerencias</h1>
+    <p class="nota">¿Qué te gustaría estudiar en las próximas sesiones? Propón un tema o marca con el corazón los que también te interesan. Los temas de cada fecha están en <a href="#calendario">Calendario</a>.</p>
     <form class="tema-forma" data-form="tema" novalidate>
-      <input type="text" name="tema" maxlength="120" placeholder="Escribe un tema" aria-label="Tu sugerencia de tema">
+      <input type="text" name="tema" maxlength="120" placeholder="Ej. El perdón, la Virgen María…" aria-label="Tu sugerencia de tema">
       <div class="trampa" aria-hidden="true"><label>No llenar<input type="text" name="web" tabindex="-1" autocomplete="off"></label></div>
       <button class="btn lleno" type="submit">Sugerir</button>
       <p class="aviso" role="status" aria-live="polite" style="flex-basis:100%;margin-top:2px"></p>
     </form>
-    <section class="seccion" style="margin-top:30px" aria-labelledby="tt"><h2 id="tt">Temas del grupo</h2>
-      <div id="temas" style="margin-top:12px"><p class="cargando">Cargando temas…</p></div></section>
-    ${conVideos().length ? `<section class="seccion" aria-labelledby="tv"><h2 id="tv">Pausas en video</h2>
-      <p class="nota">Los cortometrajes de los temas que hemos vivido.</p>
-      <div style="display:grid;gap:18px">${conVideos().map(x => x.videos.map(v => bloqueVideo(v, x, true)).join("")).join("")}</div></section>` : ""}`;
+    <section class="seccion" style="margin-top:30px" aria-labelledby="tt"><h2 id="tt">Lo que ha propuesto el grupo</h2>
+      <div id="temas" style="margin-top:12px"><p class="cargando">Cargando temas…</p></div></section>`;
 }
 const conVideos = () => conTema().filter(x => (x.videos || []).length).sort((a, b) => b.fecha.localeCompare(a.fecha));
 function filaTema(t, marcados) {
@@ -941,9 +960,12 @@ async function pintarVoces(fuerza) {
 }
 
 /* ===== Enrutado ===== */
+const ALIAS = { sesiones: "calendario", temas: "sugerencias" };
+const VISTAS = ["inicio", "calendario", "sugerencias"];
 function ruta() {
   const h = decodeURIComponent((location.hash || "#inicio").slice(1));
-  const [base, sub] = h.split("/");
+  const [b0, sub] = h.split("/");
+  const base = ALIAS[b0] || b0;
   return { base, sub };
 }
 function render() {
@@ -963,18 +985,19 @@ function render() {
     document.title = `Cronología · ${GRUPO.nombre}`;
     return;
   }
-  if (["inicio", "sesiones", "temas"].includes(base) || !base) ultimaGuia = "#" + (base || "inicio");
+  if (VISTAS.includes(base) || !base) ultimaGuia = "#" + (base || "inicio");
   document.title = `${GRUPO.nombre} · ${GRUPO.subtitulo}`;
   let html, nav = null;
   if (coord) { encabezado(`#${coord.id}/durante`, "Guion de la sesión"); html = vCoordinador(coord); }
   else if (ses) {
     const m = MOMENTOS.some(([k]) => k === sub) ? sub : momentoDe(ses);
-    encabezado("#inicio", ses.tema); html = vSesion(ses, m); nav = "sesiones";
+    const desde = ultimaGuia === "#calendario" ? "#calendario" : "#inicio";
+    encabezado(desde, ses.tema); html = vSesion(ses, m); nav = desde.slice(1);
     $("#progreso").hidden = m !== "antes";
   } else {
-    const v = ["inicio", "sesiones", "temas"].includes(base) ? base : "inicio";
+    const v = VISTAS.includes(base) ? base : "inicio";
     encabezado(null); nav = v;
-    html = { inicio: vInicio, sesiones: vSesiones, temas: vTemas }[v]();
+    html = { inicio: vInicio, calendario: vCalendario, sugerencias: vSugerencias }[v]();
   }
   if (nav) { const a = document.querySelector(`[data-nav="${nav}"]`); if (a) a.setAttribute("aria-current", "page"); }
   $("#app").innerHTML = html;

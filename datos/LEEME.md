@@ -10,7 +10,7 @@ Lo que hace distinto a cada grupo:
 |---|---|
 | `nombre` | Aparece en el encabezado, en el título de la pestaña y en la invitación por WhatsApp. |
 | `subtitulo` | Acompaña al nombre en el título de la pestaña. |
-| `ritmo` | Frase de la página Sesiones, por ejemplo «Un viernes sí y uno no.» |
+| `ritmo` | Frase de la página Calendario, por ejemplo «Un viernes sí y uno no.» |
 | `url` | Dirección del sitio; se usa en el enlace de invitación. |
 | `api` | Dirección del flujo de n8n que guarda reflexiones, intenciones, temas y preguntas. |
 | `calendario` | Lista de sesiones: fecha y lección. |
