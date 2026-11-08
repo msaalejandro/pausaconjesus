@@ -584,5 +584,300 @@ window.LECCIONES = {
       "url": "https://www.vatican.va/content/francesco/es/angelus/2023/documents/20231112-angelus.html"
     }
   ]
+},
+
+  "la-amistad-que-se-entrega": {
+  "tema": "La amistad que se entrega",
+  "fuente": "Evangelio · Mateo 25,31-46 y Lucas 23,39-43",
+  "categoria": "Vida interior",
+  "lectura": "12 min de lectura",
+  "idea": "La amistad que ilumina nos llevó hasta la Cruz. Ahí descubrimos que el amigo es también el Rey: un Rey con corazón de pastor, cuyo trono es la Cruz, que recuerda a un ladrón en su último momento y que se esconde en el más pequeño para seguir encontrándonos.",
+  "preguntaCentral": "Si Jesús reina dando la vida, ¿dónde me está esperando hoy para que lo reconozca?",
+  "objetivo": "Contemplar en la Cruz hasta dónde llega el amor de Jesús, reconocerlo como un Rey que sirve y descubrir que su amistad nos envía a encontrarlo en los más pequeños.",
+  "lecturaBase": "Mateo 25,31-46 y Lucas 23,39-43",
+  "puntos": [
+    {
+      "id": "P1",
+      "t": "Hasta dónde llega su amor",
+      "refs": "Jn 13,1 · Jn 15,13-15",
+      "p": [
+        "La sesión pasada terminó con una pregunta: ¿qué descubrimos de la amistad de Jesús cuando contemplamos hasta dónde llega su amor? Juan responde al comenzar la Pasión: Jesús amó a los suyos hasta el extremo.",
+        "En la Última Cena, Jesús une dos palabras: amigos y entrega. No hay amor más grande que dar la vida por los amigos, y Él nos llama amigos justo antes de darla.",
+        "Toda amistad verdadera tiene un momento en que cuesta. La Cruz no es el final de la amistad de Jesús, sino el lugar donde se ve completa."
+      ],
+      "a": "Recuerda a una persona que te quiso cuando le costaba hacerlo, y da gracias por ella.",
+      "pregunta": "¿Cuándo has sentido que alguien te quiso hasta el extremo, más allá de lo cómodo?",
+      "transicion": "Quien se entrega así no es solo un amigo: la liturgia de esta semana lo llama Rey.",
+      "ecos": [
+        {
+          "tipo": "Catecismo",
+          "t": "CCE 609 · Amó hasta el extremo",
+          "d": "El Catecismo relee la Pasión desde Juan 13,1 y Juan 15,13: Jesús acoge libremente su entrega como expresión del amor del Padre. Nadie le quita la vida; Él la da."
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "t": "Un Rey con corazón de pastor",
+      "refs": "Ez 34,11-17 · Sal 23 · Jn 10,11",
+      "p": [
+        "La primera lectura del domingo presenta a Dios que sale a buscar a sus ovejas dispersas en un día de niebla y oscuridad: busca a la perdida, cura a la herida, fortalece a la débil.",
+        "El salmo lo dice desde la oveja: el Señor es mi pastor, nada me falta. Prepara la mesa, llena la copa, acompaña todos los días.",
+        "Antes de hablar de juicio, la Palabra muestra cuidado. Jesús retoma esta imagen al decir que el buen pastor da la vida por sus ovejas: el Rey que viene a juzgar es el mismo que primero salió a buscarnos."
+      ],
+      "a": "Lee despacio el Salmo 23 y quédate en la frase que más necesites esta semana.",
+      "pregunta": "¿En qué parte de tu vida necesitas que Jesús te busque, te cure o te fortalezca?",
+      "transicion": "Este pastor reina de una forma que nadie esperaba.",
+      "ecos": [
+        {
+          "tipo": "Contexto bíblico",
+          "t": "El rey como pastor",
+          "d": "En Israel y en los pueblos vecinos se llamaba pastores a los reyes. Ezequiel 34 empieza denunciando a los pastores que se apacentaban a sí mismos (34,1-10); por eso Dios anuncia que Él mismo cuidará de su rebaño."
+        }
+      ]
+    },
+    {
+      "id": "P3",
+      "t": "Un trono inesperado",
+      "refs": "Jn 18,36-37 · Jn 19,19 · Flp 2,6-8",
+      "p": [
+        "Ante Pilato, Jesús dice que su Reino no es de este mundo y que vino a dar testimonio de la verdad. Poco después, sobre la Cruz, colocan un letrero que lo llama Rey de los judíos. Lo que pretendía ser burla dice la verdad.",
+        "Pablo lo resume en Filipenses: Jesús no se aferró a su condición divina; se hizo servidor y se humilló hasta la muerte de cruz.",
+        "Nuestros reyes se sientan en tronos para ser servidos. Este Rey reina sirviendo y amando. Su corona es de espinas y su trono, la Cruz."
+      ],
+      "a": "Identifica un lugar donde te toca servir sin que se note, y hazlo esta semana con gusto.",
+      "pregunta": "¿Qué cambia en mi idea de poder, de éxito o de grandeza cuando miro a este Rey?",
+      "transicion": "Desde ese trono, el Rey todavía tiene tiempo de ofrecer su amistad a alguien más.",
+      "ecos": [
+        {
+          "tipo": "Magisterio",
+          "t": "Pío XI · Quas primas (1925)",
+          "d": "Con esta encíclica se instituyó la fiesta de Cristo Rey. Pío XI subraya que Cristo reina en la mente, en la voluntad y en el corazón de las personas, no a la manera de los poderes de este mundo."
+        }
+      ]
+    },
+    {
+      "id": "P4",
+      "t": "El Rey que recuerda a un ladrón",
+      "refs": "Lc 23,39-43",
+      "p": [
+        "Junto a Jesús crucifican a dos malhechores. Uno se burla; el otro reconoce su culpa y le pide a Jesús que se acuerde de él cuando llegue a su Reino. Jesús le promete que ese mismo día estará con Él en el paraíso.",
+        "Es la primera persona a la que el Rey crucificado le abre su Reino: alguien sin méritos que mostrar, en su último momento, que solo pide ser recordado.",
+        "La amistad de Jesús no se gana; se recibe. Nunca es tarde para pedirla, y Él no la regatea."
+      ],
+      "a": "Dile a Jesús, con tus palabras, lo que le dijo el ladrón: acuérdate de mí.",
+      "pregunta": "¿Hay algo en tu vida que sientes que llega tarde para entregárselo a Jesús?",
+      "transicion": "El Rey que recuerda al último también se deja encontrar en los últimos.",
+      "ecos": [
+        {
+          "tipo": "Liturgia",
+          "t": "Cristo Rey en los tres ciclos",
+          "d": "La solemnidad cambia de evangelio cada año: el ciclo A lee el juicio de las naciones (Mt 25), el ciclo B el diálogo con Pilato (Jn 18) y el ciclo C el buen ladrón (Lc 23). Juntos dibujan el mismo rostro: un Rey que sirve, da testimonio y perdona."
+        }
+      ]
+    },
+    {
+      "id": "P5",
+      "t": "El Rey escondido en el más pequeño",
+      "refs": "Mt 25,31-40",
+      "p": [
+        "En el evangelio del domingo, el Rey dice a los de su derecha que tuvo hambre, sed, fue forastero, estuvo desnudo, enfermo y en la cárcel, y que ellos lo atendieron.",
+        "Lo sorprendente es que no lo sabían: preguntan cuándo lo vieron. Lo trataron como amigo sin reconocerlo. Lo que hicieron con el más pequeño de sus hermanos, lo hicieron con Él.",
+        "La sesión pasada hablamos de aprender a mirar con Jesús. Aquí esa mirada llega a su punto más alto: el Rey se identifica con quien nadie voltea a ver. Las obras que cuentan son pequeñas y nadie las aplaude."
+      ],
+      "a": "Elige una de las seis obras del evangelio y haz un gesto concreto esta semana, sin contarlo.",
+      "pregunta": "¿Quién es hoy, cerca de ti, el más pequeño al que nadie voltea a ver?",
+      "transicion": "El evangelio también pregunta por lo que no vimos.",
+      "ecos": [
+        {
+          "tipo": "Santos",
+          "t": "San Martín de Tours",
+          "d": "Según su biógrafo, Sulpicio Severo, Martín, siendo soldado, partió su capa para cubrir a un pobre que temblaba de frío. Esa noche soñó a Cristo vestido con la mitad de la capa, diciendo que Martín lo había vestido."
+        },
+        {
+          "tipo": "Catecismo",
+          "t": "CCE 2447 · Las obras de misericordia",
+          "d": "El Catecismo enumera las obras de misericordia corporales y espirituales: acciones caritativas con las que socorremos al prójimo en sus necesidades, del cuerpo y del alma."
+        }
+      ]
+    },
+    {
+      "id": "P6",
+      "t": "¿Cuándo te vimos?",
+      "refs": "Mt 25,41-46",
+      "p": [
+        "Los de la izquierda hacen la misma pregunta que los justos: ¿cuándo te vimos? Tampoco sabían. La diferencia no está en lo que sabían de Jesús, sino en si se detuvieron ante el que sufría.",
+        "El evangelio es serio: nuestras omisiones importan. Pero no se lee para tener miedo, sino para despertar. Lo más común no es hacer daño a propósito; es pasar de largo porque vamos ocupados o porque no miramos.",
+        "La pregunta del Rey no busca culpables; nos abre los ojos mientras todavía hay tiempo de detenernos."
+      ],
+      "a": "Pídele a Jesús que te muestre a alguien junto a quien has pasado de largo.",
+      "pregunta": "¿Qué suele impedirme detenerme: la prisa, la comodidad, el miedo, no saber qué hacer…?",
+      "transicion": "Detenernos es posible porque el Rey ya venció lo que más nos detiene.",
+      "ecos": [
+        {
+          "tipo": "Aplicación pastoral",
+          "t": "Un juicio que es amor",
+          "d": "El juicio de Mateo 25 se mide por el amor concreto, no por méritos religiosos. Leído desde Ezequiel 34, el Juez es el Pastor que primero buscó a cada oveja. No se presenta para amenazar a nadie, sino para tomar en serio el amor."
+        }
+      ]
+    },
+    {
+      "id": "P7",
+      "t": "Un Reino que vence a la muerte",
+      "refs": "1 Co 15,20-28",
+      "p": [
+        "Pablo presenta a Cristo resucitado como el primero de muchos: así como en Adán todos mueren, en Cristo todos volverán a la vida. Su Reino avanza hasta vencer al último enemigo, la muerte.",
+        "La Cruz no fue la derrota del amigo. Fue el camino por el que el Rey venció. Por eso cada gesto de amor con el más pequeño es una forma de participar en su victoria: devolver un poco de vida donde hay hambre, soledad o abandono.",
+        "Con este domingo termina el año litúrgico. La próxima semana comienza el Adviento: esperamos al Rey que vendrá en gloria y que ya viene, escondido, en cada persona que nos necesita."
+      ],
+      "a": "Haz un pequeño balance del año: ¿dónde reconociste a Jesús y dónde se te pasó?",
+      "pregunta": "¿Qué esperanza me da saber que el amor de Jesús tiene la última palabra?",
+      "transicion": "Ahora vamos a conversar sobre lo que este recorrido toca en nuestra vida.",
+      "ecos": [
+        {
+          "tipo": "Liturgia",
+          "t": "El último domingo del año",
+          "d": "Pío XI fijó la fiesta en el último domingo de octubre. Con la reforma litúrgica posterior al Concilio Vaticano II pasó al último domingo del tiempo ordinario, como cumbre del año: el año termina contemplando a Cristo, Rey del universo."
+        }
+      ]
+    }
+  ],
+  "preparar": {
+    "pregunta": "¿Qué imagen tengo de un rey, y qué tiene que ver con Jesús?",
+    "practica": "Busca unos minutos de tranquilidad y lee Lucas 23,39-43 y Mateo 25,31-40. Quédate con una palabra o imagen. Piensa en una persona que pocas veces recibe atención en tu entorno.",
+    "cierre": "Lleva una pregunta abierta al encuentro. No necesitas preparar una respuesta para compartir."
+  },
+  "semana": {
+    "pregunta": "Si Jesús reina dando la vida, ¿dónde me está esperando hoy para que lo reconozca?",
+    "practica": "Elige una de las obras de misericordia y una persona concreta. Haz un gesto pequeño, sin anunciarlo, y al final del día dile a Jesús: acuérdate de mí.",
+    "cierre": "Vuelve al punto que más te acompañó. Puedes retomar estas preguntas personalmente o con alguien de confianza."
+  },
+  "dinamica": {
+    "duracion": 60,
+    "grupos": "En grupos de 3 a 5 personas. Conversen con calma; cada quien puede compartir hasta donde se sienta cómodo.",
+    "agenda": [
+      {
+        "min": 7,
+        "t": "Apertura y lectura",
+        "d": "Recuperar el camino: el desierto, la amistad, la luz y ahora la Cruz. Escuchar dos o tres intervenciones y leer Lucas 23,39-43. Los tiempos son una propuesta ajustable."
+      },
+      {
+        "min": 28,
+        "t": "Exposición por puntos",
+        "d": "Cuatro minutos por punto. Hasta dónde llega su amor, el Rey pastor, el trono de la Cruz, el buen ladrón, el Rey escondido, la pregunta por lo que no vimos y la victoria sobre la muerte. Leer Mateo 25,31-46 al llegar al punto 5."
+      },
+      {
+        "min": 15,
+        "t": "Grupos pequeños",
+        "d": "Grupos de 3 a 5 personas. Una sola ronda con cuatro preguntas; se puede pasar una pregunta y escuchar."
+      },
+      {
+        "min": 4,
+        "t": "Puesta en común",
+        "d": "Una idea voluntaria por grupo. No relatar experiencias personales ajenas. Recoger dos o tres coincidencias sin comentar cada intervención."
+      },
+      {
+        "min": 6,
+        "t": "Cierre, oración y puente",
+        "d": "Leer el Salmo 23. Un minuto de silencio: Jesús, ¿dónde me estás esperando esta semana? Rezar juntos y abrir la pregunta hacia el Adviento."
+      }
+    ],
+    "rondas": [
+      {
+        "t": "La amistad que se entrega",
+        "sub": "Puntos 1 a 7",
+        "min": 15,
+        "q": [
+          "¿Qué te dice de Jesús que su trono sea la Cruz?",
+          "¿Con qué personaje te identificas hoy: la oveja que buscan, el ladrón que pide ser recordado o quien pregunta «¿cuándo te vimos?»?",
+          "¿Quién es, cerca de ti, el más pequeño en quien Jesús te está esperando?",
+          "¿Qué gesto pequeño podrías hacer esta semana sin que nadie lo sepa?"
+        ]
+      }
+    ],
+    "reglas": [
+      "Cada quien comparte hasta donde se sienta cómodo.",
+      "Se puede pasar una pregunta y simplemente escuchar.",
+      "Escuchar sin juzgar ni ofrecer consejos que no se hayan pedido.",
+      "Lo personal que alguien comparta se queda en el grupo."
+    ]
+  },
+  "coordinacion": {
+    "preparacion": [
+      "Lee previamente Mateo 25,31-46; Lucas 23,39-43; Ezequiel 34,11-17 y Juan 15,13-15. Para el cierre, revisa 1 Corintios 15,20-28.",
+      "Intención: contemplar en la Cruz hasta dónde llega la amistad de Jesús y descubrir que el Rey crucificado nos espera en los más pequeños.",
+      "Es la sesión previa a la solemnidad de Cristo Rey (domingo 22 de noviembre), último domingo del año litúrgico; el 29 comienza el Adviento.",
+      "Mateo 25 habla de juicio. No lo uses para generar miedo ni culpa: subraya la sorpresa de ambos grupos y que el Juez es el Pastor que primero buscó a cada oveja.",
+      "Los 60 minutos y su reparto son una propuesta. Conserva espacio real para la conversación en pequeños grupos."
+    ],
+    "apertura": [
+      "En el desierto reconocimos nuestra necesidad de Dios. Después Jesús nos ofreció su amistad y vimos cómo esa amistad ilumina nuestra mirada.",
+      "La sesión pasada terminó mirando hacia la Cruz. Hoy contemplamos hasta dónde llega su amor, y descubrimos que el amigo que se entrega es también el Rey que celebramos este domingo."
+    ],
+    "preguntaInicial": "Cuando oyes la palabra «rey», ¿qué imagen te viene a la mente?",
+    "indicacionLectura": "Escucha dos o tres intervenciones. Introduce la lectura: el Rey que celebramos este domingo no está en un palacio, sino en una cruz, junto a dos malhechores. Lean Lucas 23,39-43 en la Biblia que utilice la comunidad. Deja unos segundos de silencio.",
+    "instruccionesGrupos": "Cada quien puede compartir hasta donde se sienta cómodo. También pueden pasar una pregunta y simplemente escuchar. Procuremos comprender a quien habla, sin juzgar ni ofrecer consejos que no nos haya pedido. Lo personal que alguien comparta se queda en el grupo.",
+    "puestaComun": "Invita a cada grupo a compartir voluntariamente una idea del tema que les haya ayudado, sin relatar experiencias personales ajenas. Recoge dos o tres coincidencias; no hace falta comentar cada intervención.",
+    "cierre": "Hoy recorrimos el camino del amigo que se entrega: el Pastor que nos busca, el Rey que reina desde la Cruz, que recuerda al último y que se esconde en el más pequeño. Cada uno puede llevarse una pregunta y un gesto pequeño para esta semana.",
+    "silencio": "Lee el Salmo 23. Deja un minuto de silencio con esta invitación: Jesús, ¿dónde me estás esperando esta semana?"
+  },
+  "oracion": [
+    "Jesús, amigo y Rey nuestro,",
+    "que reinas desde la Cruz",
+    "y nos amaste hasta el extremo,",
+    "búscanos cuando nos dispersamos,",
+    "cura lo que está herido",
+    "y fortalece lo que está débil.",
+    "Acuérdate de nosotros en tu Reino.",
+    "Ábrenos los ojos para reconocerte",
+    "en quien tiene hambre, está solo o sufre,",
+    "y danos un corazón que se detenga.",
+    "Amén."
+  ],
+  "oracionPublica": [
+    "Jesús, Rey y amigo,",
+    "que diste la vida por nosotros,",
+    "acuérdate de nosotros en tu Reino.",
+    "Enséñanos a reconocerte",
+    "en las personas que más lo necesitan",
+    "y a servir como tú sirves.",
+    "Amén."
+  ],
+  "puente": "Adviento: ¿cómo esperamos al Rey que vendrá en gloria y que ya viene, escondido, en los demás?",
+  "audios": [],
+  "videos": [],
+  "materiales": [
+    {
+      "tipo": "Biblia",
+      "h": "Lee los pasajes",
+      "t": "Mateo 25,31-46 y Lucas 23,39-43",
+      "d": "Lectura base: busca ambos pasajes en tu Biblia. Son el evangelio de Cristo Rey de este año y el del buen ladrón.",
+      "url": "https://bible.usccb.org/bible/matthew/25",
+      "boton": "Abrir Mateo 25"
+    }
+  ],
+  "notaBiblia": "La lectura base es Mateo 25,31-46 y Lucas 23,39-43. El salmo de la misa aparece como 22 en algunas Biblias y como 23 en otras. Los demás pasajes son apoyos; no hace falta leerlos todos durante el encuentro.",
+  "fuentes": [
+    { "t": "Biblia · Mateo 25", "d": "Mateo 25,31-46: el juicio de las naciones; evangelio de Cristo Rey, ciclo A.", "url": "https://bible.usccb.org/bible/matthew/25" },
+    { "t": "Biblia · Lucas 23", "d": "Lucas 23,39-43: el buen ladrón pide ser recordado en el Reino.", "url": "https://bible.usccb.org/bible/luke/23" },
+    { "t": "Biblia · Ezequiel 34", "d": "Ezequiel 34,11-17: Dios mismo busca y cuida a sus ovejas.", "url": "https://bible.usccb.org/bible/ezekiel/34" },
+    { "t": "Biblia · 1 Corintios 15", "d": "1 Corintios 15,20-28: Cristo, primicia de la resurrección; la muerte, último enemigo.", "url": "https://bible.usccb.org/bible/1corinthians/15" },
+    { "t": "Biblia · Juan 15", "d": "Juan 15,13-15: dar la vida por los amigos.", "url": "https://bible.usccb.org/bible/john/15" },
+    { "t": "Catecismo de la Iglesia Católica · 609 y 2447", "d": "El amor de Jesús hasta el extremo y las obras de misericordia.", "url": "https://www.vatican.va/archive/catechism_sp/index_sp.html" },
+    { "t": "Pío XI · Quas primas", "d": "11 de diciembre de 1925. Encíclica que instituye la fiesta de Cristo Rey.", "url": "https://www.vatican.va/content/pius-xi/en/encyclicals.index.2.html" }
+  ],
+  "biblia": [
+    ["Mt 25,31-46", "El Rey escondido en el más pequeño"],
+    ["Lc 23,39-43", "Acuérdate de mí en tu Reino"],
+    ["Jn 15,13-15", "Dar la vida por los amigos"],
+    ["Jn 13,1", "Los amó hasta el extremo"],
+    ["Ez 34,11-17", "Dios mismo busca a sus ovejas"],
+    ["Sal 23", "El Señor es mi pastor"],
+    ["Jn 10,11", "El buen pastor da la vida"],
+    ["Jn 18,36-37", "Mi Reino no es de este mundo"],
+    ["Jn 19,19", "El letrero sobre la Cruz"],
+    ["Flp 2,6-8", "Se humilló hasta la muerte de cruz"],
+    ["1 Co 15,20-28", "El último enemigo: la muerte"]
+  ]
 }
 };
