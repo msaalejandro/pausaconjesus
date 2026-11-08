@@ -587,6 +587,7 @@ window.LECCIONES = {
 },
 
   "la-amistad-que-se-entrega": {
+  "imagen": { "base": "sesion-la-amistad-que-se-entrega", "foco": "50% 62%", "alt": "Al amanecer, la silla de papel vacía junto al camino de piedras; el rebozo quedó doblado en el escalón de la casita más humilde, junto a un pan y un jarrito, y al fondo se alza una cruz sencilla." },
   "tema": "La amistad que se entrega",
   "fuente": "Evangelio · Mateo 25,31-46 y Lucas 23,39-43",
   "categoria": "Vida interior",
