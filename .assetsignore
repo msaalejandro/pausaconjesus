@@ -1,5 +1,16 @@
 .git
 .github
+.gitignore
+.env
+.env.*
+.dev.vars
+.dev.vars.*
+.wrangler
+node_modules
+README.md
+LICENSE
+CONTRIBUTING.md
+ASSET-LICENSING.md
 wrangler.jsonc
 .assetsignore
 CNAME
