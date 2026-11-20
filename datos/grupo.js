@@ -16,7 +16,7 @@ window.GRUPO = {
   // Con whatsapp vacío y enlaceGrupo vacío, WhatsApp pide elegir a quién enviarlo.
   contacto: { whatsapp: "", enlaceGrupo: "" },
   url: "https://pausaconjesus.com/",
-  api: "https://restrategia-n8n.fcwppp.easypanel.host/webhook/pausa",
+  api: "https://automatizaciones.restrategia.com/webhook/pausa",
   calendario: [
     { fecha: "2026-10-02", leccion: "el-desierto" },
     { fecha: "2026-10-16", leccion: "la-amistad-con-jesus" },
