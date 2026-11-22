@@ -91,7 +91,7 @@
 <main class="wrap">
   <section class="hero" aria-labelledby="titulo">
     <div class="hero-inner">
-      <div><p class="eyebrow">Cada domingo, un encuentro</p><h1 id="titulo">Peregrinos<br>por Querétaro</h1><p class="lead">Recorremos hasta cinco iglesias cercanas por jornada y terminamos siempre celebrando juntos la Santa Misa.</p></div>
+      <div><p class="eyebrow">Cada recorrido, un encuentro</p><h1 id="titulo">Peregrinos<br>por Querétaro</h1><p class="lead">Recorremos hasta cinco iglesias cercanas por jornada y terminamos siempre celebrando juntos la Santa Misa.</p></div>
       <div class="seal" aria-hidden="true"><svg viewBox="0 0 100 100"><path d="M22 78V41L50 22l28 19v37M15 78h70M41 78V55a9 9 0 0 1 18 0v23M50 11v14M43 17h14M30 42h6M64 42h6M31 52v8M69 52v8"/></svg></div>
     </div>
   </section>
@@ -109,8 +109,8 @@ const esc=t=>String(t==null?"":t).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;"
 const folder=s=>String(s||"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
 const look=id=>iglesias.find(i=>i.id===id);
 function mapLink(i){return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent([i.nombre,i.direccion,i.municipio,"Querétaro México"].filter(Boolean).join(", "));}
-function displayDate(s){const d=new Date(s+"T12:00:00");return Number.isNaN(d.getTime())?s:d.toLocaleDateString("es-MX",{weekday:"long",day:"numeric",month:"long",year:"numeric"});}
-function month(s){return new Date(s+"T12:00:00").toLocaleDateString("es-MX",{month:"short"});}
+function displayDate(s){if(!s)return "Fecha por definir";const d=new Date(s+"T12:00:00");return Number.isNaN(d.getTime())?s:d.toLocaleDateString("es-MX",{weekday:"long",day:"numeric",month:"long",year:"numeric"});}
+function month(s){if(!s)return "Sin fecha";return new Date(s+"T12:00:00").toLocaleDateString("es-MX",{month:"short"});}
 function normalizeVisits(data){
  agendaMeta=data||{};
  if(Array.isArray(data.visitas))return data.visitas;
@@ -140,21 +140,21 @@ function routeRank(id){
 function stateOf(i){
  const records=visitas.filter(v=>v.iglesiaId===i.id);
  if(records.some(v=>v.estado==="realizada"))return "visitada";
- if(records.some(v=>v.estado==="programada"&&v.fecha>=today()))return "programada";
- if(records.some(v=>v.estado==="propuesta"&&v.fecha>=today()))return "propuesta";
+ if(records.some(v=>v.estado==="programada"&&v.fecha))return "programada";
+ if(records.some(v=>v.estado==="propuesta"||v.estado==="programada"&&!v.fecha))return "propuesta";
  return "pendiente";
 }
-function upcoming(){return visitas.filter(v=>["programada","propuesta"].includes(v.estado)&&v.fecha>=today()).sort((a,b)=>a.fecha.localeCompare(b.fecha)||(a.numeroJornada||0)-(b.numeroJornada||0)||(a.ordenEnJornada||0)-(b.ordenEnJornada||0));}
-function today(){const f=new Intl.DateTimeFormat("en-CA",{timeZone:"America/Mexico_City",year:"numeric",month:"2-digit",day:"2-digit"});const parts=Object.fromEntries(f.formatToParts(new Date()).filter(x=>x.type!=="literal").map(x=>[x.type,x.value]));return parts.year+"-"+parts.month+"-"+parts.day;}
+// La coordinación decide cuándo avanzar: el calendario no descarta recorridos.
+function upcoming(){return visitas.filter(v=>["programada","propuesta"].includes(v.estado)).sort((a,b)=>(a.numeroJornada||0)-(b.numeroJornada||0)||(a.ordenEnJornada||0)-(b.ordenEnJornada||0));}
 function actionLinks(i,v,hero){
  const maps='<a class="btn'+(hero?"":" primary")+'" href="'+esc(mapLink(i))+'" target="_blank" rel="noopener">Ver ubicación ↗</a>';
  if(!v)return maps;
  const place=v.puntoReunion||i.direccion||i.nombre;
- const provisional=v.estado==="propuesta";
+ const provisional=v.estado==="propuesta"||!v.fecha;
  const at=v.rol==="misa"?"Misa (hora pendiente)":(v.hora?v.hora+" h":"hora pendiente");
  const text="Pausa con Jesús: "+(provisional?"propuesta (SIN CONFIRMAR)":"visita confirmada")+" a "+i.nombre+" el "+displayDate(v.fecha)+" · "+at+". Punto de reunión: "+place+".";
  const share='<a class="btn" href="https://wa.me/?text='+encodeURIComponent(text)+'" target="_blank" rel="noopener">Compartir'+(provisional?" propuesta":"")+'</a>';
- if(provisional||!v.hora)return maps+share;
+ if(provisional||!v.fecha||!v.hora)return maps+share;
  const [y,m,d]=v.fecha.split("-").map(Number),[hh,mm]=v.hora.split(":").map(Number);
  const start=v.fecha.replace(/-/g,"")+"T"+v.hora.replace(":","")+"00";
  const endDate=new Date(Date.UTC(y,m-1,d,hh,mm+(v.duracionMin||90)));
@@ -184,46 +184,46 @@ function itineraryUrl(group){
 function daysGrouped(){
  const arr=upcoming(),groups=new Map();
  arr.forEach(v=>{
-  const key=v.jornada||v.fecha;
+  const key=v.jornada||v.fecha||v.id;
   if(!groups.has(key))groups.set(key,[]);
   groups.get(key).push(v);
  });
  return [...groups.values()].map(a=>a.sort((x,y)=>(x.ordenEnJornada||0)-(y.ordenEnJornada||0)));
 }
 function itineraryCard(group,index){
- const first=group[0],last=group[group.length-1],day=Number(first.fecha.slice(-2)),proposed=group.some(v=>v.estado==="propuesta");
+ const first=group[0],last=group[group.length-1],day=first.fecha?Number(first.fecha.slice(-2)):"—",proposed=!first.fecha||group.some(v=>v.estado==="propuesta");
  const title=first.tituloJornada||look(first.iglesiaId)?.nombre||"Recorrido por Querétaro";
  const stops=group.map(v=>{
   const i=look(v.iglesiaId);if(!i)return "";
   const mass=v.rol==="misa";
   const slot=mass?'<span class="mass-mark">Santa Misa</span>':(v.hora?esc(v.hora)+" h":"Parada "+esc(v.ordenEnJornada));
-  return '<li'+(mass?' class="mass-stop"':"")+'><time datetime="'+esc(v.fecha)+'">'+slot+'</time><div><strong>'+esc(i.nombre)+'</strong><small>'+esc(i.zona)+' · '+esc(i.municipio)+'</small>'+(mass?'<small>Hora de Misa por confirmar con el templo</small>':!v.hora?'<small>Hora por definir al confirmar la Misa de cierre</small>':"")+'</div></li>';
+  return '<li'+(mass?' class="mass-stop"':"")+'><time'+(v.fecha?' datetime="'+esc(v.fecha)+'"':"")+'>'+slot+'</time><div><strong>'+esc(i.nombre)+'</strong><small>'+esc(i.zona)+' · '+esc(i.municipio)+'</small>'+(mass?'<small>Hora de Misa por confirmar con el templo</small>':!v.hora?'<small>Hora por definir al confirmar la Misa de cierre</small>':"")+'</div></li>';
  }).join("");
- const share="Pausa con Jesús · domingo "+displayDate(first.fecha)+". "+title+". "+(proposed?"PLAN TENTATIVO por confirmar. ":"")+group.map(v=>(v.rol==="misa"?"Santa Misa (horario pendiente)":(v.hora?v.hora+" h":"Parada "+v.ordenEnJornada+" (hora pendiente)"))+" · "+(look(v.iglesiaId)?.nombre||"")).join(" / ")+".";
+ const share="Pausa con Jesús · "+displayDate(first.fecha)+". "+title+". "+(proposed?"PLAN TENTATIVO por confirmar. ":"")+group.map(v=>(v.rol==="misa"?"Santa Misa (horario pendiente)":(v.hora?v.hora+" h":"Parada "+v.ordenEnJornada+" (hora pendiente)"))+" · "+(look(v.iglesiaId)?.nombre||"")).join(" / ")+".";
  const timing=first.hora?"visita inicial desde las "+first.hora+" h":"orden definido · horarios por confirmar";
  const routeFact=first.distanciaKm!=null?'<p class="route-facts"><strong>'+esc(first.distanciaKm)+' km · '+esc(first.trasladoMin)+' min de traslado</strong><span>'+esc(first.rutaVerificada||"Medición de referencia")+'</span></p>':'<p class="route-facts"><strong>Ruta agrupada por microzona</strong><span>Maps recalcula distancia y tráfico al abrirla.</span></p>';
- return '<details class="journey"'+(index===0?' open':"")+'><summary><div class="calendar-date"><b>'+day+'</b><small>'+esc(month(first.fecha))+'</small></div><div class="summary-copy"><span class="eyebrow">Domingo '+esc(first.numeroJornada||index+1)+' · '+esc(first.zonaJornada||"Querétaro")+'</span><h3>'+esc(title)+'</h3><div class="journey-date">'+esc(displayDate(first.fecha))+' · '+esc(timing)+'</div><div class="journey-icons"><span class="pill '+(proposed?"":"done")+'">'+(proposed?"Tentativa":"Confirmada")+'</span><span class="pill">Cerramos con Misa</span><span class="pill">'+esc(first.modalidad||"recorrido")+'</span><span class="pill">'+group.length+' iglesias</span></div></div><span class="chevron" aria-hidden="true">⌄</span></summary><div class="body"><ol class="steps">'+stops+'</ol>'+routeFact+'<p class="note">'+(proposed?"Recorrido sugerido. La hora de la Misa, la apertura de los templos y los tiempos reales se deben verificar antes de convocar.":"Verifica la hora exacta de la Misa y el punto de reunión publicados por la coordinación.")+'</p><div class="actions"><a class="btn primary" href="'+esc(itineraryUrl(group))+'" target="_blank" rel="noopener">Ver ruta y distancia en Maps ↗</a><a class="btn" href="https://wa.me/?text='+encodeURIComponent(share)+'" target="_blank" rel="noopener">Compartir '+(proposed?"plan":"recorrido")+'</a></div></div></details>';
+ return '<details class="journey"'+(index===0?' open':"")+'><summary><div class="calendar-date"><b>'+day+'</b><small>'+esc(month(first.fecha))+'</small></div><div class="summary-copy"><span class="eyebrow">Recorrido '+esc(first.numeroJornada||index+1)+' · '+esc(first.zonaJornada||"Querétaro")+'</span><h3>'+esc(title)+'</h3><div class="journey-date">'+esc(displayDate(first.fecha))+' · '+esc(timing)+'</div><div class="journey-icons"><span class="pill '+(proposed?"":"done")+'">'+(!first.fecha?"Fecha por definir":proposed?"Tentativa":"Confirmada")+'</span><span class="pill">Cerramos con Misa</span><span class="pill">'+esc(first.modalidad||"recorrido")+'</span><span class="pill">'+group.length+' iglesias</span></div></div><span class="chevron" aria-hidden="true">⌄</span></summary><div class="body"><ol class="steps">'+stops+'</ol>'+routeFact+'<p class="note">'+(proposed?"Recorrido sugerido. La hora de la Misa, la apertura de los templos y los tiempos reales se deben verificar antes de convocar.":"Verifica la hora exacta de la Misa y el punto de reunión publicados por la coordinación.")+'</p><div class="actions"><a class="btn primary" href="'+esc(itineraryUrl(group))+'" target="_blank" rel="noopener">Ver ruta y distancia en Maps ↗</a><a class="btn" href="https://wa.me/?text='+encodeURIComponent(share)+'" target="_blank" rel="noopener">Compartir '+(proposed?"plan":"recorrido")+'</a></div></div></details>';
 }
 function renderAgenda(){
  const groups=daysGrouped(),first=groups[0],v=first&&first[0],i=v&&look(v.iglesiaId);
  let html="";
  if(i){
-  const proposed=first.some(x=>x.estado==="propuesta"),last=look(first[first.length-1].iglesiaId);
-  html+='<section class="feature"><p class="eyebrow">'+(proposed?"Primer domingo propuesto":"Próxima jornada confirmada")+'</p><h2>'+esc(v.tituloJornada||i.nombre)+'</h2><p class="meta">'+esc(displayDate(v.fecha))+' · '+(v.hora?'inicio tentativo '+esc(v.hora)+' h':'horarios por confirmar')+'</p><p>'+first.length+' iglesias · '+esc(v.modalidad||"recorrido")+' · cerramos con Santa Misa en '+esc(last?.nombre||"el último templo")+'</p>'+(proposed?'<span class="tiny-status">Horario de Misa, apertura y tiempos por confirmar</span>':"")+'<div class="actions"><a class="btn" href="'+esc(itineraryUrl(first))+'" target="_blank" rel="noopener">Ver ruta y distancia en Maps ↗</a></div></section>';
- }else html+='<section class="feature"><p class="eyebrow">El siguiente domingo</p><h2>Estamos preparando una nueva peregrinación</h2><p>El calendario se actualizará cuando haya nuevas propuestas o fechas confirmadas.</p><div class="actions"><a class="btn" href="#inventario">Explorar las iglesias</a></div></section>';
- html+='<div class="section-head"><div><h2>Domingos de peregrinación</h2><p class="subtitle">Conocemos iglesias y terminamos con Misa dominical. Todas las fechas son propuestas hasta verificar apertura, celebraciones y traslados.</p></div></div>';
+  const proposed=!v.fecha||first.some(x=>x.estado==="propuesta"),last=look(first[first.length-1].iglesiaId);
+  html+='<section class="feature"><p class="eyebrow">'+(proposed?"Próximo recorrido · por confirmar":"Próxima jornada confirmada")+'</p><h2>'+esc(v.tituloJornada||i.nombre)+'</h2><p class="meta">'+esc(displayDate(v.fecha))+' · '+(v.hora?'inicio tentativo '+esc(v.hora)+' h':'horarios por confirmar')+'</p><p>'+first.length+' iglesias · '+esc(v.modalidad||"recorrido")+' · cerramos con Santa Misa en '+esc(last?.nombre||"el último templo")+'</p>'+(proposed?'<span class="tiny-status">Horario de Misa, apertura y tiempos por confirmar</span>':"")+'<div class="actions"><a class="btn" href="'+esc(itineraryUrl(first))+'" target="_blank" rel="noopener">Ver ruta y distancia en Maps ↗</a></div></section>';
+ }else html+='<section class="feature"><p class="eyebrow">Próximo recorrido</p><h2>Estamos preparando una nueva peregrinación</h2><p>Publicaremos la fecha cuando la coordinación confirme una nueva visita.</p><div class="actions"><a class="btn" href="#inventario">Explorar las iglesias</a></div></section>';
+ html+='<div class="section-head"><div><h2>Nuestros recorridos</h2><p class="subtitle">Las fechas las define la coordinación. Si una visita se pospone, conservamos el recorrido pendiente sin avanzar por el paso de las semanas.</p></div></div>';
  if(agendaMeta.historialPendiente)html+='<div class="announce"><strong>La jornada del '+esc(displayDate(agendaMeta.historialPendiente.fecha))+' está pendiente de registro.</strong>'+esc(agendaMeta.historialPendiente.mensaje)+'</div>';
- html+=groups.length?'<div class="card-list">'+groups.map(itineraryCard).join("")+'</div>':empty("Sin próximas jornadas","Las propuestas pasadas no se marcan automáticamente como realizadas. Se pueden reprogramar.");
- html+='<div class="announce"><strong>La Misa es el centro de cada domingo.</strong>Visitaremos primero los templos del recorrido y participaremos en la Santa Misa al finalizar. La hora exacta de la celebración debe confirmarse con cada parroquia o santuario antes de convocar.</div>';
+ html+=groups.length?'<div class="card-list">'+groups.map(itineraryCard).join("")+'</div>':empty("Sin próximas jornadas","La coordinación publicará nuevos recorridos y sus fechas cuando estén definidos.");
+ html+='<div class="announce"><strong>La Misa es el centro de cada recorrido.</strong>Visitaremos primero los templos del recorrido y participaremos en la Santa Misa al finalizar. La hora exacta de la celebración debe confirmarse con cada parroquia o santuario antes de convocar.</div>';
  return html;
 }
 function placeCard(i){
  const st=stateOf(i),label={visitada:"Visitada",programada:"Confirmada",propuesta:"Propuesta",pendiente:"Pendiente"}[st];
- const done=visitas.filter(v=>v.iglesiaId===i.id && v.estado==="realizada").sort((a,b)=>b.fecha.localeCompare(a.fecha));
- const next=visitas.find(v=>v.iglesiaId===i.id && ["programada","propuesta"].includes(v.estado)&&v.fecha>=today());
+ const done=visitas.filter(v=>v.iglesiaId===i.id && v.estado==="realizada").sort((a,b)=>(b.fecha||"").localeCompare(a.fecha||""));
+ const next=visitas.find(v=>v.iglesiaId===i.id && ["programada","propuesta"].includes(v.estado));
  const withMass=massAttendedAt(i.id);
  const nextTime=next?(next.rol==="misa"?", Misa con horario pendiente":next.hora?" a las "+next.hora+" h":", hora pendiente"):"";
- const details='<div class="details" id="detail-'+esc(i.id)+'" hidden><p>'+esc(i.direccion||"Dirección específica por verificar")+'</p>'+(done.length?'<p>Última visita: '+esc(displayDate(done[0].fecha))+'</p>':"")+(withMass?'<p>El grupo asistió a Misa en esta iglesia.</p>':"")+(next?'<p>'+(next.estado==="propuesta"?"Fecha propuesta: ":"Confirmada para ")+esc(displayDate(next.fecha))+esc(nextTime)+'</p>':"")+'<p>'+esc(i.faseRecorrido||"Por calendarizar")+'</p><a href="'+esc(i.fuente)+'" target="_blank" rel="noopener">Consultar fuente ↗</a></div>';
+ const details='<div class="details" id="detail-'+esc(i.id)+'" hidden><p>'+esc(i.direccion||"Dirección específica por verificar")+'</p>'+(done.length?'<p>Última visita: '+esc(displayDate(done[0].fecha))+'</p>':"")+(withMass?'<p>El grupo asistió a Misa en esta iglesia.</p>':"")+(next?'<p>'+(!next.fecha?"":next.estado==="propuesta"?"Fecha propuesta: ":"Confirmada para ")+esc(displayDate(next.fecha))+esc(nextTime)+'</p>':"")+'<p>'+esc(i.faseRecorrido||"Por calendarizar")+'</p><a href="'+esc(i.fuente)+'" target="_blank" rel="noopener">Consultar fuente ↗</a></div>';
  return '<article class="place"><div class="rank">ORDEN DE RECORRIDO · '+String(routeRank(i.id)).padStart(2,"0")+'</div><div class="topline"><span class="pill">'+esc(i.tipo)+'</span><span class="pill '+(st==="visitada"?"done":st==="programada"?"next":"")+'">'+label+'</span>'+(withMass?'<span class="mass-mark">Misa celebrada</span>':"")+(next?.rol==="misa"&&next.estado==="propuesta"?'<span class="pill">Misa propuesta</span>':"")+(i.imperdible?'<span class="pill">Destacada</span>':"")+'</div><h3>'+esc(i.nombre)+'</h3><p class="meta">'+esc(i.zona)+' · '+esc(i.municipio)+'</p><div class="place-links"><a class="text-link" href="'+esc(mapLink(i))+'" target="_blank" rel="noopener">Ubicación ↗</a><button class="text-link" data-detail="'+esc(i.id)+'" aria-expanded="false" aria-controls="detail-'+esc(i.id)+'">Ver detalle</button></div>'+details+'</article>';
 }
 function filterPlaces(){
@@ -234,7 +234,7 @@ function filterPlaces(){
 }
 function renderInventory(){
  const types=[...new Set(iglesias.map(i=>i.tipo))].sort();
- content.innerHTML='<div class="section-head"><div><h2>Nuestras iglesias</h2><p class="subtitle">Querétaro y Corregidora · Cada domingo visitamos iglesias y terminamos con la Santa Misa.</p></div></div>'+
+ content.innerHTML='<div class="section-head"><div><h2>Nuestras iglesias</h2><p class="subtitle">Querétaro y Corregidora · Visitamos iglesias en las fechas que acordamos y terminamos con la Santa Misa.</p></div></div>'+
  '<div class="filters"><input id="find" type="search" placeholder="Buscar iglesia o colonia…" aria-label="Buscar iglesias">'+
  '<select id="mun" aria-label="Municipio"><option value="">Ambos municipios</option><option>Querétaro</option><option>Corregidora</option></select>'+
  '<select id="tipo" aria-label="Tipo de iglesia"><option value="">Todos los tipos</option>'+types.map(t=>'<option>'+esc(t)+'</option>').join("")+'</select>'+
@@ -245,12 +245,12 @@ function renderInventory(){
  filterPlaces();
 }
 function renderLog(){
- const done=visitas.filter(v=>v.estado==="realizada"&&look(v.iglesiaId)).sort((a,b)=>b.fecha.localeCompare(a.fecha)||(a.ordenEnJornada||0)-(b.ordenEnJornada||0));
+ const done=visitas.filter(v=>v.estado==="realizada"&&look(v.iglesiaId)).sort((a,b)=>(b.fecha||"").localeCompare(a.fecha||"")||(a.ordenEnJornada||0)-(b.ordenEnJornada||0));
  let html='<div class="section-head"><div><h2>Nuestra bitácora</h2><p class="subtitle">Iglesias que conocimos y dónde participamos juntos en la Santa Misa.</p></div></div>';
  html+=done.length?'<div class="card-list">'+done.map(v=>{
  const i=look(v.iglesiaId),misa=v.rol==="misa"&&v.misaCelebrada===true;
  return '<article class="panel"><span class="eyebrow">'+esc(displayDate(v.fecha))+'</span><h3 style="font-size:29px;margin-top:6px">'+esc(i.nombre)+'</h3><div class="journey-icons"><span class="pill done">Iglesia visitada</span>'+(misa?'<span class="mass-mark">Misa compartida</span>':"")+'</div>'+(v.reflexion?'<p style="margin-top:10px">'+esc(v.reflexion)+'</p>':"")+'<p class="meta">'+esc(i.municipio)+' · '+esc(i.zona)+'</p><div class="actions"><a class="btn" href="'+esc(mapLink(i))+'" target="_blank" rel="noopener">Recordar el lugar ↗</a>'+(Array.isArray(v.fotos)?v.fotos.filter(x=>typeof x==="string"&&/^https:\/\//.test(x)).map(x=>'<a class="btn" target="_blank" rel="noopener" href="'+esc(x)+'">Ver fotografía ↗</a>').join(""):"")+'</div></article>';
- }).join("")+'</div>':empty("Nuestra historia está por comenzar","Después de cada domingo registraremos las iglesias conocidas y, por separado, la asistencia a la Santa Misa.");
+ }).join("")+'</div>':empty("Nuestra historia está por comenzar","Después de cada recorrido registraremos las iglesias conocidas y, por separado, la asistencia a la Santa Misa.");
  return html;
 }
 function route(){
@@ -271,9 +271,10 @@ Promise.all([
  fetch("./visitas.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw Error("Agenda");return r.json();})
 ]).then(([a,v])=>{
  if(!Array.isArray(a.iglesias))throw Error("Estructura de inventario");
- iglesias=a.iglesias;visitas=normalizeVisits(v).filter(x=>x&&x.iglesiaId&&x.fecha&&x.estado&&(["realizada","programada","propuesta","cancelada"].includes(x.estado)));
+ iglesias=a.iglesias;visitas=normalizeVisits(v).filter(x=>x&&x.iglesiaId&&x.estado&&(["realizada","programada","propuesta","cancelada"].includes(x.estado)));
  showStats();route();
 }).catch(e=>{console.error(e);content.innerHTML=empty("No pudimos cargar el recorrido","Intenta actualizar la página. Si el problema continúa, avisa a la coordinación del grupo.");});
 </script>
 </body>
 </html>
+
